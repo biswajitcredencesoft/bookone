@@ -8,6 +8,10 @@ import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
+import BookOneDetails from "@/components/BookOneDetails";
+import OtaIntegration from "@/components/OtaIntegration";
+import HoteliarTrust from "@/components/HoteliarTrust";
+import BookOneGrowing from "@/components/BookOneGrowing";
 
 const Home = () => {
   return (
@@ -15,6 +19,10 @@ const Home = () => {
       <Navbar />
       
         <Hero/>
+        <BookOneDetails/>
+        <OtaIntegration/>
+        <HoteliarTrust/>
+        <BookOneGrowing/>
         {/* <HomeProducts />
         <FeaturedProduct />
         <Banner />

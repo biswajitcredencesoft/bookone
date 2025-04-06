@@ -1,6 +1,8 @@
 
 
 ## Getting Started
+<!-- npm install framer-motion
+ -->
 
 First, run the development server:
 

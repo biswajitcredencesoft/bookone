@@ -2,6 +2,7 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import { AppContextProvider } from "@/context/AppContext";
 import { Toaster } from "react-hot-toast";
+import ScrollToTopButton from "@/components/ScrollToTopButton"; // ✅ Import the button
 
 const outfit = Outfit({ subsets: ["latin"], weight: ["300", "400", "500"] });
 
@@ -15,7 +16,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${outfit.className} antialiased text-gray-700`}>
         <Toaster />
-        <AppContextProvider>{children}</AppContextProvider>
+        <AppContextProvider>
+          {children}
+          <ScrollToTopButton /> 
+        </AppContextProvider>
       </body>
     </html>
   );

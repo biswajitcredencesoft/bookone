@@ -5,6 +5,8 @@ import Image from "next/image";
 import { useAppContext } from "@/context/AppContext";
 import { assets } from "@/assets/assets";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
+import { IoMenu } from "react-icons/io5";
+import { RxCross2 } from "react-icons/rx";
 import {
   productItems,
   serviceItems,
@@ -104,7 +106,7 @@ const Navbar = () => {
           onClick={() => setMenuOpen(!menuOpen)}
           className="md:hidden text-2xl text-gray-700"
         >
-          {menuOpen ? <FaAngleUp /> : <FaAngleDown />}
+          {menuOpen ? <IoMenu /> : <RxCross2 />}
         </button>
       </div>
 
