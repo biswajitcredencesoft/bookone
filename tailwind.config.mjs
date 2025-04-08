@@ -10,10 +10,15 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        skyCustom: "#BFE9FF",
       },
-      gridTemplateColumns:{
-        'auto': 'repeat(auto-fit, minmax(200px, 1fr))'
+      fontFamily: {
+        sans: ["Inter", "sans-serif"],
       },
+      gridTemplateColumns: {
+        auto: "repeat(auto-fit, minmax(200px, 1fr))",
+      },
+      
     },
   },
   plugins: [],
