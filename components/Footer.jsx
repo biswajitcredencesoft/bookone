@@ -14,7 +14,8 @@ import { assets } from "@/assets/assets";
 const Footer = () => {
   return (
     <footer className="text-white bg-black">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-20 py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-10 lg:gap-x-16">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 lg:px-20 py-10 sm:py-12 md:py-14 lg:py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-8 sm:gap-y-10 md:gap-y-12 gap-x-6 sm:gap-x-8 md:gap-x-10 lg:gap-x-16">
+        
         {/* Logo + Contact + Social */}
         <div>
           <Image src={assets.logo} alt="BookOne Logo" className="w-40 mb-4" />
@@ -71,7 +72,6 @@ const Footer = () => {
         </div>
 
         {/* Products */}
-        
         <div>
           <h2 className="text-lg font-semibold mb-4">Products</h2>
           <ul className="space-y-2 text-sm">
@@ -141,7 +141,6 @@ const Footer = () => {
             ))}
           </ul>
         </div>
-
       </div>
 
       {/* Footer Bottom */}

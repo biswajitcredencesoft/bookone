@@ -3,6 +3,7 @@
 ## Getting Started
 <!-- npm install framer-motion
  -->
+ <!-- npm i contentful -->
 
 First, run the development server:
 

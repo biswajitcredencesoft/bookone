@@ -20,18 +20,20 @@ const MobileNavItems = ({ openDropdown, setOpenDropdown }) => {
         <div key={key}>
           <button
             onClick={() => setOpenDropdown((prev) => (prev === key ? "" : key))}
-            className="flex items-center justify-between w-full text-left hover:text-gray-900"
+            className="flex items-center justify-between w-full text-left text-gray-800 font-medium hover:text-gray-900"
           >
             {title} {openDropdown === key ? <FaAngleUp /> : <FaAngleDown />}
           </button>
+
           {openDropdown === key && (
-            <div className="mt-2 ml-4 flex flex-col gap-2">
+            <div className="mt-2 ml-4 flex flex-col gap-3">
               {items.map((item, index) => (
                 <Link
                   key={index}
                   href={item.href}
-                  className="text-sm text-gray-700 hover:text-gray-900"
+                  className="flex items-center gap-3 text-sm text-gray-700 hover:text-gray-900 transition"
                 >
+                  <span className="text-lg text-[#27668c]">{item.icon}</span>
                   {item.name}
                 </Link>
               ))}
@@ -40,6 +42,7 @@ const MobileNavItems = ({ openDropdown, setOpenDropdown }) => {
         </div>
       ))}
 
+      {/* Static Links */}
       <Link
         href="/pricing"
         className="text-sm text-gray-700 hover:text-gray-900"

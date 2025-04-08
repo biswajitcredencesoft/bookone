@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useAppContext } from "@/context/AppContext";
 import { assets } from "@/assets/assets";
-import { FaAngleDown, FaAngleUp } from "react-icons/fa";
+import { FaAngleDown, FaAngleUp, FaUserCircle } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
 import {
@@ -21,7 +21,7 @@ const DropdownMenu = ({ title, isOpen, setOpenDropdown, menuKey }) => {
       className="relative h-full px-4 py-2"
       onMouseEnter={() => setOpenDropdown(menuKey)}
     >
-      <button className="flex items-center gap-2 text-[16px] font-sans text-gray-600">
+      <button className="flex items-center gap-2 text-[16px] md:text-[14px] font-sans text-gray-600">
         {title} {isOpen ? <FaAngleUp /> : <FaAngleDown />}
       </button>
     </div>
@@ -47,10 +47,13 @@ const Navbar = () => {
   }, [openDropdown]);
 
   return (
-    <nav className="relative w-full px-6 py-3 bg-white shadow-md z-50 font-inter">
-      <div className="max-w-screen-xl mx-auto flex items-center justify-between ml-12">
-        {/* Logo */}
-        <div className="w-44 cursor-pointer" onClick={() => router.push("/")}>
+    <nav className="relative w-full px-6 lg:px-16 py-3 bg-white shadow-md z-50 font-inter">
+      <div className="max-w-screen-[1410px] mx-auto flex items-center justify-between w-full">
+        {/* Left - Logo */}
+        <div
+          className="w-32 sm:w-36 md:w-40 cursor-pointer"
+          onClick={() => router.push("/")}
+        >
           <Image
             src={assets.logo}
             alt="Logo"
@@ -60,8 +63,8 @@ const Navbar = () => {
           />
         </div>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-4 font-sans">
+        {/* Center - Navigation */}
+        <div className="hidden md:flex items-center space-x-4 md:space-x-2 font-sans">
           <DropdownMenu
             title="Products"
             menuKey="products"
@@ -74,12 +77,6 @@ const Navbar = () => {
             isOpen={openDropdown === "services"}
             setOpenDropdown={setOpenDropdown}
           />
-          <Link
-            href="/pricing"
-            className="text-[16px] font-sans  text-gray-700"
-          >
-            Pricing
-          </Link>
           <DropdownMenu
             title="Resources"
             menuKey="resources"
@@ -94,55 +91,83 @@ const Navbar = () => {
           />
         </div>
 
-        {/* Request Demo Button */}
-        <div className="hidden md:block">
-          <button className="bg-[#27668c] text-white px-8 py-[12px] rounded-full text-[15.62px] font-medium transition-all hover:ring-2 hover:ring-offset-2 hover:ring-gray-400">
-            Request A Demo
+        {/* Right - Desktop Buttons + User Icon */}
+        <div className="hidden md:flex items-center space-x-4 md:space-x-2">
+          <Link href="/pricing">
+            <button className="border border-[#27668c] text-[#27668c] px-6 md:px-4 py-[10px] md:py-[6px] rounded-full text-[15.62px] md:text-[13.5px] font-medium transition-all hover:ring-2 hover:ring-offset-2">
+              Get Pricing
+            </button>
+          </Link>
+          <button className="bg-[#27668c] text-white px-6 md:px-4 py-[10px] md:py-[6px] rounded-full text-[15.62px] md:text-[13.5px] font-medium transition-all hover:ring-2 hover:ring-offset-2 hover:ring-gray-400">
+            Book A Demo
           </button>
+          <Link href="/login" className="ml-2 text-[#27668c] text-2xl md:text-xl hover:opacity-80">
+            <FaUserCircle />
+          </Link>
         </div>
 
-        {/* Mobile Toggle */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-2xl text-gray-700"
-        >
-          {menuOpen ? <IoMenu /> : <RxCross2 />}
-        </button>
+        {/* Mobile - User Icon + Hamburger */}
+        <div className="flex items-center gap-4 md:hidden ml-auto">
+          <Link href="/login" className="text-[#27668c] text-2xl hover:opacity-80">
+            <FaUserCircle />
+          </Link>
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="text-2xl text-gray-700"
+          >
+            {menuOpen ? <RxCross2 /> : <IoMenu />}
+          </button>
+        </div>
       </div>
 
-      {/* Dropdown Submenu */}
+      {/* Desktop Dropdown Submenu */}
       {items.length > 0 && (
-        <div
-          onMouseEnter={() => setOpenDropdown(openDropdown)}
-          onMouseLeave={() => setOpenDropdown("")}
-          className="absolute left-0 right-0 top-[99%] bg-white shadow-lg border rounded-lg p-6 md:p-16 grid gap-6 w-full grid-cols-1 md:grid-cols-4 transition-opacity duration-300"
-        >
-          {items.map((item, index) => (
-            <Link
-              key={index}
-              href={item.href}
-              className="flex items-start gap-4 p-3 rounded-lg hover:bg-gray-100 transition-all"
-            >
-              <div className="text-[#27668c] text-2xl">{item.icon}</div>
-              <div>
-                <h3 className="text-[15px] font-bold text-black font-sans">
-                  {item.name}
-                </h3>
-                <p className="text-sm text-[#7a7a7a] font-sans">
-                  {item.desc}
-                </p>
-              </div>
-            </Link>
-          ))}
+        <div className="hidden md:block">
+          <div
+            onMouseEnter={() => setOpenDropdown(openDropdown)}
+            onMouseLeave={() => setOpenDropdown("")}
+            className="absolute left-0 right-0 top-[99%] bg-white shadow-lg border rounded-lg p-6 md:p-10 grid gap-6 w-full grid-cols-1 md:grid-cols-4 transition-opacity duration-300"
+          >
+            {items.map((item, index) => (
+              <Link
+                key={index}
+                href={item.href}
+                className="flex items-start gap-4 p-3 rounded-lg hover:bg-gray-100 transition-all"
+              >
+                <div className="text-[#27668c] text-2xl md:text-xl">{item.icon}</div>
+                <div>
+                  <h3 className="text-[15px] md:text-[13px] font-bold text-black font-sans">
+                    {item.name}
+                  </h3>
+                  <p className="text-sm md:text-xs text-[#7a7a7a] font-sans">
+                    {item.desc}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       )}
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <MobileNavItems
-          openDropdown={openDropdown}
-          setOpenDropdown={setOpenDropdown}
-        />
+        <>
+          <MobileNavItems
+            openDropdown={openDropdown}
+            setOpenDropdown={setOpenDropdown}
+          />
+          {/* Mobile Buttons */}
+          <div className="md:hidden mt-4 px-6 space-y-3">
+            <Link href="/pricing">
+              <button className="w-full border border-[#27668c] text-[#27668c] py-2 md:py-1.5 rounded-full text-[15px] md:text-[13.5px] font-medium transition-all hover:ring-2 hover:ring-offset-2">
+                Get Pricing
+              </button>
+            </Link>
+            <button className="w-full bg-[#27668c] text-white py-2 md:py-1.5 rounded-full text-[15px] md:text-[13.5px] font-medium transition-all hover:ring-2 hover:ring-offset-2 hover:ring-gray-400">
+              Book A Demo
+            </button>
+          </div>
+        </>
       )}
     </nav>
   );

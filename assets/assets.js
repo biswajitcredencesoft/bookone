@@ -1,21 +1,49 @@
 import logo from "./logo.png";
 import search_icon from "./search_icon.svg";
 import hero from "./hero.png";
-import makemytrip from "./makemytrip.png";
-import expedia from "./expedia.png";
-import agoda from "./agoda.png";
-import booking_com from "./booking-com.jpg";
 import banner from "./banner.png";
+import MakeMyTrip from "./makemytrip.png";
+import Expedia from "./expedia.png";
+import Agoda from "./agoda.png";
+import Booking_Com from "./booking-com.png";
+import Paytm from "./paytm.png";
+import PhonePay from "./phonepay.png";
+import Paypal from "./paypal.png";
+import Razorpay from "./razorpay.png";
+import BookingJini from "./bookingjini.png";
+import SiteMinder from "./siteminder.png";
+import Channex from "./channex.png";
+import Eglobe from "./eGlobe.png";
+import TripAdvisor from "./tripadvisor.png";
+import SkyScanner from "./skyscanner.png";
+import Google_Hotels from "./google-hotels.png";
+import Wego from "./wego.png";
+import HyperGuest from "./hyper-guest.png";
+import Tbo_com from "./tbo-com.png";
 
 export const assets = {
   logo,
   search_icon,
   hero,
-  makemytrip,
-  expedia,
-  agoda,
-  booking_com,
   banner,
+  MakeMyTrip,
+  Expedia,
+  Agoda,
+  Booking_Com,
+  Paytm,
+  PhonePay,
+  Paypal,
+  Razorpay,
+  BookingJini,
+  SiteMinder,
+  Channex,
+  Eglobe,
+  TripAdvisor,
+  SkyScanner,
+  Google_Hotels,
+  Wego,
+  HyperGuest,
+  Tbo_com,
 };
 
 export const BagIcon = () => {

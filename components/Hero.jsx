@@ -7,7 +7,7 @@ import Badge1 from "../assets/Badge-1.png";
 const Hero = () => {
   return (
     <section className="bg-[#F5F5F5] py-12 sm:py-16 md:py-20 lg:py-24  overflow-hidden">
-      <div className="max-w-[1400px] xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-12 flex flex-col items-center">
+      <div className="max-w-[1400px] xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-16 flex flex-col items-center">
         <div className="flex flex-col lg:flex-row items-center justify-between w-full gap-12">
           {/* Left: Text Content */}
           <div className="lg:w-1/2 w-full text-center lg:text-left">

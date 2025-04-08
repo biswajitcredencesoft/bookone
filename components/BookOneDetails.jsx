@@ -1,95 +1,178 @@
-import React from "react";
-import Image from "next/image";
+"use client";
 
-import { FaMobileAlt } from "react-icons/fa";
-import { MdOutlineRestaurant } from "react-icons/md";
-import { MdCloud } from "react-icons/md";
-import { FaGoogle } from "react-icons/fa";
+import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { FaMobileAlt, FaGoogle } from "react-icons/fa";
+import { MdOutlineRestaurant, MdCloud } from "react-icons/md";
+import { FiChevronRight } from "react-icons/fi";
+import { RiPriceTag2Fill } from "react-icons/ri";
+import { BiNetworkChart } from "react-icons/bi";
+import { MdCampaign, MdReviews, MdOutlineDashboard } from "react-icons/md";
 import { assets } from "@/assets/assets";
 
 const BookOneDetails = () => {
-  const features = [
-    {
-      icon: <MdCloud className="text-3xl md:text-4xl mb-1" />,
-      title: "Cloud PMS",
-      desc: "Property management made easy.",
-    },
-    {
-      icon: <MdOutlineRestaurant className="text-3xl md:text-4xl mb-1" />,
-      title: "Restaurant POS",
-      desc: "Streamline food and beverage orders.",
-    },
-    {
-      icon: <FaGoogle className="text-3xl md:text-4xl mb-1" />,
-      title: "Google Listing",
-      desc: "Improve your online presence.",
-    },
-    {
-      icon: <FaMobileAlt className="text-3xl md:text-4xl mb-1" />,
-      title: "Mobile App",
-      desc: "Manage on the go anytime.",
-    },
+  const [activeTab, setActiveTab] = useState(0);
+  const router = useRouter();
+  const hoverTimeout = useRef(null);
+
+  const tabButtons = [
+    { label: "MARKETING & CONNECTIVITY" },
+    { label: "OPERATIONS & MANAGEMENT" },
+    { label: "GUEST MANAGEMENT" },
+    { label: "PRICING & AI AUTOMATION" },
   ];
 
+  const tabContent = [
+    [
+      {
+        icon: <BiNetworkChart className="text-5xl sm:text-6xl text-[#0E6B81]" />,
+        title: "Channel Manager",
+        path: "/bookone-connect",
+      },
+      {
+        icon: <MdCampaign className="text-5xl sm:text-6xl text-[#0E6B81]" />,
+        title: "Digital Marketing",
+        path: "/digital-marketing",
+      },
+      {
+        icon: <MdReviews className="text-5xl sm:text-6xl text-[#0E6B81]" />,
+        title: "Online Reputation Management",
+        path: "/online-repution-management",
+      },
+      {
+        icon: <MdOutlineRestaurant className="text-5xl sm:text-6xl text-[#0E6B81]" />,
+        title: "Online Menu",
+        path: "/online-menu",
+      },
+    ],
+    [
+      {
+        icon: <MdOutlineDashboard className="text-5xl sm:text-6xl text-[#0E6B81]" />,
+        title: "BookOne PMS",
+        path: "/bookone-pms",
+      },
+      {
+        icon: <MdOutlineRestaurant className="text-5xl sm:text-6xl text-[#0E6B81]" />,
+        title: "BookOne POS",
+        path: "/bookone-pos",
+      },
+      {
+        icon: <FaGoogle className="text-5xl sm:text-6xl text-[#0E6B81]" />,
+        title: "Google Business Setup",
+        path: "/google-business-setup",
+      },
+      {
+        icon: <FaMobileAlt className="text-5xl sm:text-6xl text-[#0E6B81]" />,
+        title: "OTA Setup",
+        path: "/ota-setup",
+      },
+    ],
+    [
+      {
+        icon: <FaMobileAlt className="text-5xl sm:text-6xl text-[#0E6B81]" />,
+        title: "BookOne CRM ",
+        path: "/guest-app",
+      },
+      {
+        icon: <MdOutlineRestaurant className="text-5xl sm:text-6xl text-[#0E6B81]" />,
+        title: "Room Service",
+        path: "/room-service",
+      },
+      {
+        icon: <MdCloud className="text-5xl sm:text-6xl text-[#0E6B81]" />,
+        title: "Digital Check-In",
+        path: "/digital-check-in",
+      },
+      {
+        icon: <FaGoogle className="text-5xl sm:text-6xl text-[#0E6B81]" />,
+        title: "Reviews Manager",
+        path: "/reviews-manager",
+      },
+    ],
+    [
+      {
+        icon: <RiPriceTag2Fill className="text-5xl sm:text-6xl text-[#0E6B81]" />,
+        title: "BookOne VaRO",
+        path: "/bookone-varo",
+      },
+    ],
+  ];
+
+  useEffect(() => {
+    return () => {
+      if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
+    };
+  }, []);
+
+  const handleHover = (index) => {
+    if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
+    hoverTimeout.current = setTimeout(() => {
+      setActiveTab(index);
+    }, 100);
+  };
+
   return (
-    <div className="bg-[#0E6B81] text-white py-12 px-4 md:px-16">
-      <h2 className="text-2xl md:text-4xl font-bold mb-6 text-center lg:text-left font-Inter">
+    <div className="bg-[#0E6B81] text-white py-12 px-4 md:px-16 font-Inter">
+      <h2 className="text-2xl md:text-4xl font-bold mb-6 text-center lg:text-left">
         BookOne Does It All!
       </h2>
 
-      <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-10">
-        {[
-          "OPERATIONS & MANAGEMENT",
-          "MARKETING & CONNECTIVITY",
-          "AI AUTOMATION & PRICING",
-          "GUEST MANAGEMENT",
-        ].map((label, index) => (
+      {/* Tab Buttons */}
+      <div className="flex flex-wrap justify-center lg:justify-start gap-1 mb-10">
+        {tabButtons.map((tab, index) => (
           <button
             key={index}
-            className={`border border-white rounded-full px-4 py-2 text-sm md:text-base hover:bg-white hover:text-[#0E6B81] transition-all duration-300 ${
-              (index === 0 || index === 1) ? "bg-white text-[#0E6B81]" : ""
-            }`}
+            onMouseEnter={() => handleHover(index)}
+            className={`text-xs md:text-sm lg:text-base font-semibold px-[70px] py-3 transition-all duration-300 transform
+              ${
+                activeTab === index
+                  ? "bg-[#E8F3F5] text-[#0E6B81] hover:bg-[#0E6B81] hover:text-white hover:-translate-y-1 hover:scale-[1.02]"
+                  : "bg-white text-[#0E6B81]"
+              }
+              rounded-t-[30px] border-2 border-[#B2E4FA] relative min-w-[180px] text-center`}
+            style={{
+              borderBottom: activeTab === index ? "none" : "2px solid #0E6B81",
+            }}
           >
-            {label}
+            {tab.label}
           </button>
         ))}
       </div>
 
       <div className="flex flex-col lg:flex-row items-start gap-10">
         {/* Left Image */}
-        <div className="w-full lg:w-1/2 rounded-xl overflow-hidden">
+        <div className="w-full lg:w-5/12 rounded-xl overflow-hidden">
           <Image
             src={assets.hero}
             alt="Reception"
-            width={600}
-            height={400}
+            width={500}
+            height={350}
             className="w-full h-full object-cover rounded-xl"
           />
         </div>
 
-        {/* Right Content */}
-        <div className="w-full lg:w-1/2 flex flex-col justify-between gap-6">
-          <p className="text-sm md:text-base mt-6">
-            Manage bookings, restaurant orders, and your Google presence—all from
-            one easy system. Stay organized, save time, and keep things running
-            smoothly, whether you're at the front desk or on the go.
-          </p>
-
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-4">
-            {features.map((item, idx) => (
-              <div key={idx} className="flex flex-col items-center">
-                {/* Box with icon and title */}
-                <div className="bg-white text-[#0E6B81] flex flex-col items-center justify-center p-4 rounded-xl w-full h-24">
-                  {item.icon}
-                  <p className="text-sm font-semibold text-center">{item.title}</p>
-                </div>
-                {/* Paragraph outside the box */}
-                <p className="text-xs text-center mt-2 max-w-[120px]">
-                  {item.desc}
-                </p>
+        {/* Right Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full lg:w-7/12 transition-all duration-300">
+          {tabContent[activeTab].map((item, idx) => (
+            <div
+              key={idx}
+              className="relative bg-white border border-[#0E6B81] rounded-xl p-5 min-h-[180px] flex flex-col justify-between transition-all duration-300 hover:shadow-lg"
+            >
+              <div className="text-[#0E6B81] text-5xl flex items-center gap-2">
+                {item.icon}
               </div>
-            ))}
-          </div>
+              <h3 className="mt-4 text-base sm:text-lg font-bold text-[#0E6B81]">
+                {item.title}
+              </h3>
+              <button
+                onClick={() => router.push(item.path)}
+                className="absolute bottom-4 right-4 w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-full bg-[#B2E4FA] hover:bg-[#94d9f8] transition"
+              >
+                <FiChevronRight className="text-[#0E6B81] text-sm sm:text-base" />
+              </button>
+            </div>
+          ))}
         </div>
       </div>
     </div>
