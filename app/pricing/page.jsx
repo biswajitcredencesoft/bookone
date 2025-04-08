@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { FaCheckCircle } from 'react-icons/fa';
+import PowerOf from './powerof/page';
 
 const Pricing = () => {
   const [currency, setCurrency] = useState("INR");
@@ -143,7 +144,7 @@ const Pricing = () => {
                 </div>
 
                 <button
-                  className={`w-[50%] ml-4 py-2 rounded-md rounded-xl font-medium transition-all duration-200 mb-6 ${
+                  className={`w-[50%] ml-4 py-2 rounded-xl font-medium transition-all duration-200 mb-6 ${
                     card.highlight
                       ? 'bg-white text-[#014669] hover:bg-gray-200'
                       : 'bg-[#014669] text-white hover:bg-[#013851]'
@@ -170,7 +171,7 @@ const Pricing = () => {
           ))}
         </div>
       </div>
-
+      <PowerOf/>
       <Footer />
     </>
   );
