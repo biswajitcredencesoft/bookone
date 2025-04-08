@@ -13,12 +13,16 @@ const Hero = () => {
           <div className="lg:w-1/2 w-full text-center lg:text-left">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[42px] xl:text-[48px] font-bold leading-tight text-[#1E1E1E] font-sans mb-6">
               A Unified Platform For All <br />
-              <span className="block mt-4 text-[#006D77]">Your Hotel’s Needs</span>
+              <span className="block mt-4 text-[#006D77]">
+                Your Hotel’s Needs
+              </span>
             </h1>
 
-            <p className="text-[#3D3D3D] text-base sm:text-lg md:text-xl lg:text-[20px] leading-relaxed mb-6 px-2 sm:px-0">
-              Designed to help hoteliers manage front office, food & beverages, room service,
-              increase distributions, handle accounts and credits, and enhance guest communication and satisfaction.
+            
+            <p className="text-[#171C1E] font-inter text-[24px] font-normal leading-[150%] mb-6 px-2 sm:px-0">
+              Designed to help hoteliers manage front office, food & beverages,
+              room service, increase distributions, handle accounts and credits,
+              and enhance guest communication and satisfaction.
             </p>
 
             <div>

@@ -114,9 +114,10 @@ const BookOneDetails = () => {
 
   return (
     <div className="bg-[#0E6B81] text-white py-12 px-4 md:px-16 font-Inter">
-      <h2 className="text-2xl md:text-4xl font-bold mb-6 text-center lg:text-left">
-        BookOne Does It All!
-      </h2>
+      <h2 className="text-white text-center lg:text-left font-inter text-[46px] font-bold leading-[150%] mb-6">
+  BookOne Does It All!
+</h2>
+
 
       {/* Tab Buttons */}
       <div className="flex flex-wrap justify-center lg:justify-start gap-1 mb-10">
