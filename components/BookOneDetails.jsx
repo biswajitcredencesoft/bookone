@@ -4,11 +4,16 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FaMobileAlt, FaGoogle } from "react-icons/fa";
-import { MdOutlineRestaurant, MdCloud } from "react-icons/md";
+import {
+  MdOutlineRestaurant,
+  MdCloud,
+  MdCampaign,
+  MdReviews,
+  MdOutlineDashboard,
+} from "react-icons/md";
 import { FiChevronRight } from "react-icons/fi";
 import { RiPriceTag2Fill } from "react-icons/ri";
 import { BiNetworkChart } from "react-icons/bi";
-import { MdCampaign, MdReviews, MdOutlineDashboard } from "react-icons/md";
 import { assets } from "@/assets/assets";
 
 const BookOneDetails = () => {
@@ -114,33 +119,51 @@ const BookOneDetails = () => {
 
   return (
     <div className="bg-[#0E6B81] text-white py-12 px-4 md:px-16 font-Inter">
-      <h2 className="text-white text-center lg:text-left font-inter text-[46px] font-bold leading-[150%] mb-6">
-  BookOne Does It All!
-</h2>
+      <h2 className="text-white text-center lg:text-left font-inter text-[32px] sm:text-[38px] md:text-[46px] font-bold leading-[150%] mb-6">
+        BookOne Does It All!
+      </h2>
 
-
-      {/* Tab Buttons */}
-      <div className="flex flex-wrap justify-center lg:justify-start gap-1 mb-10">
+      {/* Tab Buttons with Wave Border */}
+      <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-10">
         {tabButtons.map((tab, index) => (
-          <button
+          <div
             key={index}
+            className={`relative min-w-[180px] text-center`}
             onMouseEnter={() => handleHover(index)}
-            className={`text-xs md:text-sm lg:text-base font-semibold px-[70px] py-3 transition-all duration-300 transform
+            onClick={() => setActiveTab(index)}
+          >
+            {activeTab === index && (
+              <svg
+                className="absolute top-0 left-0 w-full h-full z-0"
+                viewBox="0 0 200 60"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M0,60 Q100,0 200,60"
+                  fill="none"
+                  stroke="#B2E4FA"
+                  strokeWidth="5"
+                />
+              </svg>
+            )}
+            <button
+              className={`relative z-10 text-xs md:text-sm lg:text-base font-semibold py-3 px-6 sm:px-10 md:px-[65px] rounded-t-[30px] transition-all duration-300 ease-in-out border-2 w-full transform
               ${
                 activeTab === index
-                  ? "bg-[#E8F3F5] text-[#0E6B81] hover:bg-[#0E6B81] hover:text-white hover:-translate-y-1 hover:scale-[1.02]"
-                  : "bg-white text-[#0E6B81]"
-              }
-              rounded-t-[30px] border-2 border-[#B2E4FA] relative min-w-[180px] text-center`}
-            style={{
-              borderBottom: activeTab === index ? "none" : "2px solid #0E6B81",
-            }}
-          >
-            {tab.label}
-          </button>
+                  ? "bg-[#0E6B81] text-white border-[#B2E4FA] scale-y-[1.12]"
+                  : "bg-white text-[#0E6B81] border-[#B2E4FA] hover:bg-[#E8F3F5] hover:scale-[1.01]"
+              }`}
+              style={{
+                borderBottom: activeTab === index ? "none" : "2px solid #0E6B81",
+              }}
+            >
+              {tab.label}
+            </button>
+          </div>
         ))}
       </div>
 
+      {/* Content Section */}
       <div className="flex flex-col lg:flex-row items-start gap-10">
         {/* Left Image */}
         <div className="w-full lg:w-5/12 rounded-xl overflow-hidden">

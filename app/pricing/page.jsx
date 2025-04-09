@@ -2,8 +2,9 @@
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { FaCheckCircle } from 'react-icons/fa';
+import { FaCheck } from 'react-icons/fa';
 import PowerOf from './powerof/page';
+import UseBookone from './use-bookone/page';
 
 const Pricing = () => {
   const [currency, setCurrency] = useState("INR");
@@ -72,7 +73,6 @@ const Pricing = () => {
 
       <div className="bg-[#f6f7fb] px-4 py-16 sm:px-8 md:px-20">
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <p className="text-sm font-bold text-[#146683] uppercase tracking-wide">Pricing</p>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2">
             Everything Your Hotel Needs, Right Here.
           </h2>
@@ -94,7 +94,7 @@ const Pricing = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-10xl mx-auto">
           {cards.map((card, index) => (
             <div
               key={index}
@@ -119,7 +119,7 @@ const Pricing = () => {
                   </div>
                 </div>
 
-                {/* Plan Title with Colors */}
+                {/* Plan Title */}
                 <h3 className="text-xl font-bold mb-1">
                   {card.plan.split(" ").map((word, idx) => {
                     let colorClass = "";
@@ -154,15 +154,13 @@ const Pricing = () => {
                 </button>
 
                 <div className="font-semibold text-sm">What’s included</div>
-                <ul className="mt-4 space-y-3 text-sm">
+                <ul className="mt-4 space-y-2 text-[15px]">
                   {card.features.map((feature, i) => (
-                    <li key={i} className="flex gap-2 items-start">
-                      <FaCheckCircle
-                        className={`mt-1 ${
-                          card.highlight ? 'text-white' : 'text-[#146683]'
-                        }`}
-                      />
-                      <span>{feature}</span>
+                    <li key={i} className="flex items-start gap-2">
+                      <div className="min-w-[1.4rem] h-[1.4rem] flex items-center justify-center rounded-full bg-[#146683] mt-1">
+                        <FaCheck className="text-white text-[10px]" />
+                      </div>
+                      <span className="leading-snug">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -171,7 +169,9 @@ const Pricing = () => {
           ))}
         </div>
       </div>
-      <PowerOf/>
+
+      <PowerOf />
+      <UseBookone />
       <Footer />
     </>
   );
