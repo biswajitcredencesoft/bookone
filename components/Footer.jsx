@@ -18,7 +18,7 @@ const Footer = () => {
         
         {/* Logo + Contact + Social */}
         <div>
-          <Image src={assets.logo} alt="BookOne Logo" className="w-40 mb-4" />
+          <Image src={assets.Foooter} alt="BookOne Logo" className="w-40 mb-4" />
           <div className="flex gap-4 text-xl mt-6">
             <FaLinkedinIn className="hover:text-skyCustom transition" />
             <FaFacebookF className="hover:text-skyCustom transition" />

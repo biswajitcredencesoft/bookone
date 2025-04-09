@@ -41,6 +41,7 @@ const rightBoxes = [
   {
     title: "Connect With Powerful B2B Partners For Bigger Reach.",
     logos: [assets.HyperGuest, assets.Tbo_com],
+    compact: true,
   },
 ];
 
@@ -60,8 +61,9 @@ const useInView = (options) => {
   return [ref, isIntersecting];
 };
 
-const IntegrationCard = ({ title, logos }) => {
+const IntegrationCard = ({ title, logos, compact }) => {
   const [ref, isVisible] = useInView({ threshold: 0.2 });
+  const isTwoLogos = logos.length === 2 && compact;
 
   return (
     <div
@@ -76,14 +78,16 @@ const IntegrationCard = ({ title, logos }) => {
         {title}
       </p>
       <div
-        className={`grid ${
-          logos.length === 2 ? "grid-cols-2" : "grid-cols-2 sm:grid-cols-4"
-        } gap-4 items-center`}
+        className={`items-center ${
+          isTwoLogos
+            ? "flex justify-start gap-10 sm:gap-12 flex-wrap"
+            : "grid grid-cols-2 sm:grid-cols-4 gap-4"
+        }`}
       >
         {logos.map((logo, i) => (
           <div
             key={i}
-            className="flex items-center justify-center h-[36px] sm:h-[40px] mb-4"
+            className="flex items-center justify-start h-[36px] sm:h-[40px] mb-4"
           >
             <Image
               src={logo}
@@ -105,7 +109,7 @@ const OtaIntegration = () => {
   return (
     <div className="w-full px-4 py-12 sm:py-16 bg-gradient-to-br from-[#e6f0f5] to-[#dbe7ef]">
       <div className="max-w-[88rem] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-start">
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 ">
           {integrationData.map((data, index) => (
             <IntegrationCard
               key={index}
@@ -114,8 +118,7 @@ const OtaIntegration = () => {
             />
           ))}
         </div>
-
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 mb-2">
           <div
             ref={ref}
             className={`transition-all duration-700 ease-out transform ${
@@ -124,43 +127,41 @@ const OtaIntegration = () => {
                 : "opacity-0 translate-y-10 pointer-events-none"
             }`}
           >
-            <h2 className="text-[26px] sm:text-[32px] md:text-[40px] lg:text-[44px] font-bold text-[#146683] leading-snug mb-4">
+            <h2 className="text-[26px] sm:text-[32px] md:text-[40px] lg:text-[44px] font-bold text-[#146683] leading-snug">
               The Right Integrations Make
               <br />
               <span> All The Difference</span>
             </h2>
-
             <div className="text-gray-700 text-sm sm:text-base">
-              <p className="mb-1">
-                From bookings to billing, BookOne connects with
-              </p>
+              <p className="mb-1">From bookings to billing, BookOne connects with</p>
               <div className="flex flex-wrap items-center gap-2 mt-1">
                 <p>the platforms that power your property.</p>
-
                 <button
                   title="Explore more"
-                  className="group flex items-center h-7 bg-[#146683] text-white rounded-full overflow-hidden transition-all duration-300 ease-in-out w-[44px] hover:w-[130px] px-3"
+                  className="group flex items-center h-10 bg-[#146683] text-white rounded-full overflow-hidden transition-all duration-300 ease-in-out w-[40px] hover:w-[150px] sm:h-10 sm:hover:w-[160px] hover:bg-[#BFE9FF] px-3"
                 >
-                  <div className="flex items-center justify-center w-5 min-w-[20px]">
-                    <FaArrowRight className="text-sm -rotate-45 transition-transform duration-300 group-hover:translate-x-1" />
+                  <div className="flex items-center justify-center w-6 min-w-[24px] h-6 bg-[#0E5B6F] rounded-full -ml-1">
+                    <FaArrowRight className="text-sm -rotate-45 transition-transform duration-300 group-hover:translate-x-1 text-white" />
                   </div>
-                  <span className="ml-2 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 text-sm whitespace-nowrap">
-                    Explore Now
+                  <span className="ml-4 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 text-sm whitespace-nowrap text-[#146683]">
+                    Explore more
                   </span>
                 </button>
               </div>
             </div>
           </div>
-
           {rightBoxes.map((box, i) => (
-            <IntegrationCard key={i} title={box.title} logos={box.logos} />
+            <IntegrationCard
+              key={i}
+              title={box.title}
+              logos={box.logos}
+              compact={box.compact}
+            />
           ))}
         </div>
       </div>
     </div>
   );
 };
-
-
 
 export default OtaIntegration;

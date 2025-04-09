@@ -20,6 +20,8 @@ import Google_Hotels from "./google-hotels.png";
 import Wego from "./wego.png";
 import HyperGuest from "./hyper-guest.png";
 import Tbo_com from "./tbo-com.png";
+import   Power_Of from "./powrof.png"
+import Foooter from "./footer.png"
 
 export const assets = {
   logo,
@@ -44,6 +46,8 @@ export const assets = {
   Wego,
   HyperGuest,
   Tbo_com,
+  Power_Of,
+  Foooter,
 };
 
 export const BagIcon = () => {
