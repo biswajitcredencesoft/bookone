@@ -12,9 +12,12 @@ export default {
         foreground: "var(--foreground)",
         skyCustom: "#BFE9FF",
       },
+
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
       },
+
+
       gridTemplateColumns: {
         auto: "repeat(auto-fit, minmax(200px, 1fr))",
       },

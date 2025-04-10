@@ -20,8 +20,13 @@ import Google_Hotels from "./google-hotels.png";
 import Wego from "./wego.png";
 import HyperGuest from "./hyper-guest.png";
 import Tbo_com from "./tbo-com.png";
-import   Power_Of from "./powrof.png"
-import Foooter from "./footer.png"
+import Power_Of from "./powrof.png";
+import Foooter from "./footer.png";
+// import Expect1 from "./expet1.png";
+// import Expect2 from "./expet2.png";
+// import Expect3 from "./expet3.png";
+// import Left_logo from "./expect.png";
+import ELeft from "./leftlogo1.png";
 
 export const assets = {
   logo,
@@ -48,6 +53,11 @@ export const assets = {
   Tbo_com,
   Power_Of,
   Foooter,
+  // Expect1,
+  // Expect2,
+  // Expect3,
+  // Left_logo,
+  ELeft,
 };
 
 export const BagIcon = () => {
