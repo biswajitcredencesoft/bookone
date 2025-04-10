@@ -27,7 +27,16 @@ import Foooter from "./footer.png";
 // import Expect3 from "./expet3.png";
 // import Left_logo from "./expect.png";
 import ELeft from "./leftlogo1.png";
-
+import Product1 from "./product1.png";
+import Product2 from "./product2.png";
+import Product3 from "./product3.png";
+import Efficiency from "./efficiency.png";
+import Yogiraj from "./yogiraj.png";
+import Manager1 from "./channel1.png"
+import Manager2 from "./channel2.png"
+import Manager3 from "./channel3.png"
+import Manager4 from "./channel4.png"
+import Manager5 from "./channel5.png"
 export const assets = {
   logo,
   search_icon,
@@ -58,6 +67,17 @@ export const assets = {
   // Expect3,
   // Left_logo,
   ELeft,
+  Product1,
+  Product2,
+  Product3,
+  Efficiency,
+  Yogiraj,
+  Manager1,
+  Manager2,
+  Manager3,
+  Manager4,
+  Manager5,
+
 };
 
 export const BagIcon = () => {
