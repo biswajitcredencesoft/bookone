@@ -3,9 +3,10 @@ import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa";
 import { assets } from "@/assets/assets";
 
+// Integration data
 const integrationData = [
   {
-    title: "Get Listed On Top OTA’s!",
+    title: "Get Connected On Top OTA’s!",
     logos: [
       assets.MakeMyTrip,
       assets.Expedia,
@@ -41,10 +42,10 @@ const rightBoxes = [
   {
     title: "Connect With Powerful B2B Partners For Bigger Reach.",
     logos: [assets.HyperGuest, assets.Tbo_com],
-    compact: true,
   },
 ];
 
+// Hook to check if in viewport
 const useInView = (options) => {
   const ref = useRef(null);
   const [isIntersecting, setIntersecting] = useState(false);
@@ -61,9 +62,9 @@ const useInView = (options) => {
   return [ref, isIntersecting];
 };
 
-const IntegrationCard = ({ title, logos, compact }) => {
+// Reusable card component
+const IntegrationCard = ({ title, logos }) => {
   const [ref, isVisible] = useInView({ threshold: 0.2 });
-  const isTwoLogos = logos.length === 2 && compact;
 
   return (
     <div
@@ -77,24 +78,18 @@ const IntegrationCard = ({ title, logos, compact }) => {
       <p className="font-semibold text-[#146683] text-[16px] sm:text-[20px] mb-4 leading-snug">
         {title}
       </p>
-      <div
-        className={`items-center ${
-          isTwoLogos
-            ? "flex justify-start gap-10 sm:gap-12 flex-wrap"
-            : "grid grid-cols-2 sm:grid-cols-4 gap-4"
-        }`}
-      >
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-4 items-center">
         {logos.map((logo, i) => (
           <div
             key={i}
-            className="flex items-center justify-start h-[36px] sm:h-[40px] mb-4"
+            className="flex items-center justify-center h-[48px] sm:h-[56px]"
           >
             <Image
               src={logo}
               alt={`Logo ${i}`}
-              height={32}
-              width={80}
-              className="object-contain max-h-[36px] w-auto"
+              height={40}
+              width={100}
+              className="object-contain max-h-[40px] w-auto"
             />
           </div>
         ))}
@@ -103,13 +98,15 @@ const IntegrationCard = ({ title, logos, compact }) => {
   );
 };
 
+// Main section
 const OtaIntegration = () => {
   const [ref, isVisible] = useInView({ threshold: 0.2 });
 
   return (
     <div className="w-full px-4 py-12 sm:py-16 bg-gradient-to-br from-[#e6f0f5] to-[#dbe7ef]">
       <div className="max-w-[88rem] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-start">
-        <div className="flex flex-col gap-6 ">
+        {/* Left column */}
+        <div className="flex flex-col gap-6">
           {integrationData.map((data, index) => (
             <IntegrationCard
               key={index}
@@ -118,7 +115,10 @@ const OtaIntegration = () => {
             />
           ))}
         </div>
+
+        {/* Right column */}
         <div className="flex flex-col gap-6 mb-2">
+          {/* Section heading */}
           <div
             ref={ref}
             className={`transition-all duration-700 ease-out transform ${
@@ -133,7 +133,9 @@ const OtaIntegration = () => {
               <span> All The Difference</span>
             </h2>
             <div className="text-gray-700 text-sm sm:text-base">
-              <p className="mb-1">From bookings to billing, BookOne connects with</p>
+              <p className="mb-1">
+                From bookings to billing, BookOne connects with
+              </p>
               <div className="flex flex-wrap items-center gap-2 mt-1">
                 <p>the platforms that power your property.</p>
                 <button
@@ -150,13 +152,10 @@ const OtaIntegration = () => {
               </div>
             </div>
           </div>
+
+          {/* Right side cards */}
           {rightBoxes.map((box, i) => (
-            <IntegrationCard
-              key={i}
-              title={box.title}
-              logos={box.logos}
-              compact={box.compact}
-            />
+            <IntegrationCard key={i} title={box.title} logos={box.logos} />
           ))}
         </div>
       </div>

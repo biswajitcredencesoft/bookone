@@ -1,10 +1,11 @@
-import { Outfit } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { AppContextProvider } from "@/context/AppContext";
 import { Toaster } from "react-hot-toast";
-import ScrollToTopButton from "@/components/ScrollToTopButton"; // ✅ Import the button
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 
-const outfit = Outfit({ subsets: ["latin"], weight: ["300", "400", "500"] });
+
+const inter = Inter({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700"] });
 
 export const metadata = {
   title: "BookOne",
@@ -14,11 +15,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${outfit.className} antialiased text-gray-700`}>
+      <body className={`${inter.className} antialiased text-gray-700`}>
         <Toaster />
         <AppContextProvider>
           {children}
-          <ScrollToTopButton /> 
+          <ScrollToTopButton />
         </AppContextProvider>
       </body>
     </html>
