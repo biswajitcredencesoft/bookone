@@ -36,7 +36,7 @@ const Hero = () => {
           <div className="lg:w-1/2 w-full flex justify-center mt-10 lg:mt-0">
             <div className="w-full max-w-[720px] aspect-video rounded-3xl overflow-hidden">
               <video
-                src="https://testbookone.bookone.io/wp-content/uploads/2025/02/BookOne-Hero-Section-Video-1.mp4"
+                src="https://testbookone.bookone.io/wp-content/uploads/2025/04/Copy-of-BookOne-Hero-Section-Video.mp4"
                 autoPlay
                 loop
                 muted
