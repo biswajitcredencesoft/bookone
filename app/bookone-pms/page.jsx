@@ -3,65 +3,80 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
-import { assets } from "@/assets/assets";
 import { useRouter } from "next/navigation";
-import { IoArrowBack } from "react-icons/io5";
-import BuildToDO from "./build-to-do/page";
-
+import { assets } from "@/assets/assets";
+import BuildOfEfficiency from "./build-efficiency/page";
+import Transformative from "./transformative/page";
+import LevelUP from "./level-up/page";
+import Link from "next/link";
 const BookOnePms = () => {
   const router = useRouter();
 
   return (
     <>
       <Navbar />
-
-      <div className="relative h-[620px] md:h-[680px] overflow-hidden">
-        <Image
-          src={assets.hero}
-          alt="Hotel Background"
-          fill
-          className="object-cover z-0"
-          priority
-        />
-
-        <div className="absolute inset-0 z-10 bg-gradient-to-b from-[#146683]/70 via-[#146683]/60 to-[#5E5B7D]/60" />
-
-        <button
-          onClick={() => router.push("/")}
-          className="absolute top-4 left-4 sm:top-6 sm:left-16 z-30 bg-white/20 backdrop-blur-md text-white flex items-center gap-2 px-4 py-2 rounded-full hover:bg-white/30 transition w-fit"
-        >
-          <IoArrowBack className="text-xl" />
-          <span className="text-sm font-medium">Back</span>
-        </button>
-
-        {/* Main Content */}
-        <div className="relative z-20 h-full flex flex-col justify-center px-4 sm:px-6 md:px-16">
-          <div className="text-white max-w-full md:max-w-2xl">
-            <div className="mb-3">
-              <span className="text-xs md:text-sm text-[#C2E4FF] font-semibold tracking-wide border border-[#C2E4FF] rounded-full px-4 py-1 inline-block bg-white/10 backdrop-blur-sm">
-                PROPERTY MANAGEMENT SYSTEM
-              </span>
+      <section className="flex flex-col-reverse lg:flex-row items-center justify-between px-6 lg:pl-[5rem] lg:pr-[12rem] py-16 bg-white gap-6 lg:gap-12">
+        <div className="flex w-full lg:w-[600px] h-auto lg:h-[464px] gap-4 items-start shrink-0">
+          <div className="flex pt-20 items-start gap-2 flex-[1_0_0]">
+            <div className="relative w-full h-[384px] rounded-[20px] overflow-hidden ">
+              <Image
+                src={assets.Product1}
+                alt="Image 1"
+                fill
+                className="object-cover"
+              />
             </div>
+          </div>
 
-            <h1 className="text-4xl md:text-6xl font-extrabold leading-snug md:leading-[1.2] tracking-tight mb-5 drop-shadow-md">
-              A Better Way To <br />
-              <span className="text-[#C2E4FF]">Manage Your Hotel</span>
-            </h1>
+          <div className="flex h-[384px] justify-center items-center gap-2 flex-[1_0_0]">
+            <div className="relative w-full h-full rounded-[20px] overflow-hidden ">
+              <Image
+                src={assets.Product2}
+                alt="Image 2"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
 
-            <button className="bg-[#0D91C3] hover:bg-[#0b7cab] text-white font-semibold py-3 px-6 md:py-4 md:px-8 rounded-md transition duration-300 shadow-lg text-base md:text-lg">
-              Try BookOne Now
-            </button>
+          <div className="flex pt-10 items-start gap-2 flex-[1_0_0]">
+            <div className="relative w-full h-[384px] rounded-[20px] overflow-hidden ">
+              <Image
+                src={assets.Product3}
+                alt="Image 3"
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
 
-        <div className="absolute bottom-6 left-6 right-6 flex gap-4 sm:gap-6 justify-center z-20">
-          <div className="bg-white/20 backdrop-blur-md rounded-2xl h-24 w-32 sm:w-36 md:h-28 md:w-48 shadow-lg"></div>
-          <div className="bg-white/20 backdrop-blur-md rounded-2xl h-24 w-32 sm:w-36 md:h-28 md:w-48 shadow-lg"></div>
-          <div className="bg-white/20 backdrop-blur-md rounded-2xl h-24 w-32 sm:w-36 md:h-28 md:w-48 shadow-lg"></div>
+        <div className="w-full max-w-xl text-center lg:text-left">
+          <p className="text-[#8CCFF0] font-medium uppercase tracking-[1px] text-[15px] leading-[15px]">
+            Property Management System
+          </p>
+          <h1 className="text-[32px] sm:text-[40px] lg:text-[48px] font-bold leading-[110%] text-[#171C1E] mt-3">
+            One System,{" "}
+            <span className="text-[#146683]">Complete Management.</span>
+          </h1>
+          <p className="mt-6 text-[#171C1E] text-[18px] sm:text-[20px] lg:text-[24px] font-medium leading-[130%]">
+            From first impression to final checkout, orchestrate every detail of
+            your guest experience, operational flow, and brand presence—fluidly,
+            intelligently, and from anywhere.
+          </p>
+          <Link href="/book-a-demo">
+            <button
+              onClick={() => router.push("/book-demo")}
+              className="mt-8 w-[226px] h-[45px] rounded-[16px] border border-[#CEE6F0] bg-[#01677D] text-white font-medium text-base hover:bg-[#005965] transition-all"
+            >
+              Book A Demo
+            </button>
+          </Link>
         </div>
-      </div>
-
-      <BuildToDO />
+      </section>
+      <BuildOfEfficiency />
+      <Transformative />
+      <LevelUP />
       <Footer />
     </>
   );
