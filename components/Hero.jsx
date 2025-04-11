@@ -1,33 +1,54 @@
 "use client";
-import Image from "next/image";
-import { FaArrowRight } from "react-icons/fa";
-import Badge2 from "../assets/Badge-2.png";
-import Badge1 from "../assets/Badge-1.png";
+import { useEffect, useState } from "react";
+import { createClient } from "contentful";
+
+const client = createClient({
+  space: "wzmo4lmp2r9v",
+  accessToken: "8byVN6ybNsGaYJ6FUTB0CB4mwuie5fIX-DxWy1GGi6E",
+
+});
 
 const Hero = () => {
+  const [heroData, setHeroData] = useState(null);
+
+
+  useEffect(() => {
+    async function fetchHeroContent() {
+      try {
+        const res = await client.getEntries({ content_type: "homePage" }); // Replace with your actual content type ID
+        setHeroData(res.items[0]?.fields);
+        console.log("hero data", res.items);
+
+      } catch (err) {
+        console.error("Contentful fetch error:", err);
+      }
+    }
+
+    fetchHeroContent();
+  }, []);
+
+  if (!heroData) return <p>Loading hero section...</p>;
+
   return (
-    <section className="bg-[#F5F5F5] py-12 sm:py-16 md:py-20 lg:py-24  overflow-hidden">
+    <section className="bg-[#F5F5F5] py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden">
       <div className="max-w-[1400px] xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-16 flex flex-col items-center">
         <div className="flex flex-col lg:flex-row items-center justify-between w-full gap-12">
           {/* Left: Text Content */}
           <div className="lg:w-1/2 w-full text-center lg:text-left">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[42px] xl:text-[48px] font-bold leading-tight text-[#1E1E1E] font-sans mb-6">
-              A Unified Platform For All <br />
+              {heroData?.mainheading} <br />
               <span className="block mt-4 text-[#006D77]">
-                Your Hotel’s Needs
+                {heroData?.highlightText}
               </span>
             </h1>
 
-            
             <p className="text-[#171C1E] font-inter text-[24px] font-normal leading-[150%] mb-6 px-2 sm:px-0">
-              Designed to help hoteliers manage front office, food & beverages,
-              room service, increase distributions, handle accounts and credits,
-              and enhance guest communication and satisfaction.
+              {heroData?.description}
             </p>
 
             <div>
               <button className="bg-[#006D77] text-white px-10 py-3 rounded-lg font-semibold text-base shadow-md hover:bg-[#005962] transition">
-                Try BookOne Now
+                {heroData?.buttonText || "Try BookOne Now"}
               </button>
             </div>
           </div>
@@ -36,7 +57,7 @@ const Hero = () => {
           <div className="lg:w-1/2 w-full flex justify-center mt-10 lg:mt-0">
             <div className="w-full max-w-[720px] aspect-video rounded-3xl overflow-hidden">
               <video
-                src="https://testbookone.bookone.io/wp-content/uploads/2025/04/Copy-of-BookOne-Hero-Section-Video.mp4"
+                src={heroData?.video?.fields?.file?.url ? `https:${heroData.video.fields.file.url}` : ""}
                 autoPlay
                 loop
                 muted
