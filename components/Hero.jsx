@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { createClient } from "contentful";
-
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 const client = createClient({
   space: "wzmo4lmp2r9v",
   accessToken: "8byVN6ybNsGaYJ6FUTB0CB4mwuie5fIX-DxWy1GGi6E",
@@ -38,13 +38,15 @@ const Hero = () => {
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[42px] xl:text-[48px] font-bold leading-tight text-[#1E1E1E] font-sans mb-6">
               {heroData?.mainheading} <br />
               <span className="block mt-4 text-[#006D77]">
-                {heroData?.highlightText}
+                {heroData?.secondMainHeading}
               </span>
             </h1>
 
             <p className="text-[#171C1E] font-inter text-[24px] font-normal leading-[150%] mb-6 px-2 sm:px-0">
-              {heroData?.description}
-            </p>
+            {documentToReactComponents(heroData.heroParagraph)}
+
+</p>
+
 
             <div>
               <button className="bg-[#006D77] text-white px-10 py-3 rounded-lg font-semibold text-base shadow-md hover:bg-[#005962] transition">
