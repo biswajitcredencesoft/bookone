@@ -38,7 +38,7 @@ import Manager3 from "./channel3.png";
 import Manager4 from "./channel4.png";
 import Manager5 from "./channel5.png";
 
-import MobileLogo from "./mobile.png";
+import MobileLogo from "./mobile1.png";
 import PlayStore from "./playstore.png";
 import AppStore from "./appstore.png";
 
