@@ -59,7 +59,7 @@ const Hero = () => {
           <div className="lg:w-1/2 w-full flex justify-center mt-10 lg:mt-0">
             <div className="w-full max-w-[720px] aspect-video rounded-3xl overflow-hidden">
               <video
-                src={heroData?.video?.fields?.file?.url ? `https:${heroData.video.fields.file.url}` : ""}
+               src={heroData?.heroImage?.fields?.file?.url ? `https:${heroData.heroImage.fields.file.url}` : ""}
                 autoPlay
                 loop
                 muted
