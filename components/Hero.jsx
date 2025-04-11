@@ -3,6 +3,7 @@ import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa";
 import Badge2 from "../assets/Badge-2.png";
 import Badge1 from "../assets/Badge-1.png";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -26,9 +27,12 @@ const Hero = () => {
             </p>
 
             <div>
+              <Link href="/book-a-demo">
               <button className="bg-[#006D77] text-white px-10 py-3 rounded-lg font-semibold text-base shadow-md hover:bg-[#005962] transition">
                 Try BookOne Now
               </button>
+              </Link>
+             
             </div>
           </div>
 

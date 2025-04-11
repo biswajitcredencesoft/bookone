@@ -12,6 +12,7 @@ import BookOneDetails from "@/components/BookOneDetails";
 import OtaIntegration from "@/components/OtaIntegration";
 import HoteliarTrust from "@/components/HoteliarTrust";
 import BookOneGrowing from "@/components/BookOneGrowing";
+import HeroCarosal from "@/components/HeroCarosal";
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
       <Navbar />
       
         <Hero/>
+        <HeroCarosal/>
         <BookOneDetails/>
         <OtaIntegration/>
         <HoteliarTrust/>
