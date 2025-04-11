@@ -13,13 +13,16 @@ import OtaIntegration from "@/components/OtaIntegration";
 import HoteliarTrust from "@/components/HoteliarTrust";
 import BookOneGrowing from "@/components/BookOneGrowing";
 
+import { ContentfulProvider } from "@/components/ContentfulContext";
 const Home = () => {
   return (
     <>
       <Navbar />
       
-        <Hero/>
-        <BookOneDetails/>
+      <ContentfulProvider>
+        <Hero />
+        <BookOneDetails />
+      </ContentfulProvider>
         <OtaIntegration/>
         <HoteliarTrust/>
         <BookOneGrowing/>

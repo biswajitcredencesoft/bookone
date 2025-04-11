@@ -1,31 +1,9 @@
 "use client";
-import { useEffect, useState } from "react";
-import { createClient } from "contentful";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-const client = createClient({
-  space: "wzmo4lmp2r9v",
-  accessToken: "8byVN6ybNsGaYJ6FUTB0CB4mwuie5fIX-DxWy1GGi6E",
-
-});
+import { useContentful } from "@/components/ContentfulContext";
 
 const Hero = () => {
-  const [heroData, setHeroData] = useState(null);
-
-
-  useEffect(() => {
-    async function fetchHeroContent() {
-      try {
-        const res = await client.getEntries({ content_type: "homePage" }); // Replace with your actual content type ID
-        setHeroData(res.items[0]?.fields);
-        console.log("hero data", res.items);
-
-      } catch (err) {
-        console.error("Contentful fetch error:", err);
-      }
-    }
-
-    fetchHeroContent();
-  }, []);
+  const { heroData } = useContentful();
 
   if (!heroData) return <p>Loading hero section...</p>;
 
@@ -43,10 +21,8 @@ const Hero = () => {
             </h1>
 
             <p className="text-[#171C1E] font-inter text-[24px] font-normal leading-[150%] mb-6 px-2 sm:px-0">
-            {documentToReactComponents(heroData.heroParagraph)}
-
-</p>
-
+              {documentToReactComponents(heroData.heroParagraph)}
+            </p>
 
             <div>
               <button className="bg-[#006D77] text-white px-10 py-3 rounded-lg font-semibold text-base shadow-md hover:bg-[#005962] transition">
@@ -55,11 +31,15 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right: Responsive Video */}
+          {/* Right: Video */}
           <div className="lg:w-1/2 w-full flex justify-center mt-10 lg:mt-0">
             <div className="w-full max-w-[720px] aspect-video rounded-3xl overflow-hidden">
               <video
-               src={heroData?.heroImage?.fields?.file?.url ? `https:${heroData.heroImage.fields.file.url}` : ""}
+                src={
+                  heroData?.heroImage?.fields?.file?.url
+                    ? `https:${heroData.heroImage.fields.file.url}`
+                    : ""
+                }
                 autoPlay
                 loop
                 muted

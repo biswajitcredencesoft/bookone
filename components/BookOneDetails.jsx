@@ -17,8 +17,12 @@ import {
 import { RiPriceTag2Fill } from "react-icons/ri";
 import { BiNetworkChart } from "react-icons/bi";
 import { assets } from "@/assets/assets";
+import { useContentful } from "@/components/ContentfulContext";
 
 const BookOneDetails = () => {
+  const { heroData } = useContentful();
+  
+    if (!heroData) return <p>Loading hero section...</p>;
   const [activeTab, setActiveTab] = useState(0);
   const router = useRouter();
   const hoverTimeout = useRef(null);
@@ -122,7 +126,7 @@ const BookOneDetails = () => {
   return (
     <div className="bg-[#0E6B81] text-white py-12 px-4 md:px-16 font-Inter overflow-hidden">
       <h2 className="text-white text-center lg:text-left text-[32px] sm:text-[38px] md:text-[46px] font-bold leading-[150%] mb-6">
-        BookOne Does It All!
+        {heroData?.secondHeading}
       </h2>
 
       {/* Tab Buttons */}
