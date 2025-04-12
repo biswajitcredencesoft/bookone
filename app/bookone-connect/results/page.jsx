@@ -2,13 +2,14 @@
 import { FaQuoteLeft } from "react-icons/fa";
 import { assets } from "@/assets/assets";
 import Image from "next/image";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 const Results = () => {
 
     return (
         <>
           <section className="bg-[#e5f3f7] px-4 py-16 flex flex-col items-center font-['Inter']">
                 <h2 className="text-[46px] font-bold text-[#146683] leading-[150%] text-center mb-12">
-                  Transformative Results, At a Glance.
+                  {documentToReactComponents(pmsData?.pmsSecondsectionParagarph)}
                 </h2>
           
                 <div className="flex flex-wrap justify-center gap-6 mb-16">
@@ -55,16 +56,13 @@ const Results = () => {
                   <div className="flex items-start gap-4 text-[#146683] max-w-[858px]">
                     <FaQuoteLeft className="w-[73px] h-[71px] flex-shrink-0 text-[#146683]" />
                     <p className="text-[28px] font-semibold leading-[40px]">
-                      After switching to BookOne, we cut manual workload by over 70%,
-                      reduced front desk errors significantly, and slashed staff training
-                      time by half. Operations became smoother overnight—and our guest
-                      reviews started reflecting it within weeks.
+                    {documentToReactComponents(pmsData?.pmsreviewsCta)}
                     </p>
                   </div>
           
                   <div className="flex flex-col items-center gap-4">
                     <Image
-                      src={assets.Yogiraj}
+                      src={`https:${pmsData.pmsReviewImg.fields.file.url}`}
                       alt="Yogiraj Logo"
                       className="w-[207px] h-[121px] object-contain flex-shrink-0"
                     />

@@ -10,8 +10,12 @@ import {
 import Image from 'next/image'
 import { assets } from '@/assets/assets'
 import Link from 'next/link'
-
+import { useContentful } from "@/app/bookone-pms/contentfulPmsContext";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 const BuildOfEfficiency = () => {
+  const { pmsData } = useContentful();
+  
+  if (!pmsData) return <p>Loading hero section...</p>;
   return (
     <div className="bg-[#EDF6FA] px-4 sm:px-6 lg:px-8 py-12 font-['Inter']">
       <div className="max-w-[1440px] mx-auto">
@@ -19,14 +23,15 @@ const BuildOfEfficiency = () => {
         <div className="flex flex-col lg:flex-row justify-between items-start gap-6">
        
           <h2 className="text-[#146683] text-[32px] sm:text-[40px] lg:text-[46px] font-bold leading-[150%]">
-            Built for Efficiency. <br /> Loved for Simplicity.
+          {pmsData?.pmsSecondsectionheading}   <br /> {pmsData?.pmsSecondsectionheadingOne}
           </h2>
 
      
           <p className="text-[#146683] mt-2 lg:mt-8 text-[18px] sm:text-[20px] lg:text-[24px] leading-[130%] max-w-xl">
-            Smart features that automate the <br />
+            {/* Smart features that automate the <br />
             repetitive, surface the critical, and <br />
-            keep everything running smoothly.
+            keep everything running smoothly. */}
+            {documentToReactComponents(pmsData?.pmsSecondsectionParagarph)}
           </p>
 
           
@@ -44,8 +49,10 @@ const BuildOfEfficiency = () => {
           {/* Left Image */}
           <div className="w-full lg:w-[493px] h-[323px] rounded-[20px] overflow-hidden flex-shrink-0">
             <Image
-              src={assets.Efficiency}
+              src={`https:${pmsData.pmsSecondSectionImage.fields.file.url}`}
               alt="Efficiency"
+              width={493}
+              height={323}
               className="w-full h-full object-cover rounded-[20px]"
             />
           </div>
