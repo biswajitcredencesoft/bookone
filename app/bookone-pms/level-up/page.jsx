@@ -13,7 +13,7 @@ const LevelUP = () => {
         <div className="w-full md:w-[30%] -mt-16 md:-mt-24">
           <div className="rounded-xl overflow-hidden shadow-lg w-full">
             <Image
-              src={assets.banner}
+              src={`https:${pmsData.pmsLastImage.fields.file.url}`}
               alt="Smiling professionals"
               width={700}
               height={700}
