@@ -2,8 +2,12 @@ import React from "react";
 import Image from "next/image";
 import { FaQuoteLeft } from "react-icons/fa";
 import { assets } from "@/assets/assets";
-
+import { useContentful } from "../contentfulPricingContext";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 const UseBookone = () => {
+    const { pricingData } = useContentful();
+      
+    if (!pricingData) return <p>Loading ...</p>;
   return (
     <div className="bg-[linear-gradient(to_bottom,#5E5B7D,#146683,#000000)] text-white px-4 py-24 md:py-32 lg:py-28 md:px-20 font-Inter">
       <div className="max-w-10xl mx-auto flex flex-col gap-20 md:gap-28">
@@ -11,17 +15,14 @@ const UseBookone = () => {
           <div className="flex-1 flex flex-col justify-center gap-8">
             <div>
               <h2 className="text-[#D0E6F3] text-[40px] md:text-[48px] font-bold leading-tight">
-                4000<span className="text-[#fffffF]">+ 
-                  </span> Hotels
+                {pricingData?.pricingThirdHeading}
               </h2>
               <h3 className="text-[#D0E6F3] text-[26px] md:text-[32px] font-bold leading-snug mt-4">
                 Use BookOne
               </h3>
             </div>
             <p className="text-white text-[16px] md:text-[18px] font-bold leading-relaxed max-w-sm shadow-text">
-              BookOne is built to grow with you{" "}
-              <br className="hidden sm:block" />
-              —no matter your size or stage.
+            {documentToReactComponents(pricingData?.pricingThirdParagrph)}
             </p>
           </div>
 

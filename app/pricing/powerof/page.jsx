@@ -8,8 +8,10 @@ import { MdOutlineManageSearch } from "react-icons/md";
 import { PiStorefrontBold } from "react-icons/pi";
 import { FaSearchDollar } from "react-icons/fa";
 import { assets } from "@/assets/assets";
-
+import { useContentful } from "../contentfulPricingContext";
 // SERVICES DATA
+
+
 const services = [
   {
     icon: <FaGlobe className="text-4xl mb-3" />,
@@ -59,8 +61,12 @@ const splitWords = (text, delayOffset = 0) =>
   ));
 
 const PowerOf = () => {
+  const { pricingData } = useContentful();
+    
+  if (!pricingData) return <p>Loading ...</p>;
   const [inView, setInView] = useState(false);
   const sectionRef = useRef(null);
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -97,7 +103,7 @@ const PowerOf = () => {
         {/* Left Section */}
         <div className="max-w-[635px] mb-20">
           <h2 className="text-[32px] sm:text-[40px] font-bold text-[#146683] leading-snug font-['Inter'] mb-4">
-            {splitWords("Add on & Power Up!", inView ? 0 : 10)}
+          {splitWords("Add on & Power Up!", inView ? 0 : 10)}
           </h2>
 
           <p className="text-[#146683] text-lg sm:text-2xl font-normal leading-relaxed mb-6 mt-10">
