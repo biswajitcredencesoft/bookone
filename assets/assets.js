@@ -52,6 +52,7 @@ import Engine from "./booking-engine.png";
 import Carosall from "./carosall.png";
 
 import UPI from "./upi.png";
+import Header from "./header.png"
 
 export const assets = {
   logo,
@@ -103,6 +104,7 @@ export const assets = {
   Carosall,
   UPI,
   Engine,
+  Header,
 };
 
 export const BagIcon = () => {

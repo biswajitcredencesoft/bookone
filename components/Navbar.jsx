@@ -56,7 +56,7 @@ const Navbar = () => {
             onClick={() => router.push("/")}
           >
             <Image
-              src={assets.logo}
+              src={assets.Header}
               alt="Logo"
               layout="responsive"
               width={180}

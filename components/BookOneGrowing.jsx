@@ -13,11 +13,9 @@ const BookOneGrowing = () => {
   return (
     <div className="bg-[linear-gradient(to_bottom,_#5E5B7D,_#146683,_#000000)] text-white px-4 py-16 md:px-20 font-Inter">
       <div className="max-w-7xl mx-auto space-y-24">
-        {/* Grid Section */}
         <div className="flex flex-col md:flex-row md:items-center gap-12">
-          {/* Stat Boxes */}
           <div className="w-full md:w-1/2">
-            <div className="grid grid-cols-2  gap-y-12">
+            <div className="grid grid-cols-2 gap-y-12">
               {stats.map((item, idx) => (
                 <div
                   key={idx}
@@ -31,13 +29,17 @@ const BookOneGrowing = () => {
                       {item.number.includes("M") ? (
                         <>
                           1
-                          <span className="text-[#146683] text-5xl align-top">M</span>
+                          <span className="text-[#146683] text-5xl align-top">
+                            M
+                          </span>
                         </>
                       ) : (
                         <>
                           {item.number.replace("+", "")}
                           {item.number.includes("+") && (
-                            <span className="text-[#01677D] text-5xl align-top">+</span>
+                            <span className="text-[#01677D] text-5xl align-top">
+                              +
+                            </span>
                           )}
                         </>
                       )}
@@ -51,7 +53,6 @@ const BookOneGrowing = () => {
             </div>
           </div>
 
-          {/* Text Section */}
           <div className="w-full md:w-1/2 text-center md:text-left space-y-6">
             <h2 className="text-3xl md:text-3xl font-bold leading-snug">
               BookOne is Growing, So Are Our Hotels
@@ -63,9 +64,7 @@ const BookOneGrowing = () => {
           </div>
         </div>
 
-        {/* CTA Section */}
-        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-12 flex flex-col md:flex-row items-center gap-10 md:gap-16 shadow-xl ">
-          {/* Image */}
+        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-12 flex flex-col md:flex-row items-center gap-10 md:gap-16 shadow-xl">
           <div className="relative w-[220px] md:w-[280px] -mt-20 md:-mt-28">
             <div className="rounded-xl overflow-hidden shadow-lg">
               <Image
@@ -76,22 +75,19 @@ const BookOneGrowing = () => {
             </div>
           </div>
 
-          {/* Text + Button Row */}
           <div className="flex-1 w-full">
             <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-6">
-            
               <div className="text-center md:text-left">
                 <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                  Don’t Just Keep Up —
+                  Don’t Just Keep Up — Level Up!
                   <br className="hidden md:block" />
-                  Level Up!
                 </h3>
                 <p className="text-lg mb-0 max-w-xl mx-auto md:mx-0">
-                  BookOne isn’t just hotel software — it’s your all-in-one growth partner.
+                  BookOne isn’t just hotel software — it’s your <br />
+                  all-in-one growth partner.
                 </p>
               </div>
 
-              {/* Button */}
               <div className="shrink-0">
                 <button className="bg-[#01677D] hover:bg-[#0f4b5c] text-[#CEE6F0] px-6 py-3 rounded-md shadow-md transition duration-300 whitespace-nowrap">
                   See What BookOne Can Do For You
@@ -100,9 +96,6 @@ const BookOneGrowing = () => {
             </div>
           </div>
         </div>
-
-
-        
       </div>
     </div>
   );
