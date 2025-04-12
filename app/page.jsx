@@ -22,8 +22,9 @@ const Home = () => {
       <ContentfulProvider>
         <Hero />
         <BookOneDetails />
-      </ContentfulProvider>
         <OtaIntegration/>
+      </ContentfulProvider>
+       
         <HoteliarTrust/>
         <BookOneGrowing/>
         {/* <HomeProducts />

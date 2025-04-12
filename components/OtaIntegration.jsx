@@ -5,6 +5,7 @@ import { assets } from "@/assets/assets";
 
 // Integration data
 const integrationData = [
+  
   {
     title: "Get Connected On Top OTA’s!",
     logos: [
@@ -47,6 +48,9 @@ const rightBoxes = [
 
 // Hook to check if in viewport
 const useInView = (options) => {
+  const { heroData } = useContentful();
+    
+      if (!heroData) return <p>Loading hero section...</p>;
   const ref = useRef(null);
   const [isIntersecting, setIntersecting] = useState(false);
 
