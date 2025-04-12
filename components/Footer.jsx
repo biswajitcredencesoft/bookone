@@ -15,25 +15,64 @@ const Footer = () => {
   return (
     <footer className="text-white bg-black">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 lg:px-20 py-10 sm:py-12 md:py-14 lg:py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-8 sm:gap-y-10 md:gap-y-12 gap-x-6 sm:gap-x-8 md:gap-x-10 lg:gap-x-16">
-        
         {/* Logo + Contact + Social */}
         <div>
-          <Image src={assets.Foooter} alt="BookOne Logo" className="w-40 mb-4" />
+          <Image
+            src={assets.Foooter}
+            alt="BookOne Logo"
+            className="w-40 mb-4"
+          />
+
           <div className="flex gap-4 text-xl mt-6">
-            <FaLinkedinIn className="hover:text-skyCustom transition" />
-            <FaFacebookF className="hover:text-skyCustom transition" />
-            <FaInstagram className="hover:text-skyCustom transition" />
+            <a
+              href="https://www.linkedin.com/showcase/bookone-pms/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedinIn className="hover:text-skyCustom transition" />
+            </a>
+            <a
+              href="https://www.facebook.com/bookonepms/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaFacebookF className="hover:text-skyCustom transition" />
+            </a>
+            <a
+              href="https://www.instagram.com/bookonepms/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaInstagram className="hover:text-skyCustom transition" />
+            </a>
           </div>
+
+
+
           <div className="mt-6 text-sm space-y-3">
-            <div className="flex items-center gap-2">
-              <FaPhoneAlt className="text-skyCustom" />
-              <span className="font-light">+91-90041 46024</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <FaEnvelope className="text-skyCustom" />
-              <span className="font-light">Info@Bookonepms.Com</span>
-            </div>
-          </div>
+  <div>
+    <a
+      href="tel:+919004146024"
+      className="flex items-center gap-2 font-light "
+    >
+      <FaPhoneAlt className="text-skyCustom" />
+      +91-90041 46024
+    </a>
+  </div>
+  <div>
+    <a
+      href="mailto:Info@Bookonepms.Com"
+      className="flex items-center gap-2 font-light"
+    >
+      <FaEnvelope className="text-skyCustom" />
+      info@bookonepms.com
+    </a>
+  </div>
+</div>
+
+
+          
+
         </div>
 
         {/* Office Locations */}
@@ -64,7 +103,9 @@ const Footer = () => {
                 <FaMapMarkerAlt className="mt-1 text-skyCustom shrink-0" />
                 <div>
                   <p className="font-medium">{office.title}</p>
-                  <p className="mt-1 text-[13px] leading-relaxed">{office.address}</p>
+                  <p className="mt-1 text-[13px] leading-relaxed">
+                    {office.address}
+                  </p>
                 </div>
               </div>
             </div>
@@ -151,4 +192,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default Footer; 

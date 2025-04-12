@@ -32,11 +32,27 @@ import Product2 from "./product2.png";
 import Product3 from "./product3.png";
 import Efficiency from "./efficiency.png";
 import Yogiraj from "./yogiraj.png";
-import Manager1 from "./channel1.png"
-import Manager2 from "./channel2.png"
-import Manager3 from "./channel3.png"
-import Manager4 from "./channel4.png"
-import Manager5 from "./channel5.png"
+import Manager1 from "./channel1.png";
+import Manager2 from "./channel2.png";
+import Manager3 from "./channel3.png";
+import Manager4 from "./channel4.png";
+import Manager5 from "./channel5.png";
+
+import MobileLogo from "./mobile1.png";
+import Circle from "./mobile2.png";
+import PlayStore from "./playstore.png";
+import AppStore from "./appstore.png";
+
+import MobileCarosal1 from "./mobilecarosal1.png";
+import MobileCarosal2 from "./mobilecarosal2.png";
+import MobileCarosal3 from "./mobilecarosal3.png";
+
+import Engine from "./booking-engine.png";
+
+import Carosall from "./carosall.png";
+
+import UPI from "./upi.png";
+
 export const assets = {
   logo,
   search_icon,
@@ -77,7 +93,16 @@ export const assets = {
   Manager3,
   Manager4,
   Manager5,
-
+  MobileLogo,
+  Circle,
+  PlayStore,
+  AppStore,
+  MobileCarosal1,
+  MobileCarosal2,
+  MobileCarosal3,
+  Carosall,
+  UPI,
+  Engine,
 };
 
 export const BagIcon = () => {
