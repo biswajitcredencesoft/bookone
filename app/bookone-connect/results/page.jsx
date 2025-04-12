@@ -74,7 +74,7 @@ const Results = () => {
                   </div>
                 </div>
               </section>
-            );
+          
         </>
     );
 };
