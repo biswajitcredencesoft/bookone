@@ -9,6 +9,7 @@ import BeautifulBranded from "./beautiful-branded/page";
 import BookingEngine from "./booking-engine/page";
 import LevelUP from "../bookone-pms/level-up/page";
 import PaymentGateWays from "./payment-gateway/page";
+import { ContentfulProviderPMS } from "../bookone-pms/contentfulPmsContext";
 
 const BookOneBookMax = () => {
 
@@ -78,7 +79,10 @@ const BookOneBookMax = () => {
                   <BeautifulBranded/>
                   <BookingEngine/>
                   <PaymentGateWays/>
+                  <ContentfulProviderPMS>
                   <LevelUP/>
+                  </ContentfulProviderPMS>
+                 
             <Footer />
         </>
     );
