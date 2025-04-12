@@ -1,14 +1,36 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { FaCheck } from 'react-icons/fa';
 import PowerOf from './powerof/page';
 import UseBookone from './use-bookone/page';
+import { ContentfulProviderpricing} from './contentfulPricingContext';
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { createClient } from "contentful";
+const client = createClient({
+  space: "wzmo4lmp2r9v",
+  accessToken: "8byVN6ybNsGaYJ6FUTB0CB4mwuie5fIX-DxWy1GGi6E",
+});
 
 const Pricing = () => {
   const [currency, setCurrency] = useState("INR");
+    const [pricingData, setpricingData] = useState(null);
 
+    useEffect(() => {
+      async function fetchHeroContent() {
+        try {
+          const res = await client.getEntries({ content_type: "pricing" }); // Replace with your actual content type ID
+          setpricingData(res.items[0]?.fields);
+          console.log("pricing", res.items);
+  
+        } catch (err) {
+          console.error("Contentful fetch error:", err);
+        }
+      }
+  
+      fetchHeroContent();
+    }, []);
   const pricingMap = {
     INR: ["₹1199", "₹1499", "₹2099"],
     USD: ["$99", "$129", "$179"],
@@ -71,14 +93,14 @@ const Pricing = () => {
     <>
       <Navbar />
 
-      <div className="bg-[#f6f7fb] px-4 py-16 sm:px-8 md:px-20">
+      <ContentfulProviderpricing>
+      <div className="bg-[#f6f7fb] px-4 py-16 sm:px-8 md:px-20 mt-5">
         <div className="text-center max-w-3xl mx-auto mb-10">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2">
-            Everything Your Hotel Needs, Right Here.
+            {pricingData?.pricingheading}
           </h2>
           <p className="text-gray-600 mt-4">
-            BookOne offers flexible, transparent pricing designed to fit properties of all sizes—whether
-            you're an independent hotel, a resort, or a growing chain.
+            {documentToReactComponents(pricingData?.pricingParagraph)}
           </p>
 
           <div className="mt-6">
@@ -169,9 +191,13 @@ const Pricing = () => {
           ))}
         </div>
       </div>
-
-      <PowerOf />
-      <UseBookone />
+          </ContentfulProviderpricing>
+         <ContentfulProviderpricing>
+         <PowerOf />
+         <UseBookone />
+         </ContentfulProviderpricing>
+      
+       
       <Footer />
     </>
   );
