@@ -12,6 +12,7 @@ import BookOneDetails from "@/components/BookOneDetails";
 import OtaIntegration from "@/components/OtaIntegration";
 import HoteliarTrust from "@/components/HoteliarTrust";
 import BookOneGrowing from "@/components/BookOneGrowing";
+import HeroCarosal from "@/components/HeroCarosal";
 
 import { ContentfulProvider } from "@/components/ContentfulContext";
 const Home = () => {
@@ -22,6 +23,9 @@ const Home = () => {
       <ContentfulProvider>
         <Hero />
         <BookOneDetails />
+        <Hero/>
+        <HeroCarosal/>
+        <BookOneDetails/>
         <OtaIntegration/>
       </ContentfulProvider>
        

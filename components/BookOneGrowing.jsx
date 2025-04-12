@@ -17,7 +17,7 @@ const BookOneGrowing = () => {
         <div className="flex flex-col md:flex-row md:items-center gap-12">
           {/* Stat Boxes */}
           <div className="w-full md:w-1/2">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-2  gap-y-12">
               {stats.map((item, idx) => (
                 <div
                   key={idx}
