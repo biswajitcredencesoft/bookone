@@ -23,7 +23,7 @@ const DropdownMenu = ({ title, isOpen, setOpenDropdown, menuKey }) => {
       className="relative h-full px-4 py-2"
       onMouseEnter={() => setOpenDropdown(menuKey)}
     >
-      <button className="flex items-center gap-2 text-[15px] md:text-[13px] lg:text-[15px] xl:text-[15px] 2xl:text-[21px] font-inter text-gray-600">
+      <button className="flex items-center gap-2 text-[15px] md:text-[13px] lg:text-[15px] xl:text-[15px] 2xl:text-[19px] font-inter text-gray-600">
         {title} {isOpen ? <TiArrowSortedUp /> : <TiArrowSortedDown />}
       </button>
     </div>
@@ -54,7 +54,7 @@ const Navbar = () => {
         <div className="max-w-screen-[1410px] mx-auto flex items-center justify-between w-full">
           {/* Left - Logo */}
           <div
-            className="w-32 sm:w-36 md:w-40 lg:w-[13rem] xl:w-[14rem] 2xl:w-[19rem] cursor-pointer"
+            className="w-32 sm:w-36 md:w-40 lg:w-[13rem] xl:w-[14rem] 2xl:w-[18rem] cursor-pointer"
             onClick={() => router.push("/")}
           >
             <Image
@@ -97,12 +97,12 @@ const Navbar = () => {
           {/* Right - Desktop Buttons + User Icon */}
           <div className="hidden md:flex items-center space-x-4 md:space-x-2 gap-2">
             <Link href="/pricing">
-              <button className="border border-[#CEE6F0] text-[#27668c] px-6 px:[10px] md:px-[20px] lg:px-[50px] xl:px-[50px] 2xl:px-[50px] xl:[24px] py-[10px] md:py-[6px] lg:py-[10px] xl:py-[10px] 2xl:py-[15px] rounded-xl text-[14px] md:text-[13.5px] lg:text-[20px] xl:text-[15px] 2xl:text-[20px]  font-medium transition-all hover:ring-2 hover:ring-offset-2">
+              <button className="border border-[#CEE6F0] text-[#27668c] px-6 px:[10px] md:px-[20px] lg:px-[50px] xl:px-[50px] 2xl:px-[50px] xl:[24px] py-[10px] md:py-[6px] lg:py-[10px] xl:py-[10px] 2xl:py-[15px] rounded-xl text-[14px] md:text-[13.5px] lg:text-[20px] xl:text-[15px] 2xl:text-[19px]  font-medium transition-all hover:ring-2 hover:ring-offset-2">
                 Get Pricing
               </button>
             </Link>
             <Link href="/book-a-demo">
-            <button className="bg-[#27668c] text-white px-6 px:[10px] md:px-[20px] lg:px-[50px] xl:px-[50px] 2xl:px-[50px] xl:[24px] py-[15px] md:py-[6px] lg:py-[10px] xl:py-[10px] 2xl:py-[15px] rounded-xl text-[14px] md:text-[13.5px] lg:text-[15px] xl:text-[15px] 2xl:text-[20px] font-medium transition-all hover:ring-2 hover:ring-offset-2 hover:ring-gray-400">
+            <button className="bg-[#27668c] text-white px-6 px:[10px] md:px-[20px] lg:px-[50px] xl:px-[50px] 2xl:px-[50px] xl:[24px] py-[15px] md:py-[6px] lg:py-[10px] xl:py-[10px] 2xl:py-[15px] rounded-xl text-[14px] md:text-[13.5px] lg:text-[15px] xl:text-[15px] 2xl:text-[19px] font-medium transition-all hover:ring-2 hover:ring-offset-2 hover:ring-gray-400">
               Book A Demo
             </button>
             </Link>
