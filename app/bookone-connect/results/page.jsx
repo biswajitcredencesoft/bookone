@@ -3,13 +3,16 @@ import { FaQuoteLeft } from "react-icons/fa";
 import { assets } from "@/assets/assets";
 import Image from "next/image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { useContentful } from "@/app/bookone-pms/contentfulPmsContext";
 const Results = () => {
-
+  const { pmsData } = useContentful();
+  
+  if (!pmsData) return <p>Loading hero section...</p>;
     return (
         <>
           <section className="bg-[#e5f3f7] px-4 py-16 flex flex-col items-center font-['Inter']">
                 <h2 className="text-[46px] font-bold text-[#146683] leading-[150%] text-center mb-12">
-                  {documentToReactComponents(pmsData?.pmsSecondsectionParagarph)}
+                  {pmsData?.pmsReviewsHeading}
                 </h2>
           
                 <div className="flex flex-wrap justify-center gap-6 mb-16">
@@ -63,6 +66,8 @@ const Results = () => {
                   <div className="flex flex-col items-center gap-4">
                     <Image
                       src={`https:${pmsData.pmsReviewImg.fields.file.url}`}
+                      width={493}
+                      height={323}
                       alt="Yogiraj Logo"
                       className="w-[207px] h-[121px] object-contain flex-shrink-0"
                     />
@@ -72,7 +77,7 @@ const Results = () => {
                   </div>
                 </div>
               </section>
-            );
+            
         </>
     );
 };

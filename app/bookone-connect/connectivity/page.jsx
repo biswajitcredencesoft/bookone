@@ -7,23 +7,23 @@ import { SlGraph } from "react-icons/sl";
 import Image from "next/image";
 import { assets } from "@/assets/assets";
 import Link from "next/link";
-
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { useContentful } from "@/app/bookone-connect/contentfulBookoneConnect";
 const Connectivity = () => {
+    const { connectData } = useContentful();
+    
+    if (!connectData) return <p>Loading connect section...</p>;
   return (
     <>
       <div className="bg-[#EDF6FA] px-4 sm:px-6 lg:px-8 py-12 font-['Inter']">
         <div className="max-w-[1440px] mx-auto">
           <div className="flex flex-col lg:flex-row justify-between items-start gap-6">
-            <h2 className="text-[#146683] text-[32px] sm:text-[40px] lg:text-[46px] font-bold leading-[150%]">
-              Smarter Connectivity
-              <br /> for More Bookings
+            <h2 className="text-[#146683] text-[32px] sm:text-[40px] lg:text-[36px] font-bold leading-[150%] w-[400px]">
+             {connectData?.connectSecondHeading}
             </h2>
 
             <p className="text-[#146683] mt-2 lg:mt-8 text-[18px] sm:text-[20px] lg:text-[24px] leading-[130%] max-w-xl">
-              Distribute smarter. Automate the <br />
-              updates, surface booking issues, and
-              <br />
-              keep inventory aligned—everywhere.
+                {documentToReactComponents(connectData?.connectsecondParagrph)}
             </p>
 
             <div className="mt-4 lg:mt-8">
@@ -38,7 +38,9 @@ const Connectivity = () => {
           <div className="mt-12 flex flex-col lg:flex-row gap-10 items-start">
             <div className="w-full lg:w-[493px] h-[323px] rounded-[20px] overflow-hidden flex-shrink-0">
               <Image
-                src={assets.Manager4}
+                src={`https:${connectData?.connectSecondImage.fields.file.url}`}
+                width={700}
+                height={700}
                 alt="Efficiency"
                 className="w-full h-full object-cover rounded-[20px]"
               />
