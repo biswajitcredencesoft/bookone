@@ -47,32 +47,26 @@ const Footer = () => {
             </a>
           </div>
 
-
-
           <div className="mt-6 text-sm space-y-3">
-  <div>
-    <a
-      href="tel:+919004146024"
-      className="flex items-center gap-2 font-light "
-    >
-      <FaPhoneAlt className="text-skyCustom" />
-      +91-90041 46024
-    </a>
-  </div>
-  <div>
-    <a
-      href="mailto:Info@Bookonepms.Com"
-      className="flex items-center gap-2 font-light"
-    >
-      <FaEnvelope className="text-skyCustom" />
-      info@bookonepms.com
-    </a>
-  </div>
-</div>
-
-
-          
-
+            <div>
+              <a
+                href="tel:+919004146024"
+                className="flex items-center gap-2 font-light "
+              >
+                <FaPhoneAlt className="text-skyCustom" />
+                +91-90041 46024
+              </a>
+            </div>
+            <div>
+              <a
+                href="mailto:Info@Bookonepms.Com"
+                className="flex items-center gap-2 font-light"
+              >
+                <FaEnvelope className="text-skyCustom" />
+                info@bookonepms.com
+              </a>
+            </div>
+          </div>
         </div>
 
         {/* Office Locations */}
@@ -192,4 +186,4 @@ const Footer = () => {
   );
 };
 
-export default Footer; 
+export default Footer;

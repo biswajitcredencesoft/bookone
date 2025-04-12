@@ -13,33 +13,33 @@ const Hero = () => {
   if (!heroData) return <p>Loading hero section...</p>;
 
   return (
-    <section className="bg-[#F5F5F5] py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden">
-      <div className="max-w-[1400px] xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-16 flex flex-col items-center">
+    <section className="bg-[#F5F5F5] py-12 md:py-20 lg:py-24 overflow-hidden">
+      <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-16 flex flex-col items-center">
         <div className="flex flex-col lg:flex-row items-center justify-between w-full gap-12">
-          {/* Left: Text Content */}
+        
+          {/* Text Section */}
           <div className="lg:w-1/2 w-full text-center lg:text-left">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[42px] xl:text-[48px] font-bold leading-tight text-[#1E1E1E] font-sans mb-6">
-              {heroData?.mainheading} <br />
+            <h1 className="text-[clamp(2rem,4vw,3rem)] font-bold leading-tight text-[#1E1E1E] font-sans mb-6">
+            {heroData?.mainheading} <br />
               <span className="block mt-4 text-[#006D77]">
                 {heroData?.secondMainHeading}
               </span>
             </h1>
 
-            <p className="text-[#171C1E] font-inter text-[24px] font-normal leading-[150%] mb-6 px-2 sm:px-0">
-              {documentToReactComponents(heroData.heroParagraph)}
+            <p className="text-[#171C1E] font-inter text-[clamp(1rem,2.2vw,1.5rem)] font-normal leading-[150%] mb-6 px-2 sm:px-0">
+            {documentToReactComponents(heroData.heroParagraph)}
             </p>
 
             <div>
               <Link href="/book-a-demo">
-              <button className="bg-[#006D77] text-white px-10 py-3 rounded-lg font-semibold text-base shadow-md hover:bg-[#005962] transition">
+                <button className="bg-[#006D77] text-white px-10 py-3 rounded-lg font-semibold text-base shadow-md hover:bg-[#005962] transition">
                 {heroData?.buttonText || "Try BookOne Now"}
-              </button>
+                </button>
               </Link>
-             
             </div>
           </div>
 
-          {/* Right: Video */}
+          {/* Video Section */}
           <div className="lg:w-1/2 w-full flex justify-center mt-10 lg:mt-0">
             <div className="w-full max-w-[720px] aspect-video rounded-3xl overflow-hidden">
               <video
