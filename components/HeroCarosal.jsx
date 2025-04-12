@@ -9,13 +9,7 @@ const leftData = [
     title: 'Mobile App',
     subtitle: 'On-the-go',
     description: 'Manage your entire property on-the-go with our sleek, all-in-one mobile app.',
-  },
-  {
-    logo: assets.Circle,
-    title: 'All-in-one',
-    subtitle: 'Hospital Suite',
-    description: 'Simplify how you work by running your entire hotel from a central hub.',
-  },
+  },  
 ];
 
 

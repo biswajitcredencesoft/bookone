@@ -54,6 +54,26 @@ import Carosall from "./carosall.png";
 import UPI from "./upi.png";
 import Header from "./header.png"
 
+// Operation Icons
+import Operation1 from "./op1.svg";
+import Operation2 from "./op-2.svg";
+import Operation3 from "./op3.svg";
+import Operation4 from "./op4.svg";
+import PlayIcon from "./play.png"
+
+// Marketing
+import Marketing1 from "./mk1.svg";
+import Marketing2 from "./mk2.svg"
+import Marketing3 from "./mk3.svg"
+import Marketing4 from "./mk4.svg"
+
+// Pricing
+import Guest1 from "./gm1.svg"
+import Guest2 from "./gm2.svg"
+
+//Automation
+import Automation from "./pa.svg"
+
 export const assets = {
   logo,
   search_icon,
@@ -105,6 +125,20 @@ export const assets = {
   UPI,
   Engine,
   Header,
+  Operation1,
+  Operation2,
+  Operation3,
+  Operation4,
+  PlayIcon,
+  Marketing1,
+  Marketing2,
+  Marketing3,
+  Marketing4,
+ Guest1,
+ Guest2,
+ Automation,
+
+
 };
 
 export const BagIcon = () => {

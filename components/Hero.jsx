@@ -1,10 +1,10 @@
 "use client";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { useContentful } from "@/components/ContentfulContext";
-import Image from "next/image";
-import { FaArrowRight } from "react-icons/fa";
-import Badge2 from "../assets/Badge-2.png";
-import Badge1 from "../assets/Badge-1.png";
+// import Image from "next/image";
+// import { FaArrowRight } from "react-icons/fa";
+// import Badge2 from "../assets/Badge-2.png";
+// import Badge1 from "../assets/Badge-1.png";
 import Link from "next/link";
 
 const Hero = () => {
@@ -17,7 +17,7 @@ const Hero = () => {
       <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-16 flex flex-col items-center">
         <div className="flex flex-col lg:flex-row items-center justify-between w-full gap-12">
         
-          {/* Text Section */}
+     
           <div className="lg:w-1/2 w-full text-center lg:text-left">
             <h1 className="text-[clamp(2rem,4vw,3rem)] font-bold leading-tight text-[#1E1E1E] font-sans mb-6">
             {heroData?.mainheading} <br />

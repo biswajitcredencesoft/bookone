@@ -3,26 +3,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import {
-  FaMobileAlt,
-  FaGoogle,
-} from "react-icons/fa";
-import {
-  MdOutlineRestaurant,
-  MdCloud,
-  MdCampaign,
-  MdReviews,
-  MdOutlineDashboard,
-} from "react-icons/md";
-import { RiPriceTag2Fill } from "react-icons/ri";
-import { BiNetworkChart } from "react-icons/bi";
 import { assets } from "@/assets/assets";
 import { useContentful } from "@/components/ContentfulContext";
 
 const BookOneDetails = () => {
   const { heroData } = useContentful();
-  
-    if (!heroData) return <p>Loading hero section...</p>;
   const [activeTab, setActiveTab] = useState(0);
   const router = useRouter();
   const hoverTimeout = useRef(null);
@@ -37,73 +22,64 @@ const BookOneDetails = () => {
   const tabContent = [
     [
       {
-        icon: <MdOutlineDashboard className="text-3xl sm:text-4xl" />,
+        icon: <Image alt="Operation1" src={assets.Operation1} />,
         title: "BookOne PMS",
         path: "/bookone-pms",
       },
       {
-        icon: <MdOutlineRestaurant className="text-3xl sm:text-4xl" />,
+        icon: <Image alt="Operation2" src={assets.Operation2} />,
         title: "BookOne POS",
         path: "/bookone-pos",
       },
       {
-        icon: <FaGoogle className="text-3xl sm:text-4xl" />,
+        icon: <Image alt="Operation3" src={assets.Operation3} />,
         title: "Google Business Setup",
         path: "/google-business-setup",
       },
       {
-        icon: <FaMobileAlt className="text-3xl sm:text-4xl" />,
+        icon: <Image alt="Operation4" src={assets.Operation4} />,
         title: "OTA Setup",
         path: "/ota-setup",
       },
     ],
     [
       {
-        icon: <BiNetworkChart className="text-3xl sm:text-4xl" />,
+        icon: <Image alt="Marketing1" src={assets.Marketing1}/>,
         title: "Channel Manager",
         path: "/bookone-connect",
       },
       {
-        icon: <MdCampaign className="text-3xl sm:text-4xl" />,
+        icon: <Image alt="Marketing2" src={assets.Marketing2}/>,
         title: "Digital Marketing",
         path: "/digital-marketing",
       },
       {
-        icon: <MdReviews className="text-3xl sm:text-4xl" />,
+        icon: <Image alt="Marketing3" src={assets.Marketing3}/>,
         title: "Online Reputation Management",
         path: "/online-repution-management",
       },
       {
-        icon: <MdOutlineRestaurant className="text-3xl sm:text-4xl" />,
+        icon: <Image alt="Marketing4" src={assets.Marketing4}/>,
         title: "Online Menu",
         path: "/online-menu",
       },
     ],
     [
       {
-        icon: <FaMobileAlt className="text-3xl sm:text-4xl" />,
+        icon: <Image alt="Guest1" src={assets.Guest1}/>,
         title: "BookOne CRM",
         path: "/guest-app",
       },
       {
-        icon: <MdOutlineRestaurant className="text-3xl sm:text-4xl" />,
-        title: "Room Service",
+        icon: <Image alt="Guest2" src={assets.Guest2}/>,
+        title: "BookOne Loyality",
         path: "/room-service",
       },
-      {
-        icon: <MdCloud className="text-3xl sm:text-4xl" />,
-        title: "Digital Check-In",
-        path: "/digital-check-in",
-      },
-      {
-        icon: <FaGoogle className="text-3xl sm:text-4xl" />,
-        title: "Reviews Manager",
-        path: "/reviews-manager",
-      },
+  
     ],
     [
       {
-        icon: <RiPriceTag2Fill className="text-3xl sm:text-4xl" />,
+        icon: <Image alt="Automation" src={assets.Automation}/>,
         title: "BookOne VaRO",
         path: "/bookone-varo",
       },
@@ -123,42 +99,54 @@ const BookOneDetails = () => {
     }, 100);
   };
 
+  if (!heroData) return <p>Loading hero section...</p>;
+
   return (
     <div className="bg-[#0E6B81] text-white py-12 px-4 md:px-16 font-Inter overflow-hidden">
       <h2 className="text-white text-center lg:text-left text-[32px] sm:text-[38px] md:text-[46px] font-bold leading-[150%] mb-6">
         {heroData?.secondHeading}
       </h2>
 
-      {/* Tab Buttons */}
-      <div className="flex justify-start gap-4 mb-10 overflow-x-auto whitespace-nowrap scrollbar-hide">
+      <div className="flex justify-start gap-1 mb-10 overflow-x-auto whitespace-nowrap scrollbar-hide">
         {tabButtons.map((tab, index) => (
           <div
             key={index}
-            className="relative min-w-[180px] text-center flex-shrink-0"
+            className={`group relative flex-shrink-0 text-center transition-all duration-300 ease-in-out 
+        ${activeTab === index ? "border-none" : "border-b-2 border-transparent"}
+      `}
             onMouseEnter={() => handleHover(index)}
             onClick={() => setActiveTab(index)}
           >
-            {activeTab === index && (
+            {/* {activeTab === index && (
               <svg
-                className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none"
-                viewBox="0 0 200 60"
+                className="absolute top-full left-0 w-full h-[10px] z-0 pointer-events-none"
+                viewBox="0 0 100 10"
                 preserveAspectRatio="none"
               >
                 <path
-                  d="M0,60 Q100,0 200,60"
-                  fill="#B2E4FA"
-                  stroke="#B2E4FA"
+                  d="M0,10 Q50,0 100,10"
+                  fill="white"
+                  stroke="white"
                   strokeWidth="1"
                 />
               </svg>
-            )}
+            )} */}
             <button
-              className={`relative z-10 text-xs md:text-sm lg:text-base font-semibold py-3 px-6 sm:px-10 md:px-[65px] rounded-t-[30px] transition-all duration-300 ease-in-out w-full transform 
-              ${
-                activeTab === index
-                  ? "bg-[#0E6B81] text-white border-2 border-[#B2E4FA] scale-105"
-                  : "bg-white text-[#0E6B81] border-2 border-transparent hover:scale-105 hover:shadow-md"
-              }`}
+              className={`relative z-10 text-sm md:text-base font-semibold py-3 px-6 transition-all duration-300 ease-in-out 
+          w-full
+          ${activeTab === index ? "scale-x-105" : "scale-x-100"} 
+          ${
+            activeTab === index
+              ? "bg-[#0E6B81] text-white border-2 border-white"
+              : "bg-white text-[#0E6B81] border-2 border-white"
+          }
+          ${
+            index === 0
+              ? "rounded-tl-[10px] rounded-tr-[10px]"
+              : "rounded-tr-[10px]"
+          }
+        `}
+              style={{ minWidth: "347px" }}
             >
               {tab.label}
             </button>
@@ -166,48 +154,80 @@ const BookOneDetails = () => {
         ))}
       </div>
 
-      {/* Content Section */}
-      <div className="flex flex-col lg:flex-row items-start gap-10 transition-all duration-700 ease-in-out">
+     
+      <div className="flex flex-col lg:flex-row items-start gap-[13px] transition-all duration-700 ease-in-out">
         {/* Left Image */}
-        <div className="w-full lg:w-5/12 rounded-2xl overflow-hidden shadow-lg transform transition-all duration-700 hover:scale-105">
+        <div
+          className="rounded-[24px] overflow-hidden shadow-lg flex-shrink-0"
+          style={{ width: "603px", height: "404px" }}
+        >
           <Image
             src={assets.hero}
             alt="Reception"
-            width={500}
-            height={350}
-            className="w-full h-full object-cover rounded-2xl"
+            width={603}
+            height={404}
+            className="object-cover w-full h-full"
           />
         </div>
 
         {/* Right Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full lg:w-7/12">
-          {tabContent[activeTab].map((item, idx) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[115px] gap-y-[50px] ml-12 mt-4">
+          {tabContent[activeTab].map((item) => (
             <div
               key={item.title}
-              className="bg-white rounded-2xl p-5 flex flex-col items-center text-center shadow-md min-h-[180px] transform transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-lg animate-fadeInUp"
+              className="relative bg-white border border-[#CEE6F0] rounded-[9px] p-3 flex items-center text-left shadow-md"
               style={{
-                animationDelay: `${idx * 100}ms`,
-                animationDuration: "500ms",
+                width: "222px",
+                height: "140px",
+                flexShrink: 0,
               }}
             >
-              <div className="bg-[#D6F3FF] p-4 rounded-full flex items-center justify-center mb-3">
-                <div className="text-[#0E6B81]">{item.icon}</div>
+              <div
+                className="flex items-center justify-center rounded-[8px] mr-3"
+                style={{
+                  width: "88px",
+                  height: "97px",
+                }}
+              >
+                <div className="text-white text-3xl">{item.icon}</div>
               </div>
 
-              <h3 className="text-[#0E6B81] text-[16px] sm:text-[18px] font-semibold mb-3">
-                {item.title}
-              </h3>
+             
+              <div>
+                <h3
+                  className="font-Inter font-bold"
+                  style={{
+                    color: "#146683",
+                    fontSize: "22px",
+                    lineHeight: "22px",
+                  }}
+                >
+                  {item.title}
+                </h3>
+              </div>
 
+            
               <button
                 onClick={() => router.push(item.path)}
-                className="mt-auto bg-[#B2E4FA] text-[#0E6B81] text-sm font-semibold px-4 py-1.5 rounded-full hover:bg-[#94d9f8] transition-colors"
+                className="absolute bottom-3 right-3 bg-[#8CCFF0] rounded-full flex items-center justify-center"
+                style={{
+                  width: "28px",
+                  height: "28px",
+                  flexShrink: 0,
+                }}
               >
-                Learn More
+                <Image
+                  alt="PlayIcon"
+                  src={assets.PlayIcon}
+                  width={16}
+                  height={16}
+                />
               </button>
             </div>
           ))}
         </div>
       </div>
+      
     </div>
   );
 };
