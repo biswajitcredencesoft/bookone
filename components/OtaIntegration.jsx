@@ -3,9 +3,7 @@ import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa";
 import { assets } from "@/assets/assets";
 
-// Integration data
 const integrationData = [
-  
   {
     title: "Get Connected On Top OTA’s!",
     logos: [
@@ -46,11 +44,7 @@ const rightBoxes = [
   },
 ];
 
-// Hook to check if in viewport
 const useInView = (options) => {
-  const { heroData } = useContentful();
-    
-      if (!heroData) return <p>Loading hero section...</p>;
   const ref = useRef(null);
   const [isIntersecting, setIntersecting] = useState(false);
 
@@ -66,7 +60,6 @@ const useInView = (options) => {
   return [ref, isIntersecting];
 };
 
-// Reusable card component
 const IntegrationCard = ({ title, logos }) => {
   const [ref, isVisible] = useInView({ threshold: 0.2 });
 
@@ -102,14 +95,12 @@ const IntegrationCard = ({ title, logos }) => {
   );
 };
 
-// Main section
 const OtaIntegration = () => {
   const [ref, isVisible] = useInView({ threshold: 0.2 });
 
   return (
     <div className="w-full px-4 py-12 sm:py-16 bg-gradient-to-br from-[#e6f0f5] to-[#dbe7ef]">
       <div className="max-w-[88rem] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-start">
-        {/* Left column */}
         <div className="flex flex-col gap-6">
           {integrationData.map((data, index) => (
             <IntegrationCard
@@ -120,9 +111,7 @@ const OtaIntegration = () => {
           ))}
         </div>
 
-        {/* Right column */}
         <div className="flex flex-col gap-6 mb-2">
-          {/* Section heading */}
           <div
             ref={ref}
             className={`transition-all duration-700 ease-out transform ${
@@ -157,7 +146,6 @@ const OtaIntegration = () => {
             </div>
           </div>
 
-          {/* Right side cards */}
           {rightBoxes.map((box, i) => (
             <IntegrationCard key={i} title={box.title} logos={box.logos} />
           ))}
