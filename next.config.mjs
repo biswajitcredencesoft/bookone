@@ -12,6 +12,11 @@ const nextConfig = {
           hostname: 'raw.githubusercontent.com',
           pathname: '**',
         },
+        {
+          protocol: 'https',
+          hostname: 'images.ctfassets.net',
+          pathname: '**', // allows all paths from this domain
+        },
       ],
     },
     webpack(config) {
