@@ -20,16 +20,16 @@ const BookOneGrowing = () => {
                 <div
                   key={idx}
                   className={`bg-white text-[#1F2937] rounded-3xl text-center shadow-lg hover:shadow-2xl transition-all duration-500 ease-in-out transform hover:-translate-y-1
-                    w-[260px] h-[190px] flex-shrink-0 mx-auto ${
+                    w-[120px] lg:w-[260px] h-[190px] flex-shrink-0 mx-auto ${
                       idx >= 2 ? "sm:ml-6 md:ml-14" : ""
                     }`}
                 >
                   <div className="px-5 py-8 flex flex-col justify-center h-full">
-                    <p className="text-4xl md:text-5xl font-extrabold">
+                    <p className="text-2xl md:text-5xl font-extrabold">
                       {item.number.includes("M") ? (
                         <>
                           1
-                          <span className="text-[#146683] text-5xl align-top">
+                          <span className="text-[#146683] text-2xl md:text-5xl align-top">
                             M
                           </span>
                         </>
@@ -89,7 +89,7 @@ const BookOneGrowing = () => {
               </div>
 
               <div className="shrink-0">
-                <button className="bg-[#01677D] hover:bg-[#0f4b5c] text-[#CEE6F0] px-6 py-3 rounded-md shadow-md transition duration-300 whitespace-nowrap">
+                <button className="bg-[#01677D] hover:bg-[#0f4b5c] text-[#CEE6F0] px-0 py-1 md:px-6 md:py-3 rounded-md shadow-md transition duration-300 whitespace-nowrap">
                   See What BookOne Can Do For You
                 </button>
               </div>

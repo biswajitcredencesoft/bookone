@@ -52,9 +52,9 @@ const Navbar = () => {
     <>
       <nav className="fixed top-0 left-0 w-full px-6 lg:px-16 py-3 bg-white shadow-md z-50 font-inter">
         <div className="max-w-screen-[1410px] mx-auto flex items-center justify-between w-full">
-          {/* Left - Logo */}
+        
           <div
-            className="w-32 sm:w-36 md:w-40 lg:w-[13rem] xl:w-[14rem] 2xl:w-[18rem] cursor-pointer"
+            className="w-32 sm:w-36 md:w-40 lg:w-[09rem] xl:w-[10rem] 2xl:w-[12rem] cursor-pointer"
             onClick={() => router.push("/")}
           >
             <Image

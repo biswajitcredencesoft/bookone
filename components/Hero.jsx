@@ -16,32 +16,32 @@ const Hero = () => {
     <section className="bg-[#F5F5F5] py-12 md:py-20 lg:py-24 overflow-hidden">
       <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-16 flex flex-col items-center">
         <div className="flex flex-col lg:flex-row items-center justify-between w-full gap-12">
-        
-     
           <div className="lg:w-1/2 w-full text-center lg:text-left">
-            <h1 className="text-[clamp(2rem,4vw,3rem)] font-bold leading-tight text-[#1E1E1E] font-sans mb-6">
-            {heroData?.mainheading} <br />
-              <span className="block mt-4 text-[#006D77]">
+            <h1 className="text-[20px] md:text-[32px] lg:text-[48px] font-bold leading-tight text-[#1E1E1E] font-sans mb-6">
+              {heroData?.mainheading}
+              <span className="block mt-1 md:mt-4 lg:mt-4 text-[20px] md:text-[28px] lg:text-[48px] text-[#006D77]">
                 {heroData?.secondMainHeading}
               </span>
             </h1>
 
-            <p className="text-[#171C1E] font-inter text-[clamp(1rem,2.2vw,1.5rem)] font-normal leading-[150%] mb-6 px-2 sm:px-0">
-            {documentToReactComponents(heroData.heroParagraph)}
+            <p className="hidden sm:block text-[#171C1E] font-inter text-[14px] md:text-[16px] lg:text-[18px] leading-[150%] font-normal mb-6 px-4 sm:px-0">
+              {documentToReactComponents(heroData.heroParagraph)}
             </p>
 
             <div>
               <Link href="/book-a-demo">
-                <button className="bg-[#006D77] text-white px-10 py-3 rounded-lg font-semibold text-base shadow-md hover:bg-[#005962] transition">
-                {heroData?.buttonText || "Try BookOne Now"}
+                <button className="bg-[#006D77] text-white px-14 py-1 md:px-10 md:py-3 lg:px-10 lg:py-3 rounded-lg font-semibold text-base shadow-md hover:bg-[#005962] transition">
+                  {heroData?.buttonText || "Try BookOne Now"}
                 </button>
               </Link>
             </div>
+
+
           </div>
 
           {/* Video Section */}
-          <div className="lg:w-1/2 w-full flex justify-center mt-10 lg:mt-0">
-            <div className="w-full max-w-[720px] aspect-video rounded-3xl overflow-hidden">
+          <div className="lg:w-[60%] w-full  flex justify-center mt-0 md:mt-8 lg:mt-12 ">
+            <div className="w-full max-w-[720px]  aspect-video rounded-3xl overflow-hidden">
               <video
                 src={
                   heroData?.heroImage?.fields?.file?.url

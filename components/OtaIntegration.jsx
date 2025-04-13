@@ -121,19 +121,20 @@ const OtaIntegration = () => {
             }`}
           >
             <h2 className="text-[26px] sm:text-[32px] md:text-[40px] lg:text-[44px] font-bold text-[#146683] leading-snug">
-              The Right Integrations Make
+              The Right Integrations 
               <br />
-              <span> All The Difference</span>
+              <span> Make All The Difference</span>
             </h2>
             <div className="text-gray-700 text-sm sm:text-base">
-              <p className="mb-1">
+              <p className="mb-1 md:block hidden">
                 From bookings to billing, BookOne connects with
               </p>
               <div className="flex flex-wrap items-center gap-2 mt-1">
-                <p>the platforms that power your property.</p>
+                <p className="md:block hidden">the platforms that power your property.</p>
+                <div className=" ">
                 <button
                   title="Explore more"
-                  className="group flex items-center h-10 bg-[#146683] text-white rounded-full overflow-hidden transition-all duration-300 ease-in-out w-[40px] hover:w-[150px] sm:h-10 sm:hover:w-[160px] hover:bg-[#BFE9FF] px-3"
+                  className="group flex items-center h-10 bg-[#146683] text-white rounded-full overflow-hidden transition-all duration-300 ease-in-out w-[40px] hover:w-[150px] sm:h-10 sm:hover:w-[160px] hover:bg-[#BFE9FF] px-3 "
                 >
                   <div className="flex items-center justify-center w-6 min-w-[24px] h-6 bg-[#0E5B6F] rounded-full -ml-1">
                     <FaArrowRight className="text-sm -rotate-45 transition-transform duration-300 group-hover:translate-x-1 text-white" />
@@ -142,6 +143,10 @@ const OtaIntegration = () => {
                     Explore more
                   </span>
                 </button>
+
+                </div>
+                
+
               </div>
             </div>
           </div>

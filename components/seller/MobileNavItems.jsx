@@ -20,7 +20,7 @@ const MobileNavItems = ({ openDropdown, setOpenDropdown }) => {
         <div key={key}>
           <button
             onClick={() => setOpenDropdown((prev) => (prev === key ? "" : key))}
-            className="flex items-center justify-between w-full text-left text-gray-800 font-medium hover:text-gray-900"
+            className="flex items-center space-between text-left text-gray-800 font-medium hover:text-gray-900"
           >
             {title} {openDropdown === key ? <FaAngleUp /> : <FaAngleDown />}
           </button>
