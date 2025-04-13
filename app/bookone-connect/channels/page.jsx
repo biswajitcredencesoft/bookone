@@ -11,11 +11,11 @@ const Channels = () => {
   return (
     <div className="w-full flex flex-col items-center px-4 py-10">
       <div className="w-full max-w-[1329px] flex flex-col items-center justify-center">
-        <h2 className="text-[#146683] text-3xl sm:text-4xl lg:text-[46px] font-bold leading-tight text-center font-['Inter']">
+        <h2 className="text-[#146683] text-xl sm:text-4xl lg:text-[46px] font-bold leading-tight text-center font-['Inter']">
           {connectData?.connectThridHeading}
         </h2>
 
-        <p className="text-[#146683] text-base sm:text-lg lg:text-[24px] leading-snug text-center mt-2 font-['Inter']">
+        <p className="text-[#146683] text-base sm:text-lg lg:text-[24px] leading-snug text-center mt-2 font-['Inter'] hidden md:block">
           {documentToReactComponents(connectData?.connectThridParagraph)}
         </p>
 

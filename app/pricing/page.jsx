@@ -99,7 +99,7 @@ const Pricing = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2">
             {pricingData?.pricingheading}
           </h2>
-          <p className="text-gray-600 mt-4">
+          <p className="text-gray-600 mt-4 hidden md:block">
             {documentToReactComponents(pricingData?.pricingParagraph)}
           </p>
 

@@ -84,6 +84,11 @@ import Marketing from "./marketing.png"
 import Guest from "./guest.png"
 import Price from "./pricing.png"
 
+import Picture14 from "./pic10.png"
+import Picture11 from "./pic11.png"
+import Picture12 from "./pic12.png"
+import Picture13 from "./pic13.png"
+
 export const assets = {
   logo,
   search_icon,
@@ -155,6 +160,10 @@ export const assets = {
   Marketing,
   Guest,
   Price,
+  Picture14,
+  Picture11,
+  Picture12,
+  Picture13,
 };
 
 export const BagIcon = () => {

@@ -28,14 +28,14 @@ const KeepUp = () => {
                                 Don’t Just Keep Up —<br className="hidden md:block" />
                                 Level Up!
                             </h3>
-                            <p className="text-base sm:text-lg">
+                            <p className="text-base sm:text-lg hidden md:block">
                                 BookOne isn’t just hotel software — it’s your all-in-one growth partner.
                             </p>
                         </div>
 
                         {/* Button */}
                         <div className="mt-4 md:mt-0">
-                            <button className="bg-[#01677D] hover:bg-[#0f4b5c] text-[#CEE6F0] px-5 sm:px-6 py-2.5 sm:py-3 rounded-md shadow-md transition duration-300 whitespace-nowrap text-sm sm:text-base">
+                            <button className="bg-[#01677D] hover:bg-[#0f4b5c] text-[#CEE6F0] px-0  lg:px-6 py-2 md:px-6 md:py-3 rounded-md shadow-md transition duration-300 whitespace-nowrap text-sm sm:text-base">
                                 See What BookOne Can Do For You
                             </button>
                         </div>

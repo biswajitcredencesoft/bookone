@@ -8,46 +8,44 @@ import {
   FaFileInvoice
 } from 'react-icons/fa'
 import Image from 'next/image'
-import { assets } from '@/assets/assets'
 import Link from 'next/link'
 import { useContentful } from "@/app/bookone-pms/contentfulPmsContext";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+
 const BuildOfEfficiency = () => {
   const { pmsData } = useContentful();
-  
+
   if (!pmsData) return <p>Loading hero section...</p>;
+
   return (
-    <div className="bg-[#EDF6FA] px-4 sm:px-6 lg:px-8 py-12 font-['Inter']">
+    <div className="bg-[#EDF6FA] px-4 sm:px-6 lg:px-8 py-10 md:py-12 font-['Inter']">
       <div className="max-w-[1440px] mx-auto">
-      
-        <div className="flex flex-col lg:flex-row justify-between items-start gap-6">
-       
-          <h2 className="text-[#146683] text-[32px] sm:text-[40px] lg:text-[46px] font-bold leading-[150%]">
-          {pmsData?.pmsSecondsectionheading}   <br /> {pmsData?.pmsSecondsectionheadingOne}
+
+        {/* Heading Section */}
+        <div className="flex flex-col lg:flex-row justify-between items-center md:items-start gap-6">
+          <h2 className="text-[#146683] text-[26px] sm:text-[36px] md:text-[40px] lg:text-[46px] font-bold leading-[140%]">
+            {pmsData?.pmsSecondsectionheading} <br /> {pmsData?.pmsSecondsectionheadingOne}
           </h2>
 
-     
-          <p className="text-[#146683] mt-2 lg:mt-8 text-[18px] sm:text-[20px] lg:text-[24px] leading-[130%] max-w-xl">
-            {/* Smart features that automate the <br />
-            repetitive, surface the critical, and <br />
-            keep everything running smoothly. */}
+          <p className="text-[#146683] mt-2 md:mt-4 lg:mt-8 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] leading-[130%] max-w-xl hidden md:block">
             {documentToReactComponents(pmsData?.pmsSecondsectionParagarph)}
           </p>
 
-          
-          <div className="mt-4 lg:mt-8">
+          {/* Desktop Only Button */}
+          <div className="mt-4 lg:mt-8 hidden lg:block">
             <Link href="/pricing">
-            <button className="w-[200px] h-[45px] rounded-[16px] border border-[#CEE6F0] bg-[#01677D] text-white font-semibold text-[16px]">
-              Get Pricing
-            </button>
+              <button className="w-[180px] h-[42px] rounded-[14px] border border-[#CEE6F0] bg-[#01677D] text-white font-semibold text-[15px]">
+                Get Pricing
+              </button>
             </Link>
           </div>
         </div>
 
-        {/* Content Section */}
-        <div className="mt-12 flex flex-col lg:flex-row gap-10 items-start">
+        {/* Image + Features Section */}
+        <div className="mt-10 md:mt-12 flex flex-col lg:flex-row gap-10 items-start">
+
           {/* Left Image */}
-          <div className="w-full lg:w-[493px] h-[323px] rounded-[20px] overflow-hidden flex-shrink-0">
+          <div className="w-full lg:w-[493px] h-[220px] sm:h-[260px] md:h-[300px] lg:h-[323px] rounded-[20px] overflow-hidden flex-shrink-0">
             <Image
               src={`https:${pmsData.pmsSecondSectionImage.fields.file.url}`}
               alt="Efficiency"
@@ -57,27 +55,36 @@ const BuildOfEfficiency = () => {
             />
           </div>
 
-          {/* Right Features Grid */}
+          {/* Right Features */}
           <div className="flex-1 mt-10 lg:mt-16 w-full">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-10">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-6 sm:gap-x-6 sm:gap-y-8">
               {features.map((feature) => (
                 <div
                   key={feature.title}
-                  className="flex items-center gap-4"
+                  className="flex items-start gap-3 sm:gap-4"
                 >
-                  {/* Icon Background */}
-                  <div className="w-[80px] h-[77px] flex items-center justify-center bg-[rgba(191,233,255,0.20)] shadow-md rounded-[12px] flex-shrink-0">
-                    <div className="w-[56px] h-[56px] aspect-square text-[#01677D] text-[28px] flex items-center justify-center">
+                  {/* Icon Box */}
+                  <div className="w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] md:w-[70px] md:h-[70px] flex items-center justify-center bg-[rgba(191,233,255,0.20)] shadow rounded-[10px] flex-shrink-0">
+                    <div className="text-[#01677D] text-[18px] sm:text-[20px] md:text-[24px]">
                       {feature.icon}
                     </div>
                   </div>
 
                   {/* Title */}
-                  <span className="text-[#171C1E] text-[18px] sm:text-[20px] leading-[130%]">
+                  <span className="text-[#171C1E] text-[14px] sm:text-[16px] md:text-[18px] font-medium leading-snug">
                     {feature.title}
                   </span>
                 </div>
               ))}
+            </div>
+
+            {/* Mobile & Tablet Button */}
+            <div className="mt-10 block lg:hidden">
+              <Link href="/pricing">
+                <button className="w-full sm:w-[200px] h-[42px] rounded-[14px] border border-[#CEE6F0] bg-[#01677D] text-white font-semibold text-[15px] mx-auto">
+                  Get Pricing
+                </button>
+              </Link>
             </div>
           </div>
         </div>
