@@ -43,7 +43,8 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FaInstagram className="hover:text-skyCustom transition" />
+              {/* <FaInstagram className="hover:text-skyCustom transition" /> */}
+              <Image src={assets.Instagram} alt="Instagram Icon" className="hover:text-skyCustom transition h-[18px] w-[20px]"/>
             </a>
           </div>
 
@@ -53,8 +54,10 @@ const Footer = () => {
                 href="tel:+919004146024"
                 className="flex items-center gap-2 font-light "
               >
-                <FaPhoneAlt className="text-skyCustom" />
+                <Image src={assets.Phone_Icon} alt="Phone Icon" className="text-skyCustom h-[20px] w-[20px]"/>
+                {/* <FaPhoneAlt className="text-skyCustom" /> */}
                 +91-90041 46024
+                
               </a>
             </div>
             <div>

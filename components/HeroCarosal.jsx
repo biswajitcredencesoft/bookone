@@ -1,14 +1,15 @@
-'use client';
-import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
-import { assets } from '@/assets/assets';
+"use client";
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import { assets } from "@/assets/assets";
 
 const leftData = [
   {
     logo: assets.MobileLogo,
-    title: 'Mobile App',
-    subtitle: 'On-the-go',
-    description: 'Manage your entire property on-the-go with our sleek, all-in-one mobile app.',
+    title: "Mobile App",
+    subtitle: "On-the-go",
+    description:
+      "Manage your entire property on-the-go with our sleek, all-in-one mobile app.",
   },
 ];
 
@@ -27,7 +28,6 @@ const HeroCarosal = () => {
   return (
     <div className="bg-[#f3f3f3] py-0 lg:py-2 px-8 md:px-4 lg:px-6">
       <div className="max-w-[1200px] mx-auto">
-
         {/* MOBILE VIEW ONLY */}
         <div className="flex sm:hidden flex-row items-center justify-between gap-4 w-full">
           {/* Mobile Image */}
@@ -42,15 +42,23 @@ const HeroCarosal = () => {
 
           {/* Text Content */}
           <div className="flex flex-col gap-2">
-            <span className="text-[#146683] text-sm font-semibold">{currentData.subtitle}</span>
-            <h1 className="text-[#146683] text-xl font-extrabold">{currentData.title}</h1>
+            <span className="text-[#146683] text-sm font-semibold">
+              {currentData.subtitle}
+            </span>
+            <h1 className="text-[#146683] text-xl font-extrabold">
+              {currentData.title}
+            </h1>
             <p className="text-[#818181] text-xs leading-snug max-w-[180px]">
               {currentData.description}
             </p>
 
             {/* App Store Buttons */}
             <div className="flex gap-2 mt-1">
-              <a href="https://apps.apple.com/" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://apps.apple.com/in/app/bookone-business/id1479329580"
+                target=""
+                rel="noopener noreferrer"
+              >
                 <Image
                   src={assets.AppStore}
                   alt="App Store"
@@ -59,7 +67,11 @@ const HeroCarosal = () => {
                   className="object-contain"
                 />
               </a>
-              <a href="https://play.google.com/" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://play.google.com/store/apps/details?id=nz.co.credencesoft.bookone"
+                target=""
+                rel="noopener noreferrer"
+              >
                 <Image
                   src={assets.PlayStore}
                   alt="Play Store"
@@ -87,29 +99,41 @@ const HeroCarosal = () => {
 
             <div className="flex flex-col gap-4">
               <div className="flex flex-col gap-1">
-                <span className="text-[#146683] text-lg font-semibold">{currentData.subtitle}</span>
+                <span className="text-[#146683] text-lg font-semibold">
+                  {currentData.subtitle}
+                </span>
                 <h1 className="text-[#146683] text-2xl md:text-[32px] lg:text-[40px] font-extrabold leading-tight">
                   {currentData.title}
                 </h1>
               </div>
-              <p className="text-[#818181] text-[16px] max-w-[316px]">{currentData.description}</p>
+              <p className="text-[#818181] text-[16px] max-w-[316px]">
+                {currentData.description}
+              </p>
 
-              <div className="flex gap-4 mt-2 flex-wrap">
-                <a href="https://apps.apple.com/" target="_blank" rel="noopener noreferrer">
+              <div className="flex gap-2 mt-1">
+                <a
+                  href="https://apps.apple.com/in/app/bookone-business/id1479329580"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Image
                     src={assets.AppStore}
                     alt="App Store"
-                    width={111}
-                    height={33}
+                    width={90}
+                    height={30}
                     className="object-contain"
                   />
                 </a>
-                <a href="https://play.google.com/" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://play.google.com/store/apps/details?id=nz.co.credencesoft.bookone/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Image
                     src={assets.PlayStore}
                     alt="Play Store"
-                    width={111}
-                    height={33}
+                    width={90}
+                    height={30}
                     className="object-contain"
                   />
                 </a>
@@ -129,7 +153,6 @@ const HeroCarosal = () => {
             </div>
           </div>
         </div>
-
       </div>
     </div>
   );

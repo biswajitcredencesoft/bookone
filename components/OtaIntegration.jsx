@@ -126,7 +126,7 @@ const OtaIntegration = () => {
               <span> Make All The Difference</span>
             </h2>
             <div className="text-gray-700 text-sm sm:text-base">
-              <p className="mb-1 md:block hidden">
+              <p className="mt-2 md:block hidden">
                 From bookings to billing, BookOne connects with
               </p>
               <div className="flex flex-wrap items-center gap-2 mt-1">

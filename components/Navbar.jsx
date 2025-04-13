@@ -52,7 +52,6 @@ const Navbar = () => {
     <>
       <nav className="fixed top-0 left-0 w-full px-6 lg:px-16 py-3 bg-white shadow-md z-50 font-inter">
         <div className="max-w-screen-[1410px] mx-auto flex items-center justify-between w-full">
-        
           <div
             className="w-32 sm:w-36 md:w-40 lg:w-[09rem] xl:w-[10rem] 2xl:w-[12rem] cursor-pointer"
             onClick={() => router.push("/")}
@@ -67,7 +66,7 @@ const Navbar = () => {
           </div>
 
           {/* Center - Navigation */}
-          <div className="hidden md:flex items-center space-x-4 md:space-x-2 font-sans ">
+          <div className="hidden md:flex items-center space-x-4 md:space-x-2 font-sans mt-2">
             <DropdownMenu
               title="Products"
               menuKey="products"
@@ -102,21 +101,34 @@ const Navbar = () => {
               </button>
             </Link>
             <Link href="/book-a-demo">
-            <button className="bg-[#27668c] text-white px-6 px:[10px] md:px-[20px] lg:px-[30px] xl:px-[30px] 2xl:px-[50px] xl:[24px] py-[15px] md:py-[6px] lg:py-[10px] xl:py-[10px] 2xl:py-[15px] rounded-xl text-[14px] md:text-[13.5px] lg:text-[15px] xl:text-[15px] 2xl:text-[19px] font-medium transition-all hover:ring-2 hover:ring-offset-2 hover:ring-gray-400">
-              Book A Demo
-            </button>
+              <button className="bg-[#27668c] text-white px-6 px:[10px] md:px-[20px] lg:px-[30px] xl:px-[30px] 2xl:px-[50px] xl:[24px] py-[15px] md:py-[6px] lg:py-[10px] xl:py-[10px] 2xl:py-[15px] rounded-xl text-[14px] md:text-[13.5px] lg:text-[15px] xl:text-[15px] 2xl:text-[19px] font-medium transition-all hover:ring-2 hover:ring-offset-2 hover:ring-gray-400">
+                Book A Demo
+              </button>
             </Link>
-          
-            <Link href="/login" className="ml-2 text-[#27668c] text-2xl md:text-4xl hover:opacity-80">
+
+            {/* <Link href="/login" className="ml-2 text-[#27668c] text-2xl md:text-4xl hover:opacity-80">
               <div className="rounded-full bg-[#CEE6F0] p-[2rem] ">
-                
+                <Image src={assets.User_logo} alt="user logo" className="h-[10px] w-[10px]"/>
+              </div>
+            </Link> */}
+
+            <Link href="/login" className="ml-2 hover:opacity-80">
+              <div className="rounded-full bg-[#CEE6F0] p-4 flex items-center justify-center shadow-md transition-transform duration-300 hover:scale-105">
+                <Image
+                  src={assets.User_logo}
+                  alt="User Logo"
+                  className="w-6 h-6 md:w-10 md:h-10 object-contain"
+                />
               </div>
             </Link>
           </div>
 
           {/* Mobile - User Icon + Hamburger */}
           <div className="flex items-center gap-4 md:hidden ml-auto">
-            <Link href="/login" className="text-[#27668c] text-2xl hover:opacity-80">
+            <Link
+              href="/login"
+              className="text-[#27668c] text-2xl hover:opacity-80"
+            >
               <FaUserCircle />
             </Link>
             <button
@@ -142,7 +154,9 @@ const Navbar = () => {
                   href={item.href}
                   className="flex items-start gap-4 p-3 rounded-lg hover:bg-gray-100 transition-all"
                 >
-                  <div className="text-[#27668c] text-2xl md:text-xl">{item.icon}</div>
+                  <div className="text-[#27668c] text-2xl md:text-xl">
+                    {item.icon}
+                  </div>
                   <div>
                     <h3 className="text-[15px] md:text-[13px] font-bold text-black font-sans">
                       {item.name}
@@ -166,17 +180,16 @@ const Navbar = () => {
             />
             {/* Mobile Buttons */}
             <div className="md:hidden mt-4 px-6 space-y-3">
-              <Link href="/pricing">
+              {/* <Link href="/pricing">
                 <button className="w-full border border-[#27668c] text-[#27668c] py-2 md:py-1.5 rounded-full text-[15px] md:text-[13.5px] font-Inter transition-all hover:ring-2 hover:ring-offset-2">
                   Get Pricing
                 </button>
-              </Link>
+              </Link> */}
               <Link href="/book-a-demo">
-              <button className="w-full bg-[#27668c] text-white py-2 md:py-1.5 rounded-full text-[15px] md:text-[13.5px] font-Inter transition-all hover:ring-2 hover:ring-offset-2 hover:ring-gray-400">
-                Book A Demo
-              </button>
+                <button className="w-full bg-[#27668c] text-white py-2 md:py-1.5 rounded-full text-[15px] md:text-[13.5px] font-Inter transition-all hover:ring-2 hover:ring-offset-2 hover:ring-gray-400">
+                  Book A Demo
+                </button>
               </Link>
-             
             </div>
           </>
         )}

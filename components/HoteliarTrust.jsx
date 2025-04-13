@@ -1,5 +1,7 @@
+import { assets } from "@/assets/assets";
 import React, { useState, useEffect } from "react";
 import { FaQuoteLeft } from "react-icons/fa";
+import Image from "next/image";
 
 const testimonials = [
   {
@@ -97,8 +99,8 @@ const HoteliarTrust = () => {
   return (
     <div className="bg-[#F6FAFE] py-12 px-4 sm:px-6 lg:px-[60px] transition-all">
       <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#146683] mb-12 text-center lg:text-left">
-        Hoteliers Who Trust BookOne <br className="hidden md:block" />
-        – And Keep Thriving
+        Hoteliers Who Trust BookOne <br className="hidden md:block" />– And Keep
+        Thriving
       </h2>
 
       {/* Carousel Section */}
@@ -120,7 +122,9 @@ const HoteliarTrust = () => {
               <div
                 key={index}
                 className={`bg-white p-6 sm:p-8 rounded-2xl border border-gray-100 shadow-md relative flex flex-col justify-between transition-transform duration-500 ${
-                  isCenterCard ? "scale-105 shadow-xl z-10" : "scale-95 opacity-90"
+                  isCenterCard
+                    ? "scale-105 shadow-xl z-10"
+                    : "scale-95 opacity-90"
                 }`}
               >
                 <p className="text-gray-700 text-base sm:text-lg mb-6 leading-relaxed">
@@ -158,15 +162,19 @@ const HoteliarTrust = () => {
 
       {/* Highlight Section */}
       <div className="bg-[#D9E7F1] rounded-2xl px-6 py-10 sm:px-10 max-w-7xl mx-auto relative overflow-hidden">
-        <FaQuoteLeft className="text-5xl text-[#03506F] absolute top-4 left-4 opacity-20" />
+        {/* <FaQuoteLeft className="text-5xl text-[#03506F] absolute top-4 left-4 opacity-20" /> */}
+
+        <Image src={assets.Quote} alt="Quote symbol" className="text-5xl text-[#03506F] absolute top-4 left-4 "/>
+
         <p className="text-[#03506F] text-lg md:text-xl font-semibold pl-10 sm:pl-16 leading-relaxed">
           After moving to BookOne, our OTA bookings jumped by 47%, payment
           errors dropped by 70%, and we saved over 20 hours a week on manual
           tasks. Guest satisfaction scores also rose by 1.3 stars in just 90
           days.
         </p>
+
         <div className="mt-6 flex justify-end">
-          <button className="border border-[#03506F] text-[#03506F] px-6 py-2 rounded-full text-sm sm:text-base hover:bg-[#03506F] hover:text-white transition duration-300">
+          <button className="inline-flex items-start gap-2 h-[42px] px-3 py-[10px] flex-shrink-0 rounded-[24px] border border-[#146683] bg-[rgba(20,102,131,0)] text-[#146683] text-sm sm:text-base hover:bg-[#146683] hover:text-white transition duration-300">
             Read Case Study
           </button>
         </div>

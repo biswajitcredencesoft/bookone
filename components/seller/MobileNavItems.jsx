@@ -50,9 +50,7 @@ const MobileNavItems = ({ openDropdown, setOpenDropdown }) => {
         Pricing
       </Link>
 
-      <button className="mt-4 px-4 py-3 bg-blue-600 text-white rounded-full text-sm hover:bg-blue-700 transition">
-        Request A Demo
-      </button>
+     
     </div>
   );
 };

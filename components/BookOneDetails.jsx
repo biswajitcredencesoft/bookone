@@ -44,46 +44,52 @@ const BookOneDetails = () => {
     ],
     [
       {
-        icon: <Image alt="Marketing1" src={assets.Marketing1}/>,
+        icon: <Image alt="Marketing1" src={assets.Marketing1} />,
         title: "Channel Manager",
         path: "/bookone-connect",
       },
       {
-        icon: <Image alt="Marketing2" src={assets.Marketing2}/>,
+        icon: <Image alt="Marketing2" src={assets.Marketing2} />,
         title: "Digital Marketing",
         path: "/digital-marketing",
       },
       {
-        icon: <Image alt="Marketing3" src={assets.Marketing3}/>,
+        icon: <Image alt="Marketing3" src={assets.Marketing3} />,
         title: "Online Reputation Management",
         path: "/online-repution-management",
       },
       {
-        icon: <Image alt="Marketing4" src={assets.Marketing4}/>,
+        icon: <Image alt="Marketing4" src={assets.Marketing4} />,
         title: "Online Menu",
         path: "/online-menu",
       },
     ],
     [
       {
-        icon: <Image alt="Guest1" src={assets.Guest1}/>,
+        icon: <Image alt="Guest1" src={assets.Guest1} />,
         title: "BookOne CRM",
         path: "/guest-app",
       },
       {
-        icon: <Image alt="Guest2" src={assets.Guest2}/>,
+        icon: <Image alt="Guest2" src={assets.Guest2} />,
         title: "BookOne Loyality",
         path: "/room-service",
       },
-  
     ],
     [
       {
-        icon: <Image alt="Automation" src={assets.Automation}/>,
+        icon: <Image alt="Automation" src={assets.Automation} />,
         title: "BookOne VaRO",
         path: "/bookone-varo",
       },
     ],
+  ];
+
+  const tabImages = [
+    assets.hero,   
+    assets.Marketing,   
+    assets.Guest,       
+    assets.Price,  
   ];
 
   useEffect(() => {
@@ -112,40 +118,20 @@ const BookOneDetails = () => {
           <div
             key={index}
             className={`group relative flex-shrink-0 text-center transition-all duration-300 ease-in-out 
-        ${activeTab === index ? "border-none" : "border-b-2 border-transparent"}
-      `}
+              ${activeTab === index ? "border-none" : "border-b-2 border-transparent"}
+            `}
             onMouseEnter={() => handleHover(index)}
             onClick={() => setActiveTab(index)}
           >
-            {/* {activeTab === index && (
-              <svg
-                className="absolute top-full left-0 w-full h-[10px] z-0 pointer-events-none"
-                viewBox="0 0 100 10"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M0,10 Q50,0 100,10"
-                  fill="white"
-                  stroke="white"
-                  strokeWidth="1"
-                />
-              </svg>
-            )} */}
             <button
               className={`relative z-10 text-sm md:text-base font-semibold py-3 px-6 transition-all duration-300 ease-in-out 
-          w-full
-          ${activeTab === index ? "scale-x-105" : "scale-x-100"} 
-          ${
-            activeTab === index
-              ? "bg-[#0E6B81] text-white border-2 border-white"
-              : "bg-white text-[#0E6B81] border-2 border-white"
-          }
-          ${
-            index === 0
-              ? "rounded-tl-[10px] rounded-tr-[10px]"
-              : "rounded-tr-[10px]"
-          }
-        `}
+                w-full
+                ${activeTab === index ? "scale-x-105" : "scale-x-100"} 
+                ${activeTab === index
+                  ? "bg-[#0E6B81] text-white border-2 border-white"
+                  : "bg-white text-[#0E6B81] border-2 border-white"}
+                ${index === 0 ? "rounded-tl-[10px] rounded-tr-[10px]" : "rounded-tr-[10px]"}
+              `}
               style={{ minWidth: "347px" }}
             >
               {tab.label}
@@ -154,7 +140,6 @@ const BookOneDetails = () => {
         ))}
       </div>
 
-     
       <div className="flex flex-col lg:flex-row items-start gap-[13px] transition-all duration-700 ease-in-out">
         {/* Left Image */}
         <div
@@ -162,8 +147,8 @@ const BookOneDetails = () => {
           style={{ width: "603px", height: "404px" }}
         >
           <Image
-            src={assets.hero}
-            alt="Reception"
+            src={tabImages[activeTab]}
+            alt="Tab Image"
             width={603}
             height={404}
             className="object-cover w-full h-full"
@@ -192,7 +177,6 @@ const BookOneDetails = () => {
                 <div className="text-white text-3xl">{item.icon}</div>
               </div>
 
-             
               <div>
                 <h3
                   className="font-Inter font-bold"
@@ -206,7 +190,6 @@ const BookOneDetails = () => {
                 </h3>
               </div>
 
-            
               <button
                 onClick={() => router.push(item.path)}
                 className="absolute bottom-3 right-3 bg-[#8CCFF0] rounded-full flex items-center justify-center"
@@ -227,7 +210,6 @@ const BookOneDetails = () => {
           ))}
         </div>
       </div>
-      
     </div>
   );
 };
