@@ -58,16 +58,17 @@ const PaymentGateWays = () => {
         className="max-w-[1440px] mx-auto px-2 sm:px-4"
         style={sectionStyle}
       >
-        <h2 className="text-[20px] sm:text-[36px] md:text-[46px] font-bold leading-snug text-[#146683] text-center font-['Inter'] mb-6">
-          {bookMaxData?.integrationHeading}
-        </h2>
+       <h2 class="text-[20px] sm:text-[36px] md:text-[46px] font-bold leading-snug text-[#146683] text-center font-['Inter'] sm:mb-6">
+  Integrate With Trusted Payment Gateways
+</h2>
+
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-10 sm:mb-14 text-center sm:text-left ">
           <p className="text-[16px] sm:text-[18px] md:text-[22px] font-medium leading-[150%] text-[#146683] font-['Inter'] max-w-[500px] hidden md:block">
           {documentToReactComponents(bookMaxData?.integrationSubHeading)}
           </p>
 
-          <div className="mt-2 sm:mt-0">
+          <div className="mt-2 sm:mt-0  hidden sm:block" >
             <button
               title="Talk to Sales"
               className="group flex items-center h-10 bg-[#146683] text-white rounded-full overflow-hidden transition-all duration-300 ease-in-out w-[40px] hover:w-[150px] sm:h-10 sm:hover:w-[160px] hover:bg-[#BFE9FF] px-3 mx-auto sm:mx-0"
@@ -76,7 +77,7 @@ const PaymentGateWays = () => {
                 <FaArrowRight className="text-sm -rotate-45 transition-transform duration-300 group-hover:translate-x-1 text-white" />
               </div>
               <span className="ml-4 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 text-sm whitespace-nowrap text-[#146683]">
-                Explore more
+              Talk To Sales
               </span>
             </button>
           </div>
@@ -102,6 +103,19 @@ const PaymentGateWays = () => {
             />
           </div>
         </div>
+        <div className="mt-2 sm:mt-0 talk-to-sales sm:hidden">
+            <button
+              title="Talk to Sales"
+              className="group flex items-center h-10 bg-[#146683] text-white rounded-full overflow-hidden transition-all duration-300 ease-in-out w-[40px] hover:w-[150px] sm:h-10 sm:hover:w-[160px] hover:bg-[#BFE9FF] px-3 mx-auto sm:mx-0"
+            >
+              <div className="flex items-center justify-center w-6 min-w-[24px] h-6 bg-[#0E5B6F] rounded-full -ml-1">
+                <FaArrowRight className="text-sm -rotate-45 transition-transform duration-300 group-hover:translate-x-1 text-white" />
+              </div>
+              <span className="ml-4 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 text-sm whitespace-nowrap text-[#146683]">
+              Talk To Sales
+              </span>
+            </button>
+          </div>
       </div>
     </section>
   );
