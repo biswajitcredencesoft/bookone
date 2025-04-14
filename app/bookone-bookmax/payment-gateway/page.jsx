@@ -48,7 +48,7 @@ const PaymentGateWays = () => {
     opacity: isVisible ? 1 : 0,
     transform: isVisible ? "translateY(0)" : "translateY(20px)",
   };
-
+  if (!bookMaxData) return <p>Loading...</p>;
   return (
     <section
       id="payment-gateway-section"
