@@ -23,12 +23,12 @@ const LevelUP = () => {
         </div>
 
         <div className="flex-1 w-full text-center md:text-left">
-          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 leading-tight hidden md:block">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 leading-tight ">
             {/* Don’t Just Keep Up –<br className="hidden md:block" />
             Level Up! */}
             {pmsData?.pmsLastHeading}
           </h3>
-          <p className="text-base sm:text-lg md:text-xl mb-6 text-white/90">
+          <p className="text-base sm:text-lg md:text-xl mb-6 text-white/90 hidden md:block">
           {documentToReactComponents(pmsData?.pmsLastParagarph)}
           </p>
           <button className="bg-[#0071BC] hover:bg-[#005b99] text-white text-sm sm:text-base font-medium lg:px-6 py-2 md:px-6 md:py-3 rounded-md shadow-md transition duration-300">
