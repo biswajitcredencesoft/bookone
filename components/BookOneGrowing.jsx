@@ -1,22 +1,45 @@
+"use client";
+import { useEffect, useState } from "react";
 import React from "react";
 import Image from "next/image";
+import { createClient } from "contentful";
 import { assets } from "@/assets/assets";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
+const client = createClient({
+  space: "wzmo4lmp2r9v",
+  accessToken: "8byVN6ybNsGaYJ6FUTB0CB4mwuie5fIX-DxWy1GGi6E",
+});
 const BookOneGrowing = () => {
+  const [heroData, setHeroData] = useState(null);
+
+  useEffect(() => {
+    async function fetchContent() {
+      try {
+        const res = await client.getEntries({ content_type: "homePage" });
+        setHeroData(res.items[0]?.fields);
+      } catch (err) {
+        console.error("Contentful fetch error:", err);
+      }
+    }
+
+    fetchContent();
+  }, []);
+    console.log("heroData",heroData)
   const stats = [
     { number: "100+", label: "Cities where BookOne is active" },
     { number: "4000+", label: "Hotels worldwide and growing" },
     { number: "1M", label: "Bookings Managed" },
     { number: "80+", label: "Exciting features in BookOne" },
   ];
-
+  if (!heroData) return <p>Loading ...</p>;
   return (
     <div className="bg-[linear-gradient(to_bottom,_#5E5B7D,_#146683,_#000000)] text-white px-4 lg:py-16  md:py-16 py-8  md:px-20 font-Inter">
       <div className="max-w-7xl mx-auto space-y-24">
         {/* Title Block for Mobile */}
         <div className="md:hidden text-center space-y-4">
           <h2 className="text-2xl font-bold leading-snug">
-            BookOne is Growing, So Are Our Hotels
+          {heroData?.fifthHeading}
           </h2>
         </div>
 
@@ -65,11 +88,10 @@ const BookOneGrowing = () => {
           {/* Right Text Content */}
           <div className="w-full md:w-1/2 text-center md:text-left space-y-6 hidden md:block">
             <h2 className="text-3xl font-bold leading-snug ">
-              BookOne is Growing, So Are Our Hotels
+              {heroData?.fifthHeading}
             </h2>
             <p className="text-lg leading-relaxed">
-              Join the global network of hotels that trust BookOne to simplify,
-              scale, and succeed.
+            {documentToReactComponents(heroData?.fifthParagraph)}
             </p>
           </div>
         </div>
@@ -79,7 +101,9 @@ const BookOneGrowing = () => {
           <div className="relative w-[220px] md:w-[280px] -mt-20 md:-mt-28">
             <div className="rounded-xl overflow-hidden shadow-lg">
               <Image
-                src={assets.banner}
+                src={`https:${heroData?.sixthImage?.fields?.file?.url}`}
+                width={700}
+              height={700}
                 alt="Smiling professionals"
                 className="w-full h-full object-cover"
               />
@@ -90,12 +114,11 @@ const BookOneGrowing = () => {
             <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-6">
               <div className="text-center md:text-left">
                 <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                  Don’t Just Keep Up — Level Up!
+                  {heroData?.sixthHeading}
                   <br className="hidden md:block" />
                 </h3>
                 <p className="text-lg mb-0 max-w-xl mx-auto md:mx-0 hidden md:block ">
-                  BookOne isn’t just hotel software — it’s your <br />
-                  all-in-one growth partner.
+                {documentToReactComponents(heroData?.sixthParagraph)}
                 </p>
               </div>
 

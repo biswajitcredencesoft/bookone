@@ -10,7 +10,7 @@ import Link from "next/link";
 const Hero = () => {
   const { heroData } = useContentful();
 
-  if (!heroData) return <p>Loading hero section...</p>;
+  if (!heroData) return <p>Loading...</p>;
 
   return (
     <section className="bg-[#F5F5F5] py-12 md:py-20 lg:py-24 overflow-hidden">

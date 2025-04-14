@@ -40,7 +40,7 @@ const BookOneConnect = () => {
     }, []);
 
   
-  if (!connectData) return <p>Loading content section...</p>;
+  if (!connectData) return <p>Loading...</p>;
   return (
     <>
     <ContentfulProviderBookone>

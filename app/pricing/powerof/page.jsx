@@ -95,7 +95,7 @@ const PowerOf = () => {
 
       <div className="relative max-w-screen-xl mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
       
-        <div className="lg:max-w-[635px] w-full">
+        <div className="lg:max-w-[468px] w-full">
           <h2 className="text-[28px] sm:text-[36px] font-bold text-[#146683] leading-snug font-['Inter'] mb-4">
             {pricingData?.pricingSecondParagrph}
           </h2>

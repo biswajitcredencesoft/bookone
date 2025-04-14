@@ -27,7 +27,7 @@ const LevelUP = () => {
       fetchHeroContent();
     }, []);
   
-  if (!pmsData) return <p>Loading hero section...</p>;
+  if (!pmsData) return <p>Loading...</p>;
   return (
     <div className="bg-[linear-gradient(to_bottom,#5E5B7D,#146683,#000000)] px-4 md:px-12 py-12 md:py-20 font-Inter text-white">
       <div className="max-w-7xl mx-auto bg-white/10 backdrop-blur-md rounded-2xl shadow-2xl flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16 px-6 py-10 md:px-12 md:py-16">
