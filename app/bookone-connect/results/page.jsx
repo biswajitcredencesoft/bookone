@@ -87,8 +87,8 @@ const Results = () => {
       >
         {/* Quote */}
         <div className="flex items-start gap-4 text-[#146683] max-w-full lg:max-w-[858px]">
-          <FaQuoteLeft className="w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] lg:w-[73px] lg:h-[71px] flex-shrink-0 text-[#146683]" />
-          <p className="text-[14px] sm:text-[22px] lg:text-[28px] font-semibold leading-[22px] sm:leading-[36px] lg:leading-[40px]">
+          <Image src={assets.Quote} alt="Quote" className="w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] lg:w-[30px] lg:h-[30px] flex-shrink-0 text-[#146683]" />
+          <p className="text-[14px] sm:text-[22px] lg:text-[20px] font-semibold leading-[22px] sm:leading-[36px] lg:leading-[40px]">
             {documentToReactComponents(pmsData?.pmsreviewsCta)}
           </p>
         </div>
@@ -100,7 +100,7 @@ const Results = () => {
             alt="Yogiraj Logo"
             className="w-[160px] sm:w-[180px] lg:w-[207px] h-auto object-contain flex-shrink-0"
           />
-          <button className="w-[200px] sm:w-[233px] h-[42px] px-[12px] py-[10px] gap-[8px] rounded-[24px] border border-[#146683] bg-transparent text-[#146683] font-medium text-[18px] sm:text-[20px] lg:text-[24px] tracking-[0.48px] font-['Inter'] hover:bg-[#f0fafa] transition">
+          <button className="w-[200px] sm:w-[190px] h-[42px] px-[12px] py-[10px] gap-[8px] rounded-[24px] border border-[#146683] bg-transparent text-[#146683] font-medium text-[12px] sm:text-[14px] lg:text-[16px] tracking-[0.48px] font-['Inter'] hover:bg-[#f0fafa] transition">
             Read Case Study
           </button>
         </div>
