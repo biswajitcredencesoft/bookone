@@ -7,19 +7,20 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "contentful";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+
 const client = createClient({
   space: "wzmo4lmp2r9v",
   accessToken: "8byVN6ybNsGaYJ6FUTB0CB4mwuie5fIX-DxWy1GGi6E",
 });
-const Results = () => {
 
+const Results = () => {
   const [pmsData, setpmsData] = useState(null);
   const router = useRouter();
 
   useEffect(() => {
     async function fetchHeroContent() {
       try {
-        const res = await client.getEntries({ content_type: "bookOnePms" }); // Replace with your actual content type ID
+        const res = await client.getEntries({ content_type: "bookOnePms" });
         setpmsData(res.items[0]?.fields);
         console.log("bookOnePms", res.items);
       } catch (err) {
@@ -38,6 +39,7 @@ const Results = () => {
         {pmsData?.pmsReviewsHeading}
       </h2>
 
+      {/* Cards */}
       <div className="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-6 mb-16">
         {[
           {
@@ -58,16 +60,19 @@ const Results = () => {
         ].map((item, i) => (
           <div
             key={i}
-            className="w-full sm:w-[344px] h-[180px] md:h-[227px] bg-white rounded-[40px] shadow-inner flex flex-col items-center justify-center text-center px-6"
-            style={{ boxShadow: "inset 0px 4px 4px rgba(0, 0, 0, 0.25)" }}
+            className="w-[70%] ml-16 md:ml-0 lg:ml-0 sm:w-[344px] h-[180px] md:h-[227px] bg-white rounded-[32px] px-6 py-6 flex flex-col justify-center"
+            style={{
+              boxShadow: "inset 0px 4px 8px rgba(0, 0, 0, 0.1)",
+            }}
           >
-            <p className="text-[32px] font-bold text-[#146683]">
-              {item.percent}
-            </p>
-            <p className="text-[16px] font-semibold text-[#146683] mt-1">
-              {item.title}
-            </p>
-            <p className="text-[14px] text-[#666] mt-2">{item.desc}</p>
+            {/* Top row: percentage + title */}
+            <div className="flex items-baseline gap-3 mb-2">
+              <p className="text-[#146683] text-[20px] md:text[25px] font-bold leading-none">{item.percent}</p>
+              <p className="text-[#146683] text-[15px] md:text-[22px] font-semibold leading-none">{item.title}</p>
+            </div>
+
+            {/* Description */}
+            <p className="text-[#146683] text-[16px] font-normal mt-4">{item.desc}</p>
           </div>
         ))}
       </div>
@@ -80,6 +85,7 @@ const Results = () => {
           boxShadow: "inset 0px 4px 4px rgba(0, 0, 0, 0.25)",
         }}
       >
+        {/* Quote */}
         <div className="flex items-start gap-4 text-[#146683] max-w-full lg:max-w-[858px]">
           <FaQuoteLeft className="w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] lg:w-[73px] lg:h-[71px] flex-shrink-0 text-[#146683]" />
           <p className="text-[14px] sm:text-[22px] lg:text-[28px] font-semibold leading-[22px] sm:leading-[36px] lg:leading-[40px]">
