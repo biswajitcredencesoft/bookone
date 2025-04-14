@@ -46,22 +46,22 @@ const BookOneConnect = () => {
     <ContentfulProviderBookone>
     <Navbar />
     </ContentfulProviderBookone>
-      <section className="flex flex-col-reverse lg:flex-row items-center justify-between  px-6 lg:pl-[5rem] lg:pr-[12rem] py-12 md:py-16 bg-white gap-0 md:gap-6 lg:gap-12">
-        <div className="flex w-full lg:w-[600px] h-auto lg:h-[464px] gap-4 items-start shrink-0">
+      <section className="flex flex-col-reverse lg:flex-row items-center justify-around  px-6 lg:pl-[5rem] lg:pr-[12rem] py-12 md:py-16 bg-white gap-0 md:gap-6 lg:gap-12">
+        <div className="flex w-full lg:w-[600px] xl:w-[50%] xxl:w-[50%] h-auto  gap-4 items-start shrink-0">
           <div className="flex pt-20 items-start gap-2 flex-[1_0_0]">
-            <div className="relative w-full h-[204px] md:h-[384px] lg:h-[430px] rounded-[20px] overflow-hidden ">
+            <div className="relative w-full h-[204px] md:h-[384px] lg:h-[60vh] rounded-[20px] overflow-hidden ">
               <Image
                 src={`https:${connectData?.connectHeroImg.fields.file.url}`}
                 alt="Image 1"
                 fill
-                className="object-cover w-full h-full"
+                className=" w-full h-full"
               />
             </div>
           </div>
 
         </div>
 
-        <div className="w-full max-w-xl text-center lg:text-left">
+        <div className="w-full lg:w-[600px] xl:w-[50%] xxl:w-[50%] max-w-xl text-center lg:text-left">
           <p className="text-[#8CCFF0] font-medium uppercase tracking-[1px] text-[10px] md:text-[15px] leading-[15px]">
             channel manager
           </p>
