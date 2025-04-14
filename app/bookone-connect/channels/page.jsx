@@ -5,9 +5,14 @@ import { assets } from "@/assets/assets";
 import { useContentful } from "@/app/bookone-connect/contentfulBookoneConnect";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 const Channels = () => {
-  const { connectData } = useContentful();
+
+    const contentful = useContentful();
+  
+    if (!contentful || !contentful.connectData) return <p>Loading ...</p>;
+  
+    const { connectData } = contentful;
     
-  if (!connectData) return <p>Loading connect section...</p>;
+
   return (
     <div className="w-full flex flex-col items-center px-4 py-10">
       <div className="w-full max-w-[1329px] flex flex-col items-center justify-center">

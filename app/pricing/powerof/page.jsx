@@ -9,6 +9,7 @@ import { PiStorefrontBold } from "react-icons/pi";
 import { FaSearchDollar } from "react-icons/fa";
 import { assets } from "@/assets/assets";
 import { useContentful } from "../contentfulPricingContext";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 const services = [
   {
@@ -59,7 +60,7 @@ const splitWords = (text, delayOffset = 0) =>
   ));
 
 const PowerOf = () => {
-  const { pricingData } = useContentful();
+  const { pricingData } = useContentful() || {};
 
   const [inView, setInView] = useState(false);
   const sectionRef = useRef(null);
@@ -96,14 +97,15 @@ const PowerOf = () => {
       
         <div className="lg:max-w-[635px] w-full">
           <h2 className="text-[28px] sm:text-[36px] font-bold text-[#146683] leading-snug font-['Inter'] mb-4">
-            {splitWords("Add on & Power Up!", inView ? 0 : 10)}
+            {pricingData?.pricingSecondParagrph}
           </h2>
 
           <p className="text-[#146683] text-base sm:text-xl font-normal leading-relaxed mt-6 mb-6 hidden md:block">
-            {splitWords(
+            {/* {splitWords(
               "Our add-on services are built to expand your capabilities and deliver 360° value across your hotel.",
               inView ? 0.6 : 10
-            )}
+            )} */}
+            {documentToReactComponents(pricingData?.pricingSecondDescription)}
           </p>
 
           <button
