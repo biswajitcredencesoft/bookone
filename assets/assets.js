@@ -52,6 +52,42 @@ import Engine from "./booking-engine.png";
 import Carosall from "./carosall.png";
 
 import UPI from "./upi.png";
+import Header from "./header.png";
+
+// Operation Icons
+import Operation1 from "./op1.svg";
+import Operation2 from "./op-2.svg";
+import Operation3 from "./op3.svg";
+import Operation4 from "./op4.svg";
+import PlayIcon from "./play.png";
+
+// Marketing
+import Marketing1 from "./mk1.svg";
+import Marketing2 from "./mk2.svg";
+import Marketing3 from "./mk3.svg";
+import Marketing4 from "./mk4.svg";
+
+// Pricing
+import Guest1 from "./gm1.svg";
+import Guest2 from "./gm2.svg";
+
+//Automation
+import Automation from "./pa.svg";
+
+//Icon
+import Phone_Icon from "./phone.svg";
+import Instagram from "./instagram.svg";
+import Case_Study from "./casestudy.png"
+import Quote from "./quote.svg"
+import  User_logo from "./user.png"
+import Marketing from "./marketing.png"
+import Guest from "./guest.png"
+import Price from "./pricing.png"
+
+import Picture14 from "./pic10.png"
+import Picture11 from "./pic11.png"
+import Picture12 from "./pic12.png"
+import Picture13 from "./pic13.png"
 
 export const assets = {
   logo,
@@ -103,6 +139,31 @@ export const assets = {
   Carosall,
   UPI,
   Engine,
+  Header,
+  Operation1,
+  Operation2,
+  Operation3,
+  Operation4,
+  PlayIcon,
+  Marketing1,
+  Marketing2,
+  Marketing3,
+  Marketing4,
+  Guest1,
+  Guest2,
+  Automation,
+  Phone_Icon,
+  Instagram,
+  Case_Study,
+  Quote,
+  User_logo,
+  Marketing,
+  Guest,
+  Price,
+  Picture14,
+  Picture11,
+  Picture12,
+  Picture13,
 };
 
 export const BagIcon = () => {

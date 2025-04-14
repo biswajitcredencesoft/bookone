@@ -20,7 +20,7 @@ const MobileNavItems = ({ openDropdown, setOpenDropdown }) => {
         <div key={key}>
           <button
             onClick={() => setOpenDropdown((prev) => (prev === key ? "" : key))}
-            className="flex items-center justify-between w-full text-left text-gray-800 font-medium hover:text-gray-900"
+            className="flex items-center space-between text-left text-gray-800 font-medium hover:text-gray-900"
           >
             {title} {openDropdown === key ? <FaAngleUp /> : <FaAngleDown />}
           </button>
@@ -50,9 +50,7 @@ const MobileNavItems = ({ openDropdown, setOpenDropdown }) => {
         Pricing
       </Link>
 
-      <button className="mt-4 px-4 py-3 bg-blue-600 text-white rounded-full text-sm hover:bg-blue-700 transition">
-        Request A Demo
-      </button>
+     
     </div>
   );
 };

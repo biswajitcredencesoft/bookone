@@ -3,7 +3,6 @@ import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa";
 import { assets } from "@/assets/assets";
 
-// Integration data
 const integrationData = [
   {
     title: "Get Connected On Top OTA’s!",
@@ -45,7 +44,6 @@ const rightBoxes = [
   },
 ];
 
-// Hook to check if in viewport
 const useInView = (options) => {
   const ref = useRef(null);
   const [isIntersecting, setIntersecting] = useState(false);
@@ -62,7 +60,6 @@ const useInView = (options) => {
   return [ref, isIntersecting];
 };
 
-// Reusable card component
 const IntegrationCard = ({ title, logos }) => {
   const [ref, isVisible] = useInView({ threshold: 0.2 });
 
@@ -98,27 +95,14 @@ const IntegrationCard = ({ title, logos }) => {
   );
 };
 
-// Main section
 const OtaIntegration = () => {
   const [ref, isVisible] = useInView({ threshold: 0.2 });
 
   return (
     <div className="w-full px-4 py-12 sm:py-16 bg-gradient-to-br from-[#e6f0f5] to-[#dbe7ef]">
       <div className="max-w-[88rem] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-start">
-        {/* Left column */}
-        <div className="flex flex-col gap-6">
-          {integrationData.map((data, index) => (
-            <IntegrationCard
-              key={index}
-              title={data.title}
-              logos={data.logos}
-            />
-          ))}
-        </div>
-
-        {/* Right column */}
-        <div className="flex flex-col gap-6 mb-2">
-          {/* Section heading */}
+        {/* Heading + Right Cards - Show first on mobile */}
+        <div className="order-1 lg:order-2 flex flex-col gap-6 mb-2">
           <div
             ref={ref}
             className={`transition-all duration-700 ease-out transform ${
@@ -127,35 +111,49 @@ const OtaIntegration = () => {
                 : "opacity-0 translate-y-10 pointer-events-none"
             }`}
           >
-            <h2 className="text-[26px] sm:text-[32px] md:text-[40px] lg:text-[44px] font-bold text-[#146683] leading-snug">
-              The Right Integrations Make
+            <h2 className="text-[24px] sm:text-[32px] md:text-[40px] lg:text-[44px] font-bold text-[#146683] leading-snug">
+              The Right Integrations 
               <br />
-              <span> All The Difference</span>
+              <span> Make All The Difference</span>
             </h2>
             <div className="text-gray-700 text-sm sm:text-base">
-              <p className="mb-1">
+              <p className="mt-2 md:block hidden">
                 From bookings to billing, BookOne connects with
               </p>
               <div className="flex flex-wrap items-center gap-2 mt-1">
-                <p>the platforms that power your property.</p>
-                <button
-                  title="Explore more"
-                  className="group flex items-center h-10 bg-[#146683] text-white rounded-full overflow-hidden transition-all duration-300 ease-in-out w-[40px] hover:w-[150px] sm:h-10 sm:hover:w-[160px] hover:bg-[#BFE9FF] px-3"
-                >
-                  <div className="flex items-center justify-center w-6 min-w-[24px] h-6 bg-[#0E5B6F] rounded-full -ml-1">
-                    <FaArrowRight className="text-sm -rotate-45 transition-transform duration-300 group-hover:translate-x-1 text-white" />
-                  </div>
-                  <span className="ml-4 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 text-sm whitespace-nowrap text-[#146683]">
-                    Explore more
-                  </span>
-                </button>
+                <p className="md:block hidden">
+                  the platforms that power your property.
+                </p>
+                <div className="ml-32 lg:ml-0 md:ml-0">
+                  <button
+                    title="Explore more"
+                    className="group flex items-center h-10 bg-[#146683] text-white rounded-full overflow-hidden transition-all duration-300 ease-in-out w-[40px] hover:w-[150px] sm:h-10 sm:hover:w-[160px] hover:bg-[#BFE9FF] px-3"
+                  >
+                    <div className="flex items-center justify-center w-6 min-w-[24px] h-6 bg-[#0E5B6F] rounded-full -ml-1">
+                      <FaArrowRight className="text-sm -rotate-45 transition-transform duration-300 group-hover:translate-x-1 text-white" />
+                    </div>
+                    <span className="ml-4 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 text-sm whitespace-nowrap text-[#146683]">
+                      Explore more
+                    </span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Right side cards */}
           {rightBoxes.map((box, i) => (
             <IntegrationCard key={i} title={box.title} logos={box.logos} />
+          ))}
+        </div>
+
+        {/* Left Cards - Show second on mobile */}
+        <div className="order-2 lg:order-1 flex flex-col gap-6">
+          {integrationData.map((data, index) => (
+            <IntegrationCard
+              key={index}
+              title={data.title}
+              logos={data.logos}
+            />
           ))}
         </div>
       </div>

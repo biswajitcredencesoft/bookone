@@ -14,15 +14,20 @@ import HoteliarTrust from "@/components/HoteliarTrust";
 import BookOneGrowing from "@/components/BookOneGrowing";
 import HeroCarosal from "@/components/HeroCarosal";
 
+import { ContentfulProvider } from "@/components/ContentfulContext";
 const Home = () => {
   return (
     <>
       <Navbar />
       
-        <Hero/>
+      <ContentfulProvider>
+        <Hero />
         <HeroCarosal/>
-        <BookOneDetails/>
+        <BookOneDetails />
+        
         <OtaIntegration/>
+      </ContentfulProvider>
+       
         <HoteliarTrust/>
         <BookOneGrowing/>
         {/* <HomeProducts />
