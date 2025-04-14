@@ -88,6 +88,11 @@ import Picture14 from "./pic10.png";
 import Picture11 from "./pic11.png";
 import Picture12 from "./pic12.png";
 import Picture13 from "./pic13.png";
+import RealTime from "./connect-time.png";
+import WorldTimer from "./world-timer.png";
+import CancelImage from "./cancel-image.png";
+import AnalyticsReport from "./analytics.png";
+import Graphics from "./graph.png"
 
 //pricing Icon
 import Pricing1 from "./pr-1.svg"
@@ -206,6 +211,11 @@ export const assets = {
   Form1,
   Form2,
 
+  RealTime,
+  WorldTimer,
+  CancelImage,
+  AnalyticsReport,
+  Graphics
 };
 
 export const BagIcon = () => {

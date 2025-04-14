@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { useContentful } from "@/app/bookone-connect/contentfulBookoneConnect";
+import { assets } from "@/assets/assets";
 
 const Connectivity = () => {
   const contentful = useContentful();
@@ -56,8 +57,8 @@ const Connectivity = () => {
                   key={feature.title}
                   className="flex items-center justify-start gap-6 sm:gap-4 lg:gap-8"
                 >
-                  <div className="w-[60px] h-[60px] sm:w-[70px] sm:h-[70px] lg:w-[80px] lg:h-[80px] flex items-center justify-center bg-[rgba(191,233,255,0.20)] shadow-md rounded-[12px]">
-                    <div className="w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] lg:w-[56px] lg:h-[56px] flex items-center justify-center text-[#01677D] text-[24px] sm:text-[28px] lg:text-[30px]">
+                  <div className="w-[60px] sm:w-[70px] lg:w-[80px] p-2 flex items-center justify-center bg-[rgba(191,233,255,0.20)] shadow-md ">
+                    <div className="w-[40px] sm:w-[50px] lg:w-[56px] flex items-center justify-center text-[#01677D] text-[24px] sm:text-[28px] lg:text-[30px]">
                       {feature.icon}
                     </div>
                   </div>
@@ -87,23 +88,23 @@ const Connectivity = () => {
 const features = [
   {
     title: "Real-time Updates",
-    icon: <AiOutlineFieldTime />,
+    icon: <Image src={assets.RealTime} alt="Online Reputation" className="w-[2.5rem] h-[2.5rem] mb-3" />,
   },
   {
     title: "Auto OTA Sync",
-    icon: <FaSync />,
+    icon: <Image src={assets.WorldTimer} alt="Online Reputation" className="w-[2.5rem] h-[2.5rem] mb-3" />,
   },
   {
     title: "Avoid Overbookings",
-    icon: <BiBlock />,
+    icon: <Image src={assets.CancelImage} alt="Online Reputation" className="w-[2.5rem] h-[2.5rem] mb-3" />,
   },
   {
     title: "Analytics & Reporting",
-    icon: <SiSimpleanalytics />,
+    icon: <Image src={assets.AnalyticsReport} alt="Online Reputation" className="w-[2.5rem] h-[2.5rem] mb-3" />,
   },
   {
     title: "Integrate With Leading OTAs",
-    icon: <SlGraph />,
+    icon: <Image src={assets.Graphics} alt="Online Reputation" className="w-[2.5rem] h-[2.5rem] mb-3" />,
   },
 ];
 
