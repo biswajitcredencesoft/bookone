@@ -40,7 +40,7 @@ const BookOneBookMax = () => {
     return (
         <>
             <Navbar />
-             <section className="flex flex-col-reverse lg:flex-row items-center justify-between px-6 lg:pl-[5rem] lg:pr-[12rem] py-16 bg-white gap-6 lg:gap-12">
+             <section className="flex flex-col-reverse lg:flex-row items-center justify-between px-6 lg:pl-[5rem] lg:pr-[15rem] py-16 bg-white gap-6 lg:gap-12">
                     <div className="flex w-full lg:w-[600px] h-auto lg:h-[464px] gap-4 items-start shrink-0">
                       <div className="flex pt-10 md:pt-16  items-start gap-2 flex-[1_0_0]">
                         <div className="relative w-full h-[250px]  md:h-[384px] rounded-[20px] overflow-hidden ">
