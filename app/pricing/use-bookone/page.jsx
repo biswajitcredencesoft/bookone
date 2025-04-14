@@ -1,12 +1,38 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import { FaQuoteLeft } from "react-icons/fa";
 import { assets } from "@/assets/assets";
 import { useContentful } from "../contentfulPricingContext";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { createClient } from "contentful";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+
+const client = createClient({
+  space: "wzmo4lmp2r9v",
+  accessToken: "8byVN6ybNsGaYJ6FUTB0CB4mwuie5fIX-DxWy1GGi6E",
+});
 
 const UseBookone = () => {
-  const { pricingData } = useContentful();
+  const { pricingData } = useContentful() || {};
+  
+    const [pmsData, setpmsData] = useState(null);
+    const router = useRouter();
+  
+    useEffect(() => {
+      async function fetchHeroContent() {
+        try {
+          const res = await client.getEntries({ content_type: "bookOnePms" }); // Replace with your actual content type ID
+          setpmsData(res.items[0]?.fields);
+          console.log("bookOnePms", res.items);
+        } catch (err) {
+          console.error("Contentful fetch error:", err);
+        }
+      }
+  
+      fetchHeroContent();
+    }, []);
 
   if (!pricingData) return <p>Loading ...</p>;
 
@@ -23,9 +49,6 @@ const UseBookone = () => {
                 <br className="hidden md:block" />
                 {pricingData?.pricingThirdHeading?.split(" ").slice(3).join(" ")}
               </h2>
-              <h3 className="text-[#D0E6F3] text-[22px] md:text-[26px] font-bold leading-snug mt-3 md:mt-4 hidden md:block">
-                Use BookOne
-              </h3>
             </div>
             <p className="text-white text-[16px] md:text-[18px] font-medium leading-relaxed max-w-sm shadow-text hidden md:block">
               {documentToReactComponents(pricingData?.pricingThirdParagrph)}
@@ -57,8 +80,10 @@ const UseBookone = () => {
           <div className="relative w-[220px] md:w-[280px] -mt-16 md:-mt-24">
             <div className="rounded-xl overflow-hidden shadow-lg">
               <Image
-                src={assets.banner}
+                src={`https:${pmsData.pmsLastImage.fields.file.url}`}
                 alt="Smiling professionals"
+                width={700}
+              height={700}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -68,12 +93,10 @@ const UseBookone = () => {
             <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
               <div className="text-center md:text-left">
                 <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                  Don’t Just Keep Up —<br className="hidden md:block" />
-                  Level Up!
+                  {pmsData?.pmsLastHeading}
                 </h3>
                 <p className="text-lg mb-0 max-w-xl mx-auto md:mx-0 hidden md:block">
-                  BookOne isn’t just hotel software — it’s your all-in-one
-                  growth partner.
+                {documentToReactComponents(pmsData?.pmsLastParagarph)}
                 </p>
               </div>
 

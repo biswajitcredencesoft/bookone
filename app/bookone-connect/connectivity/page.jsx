@@ -10,9 +10,11 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { useContentful } from "@/app/bookone-connect/contentfulBookoneConnect";
 
 const Connectivity = () => {
-  const { connectData } = useContentful();
+  const contentful = useContentful();
+  
+  if (!contentful || !contentful.connectData) return <p>Loading ...</p>;
 
-  if (!connectData) return <p>Loading connect section...</p>;
+  const { connectData } = contentful;
 
   return (
     <div className="bg-[#EDF6FA] px-4 sm:px-6 lg:px-8 py-14 font-['Inter']">

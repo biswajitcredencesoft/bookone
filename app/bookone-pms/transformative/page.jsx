@@ -7,9 +7,11 @@ import { useContentful } from "@/app/bookone-pms/contentfulPmsContext";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 const Transformative = () => {
-  const { pmsData } = useContentful();
+  const contentful = useContentful();
 
-  if (!pmsData) return <p>Loading hero section...</p>;
+  if (!contentful || !contentful.pmsData) return <p>Loading ...</p>;
+
+  const { pmsData } = contentful;
 
   return (
     <section className="bg-[#e5f3f7] px-4 py-16 flex flex-col items-center font-['Inter']">

@@ -1,10 +1,31 @@
 "use client";
 import { assets } from "@/assets/assets";
 import Image from "next/image";
-import { useContentful } from "@/app/bookone-pms/contentfulPmsContext";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { createClient } from "contentful";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+const client = createClient({
+  space: "wzmo4lmp2r9v",
+  accessToken: "8byVN6ybNsGaYJ6FUTB0CB4mwuie5fIX-DxWy1GGi6E",
+});
 const LevelUP = () => {
-  const { pmsData } = useContentful();
+    const [pmsData, setpmsData] = useState(null);
+    const router = useRouter();
+  
+    useEffect(() => {
+      async function fetchHeroContent() {
+        try {
+          const res = await client.getEntries({ content_type: "bookOnePms" }); // Replace with your actual content type ID
+          setpmsData(res.items[0]?.fields);
+          console.log("bookOnePms", res.items);
+        } catch (err) {
+          console.error("Contentful fetch error:", err);
+        }
+      }
+  
+      fetchHeroContent();
+    }, []);
   
   if (!pmsData) return <p>Loading hero section...</p>;
   return (

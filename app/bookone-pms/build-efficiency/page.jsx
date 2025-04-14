@@ -13,9 +13,11 @@ import { useContentful } from "@/app/bookone-pms/contentfulPmsContext";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 const BuildOfEfficiency = () => {
-  const { pmsData } = useContentful();
+  const contentful = useContentful();
 
-  if (!pmsData) return <p>Loading hero section...</p>;
+  if (!contentful || !contentful.pmsData) return <p>Loading ...</p>;
+
+  const { pmsData } = contentful;
 
   return (
     <div className="bg-[#EDF6FA] px-4 sm:px-6 lg:px-8 py-10 md:py-12 font-['Inter']">

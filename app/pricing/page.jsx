@@ -191,8 +191,6 @@ const Pricing = () => {
           ))}
         </div>
       </div>
-          </ContentfulProviderpricing>
-         <ContentfulProviderpricing>
          <PowerOf />
          <UseBookone />
          </ContentfulProviderpricing>
