@@ -1,24 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-      remotePatterns: [
-        {
-          protocol: 'https',
-          hostname: 'res.cloudinary.com',
-          pathname: '**',
-        },
-        {
-          protocol: 'https',
-          hostname: 'raw.githubusercontent.com',
-          pathname: '**',
-        },
-        {
-          protocol: 'https',
-          hostname: 'images.ctfassets.net',
-          pathname: '**', // allows all paths from this domain
-        },
-      ],
-    },
+  images: {
+    domains: ['images.ctfassets.net', 'res.cloudinary.com', 'raw.githubusercontent.com'],
+  },
+  
     webpack(config) {
       config.module.rules.push({
         test: /\.(mp4|webm|ogg)$/i,
