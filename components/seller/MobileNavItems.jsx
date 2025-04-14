@@ -45,7 +45,7 @@ const MobileNavItems = ({ openDropdown, setOpenDropdown }) => {
       {/* Static Links */}
       <Link
         href="/pricing"
-        className="text-sm text-gray-700 hover:text-gray-900"
+        className="text-[17px] font-medium ml-1  text-gray-700 hover:text-gray-900"
       >
         Pricing
       </Link>

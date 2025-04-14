@@ -1,13 +1,14 @@
-'use client';
-import { useState, useEffect } from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import { FaCheck } from 'react-icons/fa';
-import PowerOf from './powerof/page';
-import UseBookone from './use-bookone/page';
-import { ContentfulProviderpricing} from './contentfulPricingContext';
+"use client";
+import { useState, useEffect } from "react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { FaCheck, FaHome, FaHotel, FaBuilding } from "react-icons/fa";
+import PowerOf from "./powerof/page";
+import UseBookone from "./use-bookone/page";
+import { ContentfulProviderpricing } from "./contentfulPricingContext";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { createClient } from "contentful";
+
 const client = createClient({
   space: "wzmo4lmp2r9v",
   accessToken: "8byVN6ybNsGaYJ6FUTB0CB4mwuie5fIX-DxWy1GGi6E",
@@ -15,22 +16,22 @@ const client = createClient({
 
 const Pricing = () => {
   const [currency, setCurrency] = useState("INR");
-    const [pricingData, setpricingData] = useState(null);
+  const [pricingData, setpricingData] = useState(null);
 
-    useEffect(() => {
-      async function fetchHeroContent() {
-        try {
-          const res = await client.getEntries({ content_type: "pricing" }); // Replace with your actual content type ID
-          setpricingData(res.items[0]?.fields);
-          console.log("pricing", res.items);
-  
-        } catch (err) {
-          console.error("Contentful fetch error:", err);
-        }
+  useEffect(() => {
+    async function fetchHeroContent() {
+      try {
+        const res = await client.getEntries({ content_type: "pricing" });
+        setpricingData(res.items[0]?.fields);
+        console.log("pricing", res.items);
+      } catch (err) {
+        console.error("Contentful fetch error:", err);
       }
-  
-      fetchHeroContent();
-    }, []);
+    }
+
+    fetchHeroContent();
+  }, []);
+
   const pricingMap = {
     INR: ["₹1199", "₹1499", "₹2099"],
     USD: ["$99", "$129", "$179"],
@@ -38,7 +39,7 @@ const Pricing = () => {
 
   const cards = [
     {
-      icon: "🏠",
+      icon: <FaHome className="text-xl" />,
       title: "Ideal for",
       subtitle: "Guest Houses, Homestays, Budget Hotels",
       plan: "BookOne Starter",
@@ -53,7 +54,7 @@ const Pricing = () => {
       highlight: false,
     },
     {
-      icon: "🏨",
+      icon: <FaHotel className="text-xl" />,
       title: "Ideal for",
       subtitle: "Growing Hotels & Boutique Stays",
       plan: "BookOne Essential",
@@ -70,7 +71,7 @@ const Pricing = () => {
       highlight: true,
     },
     {
-      icon: "🏢",
+      icon: <FaBuilding className="text-xl" />,
       title: "Ideal for",
       subtitle: "Resorts, Luxury Hotels, Multi-Property Groups",
       plan: "BookOne Premium",
@@ -92,110 +93,169 @@ const Pricing = () => {
   return (
     <>
       <Navbar />
-
       <ContentfulProviderpricing>
-      <div className="bg-[#f6f7fb] px-4 py-16 sm:px-8 md:px-20 mt-5">
-        <div className="text-center max-w-3xl mx-auto mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2">
-            {pricingData?.pricingheading}
-          </h2>
-          <p className="text-gray-600 mt-4 hidden md:block">
-            {documentToReactComponents(pricingData?.pricingParagraph)}
-          </p>
+        <div className="bg-[#f6f7fb] px-4 py-16 sm:px-8 md:px-20 mt-5">
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2">
+              {pricingData?.pricingheading}
+            </h2>
+            <p className="text-gray-600 mt-4 hidden md:block">
+              {documentToReactComponents(pricingData?.pricingParagraph)}
+            </p>
 
-          <div className="mt-6">
-            <label className="text-sm font-medium mr-2">Choose Currency:</label>
-            <select
-              value={currency}
-              onChange={(e) => setCurrency(e.target.value)}
-              className="border border-gray-300 rounded-md font-bold text-black px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-[#146683]"
-            >
-              <option value="INR">INR</option>
-              <option value="USD">USD</option>
-            </select>
+            <div className="mt-6">
+              <label className="text-[15px] font-medium mr-2">
+                Choose Currency
+              </label>
+              <select
+                value={currency}
+                onChange={(e) => setCurrency(e.target.value)}
+                className="border border-gray-500 rounded-md font-bold text-black px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#146683]"
+              >
+                <option value="INR">INR</option>
+                <option value="USD">USD</option>
+              </select>
+            </div>
           </div>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-10xl mx-auto">
-          {cards.map((card, index) => (
-            <div
-              key={index}
-              className={`rounded-2xl shadow-md p-6 md:p-8 flex flex-col h-full transition-all hover:scale-[1.02] duration-300 ${
-                card.highlight ? 'bg-[#014669] text-white' : 'bg-white text-gray-900'
-              }`}
-            >
-              <div className="flex flex-col flex-grow">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 flex items-center justify-center rounded-full bg-[#8CCFF0] text-lg">
-                    {card.icon}
-                  </div>
-                  <div className="text-left">
-                    <div className="text-xs text-gray-500">{card.title}</div>
-                    <div
-                      className={`text-sm font-semibold ${
-                        card.highlight ? 'text-white' : 'text-gray-700'
-                      }`}
-                    >
-                      {card.subtitle}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-10xl mx-auto">
+            {cards.map((card, index) => (
+              <div
+                key={index}
+                className={`relative rounded-2xl shadow-md p-6 md:p-8 flex flex-col h-full transition-all hover:scale-[1.02] duration-300 ${
+                  card.highlight
+                    ? "bg-[#014669] text-white"
+                    : "bg-white text-gray-900"
+                }`}
+              >
+                <div className="flex flex-col flex-grow">
+                  {/* Icon + subtitle block (desktop only) */}
+                  <div className="hidden md:block">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-10 h-10 flex items-center justify-center rounded-full bg-[#8CCFF0]">
+                        {card.icon}
+                      </div>
+                      <div className="text-left">
+                        <div className="text-xs text-gray-500">{card.title}</div>
+                        <div
+                          className={`text-sm font-semibold ${
+                            card.highlight ? "text-white" : "text-gray-700"
+                          }`}
+                        >
+                          {card.subtitle}
+                        </div>
+                      </div>
                     </div>
                   </div>
+
+                  {/* Plan name + Price - MOBILE view */}
+                  <div className="flex justify-between items-center mb-4 md:hidden">
+                    <h3 className="text-lg font-bold">
+                      {card.plan.split(" ").map((word, idx) => {
+                        let colorClass = "";
+                        if (card.plan === "BookOne Starter") {
+                          colorClass =
+                            idx === 0 ? "text-[#146683]" : "text-[#8CCFF0]";
+                        } else if (card.plan === "BookOne Essential") {
+                          colorClass =
+                            idx === 0 ? "text-[#8CCFF0]" : "text-white";
+                        } else if (card.plan === "BookOne Premium") {
+                          colorClass =
+                            idx === 0 ? "text-[#146683]" : "text-[#8CCFF0]";
+                        }
+                        return (
+                          <span key={idx} className={`${colorClass} mr-1`}>
+                            {word}
+                          </span>
+                        );
+                      })}
+                    </h3>
+                    <div className="text-right mb-4">
+                      <div className="text-sm text-[#818181] text-left">Start at</div>
+                      <div className="text-lg font-bold">
+                        {pricingMap[currency][index]}
+                        <span className="text-sm font-medium"> /monthly</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Plan name + Price - DESKTOP view */}
+                  <div className="hidden md:block">
+                    <h3 className="text-xl font-bold mb-1">
+                      {card.plan.split(" ").map((word, idx) => {
+                        let colorClass = "";
+                        if (card.plan === "BookOne Starter") {
+                          colorClass =
+                            idx === 0 ? "text-[#146683]" : "text-[#8CCFF0]";
+                        } else if (card.plan === "BookOne Essential") {
+                          colorClass =
+                            idx === 0 ? "text-[#8CCFF0]" : "text-white";
+                        } else if (card.plan === "BookOne Premium") {
+                          colorClass =
+                            idx === 0 ? "text-[#146683]" : "text-[#8CCFF0]";
+                        }
+                        return (
+                          <span key={idx} className={`${colorClass} mr-1`}>
+                            {word}
+                          </span>
+                        );
+                      })}
+                    </h3>
+                    <div className="text-xs text-[#818181]">Start at</div>
+                    <div className="text-3xl font-bold mb-4">
+                      {pricingMap[currency][index]}{" "}
+                      <span className="text-base font-medium">/monthly</span>
+                    </div>
+                  </div>
+
+                  {/* Desktop CTA */}
+                  <button
+                    className={`hidden md:block w-[50%] ml-4 py-2 rounded-xl font-medium transition-all duration-200 mb-6 ${
+                      card.highlight
+                        ? "bg-white text-[#014669] hover:bg-gray-200"
+                        : "bg-[#014669] text-white hover:bg-[#013851]"
+                    }`}
+                  >
+                    Get Started
+                  </button>
+
+                  {/* Features */}
+                  <div className="font-semibold text-sm">What’s included</div>
+                  <ul className="mt-4 space-y-2 text-[15px]">
+                    {card.features.map((feature, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <div
+                          className={`min-w-[1.4rem] h-[1.4rem] flex items-center justify-center rounded-full mt-1 ${
+                            card.plan === "BookOne Essential"
+                              ? "bg-white text-[#146683]"
+                              : "bg-[#146683] text-white"
+                          }`}
+                        >
+                          <FaCheck className="text-[10px]" />
+                        </div>
+                        <span className="leading-snug">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
-                {/* Plan Title */}
-                <h3 className="text-xl font-bold mb-1">
-                  {card.plan.split(" ").map((word, idx) => {
-                    let colorClass = "";
-                    if (card.plan === "BookOne Starter") {
-                      colorClass = idx === 0 ? "text-[#146683]" : "text-[#8CCFF0]";
-                    } else if (card.plan === "BookOne Essential") {
-                      colorClass = idx === 0 ? "text-[#8CCFF0]" : "text-white";
-                    } else if (card.plan === "BookOne Premium") {
-                      colorClass = idx === 0 ? "text-[#146683]" : "text-[#8CCFF0]";
-                    }
-                    return (
-                      <span key={idx} className={`${colorClass} mr-1`}>
-                        {word}
-                      </span>
-                    );
-                  })}
-                </h3>
-
-                <div className="text-3xl font-bold mb-4">
-                  {pricingMap[currency][index]}{' '}
-                  <span className="text-base font-medium">/monthly</span>
-                </div>
-
+                {/* Mobile CTA */}
                 <button
-                  className={`w-[50%] ml-4 py-2 rounded-xl font-medium transition-all duration-200 mb-6 ${
+                  className={`block md:hidden w-[226px] ml-12  mt-6 py-2 rounded-[16px]  font-medium transition-all duration-200 ${
                     card.highlight
-                      ? 'bg-white text-[#014669] hover:bg-gray-200'
-                      : 'bg-[#014669] text-white hover:bg-[#013851]'
+                      ? "bg-white text-[#014669] hover:bg-gray-200"
+                      : "bg-[#014669] text-white hover:bg-[#013851]"
                   }`}
                 >
                   Get Started
                 </button>
-
-                <div className="font-semibold text-sm">What’s included</div>
-                <ul className="mt-4 space-y-2 text-[15px]">
-                  {card.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <div className="min-w-[1.4rem] h-[1.4rem] flex items-center justify-center rounded-full bg-[#146683] mt-1">
-                        <FaCheck className="text-white text-[10px]" />
-                      </div>
-                      <span className="leading-snug">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-         <PowerOf />
-         <UseBookone />
-         </ContentfulProviderpricing>
-      
-       
+        <PowerOf />
+        <UseBookone />
+      </ContentfulProviderpricing>
       <Footer />
     </>
   );

@@ -82,7 +82,7 @@ const Footer = () => {
             {
               title: "New Zealand Office",
               address:
-                "2 Khyber Pass Road, Eden Terrace, Auckland 1010, New Zealand.",
+                "2 Khyber Pass Road, Eden   Terrace, Auckland 1010, New Zealand.",
             },
             {
               title: "USA Office",
@@ -100,7 +100,7 @@ const Footer = () => {
             },
           ].map((office, index) => (
             <div key={index}>
-              <div className="flex items-start gap-2.5">
+              <div className="flex items-start gap-2.5  md:w-[72%] ">
                 <FaMapMarkerAlt className="mt-1 text-skyCustom shrink-0" />
                 <div>
                   <p className="font-medium">{office.title}</p>

@@ -36,7 +36,7 @@ const BookOnePms = () => {
     fetchHeroContent();
   }, []);
 
-  if (!pmsData) return <p>Loading hero section...</p>;
+  if (!pmsData) return <p>Loading...</p>;
 
   return (
     <>

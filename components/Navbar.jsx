@@ -129,7 +129,14 @@ const Navbar = () => {
               href="/login"
               className="text-[#27668c] text-2xl hover:opacity-80"
             >
-              <FaUserCircle />
+              {/* <FaUserCircle /> */}
+              <div className="rounded-full bg-[#CEE6F0] p-2 flex items-center justify-center shadow-md transition-transform duration-300 hover:scale-105">
+                <Image
+                  src={assets.User_logo}
+                  alt="User Logo"
+                  className="w-6 h-6 md:w-10 md:h-10 object-contain"
+                />
+              </div>
             </Link>
             <button
               onClick={() => setMenuOpen(!menuOpen)}

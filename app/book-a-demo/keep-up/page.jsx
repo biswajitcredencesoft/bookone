@@ -35,7 +35,7 @@ const KeepUp = () => {
 
                         {/* Button */}
                         <div className="mt-4 md:mt-0">
-                            <button className="bg-[#01677D] hover:bg-[#0f4b5c] text-[#CEE6F0] px-0  lg:px-6 py-2 md:px-6 md:py-3 rounded-md shadow-md transition duration-300 whitespace-nowrap text-sm sm:text-base">
+                            <button className="bg-[#01677D] border-[#CEE6F0] border-[1px] hover:bg-[#0f4b5c] text-[#CEE6F0] px-0  lg:px-6 py-2 md:px-6 md:py-3 rounded-md shadow-md transition duration-300 whitespace-nowrap text-sm sm:text-base border ">
                                 See What BookOne Can Do For You
                             </button>
                         </div>

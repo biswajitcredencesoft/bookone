@@ -68,8 +68,14 @@ const HeroCarosal = () => {
                 />
               </a>
               <a
-                href="https://play.google.com/store/apps/details?id=nz.co.credencesoft.bookone"
-                target=""
+                   onClick={() =>
+                    window.open(
+                      'https://play.google.com/store/apps/details?id=nz.co.credencesoft.bookone',
+                      '_blank',
+                      'noopener,noreferrer'
+                    )
+                  }
+                  style={{ cursor: 'pointer' }}
                 rel="noopener noreferrer"
               >
                 <Image
@@ -125,7 +131,7 @@ const HeroCarosal = () => {
                   />
                 </a>
                 <a
-                  href="https://play.google.com/store/apps/details?id=nz.co.credencesoft.bookone/"
+                  href="https://play.google.com/store/apps/details?id=nz.co.credencesoft.bookone"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

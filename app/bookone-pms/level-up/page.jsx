@@ -27,7 +27,7 @@ const LevelUP = () => {
       fetchHeroContent();
     }, []);
   
-  if (!pmsData) return <p>Loading hero section...</p>;
+  if (!pmsData) return <p>Loading...</p>;
   return (
     <div className="bg-[linear-gradient(to_bottom,#5E5B7D,#146683,#000000)] px-4 md:px-12 py-12 md:py-20 font-Inter text-white">
       <div className="max-w-7xl mx-auto bg-white/10 backdrop-blur-md rounded-2xl shadow-2xl flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16 px-6 py-10 md:px-12 md:py-16">
@@ -53,7 +53,7 @@ const LevelUP = () => {
           <p className="text-base sm:text-lg md:text-xl mb-6 text-white/90 hidden md:block">
           {documentToReactComponents(pmsData?.pmsLastParagarph)}
           </p>
-          <button className="bg-[#0071BC] hover:bg-[#005b99] text-white text-sm sm:text-base font-medium lg:px-6 py-2 md:px-6 md:py-3 rounded-md shadow-md transition duration-300">
+          <button className="bg-[#01677D]  border-[#CEE6F0] border-[1px] hover:bg-[#005b99] text-white text-sm sm:text-base font-medium lg:px-6 py-2 md:px-6 md:py-3 rounded-md shadow-md transition duration-300">
             See What BookOne Can Do For You
           </button>
         </div>

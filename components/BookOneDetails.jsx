@@ -4,10 +4,27 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { assets } from "@/assets/assets";
-import { useContentful } from "@/components/ContentfulContext";
-
+import { createClient } from "contentful";
+const client = createClient({
+  space: "wzmo4lmp2r9v",
+  accessToken: "8byVN6ybNsGaYJ6FUTB0CB4mwuie5fIX-DxWy1GGi6E",
+});
 const BookOneDetails = () => {
-  const { heroData } = useContentful();
+    const [heroData, setHeroData] = useState(null);
+  
+    useEffect(() => {
+      async function fetchContent() {
+        try {
+          const res = await client.getEntries({ content_type: "homePage" });
+          setHeroData(res.items[0]?.fields);
+        } catch (err) {
+          console.error("Contentful fetch error:", err);
+        }
+      }
+  
+      fetchContent();
+    }, []);
+      console.log("heroData",heroData)
   const [activeTab, setActiveTab] = useState(0);
   const router = useRouter();
   const hoverTimeout = useRef(null);
@@ -100,7 +117,7 @@ const BookOneDetails = () => {
     }, 100);
   };
 
-  if (!heroData) return <p>Loading hero section...</p>;
+  if (!heroData) return <p>Loading...</p>;
 
   return (
     <div className="bg-[#0E6B81] text-white py-12 px-4 md:px-16 font-Inter overflow-hidden">
@@ -148,7 +165,7 @@ const BookOneDetails = () => {
                 key={index}
                 onClick={() => setActiveTab(index)}
                 className={`w-14 h-14 rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 ${
-                  activeTab === index ? "bg-white shadow-md" : "bg-[#ffffff22]"
+                  activeTab === index ? "bg-[#0E6B81]  border border-white" : "bg-[#CEE6F0]"
                 }`}
               >
                 <Image
@@ -178,7 +195,7 @@ const BookOneDetails = () => {
             </div>
 
             {/* Feature Cards */}
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 gap-6">
               {tabContent[activeTab].map((item) => (
                 <div
                   key={item.title}
@@ -223,7 +240,7 @@ const BookOneDetails = () => {
           {tabContent[activeTab].map((item) => (
             <div
               key={item.title}
-              className="relative bg-white border border-[#CEE6F0] rounded-[9px] p-3 flex items-center text-left shadow-md w-[222px] h-[140px] flex-shrink-0"
+              className="relative bg-white border border-[#CEE6F0] rounded-[9px] p-3 flex items-center text-left shadow-md w-[270px] h-[160px]  flex-shrink-0"
             >
               <div className="flex items-center justify-center rounded-[8px] mr-3 w-[88px] h-[97px]">
                 {item.icon}

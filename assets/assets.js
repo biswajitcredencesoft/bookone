@@ -16,7 +16,7 @@ import Channex from "./channex.png";
 import Eglobe from "./eGlobe.png";
 import TripAdvisor from "./tripadvisor.png";
 import SkyScanner from "./skyscanner.png";
-import Google_Hotels from "./google-hotels.png";
+import Google_Hotels from "./googlehotels.png";
 import Wego from "./wego.png";
 import HyperGuest from "./hyper-guest.png";
 import Tbo_com from "./tbo-com.png";
@@ -77,17 +77,47 @@ import Automation from "./pa.svg";
 //Icon
 import Phone_Icon from "./phone.svg";
 import Instagram from "./instagram.svg";
-import Case_Study from "./casestudy.png"
-import Quote from "./quote.svg"
-import  User_logo from "./user.png"
-import Marketing from "./marketing.png"
-import Guest from "./guest.png"
-import Price from "./pricing.png"
+import Case_Study from "./casestudy.png";
+import Quote from "./quote.svg";
+import User_logo from "./user.png";
+import Marketing from "./marketing.png";
+import Guest from "./guest.png";
+import Price from "./pricing.png";
 
-import Picture14 from "./pic10.png"
-import Picture11 from "./pic11.png"
-import Picture12 from "./pic12.png"
-import Picture13 from "./pic13.png"
+import Picture14 from "./pic10.png";
+import Picture11 from "./pic11.png";
+import Picture12 from "./pic12.png";
+import Picture13 from "./pic13.png";
+import RealTime from "./connect-time.png";
+import WorldTimer from "./world-timer.png";
+import CancelImage from "./cancel-image.png";
+import AnalyticsReport from "./analytics.png";
+import Graphics from "./graph.png"
+
+//pricing Icon
+import Pricing1 from "./pr-1.svg"
+import Pricing2 from "./pr-2.svg"
+import Pricing3 from "./pr-3.svg"
+
+//Power 
+import Power1 from "./power1.svg"
+import Power2 from "./power2.svg"
+import Power3 from "./power3.svg"
+import Power4 from "./power4.svg"
+import Power5 from "./power5.svg"
+
+import Hotels from "./hotels.svg"
+
+// Support
+import Support1 from "./support.svg"
+import Support2 from "./support1.svg"
+import Support3 from "./support2.svg"
+import Support4 from "./support3.png"
+
+//Book a Demo icon
+import Form from "./form.svg"
+import Form1 from "./form1.svg"
+import Form2 from "./form2.svg"
 
 export const assets = {
   logo,
@@ -164,6 +194,28 @@ export const assets = {
   Picture11,
   Picture12,
   Picture13,
+  Pricing1,
+  Pricing2,
+  Pricing3,
+  Power1,
+  Power2,
+  Power3,
+  Power4,
+  Power5,
+  Hotels,
+  Support1,
+  Support2,
+  Support3,
+  Support4,
+  Form,
+  Form1,
+  Form2,
+
+  RealTime,
+  WorldTimer,
+  CancelImage,
+  AnalyticsReport,
+  Graphics
 };
 
 export const BagIcon = () => {
