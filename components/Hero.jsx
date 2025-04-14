@@ -17,7 +17,7 @@ const Hero = () => {
       <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-16 flex flex-col items-center">
         <div className="flex flex-col lg:flex-row items-center justify-between w-full gap-12">
           <div className="lg:w-1/2 w-full text-center lg:text-left">
-            <h1 className="text-[20px] md:text-[32px] lg:text-[48px] font-bold leading-tight text-[#1E1E1E] font-sans mb-6">
+            <h1 className="text-[20px] md:text-[32px] lg:text-[41px] xl:text-[41px] 2xl:text-[47px] font-bold leading-tight text-[#1E1E1E] font-sans mb-6">
               {heroData?.mainheading}
               <span className="block mt-1 md:mt-4 lg:mt-4 text-[20px] md:text-[28px] lg:text-[48px] text-[#006D77]">
                 {heroData?.secondMainHeading}
