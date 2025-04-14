@@ -25,7 +25,7 @@ const BuildOfEfficiency = () => {
 
         {/* Heading Section */}
         <div className="flex flex-col lg:flex-row justify-between items-center md:items-start gap-6">
-          <h2 className="text-[#146683] text-[26px] sm:text-[36px] md:text-[40px] lg:text-[46px] font-bold leading-[140%]">
+          <h2 className="text-[#146683] text-[26px] sm:text-[36px] md:text-[40px] lg:text-[46px] font-bold leading-[140%] mt-0 md:mt-4 lg:mt-4">
             {pmsData?.pmsSecondsectionheading} <br /> {pmsData?.pmsSecondsectionheadingOne}
           </h2>
 

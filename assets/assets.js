@@ -103,6 +103,17 @@ import Power5 from "./power5.svg"
 
 import Hotels from "./hotels.svg"
 
+// Support
+import Support1 from "./support.svg"
+import Support2 from "./support1.svg"
+import Support3 from "./support2.svg"
+import Support4 from "./support3.png"
+
+//Book a Demo icon
+import Form from "./form.svg"
+import Form1 from "./form1.svg"
+import Form2 from "./form2.svg"
+
 export const assets = {
   logo,
   search_icon,
@@ -187,6 +198,14 @@ export const assets = {
   Power4,
   Power5,
   Hotels,
+  Support1,
+  Support2,
+  Support3,
+  Support4,
+  Form,
+  Form1,
+  Form2,
+
 };
 
 export const BagIcon = () => {

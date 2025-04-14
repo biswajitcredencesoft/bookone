@@ -6,28 +6,30 @@ import {
   FaMobileAlt,
   FaUserCheck
 } from 'react-icons/fa';
+import Image from 'next/image';
+import { assets } from '@/assets/assets';
 
 const services = [
   {
-    icon: <FaHeadphones className="text-[#146683]" />,
+    icon: <Image src={assets.Support1} alt="Suport"  className="text-[#146683]" />,
     title: '24/7 Support',
     description: 'Talk to people who speak hotel, not tech.',
     button: 'Contact Us'
   },
   {
-    icon: <FaFileAlt className="text-[#146683]" />,
+    icon: <Image src={assets.Support2} alt="Suport" className="text-[#146683]" />,
     title: 'Flexible Pricing',
     description: 'All the features you need, none of the bloated costs.',
     button: 'Pricing'
   },
   {
-    icon: <FaMobileAlt className="text-[#146683]" />,
+    icon: <Image src={assets.Support3} alt="Suport" className="text-[#146683]" />,
     title: 'All-in-one Mobile App',
     description: 'Your hotel, fully managed from your phone.',
     button: 'Download App'
   },
   {
-    icon: <FaUserCheck className="text-[#146683]" />,
+    icon: <Image src={assets.Support4} alt="Suport" className="text-[#146683]" />,
     title: 'Domain Experts',
     description: 'More than software — it’s hospitality intelligence.',
     button: 'About Us'
