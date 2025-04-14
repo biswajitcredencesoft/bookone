@@ -60,19 +60,19 @@ const Results = () => {
         ].map((item, i) => (
           <div
             key={i}
-            className="w-[70%] ml-16 md:ml-0 lg:ml-0 sm:w-[344px] h-[180px] md:h-[227px] bg-white rounded-[32px] px-6 py-6 flex flex-col justify-center"
-            style={{
-              boxShadow: "inset 0px 4px 8px rgba(0, 0, 0, 0.1)",
-            }}
+            className="w-full sm:w-[298px] h-[180px] md:h-[227px] bg-white rounded-[40px] shadow-inner flex flex-col items-center justify-center text-left px-6"
+            style={{ boxShadow: "inset 0px 4px 4px rgba(0, 0, 0, 0.25)" }}
           >
-            {/* Top row: percentage + title */}
-            <div className="flex items-baseline gap-3 mb-2">
-              <p className="text-[#146683] text-[20px] md:text[25px] font-bold leading-none">{item.percent}</p>
-              <p className="text-[#146683] text-[15px] md:text-[22px] font-semibold leading-none">{item.title}</p>
+            <div className="flex gap-4 items-center">
+            <p className="text-[32px] font-bold text-[#146683]">
+              {item.percent}
+            </p>
+            <p className="text-[22px] font-semibold text-[#146683] mt-1 text-left">
+              {item.title}
+            </p>
             </div>
-
-            {/* Description */}
-            <p className="text-[#146683] text-[16px] font-normal mt-4">{item.desc}</p>
+           
+            <p className="text-[14px] text-[#666] mt-2">{item.desc}</p>
           </div>
         ))}
       </div>
