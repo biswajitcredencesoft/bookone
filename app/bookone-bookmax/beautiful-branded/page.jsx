@@ -56,7 +56,7 @@ const BeautifulBranded = () => {
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 md:gap-8 mb-12 md:mb-16 slide-in-bottom">
           <div className="flex-1 text-center lg:text-left">
             <div className="text-[#8CCFF0] text-[14px] sm:text-[15px] font-bold uppercase tracking-[1px] mb-2">
-              Website
+              website builder 
             </div>
             <h2 className="text-[#146683] text-[22px] sm:text-[32px] md:text-[40px] lg:text-[48px] font-bold leading-[130%]">
              {bookMaxData?.secondHeading}
