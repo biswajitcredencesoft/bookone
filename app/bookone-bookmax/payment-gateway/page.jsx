@@ -3,9 +3,33 @@ import { assets } from "@/assets/assets";
 import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa";
 import { useEffect, useState } from "react";
-
+import { createClient } from "contentful";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+const client = createClient({
+  space: "wzmo4lmp2r9v",
+  accessToken: "8byVN6ybNsGaYJ6FUTB0CB4mwuie5fIX-DxWy1GGi6E",
+});
 const PaymentGateWays = () => {
   const [isVisible, setIsVisible] = useState(false);
+    const [bookMaxData, setbookMaxData] = useState(null);
+    
+        useEffect(() => {
+          async function fetchHeroContent() {
+            try {
+              const res = await client.getEntries({ content_type: "bookOneBookMax" }); // Replace with your actual content type ID
+              setbookMaxData(res.items[0]?.fields);
+    
+      
+            } catch (err) {
+              console.error("Contentful fetch error:", err);
+            }
+          }
+      
+          fetchHeroContent();
+        }, []);
+  
+      
+  console.log("bookMaxData", bookMaxData);
 
   const handleScroll = () => {
     const section = document.getElementById("payment-gateway-section");
@@ -35,14 +59,12 @@ const PaymentGateWays = () => {
         style={sectionStyle}
       >
         <h2 className="text-[20px] sm:text-[36px] md:text-[46px] font-bold leading-snug text-[#146683] text-center font-['Inter'] mb-6">
-          Integrate With Trusted  <br />
-          Payment Gateways
+          {bookMaxData?.integrationHeading}
         </h2>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-10 sm:mb-14 text-center sm:text-left ">
           <p className="text-[16px] sm:text-[18px] md:text-[22px] font-medium leading-[150%] text-[#146683] font-['Inter'] max-w-[500px] hidden md:block">
-            Easily integrate with multiple gateways to offer a seamless payment
-            experience.
+          {documentToReactComponents(bookMaxData?.integrationSubHeading)}
           </p>
 
           <div className="mt-2 sm:mt-0">
@@ -68,7 +90,7 @@ const PaymentGateWays = () => {
             }}
           >
             <Image
-              src={assets.UPI}
+              src={`https:${bookMaxData?.integrationImg1?.fields.file.url}`}
               alt="UPI Gateways"
               width={1055}
               height={296}

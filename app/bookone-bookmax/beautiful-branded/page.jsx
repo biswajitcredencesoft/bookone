@@ -3,7 +3,13 @@ import { FaSyncAlt, FaKeyboard, FaCommentDots } from "react-icons/fa";
 import Image from "next/image";
 import { assets } from "@/assets/assets";
 import Link from "next/link";
-
+import {  useEffect, useState } from "react";
+import { createClient } from "contentful";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+const client = createClient({
+  space: "wzmo4lmp2r9v",
+  accessToken: "8byVN6ybNsGaYJ6FUTB0CB4mwuie5fIX-DxWy1GGi6E",
+});
 const features = [
   {
     title: "Customisable to Your Brand",
@@ -25,6 +31,24 @@ const features = [
 ];
 
 const BeautifulBranded = () => {
+      const [bookMaxData, setbookMaxData] = useState(null);
+  
+      useEffect(() => {
+        async function fetchHeroContent() {
+          try {
+            const res = await client.getEntries({ content_type: "bookOneBookMax" }); // Replace with your actual content type ID
+            setbookMaxData(res.items[0]?.fields);
+  
+    
+          } catch (err) {
+            console.error("Contentful fetch error:", err);
+          }
+        }
+    
+        fetchHeroContent();
+      }, []);
+
+      if (!bookMaxData) return <p>Loading...</p>;
   return (
     <div className="bg-[#EDF6FA] px-4 sm:px-6 lg:px-10 py-10 font-['Inter']">
       <div className="max-w-[1320px] mx-auto">
@@ -35,9 +59,9 @@ const BeautifulBranded = () => {
               Website
             </div>
             <h2 className="text-[#146683] text-[22px] sm:text-[32px] md:text-[40px] lg:text-[48px] font-bold leading-[130%]">
-              Beautifully Branded,
+             {bookMaxData?.secondHeading}
               <br className="hidden sm:block" />
-              Fully Optimized.
+              {bookMaxData?.secondSubHeading}
             </h2>
           </div>
 
@@ -56,7 +80,7 @@ const BeautifulBranded = () => {
           
           <div className="w-full lg:w-[520px] h-auto rounded-[20px] overflow-hidden shadow-lg mx-auto lg:mx-0">
             <Image
-              src={assets.Efficiency}
+              src={`https:${bookMaxData?.secondSectionImg?.fields.file.url}`}
               alt="Efficiency"
               width={520}
               height={400}

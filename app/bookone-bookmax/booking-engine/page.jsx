@@ -4,11 +4,15 @@ import { FaTag, FaLayerGroup, FaLock } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
 import { assets } from "@/assets/assets";
-
+import { createClient } from "contentful";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+const client = createClient({
+  space: "wzmo4lmp2r9v",
+  accessToken: "8byVN6ybNsGaYJ6FUTB0CB4mwuie5fIX-DxWy1GGi6E",
+});
 const BookingEngine = () => {
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -27,7 +31,26 @@ const BookingEngine = () => {
       }
     };
   }, []);
+  const [bookMaxData, setbookMaxData] = useState(null);
+  
+      useEffect(() => {
+        async function fetchHeroContent() {
+          try {
+            const res = await client.getEntries({ content_type: "bookOneBookMax" }); // Replace with your actual content type ID
+            setbookMaxData(res.items[0]?.fields);
+  
+    
+          } catch (err) {
+            console.error("Contentful fetch error:", err);
+          }
+        }
+    
+        fetchHeroContent();
+      }, []);
 
+    
+console.log("bookMaxData", bookMaxData);
+  // if (!bookMaxData) return <p>Loading...</p>;
   return (
     <div
       ref={sectionRef}
@@ -35,6 +58,7 @@ const BookingEngine = () => {
         isVisible ? "opacity-100" : "opacity-0"
       }`}
     >
+      {bookMaxData && (
       <div className="max-w-[1280px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
         {/* RIGHT SIDE (Text, Image, Button) */}
         <div
@@ -48,9 +72,9 @@ const BookingEngine = () => {
             </p>
             <div className="w-full text-center md:text-left">
               <h2 className="text-[#146683] text-[20px] sm:text-[32px] md:text-[38px] lg:text-[44px] font-extrabold leading-tight sm:leading-[130%] max-w-full sm:max-w-[400px] md:max-w-[480px] mx-auto md:mx-0">
-                <span className="block">The Last Click</span>
+                <span className="block">{bookMaxData?.thirdheading}</span>
                 <span className="block pl-10 md:pl-0 lg:pl-0">
-                  Before They Check In
+                {bookMaxData?.thirdSubHeading}
                 </span>
               </h2>
             </div>
@@ -58,7 +82,7 @@ const BookingEngine = () => {
 
           <div className="w-full max-w-[493px] aspect-[3/2] rounded-[20px] overflow-hidden shadow-md">
             <Image
-              src={assets.Engine}
+              src={`https:${bookMaxData?.thirdImage?.fields.file.url}`}
               alt="Efficiency"
               className="w-full h-full object-cover rounded-[20px] transition-transform duration-1000 hover:scale-[1.02]"
               width={493}
@@ -111,7 +135,7 @@ const BookingEngine = () => {
           </div>
         </div>
       </div>
-
+      )}
       {/* ---- MOBILE BUTTON ---- */}
       <div className="block lg:hidden w-full mt-6">
         <Link href="/pricing">
