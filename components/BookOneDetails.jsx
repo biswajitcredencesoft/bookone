@@ -165,7 +165,7 @@ const BookOneDetails = () => {
                 key={index}
                 onClick={() => setActiveTab(index)}
                 className={`w-14 h-14 rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 ${
-                  activeTab === index ? "bg-white shadow-md" : "bg-[#ffffff22]"
+                  activeTab === index ? "bg-[#0E6B81]  border border-white" : "bg-[#CEE6F0]"
                 }`}
               >
                 <Image
@@ -195,7 +195,7 @@ const BookOneDetails = () => {
             </div>
 
             {/* Feature Cards */}
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 gap-6">
               {tabContent[activeTab].map((item) => (
                 <div
                   key={item.title}
@@ -240,7 +240,7 @@ const BookOneDetails = () => {
           {tabContent[activeTab].map((item) => (
             <div
               key={item.title}
-              className="relative bg-white border border-[#CEE6F0] rounded-[9px] p-3 flex items-center text-left shadow-md w-[222px] h-[140px] flex-shrink-0"
+              className="relative bg-white border border-[#CEE6F0] rounded-[9px] p-3 flex items-center text-left shadow-md w-[270px] h-[160px]  flex-shrink-0"
             >
               <div className="flex items-center justify-center rounded-[8px] mr-3 w-[88px] h-[97px]">
                 {item.icon}

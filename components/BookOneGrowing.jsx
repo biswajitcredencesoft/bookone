@@ -35,10 +35,10 @@ const BookOneGrowing = () => {
   if (!heroData) return <p>Loading ...</p>;
   return (
     <div className="bg-[linear-gradient(to_bottom,_#5E5B7D,_#146683,_#000000)] text-white px-4 lg:py-16  md:py-16 py-8  md:px-20 font-Inter">
-      <div className="max-w-7xl mx-auto space-y-24">
+      <div className="max-w-7xl mx-auto space-y-[30px] md:spce-y-24 lg:space-y-24">
         {/* Title Block for Mobile */}
         <div className="md:hidden text-center space-y-4">
-          <h2 className="text-2xl font-bold leading-snug">
+          <h2 className="md:text-2xl lg:text-2xl text-[32px] font-bold  leading-snug">
           {heroData?.fifthHeading}
           </h2>
         </div>
@@ -46,7 +46,7 @@ const BookOneGrowing = () => {
         {/* Stats & Text Block */}
         <div className="flex flex-col md:flex-row md:items-center gap-12">
           {/* Stat Cards */}
-          <div className="w-full md:w-1/2">
+          <div className="w-[80%] md:w-1/2 ml-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-8 md:grid-cols-2 md:gap-y-12">
               {stats.map((item, idx) => (
                 <div
@@ -57,11 +57,11 @@ const BookOneGrowing = () => {
                     }`}
                 >
                   <div className="px-5 py-8 flex flex-col justify-center h-full">
-                    <p className="text-3xl md:text-5xl font-extrabold">
+                    <p className="text-4xl md:text-5xl font-extrabold">
                       {item.number.includes("M") ? (
                         <>
                           1
-                          <span className="text-[#146683] text-2xl md:text-5xl align-top">
+                          <span className="text-[#146683] text-2xl md:text-5xl align-top ">
                             M
                           </span>
                         </>
@@ -69,14 +69,14 @@ const BookOneGrowing = () => {
                         <>
                           {item.number.replace("+", "")}
                           {item.number.includes("+") && (
-                            <span className="text-[#01677D] text-4xl md:text-5xl align-top">
+                            <span className="text-[#01677D] text-4xl md:text-5xl align-top ">
                               +
                             </span>
                           )}
                         </>
                       )}
                     </p>
-                    <p className="mt-2 text-sm md:text-base font-medium text-gray-700">
+                    <p className="mt-2 text-[15px]  md:text-base font-medium text-gray-700">
                       {item.label}
                     </p>
                   </div>
@@ -97,7 +97,7 @@ const BookOneGrowing = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-12 flex flex-col md:flex-row items-center gap-10 md:gap-16 shadow-xl">
+        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-16  md:p-12 flex flex-col md:flex-row items-center gap-2 md:gap-16 shadow-xl">
           <div className="relative w-[220px] md:w-[280px] -mt-20 md:-mt-28">
             <div className="rounded-xl overflow-hidden shadow-lg">
               <Image
@@ -123,7 +123,7 @@ const BookOneGrowing = () => {
               </div>
 
               <div className="shrink-0">
-                <button className="bg-[#01677D] hover:bg-[#0f4b5c] text-[#CEE6F0] px-0  lg:px-6 py-2 md:px-6 md:py-3 rounded-md shadow-md transition duration-300 whitespace-nowrap  text-xs md:text-base ">
+                <button className="bg-[#01677D] hover:bg-[#0f4b5c] text-[#ffffff] font-medium px-4 border border-white   lg:px-6 py-2 md:px-6 md:py-3 rounded-md shadow-md transition duration-300 whitespace-nowrap  text-xs md:text-base ">
                   See What BookOne Can Do For You
                 </button>
               </div>

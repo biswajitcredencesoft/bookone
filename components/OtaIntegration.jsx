@@ -111,7 +111,7 @@ const OtaIntegration = () => {
                 : "opacity-0 translate-y-10 pointer-events-none"
             }`}
           >
-            <h2 className="text-[24px] sm:text-[32px] md:text-[40px] lg:text-[44px] font-bold text-[#146683] leading-snug">
+            <h2 className="text-[24px] text-center md:text-left lg:text-left sm:text-[32px] md:text-[40px] lg:text-[44px] font-bold text-[#146683] leading-snug">
               The Right Integrations 
               <br />
               <span> Make All The Difference</span>
@@ -127,7 +127,7 @@ const OtaIntegration = () => {
                 <div className="ml-32 lg:ml-0 md:ml-0">
                   <button
                     title="Explore more"
-                    className="group flex items-center h-10 bg-[#146683] text-white rounded-full overflow-hidden transition-all duration-300 ease-in-out w-[40px] hover:w-[150px] sm:h-10 sm:hover:w-[160px] hover:bg-[#BFE9FF] px-3"
+                    className="group flex items-center h-10 bg-[#146683] text-white rounded-full overflow-hidden transition-all duration-300 ease-in-out w-[40px] hover:w-[180px] sm:h-10 sm:hover:w-[160px] hover:bg-[#BFE9FF] px-3 ml-16 md:ml-0 lg:ml-0"
                   >
                     <div className="flex items-center justify-center w-6 min-w-[24px] h-6 bg-[#0E5B6F] rounded-full -ml-1">
                       <FaArrowRight className="text-sm -rotate-45 transition-transform duration-300 group-hover:translate-x-1 text-white" />

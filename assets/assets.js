@@ -16,7 +16,7 @@ import Channex from "./channex.png";
 import Eglobe from "./eGlobe.png";
 import TripAdvisor from "./tripadvisor.png";
 import SkyScanner from "./skyscanner.png";
-import Google_Hotels from "./google-hotels.png";
+import Google_Hotels from "./googlehotels.png";
 import Wego from "./wego.png";
 import HyperGuest from "./hyper-guest.png";
 import Tbo_com from "./tbo-com.png";
@@ -77,17 +77,17 @@ import Automation from "./pa.svg";
 //Icon
 import Phone_Icon from "./phone.svg";
 import Instagram from "./instagram.svg";
-import Case_Study from "./casestudy.png"
-import Quote from "./quote.svg"
-import  User_logo from "./user.png"
-import Marketing from "./marketing.png"
-import Guest from "./guest.png"
-import Price from "./pricing.png"
+import Case_Study from "./casestudy.png";
+import Quote from "./quote.svg";
+import User_logo from "./user.png";
+import Marketing from "./marketing.png";
+import Guest from "./guest.png";
+import Price from "./pricing.png";
 
-import Picture14 from "./pic10.png"
-import Picture11 from "./pic11.png"
-import Picture12 from "./pic12.png"
-import Picture13 from "./pic13.png"
+import Picture14 from "./pic10.png";
+import Picture11 from "./pic11.png";
+import Picture12 from "./pic12.png";
+import Picture13 from "./pic13.png";
 
 export const assets = {
   logo,

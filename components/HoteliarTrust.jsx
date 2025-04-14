@@ -138,7 +138,7 @@ const HoteliarTrust = () => {
                   </div>
                   <div>
                     <p className="text-lg font-semibold text-gray-900">{testimonial.name}</p>
-                    <p className="text-sm text-gray-500">{testimonial.title}</p>
+                    <p className="text-sm font-bold text-gray-500">{testimonial.title}</p>
                   </div>
                 </div>
               </div>
