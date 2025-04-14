@@ -60,7 +60,7 @@ const UseBookone = () => {
             <div className="flex items-start gap-4 sm:gap-6">
               <div className="w-[60px] h-[60px] md:w-[70px] md:h-[70px] rounded-full bg-[#5E5B7D] border border-[#8C89AB] shrink-0" />
               <div className="text-white text-sm md:text-base">
-                <FaQuoteLeft className="text-[#CEE6F0] text-lg md:text-xl mb-2" />
+                <Image src={assets.Hotels} alt="hotels" className="w-10 h-10"/>
                 <p className="leading-relaxed mb-3">
                   <span className="font-semibold text-white">
                     As we scaled to multiple properties, BookOne
@@ -68,8 +68,8 @@ const UseBookone = () => {
                   remained the one solution that could keep up—simple, powerful,
                   and built for growth.
                 </p>
-                <p className="font-medium">Jane Doe</p>
-                <p className="text-white/80">Managing Director, Hotel One</p>
+                <p className="font-medium hidden md:block">Jane Doe</p>
+                <p className="text-white/80 hidden md:block">Managing Director, Hotel One</p>
               </div>
             </div>
           </div>

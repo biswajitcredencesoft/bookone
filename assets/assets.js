@@ -89,6 +89,20 @@ import Picture11 from "./pic11.png";
 import Picture12 from "./pic12.png";
 import Picture13 from "./pic13.png";
 
+//pricing Icon
+import Pricing1 from "./pr-1.svg"
+import Pricing2 from "./pr-2.svg"
+import Pricing3 from "./pr-3.svg"
+
+//Power 
+import Power1 from "./power1.svg"
+import Power2 from "./power2.svg"
+import Power3 from "./power3.svg"
+import Power4 from "./power4.svg"
+import Power5 from "./power5.svg"
+
+import Hotels from "./hotels.svg"
+
 export const assets = {
   logo,
   search_icon,
@@ -164,6 +178,15 @@ export const assets = {
   Picture11,
   Picture12,
   Picture13,
+  Pricing1,
+  Pricing2,
+  Pricing3,
+  Power1,
+  Power2,
+  Power3,
+  Power4,
+  Power5,
+  Hotels,
 };
 
 export const BagIcon = () => {
