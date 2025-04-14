@@ -82,6 +82,7 @@ const UseBookone = () => {
               <Image
                 src={`https:${pmsData.pmsLastImage.fields.file.url}`}
                 alt="Smiling professionals"
+                unoptimized 
                 width={700}
               height={700}
                 className="w-full h-full object-cover"

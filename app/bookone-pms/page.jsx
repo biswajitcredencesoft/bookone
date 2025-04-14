@@ -51,6 +51,7 @@ const BookOnePms = () => {
                   alt="Image 1"
                   layout="fill"
                   className="object-cover w-full h-full"
+                  unoptimized 
                 />
               </div>
             </div>

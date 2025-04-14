@@ -53,6 +53,7 @@ const BuildOfEfficiency = () => {
               alt="Efficiency"
               width={493}
               height={323}
+              unoptimized 
               className="w-full h-full object-cover rounded-[20px]"
             />
           </div>

@@ -43,6 +43,7 @@ const Connectivity = () => {
               src={`https:${connectData?.connectSecondImage.fields.file.url}`}
               width={700}
               height={700}
+              unoptimized 
               alt="Efficiency"
               className="w-full h-full object-cover rounded-[20px]"
             />

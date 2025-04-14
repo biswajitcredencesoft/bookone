@@ -38,6 +38,7 @@ const LevelUP = () => {
               alt="Smiling professionals"
               width={700}
               height={700}
+              unoptimized 
               className="w-full h-auto object-cover"
             />
           </div>

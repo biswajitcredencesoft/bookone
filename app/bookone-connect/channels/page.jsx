@@ -30,6 +30,7 @@ const Channels = () => {
             alt="Channel integrations"
             width={1329}
             height={652}
+            unoptimized 
             className="w-full h-auto object-contain"
             priority
           />

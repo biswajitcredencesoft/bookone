@@ -54,6 +54,7 @@ const BookOneConnect = () => {
                 src={`https:${connectData?.connectHeroImg.fields.file.url}`}
                 alt="Image 1"
                 fill
+                unoptimized 
                 className="object-cover w-full h-full"
               />
             </div>
