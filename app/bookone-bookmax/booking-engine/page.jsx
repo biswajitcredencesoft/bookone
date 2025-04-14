@@ -87,6 +87,7 @@ console.log("bookMaxData", bookMaxData);
               className="w-full h-full object-cover rounded-[20px] transition-transform duration-1000 hover:scale-[1.02]"
               width={493}
               height={323}
+              unoptimized 
             />
           </div>
         </div>

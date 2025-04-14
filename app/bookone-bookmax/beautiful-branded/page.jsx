@@ -84,6 +84,7 @@ const BeautifulBranded = () => {
               alt="Efficiency"
               width={520}
               height={400}
+              unoptimized 
               className="w-full h-auto object-cover"
             />
           </div>

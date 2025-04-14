@@ -96,6 +96,7 @@ const PaymentGateWays = () => {
               alt="UPI Gateways"
               width={1055}
               height={296}
+              unoptimized 
               className="w-full h-auto object-contain rounded-xl shadow-sm"
               style={{
                 opacity: isVisible ? 1 : 0,
