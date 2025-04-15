@@ -124,7 +124,7 @@ const BookOneGrowing = () => {
               </div>
 
               <div className="shrink-0">
-                <button className="bg-[#01677D] border-[1px] hover:bg-[#0f4b5c] text-[#ffffff] font-medium px-4  border-white   lg:px-6 py-2 md:px-6 md:py-3 rounded-md shadow-md transition duration-300 whitespace-nowrap  text-xs md:text-base ">
+                <button className="bg-[#01677D] border-[1px] hover:bg-[#0f4b5c] text-[#ffffff] font-medium px-4  border-white   lg:px-6 py-2 md:px-6 md:py-3 rounded-md shadow-md transition duration-300 whitespace-nowrap  text-xs md:text-base p-[10px]">
                   See What BookOne Can Do For You
                 </button>
               </div>
