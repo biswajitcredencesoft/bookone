@@ -121,7 +121,7 @@ const BeautifulBranded = () => {
         {/* Mobile Button */}
         <div className="block lg:hidden mt-10">
           <Link href="/pricing">
-            <button className="bg-[#01677D] border border-[#CEE6F0] text-white w-full h-[48px] rounded-[16px] text-sm font-semibold shadow hover:bg-[#125a74] transition-all">
+            <button className="bg-[#01677D] border border-[#CEE6F0] text-white w-[70%]  ml-[52px] h-[48px] rounded-[25px] text-sm font-semibold shadow hover:bg-[#125a74] transition-all ">
               Get Pricing
             </button>
           </Link>
