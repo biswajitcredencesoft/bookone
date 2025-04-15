@@ -12,7 +12,7 @@ import { assets } from "@/assets/assets";
 
 const Connectivity = () => {
   const contentful = useContentful();
-  
+
   if (!contentful || !contentful.connectData) return <p>Loading ...</p>;
 
   const { connectData } = contentful;
@@ -50,20 +50,25 @@ const Connectivity = () => {
           </div>
 
           <div className="flex-1 mt-10 lg:mt-16 w-full">
-            {/* Adjusted the grid layout for icons: 2 columns on mobile */}
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8">
-              {features.map((feature) => (
+              {features.map((feature, index) => (
                 <div
                   key={feature.title}
-                  className="flex items-center justify-start gap-6 sm:gap-4 lg:gap-8"
+                  className={`flex items-center gap-4 sm:gap-4 lg:gap-6 
+                    ${
+                      index === features.length - 1
+                        ? "col-span-2 justify-center md:col-span-1 md:justify-start"
+                        : "justify-start"
+                    }
+                  `}
                 >
-                  <div className="w-[60px] sm:w-[70px] lg:w-[80px] p-2 flex items-center justify-center bg-[rgba(191,233,255,0.20)] shadow-md ">
+                  <div className="w-[60px] sm:w-[70px] lg:w-[80px] p-2 flex items-center justify-center bg-[rgba(191,233,255,0.20)] shadow-md rounded-[12px]">
                     <div className="w-[40px] sm:w-[50px] lg:w-[56px] flex items-center justify-center text-[#01677D] text-[24px] sm:text-[28px] lg:text-[30px]">
                       {feature.icon}
                     </div>
                   </div>
 
-                  <span className="text-[#171C1E] text-[14px] sm:text-[16px] lg:text-[18px] leading-[130%]">
+                  <span className="text-[#171C1E] text-[14px] sm:text-[16px] lg:text-[18px] leading-[130%] max-w-[150px] sm:max-w-[200px] lg:max-w-none">
                     {feature.title}
                   </span>
                 </div>
@@ -88,23 +93,53 @@ const Connectivity = () => {
 const features = [
   {
     title: "Real-time Updates",
-    icon: <Image src={assets.RealTime} alt="Online Reputation" className="w-[2.5rem] h-[2.5rem] mb-3" />,
+    icon: (
+      <Image
+        src={assets.RealTime}
+        alt="Real-time Updates"
+        className="w-[2.5rem] h-[2.5rem]"
+      />
+    ),
   },
   {
     title: "Auto OTA Sync",
-    icon: <Image src={assets.WorldTimer} alt="Online Reputation" className="w-[2.5rem] h-[2.5rem] mb-3" />,
+    icon: (
+      <Image
+        src={assets.WorldTimer}
+        alt="Auto OTA Sync"
+        className="w-[2.5rem] h-[2.5rem]"
+      />
+    ),
   },
   {
     title: "Avoid Overbookings",
-    icon: <Image src={assets.CancelImage} alt="Online Reputation" className="w-[2.5rem] h-[2.5rem] mb-3" />,
+    icon: (
+      <Image
+        src={assets.CancelImage}
+        alt="Avoid Overbookings"
+        className="w-[2.5rem] h-[2.5rem]"
+      />
+    ),
   },
   {
     title: "Analytics & Reporting",
-    icon: <Image src={assets.AnalyticsReport} alt="Online Reputation" className="w-[2.5rem] h-[2.5rem] mb-3" />,
+    icon: (
+      <Image
+        src={assets.AnalyticsReport}
+        alt="Analytics & Reporting"
+        className="w-[2.5rem] h-[2.5rem]"
+      />
+    ),
   },
   {
     title: "Integrate With Leading OTAs",
-    icon: <Image src={assets.Graphics} alt="Online Reputation" className="w-[2.5rem] h-[2.5rem] mb-3 " />,
+    icon: (
+      <Image
+        src={assets.Graphics}
+        alt="Integrate With Leading OTAs"
+        className="w-[2.5rem] h-[2.5rem]"
+      />
+    ),
   },
 ];
 
