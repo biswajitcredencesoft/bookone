@@ -104,7 +104,7 @@ const features = [
   },
   {
     title: "Integrate With Leading OTAs",
-    icon: <Image src={assets.Graphics} alt="Online Reputation" className="w-[2.5rem] h-[2.5rem] mb-3" />,
+    icon: <Image src={assets.Graphics} alt="Online Reputation" className="w-[2.5rem] h-[2.5rem] mb-3 " />,
   },
 ];
 
