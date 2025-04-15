@@ -60,14 +60,14 @@ const Results = () => {
         ].map((item, i) => (
           <div
             key={i}
-            className="w-full sm:w-[298px] h-[180px] md:h-[227px] bg-white rounded-[40px] shadow-inner flex flex-col items-center justify-center text-left px-6"
+            className="w-[70%] ml-16 md:ml-0 lg:ml-0 sm:w-[298px] h-[180px] md:h-[227px] bg-white rounded-[40px] shadow-inner flex flex-col items-center justify-center text-left px-6"
             style={{ boxShadow: "inset 0px 4px 4px rgba(0, 0, 0, 0.25)" }}
           >
             <div className="flex gap-4 items-center">
             <p className="text-[32px] font-bold text-[#146683]">
               {item.percent}
             </p>
-            <p className="text-[22px] font-semibold text-[#146683] mt-1 text-left">
+            <p className="text-[15px] md:text-[22px] font-semibold text-[#146683] mt-1 text-left">
               {item.title}
             </p>
             </div>
