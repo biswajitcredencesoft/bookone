@@ -106,14 +106,21 @@ import Power3 from "./power3.svg";
 import Power4 from "./power4.svg";
 import Power5 from "./power5.svg";
 
+
+
+
+
 import Hotels from "./hotels.svg";
+import Accessibility from "./accessibility.png"
+
 
 // Support
-import Support1 from "./support.svg";
-import Support2 from "./support1.svg";
-import Support3 from "./support2.svg";
-import Support4 from "./support3.png";
-
+import Support1 from "./support.svg"
+import Support2 from "./support1.svg"
+import Support3 from "./support2.svg"
+import Support4 from "./support3.png"
+import Brand_Image from "./brand.png"
+import Flawless_Image from "./flawlessimg.png"
 //Book a Demo icon
 import Form from "./form.svg";
 import Form1 from "./form1.svg";
@@ -147,6 +154,8 @@ export const assets = {
   Tbo_com,
   Power_Of,
   Foooter,
+  Brand_Image,
+  Flawless_Image,
   // Expect1,
   // Expect2,
   // Expect3,
@@ -170,6 +179,7 @@ export const assets = {
   MobileCarosal2,
   MobileCarosal3,
   Carosall,
+  Accessibility,
   UPI,
   Engine,
   Header,

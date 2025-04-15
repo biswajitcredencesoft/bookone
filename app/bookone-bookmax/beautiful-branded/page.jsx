@@ -15,18 +15,18 @@ const features = [
     title: "Customisable to Your Brand",
     description:
       "Design freedom that reflects your identity — without the tech headaches.",
-    icon: <FaSyncAlt />,
+    icon: <Image src={assets.Brand_Image} />,
   },
   {
     title: "Accessibility & SEO-Ready",
     description: "Ease in navigation & optimised for search engine visibility.",
-    icon: <FaKeyboard />,
+    icon: <Image src={assets.Accessibility} />,
   },
   {
     title: "Seamlessly Responsive",
     description:
       "Looks flawless and works perfectly on mobile, tablet, or desktop.",
-    icon: <FaCommentDots />,
+    icon: <Image src={assets.Flawless_Image} />,
   },
 ];
 
