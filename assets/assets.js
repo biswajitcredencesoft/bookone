@@ -92,32 +92,35 @@ import RealTime from "./connect-time.png";
 import WorldTimer from "./world-timer.png";
 import CancelImage from "./cancel-image.png";
 import AnalyticsReport from "./analytics.png";
-import Graphics from "./graph.png"
+import Graphics from "./graph.png";
 
 //pricing Icon
-import Pricing1 from "./pr-1.svg"
-import Pricing2 from "./pr-2.svg"
-import Pricing3 from "./pr-3.svg"
+import Pricing1 from "./pr-1.svg";
+import Pricing2 from "./pr-2.svg";
+import Pricing3 from "./pr-3.svg";
 
-//Power 
-import Power1 from "./power1.svg"
-import Power2 from "./power2.svg"
-import Power3 from "./power3.svg"
-import Power4 from "./power4.svg"
-import Power5 from "./power5.svg"
+//Power
+import Power1 from "./power1.svg";
+import Power2 from "./power2.svg";
+import Power3 from "./power3.svg";
+import Power4 from "./power4.svg";
+import Power5 from "./power5.svg";
 
-import Hotels from "./hotels.svg"
+import Hotels from "./hotels.svg";
 
 // Support
-import Support1 from "./support.svg"
-import Support2 from "./support1.svg"
-import Support3 from "./support2.svg"
-import Support4 from "./support3.png"
+import Support1 from "./support.svg";
+import Support2 from "./support1.svg";
+import Support3 from "./support2.svg";
+import Support4 from "./support3.png";
 
 //Book a Demo icon
-import Form from "./form.svg"
-import Form1 from "./form1.svg"
-import Form2 from "./form2.svg"
+import Form from "./form.svg";
+import Form1 from "./form1.svg";
+import Form2 from "./form2.svg";
+
+import Animate from "./animation.gif";
+import Animate1 from "./animation 1.gif";
 
 export const assets = {
   logo,
@@ -215,7 +218,10 @@ export const assets = {
   WorldTimer,
   CancelImage,
   AnalyticsReport,
-  Graphics
+  Graphics,
+
+  Animate,
+  Animate1,
 };
 
 export const BagIcon = () => {

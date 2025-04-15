@@ -149,9 +149,9 @@ const HeroCarosal = () => {
 
           {/* RIGHT SECTION */}
           <div className="w-full hidden md:block lg:w-[45%] justify-center">
-            <div className="w-full max-w-[550px] h-[250px] relative overflow-hidden rounded-[20px]">
+            <div className="w-full max-w-[550px] h-[450px] relative overflow-hidden rounded-[20px]">
               <Image
-                src={assets.Carosall}
+                src={assets.Animate}
                 alt="right section"
                 fill
                 className="object-cover rounded-[20px]"
