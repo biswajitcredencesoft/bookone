@@ -153,19 +153,19 @@ const features = [
     title: "Promotions Made Simple",
     description:
       "Create irresistible offers and seasonal deals in just a few clicks.",
-    icon: <Image src={assets.Promotion_Image} />,
+    icon: <Image src={assets.Promotion_Image} alt="Simple"/>,
   },
   {
     title: "Multiple Rates & Plans",
     description:
       "Run multiple pricing models to match every guest and booking need.",
-    icon:<Image src={assets.Rates_Image} />,
+    icon:<Image src={assets.Rates_Image}  alt="Plans"/>,
   },
   {
     title: "Secure & Trustworthy",
     description:
       "End-to-end encryption ensures every transaction is protected.",
-    icon:  <Image src={assets.Secure_Image} />,
+    icon:  <Image src={assets.Secure_Image} alt="Trustworthy"/>,
   },
 ];
 

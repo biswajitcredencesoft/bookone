@@ -28,7 +28,7 @@ const OrderSummary = () => {
   }, [])
 
   return (
-   <div>
+   <div className="">
     
    </div>
   );

@@ -15,18 +15,18 @@ const features = [
     title: "Customisable to Your Brand",
     description:
       "Design freedom that reflects your identity — without the tech headaches.",
-    icon: <Image src={assets.Brand_Image} />,
+    icon: <Image src={assets.Brand_Image} alt="Your Brand"/>,
   },
   {
     title: "Accessibility & SEO-Ready",
     description: "Ease in navigation & optimised for search engine visibility.",
-    icon: <Image src={assets.Accessibility} />,
+    icon: <Image src={assets.Accessibility} alt="SEO-Ready"/>,
   },
   {
     title: "Seamlessly Responsive",
     description:
       "Looks flawless and works perfectly on mobile, tablet, or desktop.",
-    icon: <Image src={assets.Flawless_Image} />,
+    icon: <Image src={assets.Flawless_Image} alt="Seamless"/>,
   },
 ];
 

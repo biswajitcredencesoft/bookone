@@ -39,18 +39,94 @@ const BookDemo = () => {
   const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
   const isValidPhone = (phone) => /^[0-9]{10,15}$/.test(phone);
 
+  const submitForm = async () => {
+    const { name, email, phone, company } = userInfo;
+
+    const message = `Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Company: ${company}
+Property Type: ${propertyType}
+Interested In: ${solutionType}
+Date: ${schedule.date}
+Time: ${schedule.time}
+*****this message is sent from BookOnePMS Website.******`;
+
+    const payload = {
+      fromEmail: email,
+      toEmail: "biswajit.sahoo@credencesoft.in",
+      subject: "Book A Demo Enquiry",
+      message,
+    };
+
+    try {
+      setLoading(true);
+      const response = await fetch(
+        "https://api.bookonelocal.in/api-bookone/api/website/sendEmailFromWebSite",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to submit the form.");
+      }
+
+      alert("Demo booked successfully!");
+    } catch (err) {
+      console.error("Form submission error:", err);
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const propertyOptions = [
-    { label: "Hotel", icon: <Image src={assets.Rectangle} alt="Hotel" width={28} height={28} /> },
-    { label: "Villa", icon: <Image src={assets.Rectangle1} alt="Villa" width={28} height={28} /> },
-    { label: "Resort", icon: <Image src={assets.Rectangle2} alt="Resort" width={28} height={28} /> },
-    { label: "Home Stay", icon: <Image src={assets.Rectangle3} alt="Home Stay" width={28} height={28} /> },
-    { label: "Others", icon: <Image src={assets.Rectangle4} alt="Others" width={28} height={28} /> },
+    {
+      label: "Hotel",
+      icon: <Image src={assets.Rectangle} alt="Hotel" width={28} height={28} />,
+    },
+    {
+      label: "Villa",
+      icon: (
+        <Image src={assets.Rectangle1} alt="Villa" width={28} height={28} />
+      ),
+    },
+    {
+      label: "Resort",
+      icon: (
+        <Image src={assets.Rectangle2} alt="Resort" width={28} height={28} />
+      ),
+    },
+    {
+      label: "Home Stay",
+      icon: (
+        <Image src={assets.Rectangle3} alt="Home Stay" width={28} height={28} />
+      ),
+    },
+    {
+      label: "Others",
+      icon: (
+        <Image src={assets.Rectangle4} alt="Others" width={28} height={28} />
+      ),
+    },
   ];
 
   const renderStepDots = () => (
     <div className="flex space-x-2">
       {[1, 2, 3, 4].map((i) => (
-        <span key={i} className={`w-2 h-2 rounded-full ${step === i ? "bg-blue-500" : "bg-gray-300"}`}></span>
+        <span
+          key={i}
+          className={`w-2 h-2 rounded-full ${
+            step === i ? "bg-blue-500" : "bg-gray-300"
+          }`}
+        ></span>
       ))}
     </div>
   );
@@ -61,7 +137,6 @@ const BookDemo = () => {
     </div>
   );
 
-
   const renderFeatureCards = () => (
     <div className="grid grid-cols-3 gap-4 md:gap-0 mt-6 md:mt-0">
       {[assets.Form, assets.Form1, assets.Form2].map((icon, index) => (
@@ -71,7 +146,11 @@ const BookDemo = () => {
         >
           <Image src={icon} alt={`form-${index}`} width={32} height={32} />
           <span className="text-[10px] md:text-sm text-white font-medium mt-1 text-center">
-            {index === 0 ? "PMS" : index === 1 ? "Channel Manager" : "Website/Booking Engine"}
+            {index === 0
+              ? "PMS"
+              : index === 1
+              ? "Channel Manager"
+              : "Website/Booking Engine"}
           </span>
         </div>
       ))}
@@ -82,70 +161,64 @@ const BookDemo = () => {
     <>
       <Navbar />
       <div className="bg-[#0D6C80] text-white px-4 py-4 md:py-16">
-        <div className="mx-auto flex flex-col md:flex-row gap-10 items-start justify-between" style={{ maxWidth: "1472px" }}>
-          {/* Left Content */}
+        <div
+          className="mx-auto flex flex-col md:flex-row gap-10 items-start justify-between"
+          style={{ maxWidth: "1472px" }}
+        >
           <div className="w-full md:w-[476px] flex flex-col gap-8">
             <div className="order-1 md:order-none mt-8 md:mt-20">
               <h1 className="text-white font-bold text-[24px] text-center md:text-left lg:text-left md:text-[48px] leading-tight">
                 Get A Personalised <br /> Product Demo
               </h1>
               <p className="hidden md:block text-white font-semibold text-lg md:text-[24px] mt-12 w-[631px]">
-                Our suite is designed to offer 360-degree value across your entire property, simplifying processes and boosting profitability from day one.
+                Our suite is designed to offer 360-degree value across your
+                entire property, simplifying processes and boosting
+                profitability from day one.
               </p>
             </div>
-
-            {/* Feature Cards */}
             <div className="hidden md:block">{renderFeatureCards()}</div>
           </div>
 
-          {/* Form Section */}
-          <div className="w-full md:w-[468px] text-black order-2 md:order-none ">
-
-          {step === 1 &&
-  renderFormBox(
-    <>
-      <h2 className="text-[#146683] text-[20px] font-semibold mb-6">
-        What kind of property do you have?
-      </h2>
-
-      <div className="grid grid-cols-2 gap-4 md:gap-6 mt-6">
-        {propertyOptions.map((item, index) => (
-          <div
-            key={item.label}
-            onClick={() => setPropertyType(item.label)}
-            className={`cursor-pointer p-4 border rounded-[10px] flex flex-col items-center justify-center transition-all duration-200 ${
-              propertyType === item.label
-                ? "border-blue-600 bg-blue-50 shadow-sm"
-                : "border-[#8CCFF0]"
-            } ${index > 2 ? "col-span-1 rows-start-3" : ""}`}
-          >
-            <div className="mb-1">{item.icon}</div>
-            <span className="text-[14px] text-[#146683] font-medium text-center">
-              {item.label}
-            </span>
-          </div>
-        ))}
-      </div>
-
-      {error && <p className="text-red-500 mt-4">{error}</p>}
-
-      <div className="mt-8 flex justify-between items-center">
-        {renderStepDots()}
-        <button
-          onClick={() => {
-            if (propertyType) nextStep();
-            else setError("Please select a property type.");
-          }}
-          className="text-blue-700 font-semibold"
-        >
-          Next
-        </button>
-      </div>
-    </>
-  )}
-
-
-
+          <div className="w-full md:w-[468px] text-black order-2 md:order-none">
+            {step === 1 &&
+              renderFormBox(
+                <>
+                  <h2 className="text-[#146683] text-[20px] font-semibold mb-6">
+                    What kind of property do you have?
+                  </h2>
+                  <div className="grid grid-cols-2 gap-4 md:gap-6 mt-6">
+                    {propertyOptions.map((item) => (
+                      <div
+                        key={item.label}
+                        onClick={() => setPropertyType(item.label)}
+                        className={`cursor-pointer p-4 border rounded-[10px] flex flex-col items-center justify-center transition-all duration-200 ${
+                          propertyType === item.label
+                            ? "border-blue-600 bg-blue-50 shadow-sm"
+                            : "border-[#8CCFF0]"
+                        }`}
+                      >
+                        <div className="mb-1">{item.icon}</div>
+                        <span className="text-[14px] text-[#146683] font-medium text-center">
+                          {item.label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  {error && <p className="text-red-500 mt-4">{error}</p>}
+                  <div className="mt-8 flex justify-between items-center">
+                    {renderStepDots()}
+                    <button
+                      onClick={() => {
+                        if (propertyType) nextStep();
+                        else setError("Please select a property type.");
+                      }}
+                      className="text-blue-700 font-semibold"
+                    >
+                      Next
+                    </button>
+                  </div>
+                </>
+              )}
 
             {step === 2 &&
               renderFormBox(
@@ -160,10 +233,23 @@ const BookDemo = () => {
                           {field === "company" ? "Hotel Name" : field}
                         </label>
                         <input
-                          type={field === "email" ? "email" : field === "phone" ? "tel" : "text"}
-                          placeholder={field === "company" ? "Hotel Name" : `Your ${field}`}
+                          type={
+                            field === "email"
+                              ? "email"
+                              : field === "phone"
+                              ? "tel"
+                              : "text"
+                          }
+                          placeholder={
+                            field === "company" ? "Hotel Name" : `Your ${field}`
+                          }
                           value={userInfo[field]}
-                          onChange={(e) => setUserInfo({ ...userInfo, [field]: e.target.value })}
+                          onChange={(e) =>
+                            setUserInfo({
+                              ...userInfo,
+                              [field]: e.target.value,
+                            })
+                          }
                           className="w-full h-[32px] border border-[#8CCFF0] rounded-[10px] px-3 bg-transparent placeholder:text-[#818181] text-sm"
                         />
                       </div>
@@ -171,7 +257,12 @@ const BookDemo = () => {
                   </div>
                   {error && <p className="text-red-500 mt-4">{error}</p>}
                   <div className="flex justify-between items-center mt-8">
-                    <button onClick={prevStep} className="text-gray-500 font-semibold">Prev</button>
+                    <button
+                      onClick={prevStep}
+                      className="text-gray-500 font-semibold"
+                    >
+                      Prev
+                    </button>
                     <button
                       onClick={() => {
                         const { name, email, phone, company } = userInfo;
@@ -221,7 +312,12 @@ const BookDemo = () => {
                   </div>
                   {error && <p className="text-red-500 mt-4">{error}</p>}
                   <div className="flex justify-between items-center mt-8">
-                    <button onClick={prevStep} className="text-gray-500 font-semibold">Prev</button>
+                    <button
+                      onClick={prevStep}
+                      className="text-gray-500 font-semibold"
+                    >
+                      Prev
+                    </button>
                     <button
                       onClick={() => {
                         if (solutionType) nextStep();
@@ -241,15 +337,21 @@ const BookDemo = () => {
                   <h2 className="text-[#146683] text-[20px] font-semibold mb-4">
                     Would you like to book a demo?
                   </h2>
-                  <p className="text-[#146683] text-sm mb-4">Choose a date and time.</p>
+                  <p className="text-[#146683] text-sm mb-4">
+                    Choose a date and time.
+                  </p>
                   <div className="flex flex-col gap-4">
                     {["date", "time"].map((type) => (
                       <div key={type}>
-                        <label className="text-[#818181] text-sm mb-1 block capitalize">{type}</label>
+                        <label className="text-[#818181] text-sm mb-1 block capitalize">
+                          {type}
+                        </label>
                         <input
                           type={type}
                           value={schedule[type]}
-                          onChange={(e) => setSchedule({ ...schedule, [type]: e.target.value })}
+                          onChange={(e) =>
+                            setSchedule({ ...schedule, [type]: e.target.value })
+                          }
                           className="w-full h-[32px] border border-[#8CCFF0] rounded-[10px] px-3 bg-transparent placeholder:text-[#818181] text-sm"
                         />
                       </div>
@@ -257,32 +359,32 @@ const BookDemo = () => {
                   </div>
                   {error && <p className="text-red-500 mt-4">{error}</p>}
                   <div className="flex justify-between items-center mt-8">
-                    <button onClick={prevStep} className="text-gray-500 font-semibold">Prev</button>
+                    <button
+                      onClick={prevStep}
+                      className="text-gray-500 font-semibold"
+                    >
+                      Prev
+                    </button>
                     <button
                       onClick={() => {
                         if (!schedule.date || !schedule.time) {
                           setError("Please select date and time.");
                         } else {
                           setError("");
-                          // Submit the form logic can go here
-                          alert("Demo booked successfully!");
+                          submitForm();
                         }
                       }}
                       className="text-blue-700 font-semibold"
+                      disabled={loading}
                     >
-                      Submit
+                      {loading ? "Submitting..." : "Submit"}
                     </button>
                   </div>
                 </>
               )}
           </div>
-            
-             
-
         </div>
-
-         {/* Feature Cards: Only on Mobile */}
-         <div className="block md:hidden mt-8">{renderFeatureCards()}</div>
+        <div className="block md:hidden mt-8">{renderFeatureCards()}</div>
       </div>
 
       <ExpectDemo />

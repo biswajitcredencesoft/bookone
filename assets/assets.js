@@ -106,25 +106,20 @@ import Power3 from "./power3.svg";
 import Power4 from "./power4.svg";
 import Power5 from "./power5.svg";
 
-
-
-
-
 import Hotels from "./hotels.svg";
 import Promotion_Image from "./promotionimg.png";
 import Secure_Image from "./secureimg.png";
 
-
-import Accessibility from "./accessibility.png"
+import Accessibility from "./accessibility.png";
 import Rates_Image from "./ratesimg.png";
 
 // Support
-import Support1 from "./support.svg"
-import Support2 from "./support1.svg"
-import Support3 from "./support2.svg"
-import Support4 from "./support3.png"
-import Brand_Image from "./brand.png"
-import Flawless_Image from "./flawlessimg.png"
+import Support1 from "./support.svg";
+import Support2 from "./support1.svg";
+import Support3 from "./support2.svg";
+import Support4 from "./support3.png";
+import Brand_Image from "./brand.png";
+import Flawless_Image from "./flawlessimg.png";
 //Book a Demo icon
 import Form from "./form.svg";
 import Form1 from "./form1.svg";
@@ -136,11 +131,32 @@ import Animate2 from "./animation2.gif";
 
 // Form Images
 
-import Rectangle from "./rectangle.svg"
-import Rectangle1 from "./rectangle2.png"
-import Rectangle2 from "./rectangle3.png"
-import Rectangle3 from "./rectangle4.png"
-import Rectangle4 from "./rectangle5.png"
+import Rectangle from "./rectangle.svg";
+import Rectangle1 from "./rectangle2.png";
+import Rectangle2 from "./rectangle3.png";
+import Rectangle3 from "./rectangle4.png";
+import Rectangle4 from "./rectangle5.png";
+
+// Navbar Menu
+import Mask1 from "./mask1.png";
+import Mask2 from "./mask2.png";
+import Mask3 from "./mask3.png";
+import Mask4 from "./mask4.png";
+import Mask5 from "./mask5.png";
+import Mask6 from "./mask6.png";
+import Mask7 from "./mask7.png";
+import Mask8 from "./mask8.png";
+import Mask9 from "./mask9.png";
+import Mask10 from "./mask10.png";
+import Mask11 from "./mask11.png";
+import Mask12 from "./mask12.png";
+import Mask13 from "./mask13.png";
+import Mask14 from "./mask14.png";
+import Mask15 from "./mask15.png";
+import Mask16 from "./mask16.png";
+import Mask17 from "./mask17.png";
+import Mask18 from "./mask18.png";
+import Mask19 from "./mask19.png";
 
 export const assets = {
   logo,
@@ -255,6 +271,27 @@ export const assets = {
   Rectangle2,
   Rectangle3,
   Rectangle4,
+
+  //Navbar Menu
+  Mask1,
+  Mask2,
+  Mask3,
+  Mask4,
+  Mask5,
+  Mask6,
+  Mask7,
+  Mask8,
+  Mask9,
+  Mask10,
+  Mask11,
+  Mask12,
+  Mask13,
+  Mask14,
+  Mask15,
+  Mask16,
+  Mask17,
+  Mask18,
+  Mask19,
 };
 
 export const BagIcon = () => {

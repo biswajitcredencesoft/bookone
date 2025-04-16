@@ -24,9 +24,9 @@ const Hero = () => {
               </span>
             </h1>
 
-            <p className="hidden sm:block text-[#171C1E] font-inter text-[14px] md:text-[16px] lg:text-[18px] leading-[150%] font-normal mb-6 px-4 sm:px-0">
+            <div className="hidden sm:block text-[#171C1E] font-inter text-[14px] md:text-[16px] lg:text-[18px] leading-[150%] font-normal mb-6 px-4 sm:px-0">
               {documentToReactComponents(heroData.heroParagraph)}
-            </p>
+            </div>
 
             <div>
               <Link href="/book-a-demo">
@@ -35,8 +35,6 @@ const Hero = () => {
                 </button>
               </Link>
             </div>
-
-
           </div>
 
           {/* Video Section */}
