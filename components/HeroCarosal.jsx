@@ -26,7 +26,7 @@ const HeroCarosal = () => {
   const currentData = leftData[current];
 
   return (
-    <div className="bg-[#f3f3f3] py-0 lg:py-2 px-8 md:px-4 lg:px-6">
+    <div className="bg-[#ffffff] py-0 lg:py-2 px-8 md:px-4 lg:px-6">
       <div className="max-w-[1350px] mx-auto">
         {/* MOBILE VIEW ONLY */}
         <div className="flex sm:hidden flex-row items-center justify-between gap-4 w-full">
