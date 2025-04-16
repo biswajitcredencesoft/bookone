@@ -107,6 +107,7 @@ const BookOneGrowing = () => {
                 src={`https:${heroData?.sixthImage?.fields?.file?.url}`}
                 width={700}
                 height={700}
+                unoptimized
                 alt="Smiling professionals"
                 className="w-full h-full object-cover"
                 rel="noopener noreferrer"
