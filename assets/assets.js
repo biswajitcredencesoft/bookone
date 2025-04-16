@@ -128,6 +128,15 @@ import Form2 from "./form2.svg";
 
 import Animate from "./animation.gif";
 import Animate1 from "./animation 1.gif";
+import Animate2 from "./animation2.gif";
+
+// Form Images
+
+import Rectangle from "./rectangle.svg"
+import Rectangle1 from "./rectangle2.png"
+import Rectangle2 from "./rectangle3.png"
+import Rectangle3 from "./rectangle4.png"
+import Rectangle4 from "./rectangle5.png"
 
 export const assets = {
   logo,
@@ -232,6 +241,13 @@ export const assets = {
 
   Animate,
   Animate1,
+  Animate2,
+
+  Rectangle,
+  Rectangle1,
+  Rectangle2,
+  Rectangle3,
+  Rectangle4,
 };
 
 export const BagIcon = () => {
