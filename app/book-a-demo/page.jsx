@@ -163,7 +163,7 @@ Time: ${schedule.time}
       <div className="bg-[#0D6C80] text-white px-4 py-4 md:py-16">
         <div
           className="mx-auto flex flex-col md:flex-row gap-10 items-start justify-between"
-          style={{ maxWidth: "1472px" }}
+          style={{ maxWidth: "1400px" }}
         >
           <div className="w-full md:w-[476px] flex flex-col gap-8">
             <div className="order-1 md:order-none mt-8 md:mt-20">
