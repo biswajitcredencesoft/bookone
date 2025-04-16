@@ -15,18 +15,18 @@ const features = [
     title: "Customisable to Your Brand",
     description:
       "Design freedom that reflects your identity — without the tech headaches.",
-    icon: <FaSyncAlt />,
+    icon: <Image src={assets.Brand_Image} alt="Your Brand"/>,
   },
   {
     title: "Accessibility & SEO-Ready",
     description: "Ease in navigation & optimised for search engine visibility.",
-    icon: <FaKeyboard />,
+    icon: <Image src={assets.Accessibility} alt="SEO-Ready"/>,
   },
   {
     title: "Seamlessly Responsive",
     description:
       "Looks flawless and works perfectly on mobile, tablet, or desktop.",
-    icon: <FaCommentDots />,
+    icon: <Image src={assets.Flawless_Image} alt="Seamless"/>,
   },
 ];
 
@@ -122,7 +122,7 @@ const BeautifulBranded = () => {
         {/* Mobile Button */}
         <div className="block lg:hidden mt-10">
           <Link href="/pricing">
-            <button className="bg-[#01677D] border border-[#CEE6F0] text-white w-full h-[48px] rounded-[16px] text-sm font-semibold shadow hover:bg-[#125a74] transition-all">
+            <button className="bg-[#01677D] border border-[#CEE6F0] text-white w-[70%]  ml-[52px] h-[48px] rounded-[25px] text-sm font-semibold shadow hover:bg-[#125a74] transition-all ">
               Get Pricing
             </button>
           </Link>

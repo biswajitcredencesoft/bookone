@@ -1,3 +1,5 @@
+"use client";
+
 import { assets } from "@/assets/assets";
 import React, { useState, useEffect } from "react";
 import { FaQuoteLeft } from "react-icons/fa";
@@ -60,26 +62,26 @@ const testimonials = [
   },
 ];
 
-const getCardsPerSlide = () => {
-  if (typeof window !== "undefined") {
-    if (window.innerWidth >= 1024) return 3;
-    if (window.innerWidth >= 768) return 2;
-  }
-  return 1; // Only one card per slide in mobile view
-};
-
 const HoteliarTrust = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [cardsPerSlide, setCardsPerSlide] = useState(getCardsPerSlide());
+  const [cardsPerSlide, setCardsPerSlide] = useState(1);
 
   useEffect(() => {
-    const handleResize = () => {
+    const getCardsPerSlide = () => {
+      if (window.innerWidth >= 1024) return 3;
+      if (window.innerWidth >= 768) return 2;
+      return 1;
+    };
+
+    const updateCardsPerSlide = () => {
       setCardsPerSlide(getCardsPerSlide());
       setCurrentSlide(0);
     };
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    updateCardsPerSlide();
+    window.addEventListener("resize", updateCardsPerSlide);
+
+    return () => window.removeEventListener("resize", updateCardsPerSlide);
   }, []);
 
   const totalSlides = Math.ceil(testimonials.length / cardsPerSlide);
@@ -90,6 +92,7 @@ const HoteliarTrust = () => {
         setCurrentSlide((prev) => (prev + 1) % totalSlides);
       }
     }, 4000);
+
     return () => clearInterval(interval);
   }, [cardsPerSlide, totalSlides]);
 
@@ -98,7 +101,6 @@ const HoteliarTrust = () => {
     currentSlide * cardsPerSlide + cardsPerSlide
   );
 
-  // Mobile-specific handlers
   const handlePrev = () => {
     setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
   };
@@ -115,9 +117,12 @@ const HoteliarTrust = () => {
       </h2>
 
       {/* Carousel Section */}
-      <div className="mb-10">
-        {/* Mobile View Hidden Carousel */}
-        <div className={`grid gap-6 sm:gap-8 grid-cols-1 ${cardsPerSlide === 2 ? "md:grid-cols-2" : cardsPerSlide === 3 ? "lg:grid-cols-3" : ""} transition duration-500 ease-in-out`}>
+      <div className="mb-10 relative">
+        <div
+          className={`grid gap-6 sm:gap-8 grid-cols-1 ${
+            cardsPerSlide === 2 ? "md:grid-cols-2" : ""
+          } ${cardsPerSlide === 3 ? "lg:grid-cols-3" : ""} transition duration-500 ease-in-out`}
+        >
           {visibleTestimonials.map((testimonial, index) => {
             const middleIndex = Math.floor(cardsPerSlide / 2);
             const isCenterCard = index === middleIndex;
@@ -146,15 +151,21 @@ const HoteliarTrust = () => {
           })}
         </div>
 
-        {/* Mobile View Navigation Arrows */}
+        {/* Mobile Navigation Buttons */}
         {cardsPerSlide === 1 && (
           <div className="absolute top-1/2 transform -translate-y-1/2 left-4 right-4 flex justify-between">
-            {/* <button onClick={handlePrev} className="bg-[#146683] text-white p-2 rounded-full shadow-md">
+            <button
+              onClick={handlePrev}
+              className="bg-[#146683] text-white p-2 rounded-full shadow-md"
+            >
               &lt;
             </button>
-            <button onClick={handleNext} className="bg-[#146683] text-white p-2 rounded-full shadow-md">
+            <button
+              onClick={handleNext}
+              className="bg-[#146683] text-white p-2 rounded-full shadow-md"
+            >
               &gt;
-            </button> */}
+            </button>
           </div>
         )}
 
@@ -174,12 +185,16 @@ const HoteliarTrust = () => {
 
       {/* Highlight Section */}
       <div className="bg-[#D9E7F1] rounded-2xl px-6 py-10 sm:px-10 max-w-7xl mx-auto relative overflow-hidden">
-        <Image src={assets.Quote} alt="Quote symbol" className="text-5xl text-[#03506F] absolute top-4 left-4 "/>
-
+        <Image
+          src={assets.Quote}
+          alt="Quote symbol"
+          className="text-5xl text-[#03506F] absolute top-4 left-4"
+        />
         <p className="text-[#03506F] text-lg md:text-xl font-semibold pl-10 sm:pl-16 leading-relaxed">
-          After moving to BookOne, our OTA bookings jumped by 47%, payment errors dropped by 70%, and we saved over 20 hours a week on manual tasks. Guest satisfaction scores also rose by 1.3 stars in just 90 days.
+          After moving to BookOne, our OTA bookings jumped by 47%, payment errors dropped by 70%,
+          and we saved over 20 hours a week on manual tasks. Guest satisfaction scores also rose by
+          1.3 stars in just 90 days.
         </p>
-
         <div className="mt-6 flex justify-end">
           <button className="inline-flex items-start gap-2 h-[42px] px-3 py-[10px] flex-shrink-0 rounded-[24px] border border-[#146683] bg-[rgba(20,102,131,0)] text-[#146683] text-sm sm:text-base hover:bg-[#146683] hover:text-white transition duration-300">
             Read Case Study

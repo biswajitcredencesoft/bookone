@@ -54,7 +54,7 @@ console.log("bookMaxData", bookMaxData);
   return (
     <div
       ref={sectionRef}
-      className={`bg-[#EDF6FA] px-4 sm:px-6 lg:px-10 py-20 font-['Inter'] transition-opacity duration-1000 ease-out ${
+      className={`bg-[#EDF6FA] px-4 sm:px-6 lg:px-10 py-0 font-['Inter'] transition-opacity duration-1000 ease-out ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
     >
@@ -66,7 +66,7 @@ console.log("bookMaxData", bookMaxData);
             isVisible ? "translate-x-0 opacity-100" : "translate-x-10 opacity-0"
           }`}
         >
-          <div className="text-left space-y-2 sm:space-y-3">
+          <div className="text-left w-full space-y-2 sm:space-y-3">
             <p className="text-[#8CCFF0] text-center md:text-left lg:text-left text-sm sm:text-[14px] font-bold uppercase tracking-wider">
               Booking Engine
             </p>
@@ -140,7 +140,7 @@ console.log("bookMaxData", bookMaxData);
       {/* ---- MOBILE BUTTON ---- */}
       <div className="block lg:hidden w-full mt-6">
         <Link href="/pricing">
-          <button className="bg-[#01677D] border border-[#CEE6F0] text-white w-full h-[48px] rounded-[14px] text-sm font-semibold shadow hover:bg-[#125a74] transition-all">
+          <button className="bg-[#01677D] border border-[#CEE6F0] text-white w-[70%] ml-[52px] h-[48px] rounded-[25px] text-sm font-semibold shadow hover:bg-[#125a74] transition-all">
             Get Pricing
           </button>
         </Link>
@@ -154,19 +154,19 @@ const features = [
     title: "Promotions Made Simple",
     description:
       "Create irresistible offers and seasonal deals in just a few clicks.",
-    icon: <FaTag />,
+    icon: <Image src={assets.Promotion_Image} alt="Simple"/>,
   },
   {
     title: "Multiple Rates & Plans",
     description:
       "Run multiple pricing models to match every guest and booking need.",
-    icon: <FaLayerGroup />,
+    icon:<Image src={assets.Rates_Image}  alt="Plans"/>,
   },
   {
     title: "Secure & Trustworthy",
     description:
       "End-to-end encryption ensures every transaction is protected.",
-    icon: <FaLock />,
+    icon:  <Image src={assets.Secure_Image} alt="Trustworthy"/>,
   },
 ];
 

@@ -13,7 +13,7 @@ const Hero = () => {
   if (!heroData) return <p>Loading...</p>;
 
   return (
-    <section className="bg-[#F5F5F5] py-12 md:py-20 lg:py-24 overflow-hidden">
+    <section className="bg-[#ffffff] py-12 md:py-20 lg:py-24 overflow-hidden">
       <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-16 flex flex-col items-center">
         <div className="flex flex-col lg:flex-row items-center justify-between w-full gap-12">
           <div className="lg:w-1/2 w-full text-center lg:text-left">
@@ -24,9 +24,9 @@ const Hero = () => {
               </span>
             </h1>
 
-            <p className="hidden sm:block text-[#171C1E] font-inter text-[14px] md:text-[16px] lg:text-[18px] leading-[150%] font-normal mb-6 px-4 sm:px-0">
+            <div className="hidden sm:block text-[#171C1E] font-inter text-[14px] md:text-[16px] lg:text-[18px] leading-[150%] font-normal mb-6 px-4 sm:px-0">
               {documentToReactComponents(heroData.heroParagraph)}
-            </p>
+            </div>
 
             <div>
               <Link href="/book-a-demo">
@@ -35,8 +35,6 @@ const Hero = () => {
                 </button>
               </Link>
             </div>
-
-
           </div>
 
           {/* Video Section */}

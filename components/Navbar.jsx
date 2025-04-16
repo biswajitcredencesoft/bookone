@@ -164,7 +164,7 @@ const Navbar = () => {
                   <div className="text-[#27668c] text-2xl md:text-xl">
                     {item.icon}
                   </div>
-                  <div>
+                  <div className="">
                     <h3 className="text-[15px] md:text-[13px] font-bold text-black font-sans">
                       {item.name}
                     </h3>

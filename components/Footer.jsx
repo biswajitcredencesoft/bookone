@@ -51,7 +51,7 @@ const Footer = () => {
           </div>
 
           <div className="mt-5 text-[13px] space-y-3">
-            <div>
+            <div className="">
               <a
                 href="tel:+919004146024"
                 className="flex items-center gap-2 font-light"
@@ -64,7 +64,7 @@ const Footer = () => {
                 +91-90041 46024
               </a>
             </div>
-            <div>
+            <div className="">
               <a
                 href="mailto:Info@Bookonepms.Com"
                 className="flex items-center gap-2 font-light"
@@ -102,7 +102,7 @@ const Footer = () => {
             <div key={index}>
               <div className="flex items-start gap-2.5  md:w-[72%] ">
                 <FaMapMarkerAlt className="mt-1 text-skyCustom shrink-0" />
-                <div>
+                <div className="">
                   <p className="font-medium">{office.title}</p>
                   <p className="mt-0.5 leading-relaxed">
                     {office.address}

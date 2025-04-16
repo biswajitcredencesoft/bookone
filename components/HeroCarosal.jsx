@@ -26,8 +26,8 @@ const HeroCarosal = () => {
   const currentData = leftData[current];
 
   return (
-    <div className="bg-[#f3f3f3] py-0 lg:py-2 px-8 md:px-4 lg:px-6">
-      <div className="max-w-[1200px] mx-auto">
+    <div className="bg-[#ffffff] py-0 lg:py-2 px-8 md:px-4 lg:px-6">
+      <div className="max-w-[1350px] mx-auto">
         {/* MOBILE VIEW ONLY */}
         <div className="flex sm:hidden flex-row items-center justify-between gap-4 w-full">
           {/* Mobile Image */}
@@ -68,14 +68,14 @@ const HeroCarosal = () => {
                 />
               </a>
               <a
-                   onClick={() =>
-                    window.open(
-                      'https://play.google.com/store/apps/details?id=nz.co.credencesoft.bookone',
-                      '_blank',
-                      'noopener,noreferrer'
-                    )
-                  }
-                  style={{ cursor: 'pointer' }}
+                onClick={() =>
+                  window.open(
+                    "https://play.google.com/store/apps/details?id=nz.co.credencesoft.bookone",
+                    "_blank",
+                    "noopener,noreferrer"
+                  )
+                }
+                style={{ cursor: "pointer" }}
                 rel="noopener noreferrer"
               >
                 <Image
@@ -148,10 +148,24 @@ const HeroCarosal = () => {
           </div>
 
           {/* RIGHT SECTION */}
-          <div className="w-full hidden md:block lg:w-[45%] justify-center">
-            <div className="w-full max-w-[550px] h-[250px] relative overflow-hidden rounded-[20px]">
+          <div className="w-full hidden md:flex lg:w-full justify-between items-center gap-6 ">
+            {/* Hospitality Suite Text */}
+            <div className="flex flex-col gap-3 max-w-[250px] mb-16">
+              <span className="text-[#146683] text-[30px] font-semibold">
+                Hospitality Suite
+              </span>
+              <h2 className="text-[#146683] text-2xl md:text-[18px] font-bold leading-snug">
+                All-in-one
+              </h2>
+              <p className="text-[#818181] text-sm leading-relaxed">
+                Simplify how you work by running your entire hotel from a central hub.
+              </p>
+            </div>
+
+            {/* Animate Image */}
+            <div className="w-full max-w-[500px] h-[400px] relative overflow-hidden rounded-[20px]">
               <Image
-                src={assets.Carosall}
+                src={assets.Animate2}
                 alt="right section"
                 fill
                 className="object-cover rounded-[20px]"
