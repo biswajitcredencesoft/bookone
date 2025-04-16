@@ -65,7 +65,7 @@ const PaymentGateWays = () => {
 
 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 sm:mb-0 mb-10 text-center sm:text-left">
 
-          <p className="text-[16px] sm:text-[18px] md:text-[22px] font-medium leading-[150%] text-[#146683] font-['Inter'] max-w-[500px] hidden md:block">
+          <p className="text-[16px] sm:text-[18px] md:text-[22px] font-medium leading-[150%] text-[#146683] font-['Inter'] max-w-[100%] hidden md:block">
           {documentToReactComponents(bookMaxData?.integrationSubHeading)}
           </p>
 

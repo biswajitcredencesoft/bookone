@@ -111,8 +111,12 @@ import Power5 from "./power5.svg";
 
 
 import Hotels from "./hotels.svg";
-import Accessibility from "./accessibility.png"
+import Promotion_Image from "./promotionimg.png";
+import Secure_Image from "./secureimg.png";
 
+
+import Accessibility from "./accessibility.png"
+import Rates_Image from "./ratesimg.png";
 
 // Support
 import Support1 from "./support.svg"
@@ -152,6 +156,8 @@ export const assets = {
   Paypal,
   Razorpay,
   BookingJini,
+  Promotion_Image,
+  Secure_Image,
   SiteMinder,
   Channex,
   Eglobe,
@@ -165,6 +171,7 @@ export const assets = {
   Foooter,
   Brand_Image,
   Flawless_Image,
+  Rates_Image,
   // Expect1,
   // Expect2,
   // Expect3,
