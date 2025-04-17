@@ -415,7 +415,7 @@ const BookDemo = () => {
               )}
 
             {step === 5 && submissionSuccess && (
-              <div className="w-[468px] h-[487px] flex-shrink-0 rounded-[40px] bg-white shadow-inner px-6 py-6 flex flex-col items-center justify-center text-center">
+              <div className="w-[418px] h-[487px] flex-shrink-0 rounded-[40px] bg-white shadow-inner px-6 py-6 flex flex-col items-center justify-center text-center">
                 {/* <Image src={assets.SuccessIcon} alt="Success" width={80} height={80} className="mb-6" /> */}
                 <h2 className="text-[#146683] font-inter text-[32px] font-semibold leading-[150%] mb-4">
                   Thank You! 😊
