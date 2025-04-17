@@ -100,6 +100,7 @@ const PaymentGateWays = () => {
               width={1055}
               height={296}
               className="w-[80%] h-auto object-contain rounded-xl ml-8  md:ml-12"
+              fill
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? "scale(1)" : "scale(0.95)",
