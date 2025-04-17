@@ -18,13 +18,24 @@ const BookDemo = () => {
     phone: "",
     company: "",
   });
-  const [solutionType, setSolutionType] = useState("");
+
+  const [solutionType, setSolutionType] = useState([]);
+  const [error, setError] = useState("");
+
+  const handleToggle = (item) => {
+    setSolutionType((prev) =>
+      prev.includes(item) ? prev.filter((i) => i !== item) : [...prev, item]
+    );
+  };
+
   const [schedule, setSchedule] = useState({
     date: "",
     time: "",
     timezone: "",
   });
-  const [error, setError] = useState("");
+
+  // const [error, setError] = useState("");
+  const [submissionSuccess, setSubmissionSuccess] = useState(false);
 
   const nextStep = () => {
     setError("");
@@ -37,24 +48,25 @@ const BookDemo = () => {
   };
 
   const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
-  const isValidPhone = (phone) => /^[0-9]{10,15}$/.test(phone);
+  const isValidPhone = (phone) => /^[6-9]\d{9}$/.test(phone);
 
   const submitForm = async () => {
     const { name, email, phone, company } = userInfo;
 
     const message = `Name: ${name}
-Email: ${email}
-Phone: ${phone}
-Company: ${company}
-Property Type: ${propertyType}
-Interested In: ${solutionType}
-Date: ${schedule.date}
-Time: ${schedule.time}
-*****this message is sent from BookOnePMS Website.******`;
+  Email: ${email}
+  Phone: ${phone}
+  Company: ${company}
+  Property Type: ${propertyType}
+  Interested In: ${solutionType}
+  Date: ${schedule.date}
+  Time: ${schedule.time}
+  *****this message is sent from BookOnePMS Website.******`;
 
     const payload = {
       fromEmail: email,
       toEmail: "biswajit.sahoo@credencesoft.in",
+      replyTo: email,
       subject: "Book A Demo Enquiry",
       message,
     };
@@ -78,7 +90,8 @@ Time: ${schedule.time}
         throw new Error(data.message || "Failed to submit the form.");
       }
 
-      alert("Demo booked successfully!");
+      setSubmissionSuccess(true);
+      setStep(5);
     } catch (err) {
       console.error("Form submission error:", err);
       setError("Something went wrong. Please try again.");
@@ -160,10 +173,10 @@ Time: ${schedule.time}
   return (
     <>
       <Navbar />
-      <div className="bg-[#0D6C80] text-white px-4 py-4 md:py-16">
+      <div className="bg-[#0D6C80] text-white px-4 py-4 md:py-28">
         <div
           className="mx-auto flex flex-col md:flex-row gap-10 items-start justify-between"
-          style={{ maxWidth: "1472px" }}
+          style={{ maxWidth: "1400px" }}
         >
           <div className="w-full md:w-[476px] flex flex-col gap-8">
             <div className="order-1 md:order-none mt-8 md:mt-20">
@@ -179,15 +192,15 @@ Time: ${schedule.time}
             <div className="hidden md:block">{renderFeatureCards()}</div>
           </div>
 
-          <div className="w-full md:w-[468px] text-black order-2 md:order-none">
+          <div className="w-full md:w-[520px] text-black order-2 md:order-none">
             {step === 1 &&
               renderFormBox(
                 <>
                   <h2 className="text-[#146683] text-[20px] font-semibold mb-6">
                     What kind of property do you have?
                   </h2>
-                  <div className="grid grid-cols-2 gap-4 md:gap-6 mt-6">
-                    {propertyOptions.map((item) => (
+                  <div className="grid grid-cols-3 gap-4 md:gap-6 mt-6 max-w-[500px]">
+                    {propertyOptions.map((item, index) => (
                       <div
                         key={item.label}
                         onClick={() => setPropertyType(item.label)}
@@ -196,6 +209,12 @@ Time: ${schedule.time}
                             ? "border-blue-600 bg-blue-50 shadow-sm"
                             : "border-[#8CCFF0]"
                         }`}
+                        style={{
+                          gridColumn:
+                            propertyOptions.length === 5 && index === 4
+                              ? "2 / span 1"
+                              : undefined,
+                        }}
                       >
                         <div className="mb-1">{item.icon}</div>
                         <span className="text-[14px] text-[#146683] font-medium text-center">
@@ -250,12 +269,12 @@ Time: ${schedule.time}
                               [field]: e.target.value,
                             })
                           }
-                          className="w-full h-[32px] border border-[#8CCFF0] rounded-[10px] px-3 bg-transparent placeholder:text-[#818181] text-sm"
+                          className="w-full h-[40px] border border-[#8CCFF0] rounded-[10px] px-3 bg-transparent placeholder:text-[#818181] text-sm focus:outline-none focus:border-blue-500"
                         />
                       </div>
                     ))}
                   </div>
-                  {error && <p className="text-red-500 mt-4">{error}</p>}
+                  {error && <p className="text-red-500 mt-0">{error}</p>}
                   <div className="flex justify-between items-center mt-8">
                     <button
                       onClick={prevStep}
@@ -266,13 +285,21 @@ Time: ${schedule.time}
                     <button
                       onClick={() => {
                         const { name, email, phone, company } = userInfo;
-                        if (!name || !email || !phone || !company) {
-                          setError("Please fill all the fields.");
+                        if (
+                          !name.trim() ||
+                          !email.trim() ||
+                          !phone.trim() ||
+                          !company.trim()
+                        ) {
+                          setError("Please fill in all fields.");
                         } else if (!isValidEmail(email)) {
-                          setError("Please enter a valid email.");
+                          setError("Please enter a valid email address.");
                         } else if (!isValidPhone(phone)) {
-                          setError("Please enter a valid phone number.");
+                          setError(
+                            "Please enter a valid 10-digit phone number."
+                          );
                         } else {
+                          setError("");
                           nextStep();
                         }
                       }}
@@ -283,7 +310,6 @@ Time: ${schedule.time}
                   </div>
                 </>
               )}
-
             {step === 3 &&
               renderFormBox(
                 <>
@@ -299,12 +325,12 @@ Time: ${schedule.time}
                     ].map((item) => (
                       <div
                         key={item}
-                        onClick={() => setSolutionType(item)}
-                        className={`cursor-pointer w-full h-[41px] flex items-center justify-center rounded-[10px] border ${
-                          solutionType === item
+                        onClick={() => handleToggle(item)}
+                        className={`cursor-pointer w-full h-[45px] flex items-center justify-center rounded-[10px] border ${
+                          solutionType.includes(item)
                             ? "bg-blue-100 border-blue-600 font-semibold"
                             : "border-[#8CCFF0] bg-transparent"
-                        } text-[#146683] text-sm`}
+                        } text-[#146683] text-sm transition-all duration-200`}
                       >
                         {item}
                       </div>
@@ -320,8 +346,8 @@ Time: ${schedule.time}
                     </button>
                     <button
                       onClick={() => {
-                        if (solutionType) nextStep();
-                        else setError("Please select a solution.");
+                        if (solutionType.length > 0) nextStep();
+                        else setError("Please select at least one solution.");
                       }}
                       className="text-blue-700 font-semibold"
                     >
@@ -352,7 +378,12 @@ Time: ${schedule.time}
                           onChange={(e) =>
                             setSchedule({ ...schedule, [type]: e.target.value })
                           }
-                          className="w-full h-[32px] border border-[#8CCFF0] rounded-[10px] px-3 bg-transparent placeholder:text-[#818181] text-sm"
+                          className="w-full h-[40px] border border-[#8CCFF0] rounded-[10px] px-3 bg-transparent placeholder:text-[#818181] text-sm focus:outline-none focus:border-blue-500"
+                          min={
+                            type === "date"
+                              ? new Date().toISOString().split("T")[0]
+                              : undefined
+                          } // Add the min attribute for the date input
                         />
                       </div>
                     ))}
@@ -374,7 +405,7 @@ Time: ${schedule.time}
                           submitForm();
                         }
                       }}
-                      className="text-blue-700 font-semibold"
+                      className="text-blue-700 font-semibold disabled:bg-blue-300 cursor-pointer"
                       disabled={loading}
                     >
                       {loading ? "Submitting..." : "Submit"}
@@ -382,6 +413,34 @@ Time: ${schedule.time}
                   </div>
                 </>
               )}
+
+            {step === 5 && submissionSuccess && (
+              <div className="w-[468px] h-[487px] flex-shrink-0 rounded-[40px] bg-white shadow-inner px-6 py-6 flex flex-col items-center justify-center text-center">
+                {/* <Image src={assets.SuccessIcon} alt="Success" width={80} height={80} className="mb-6" /> */}
+                <h2 className="text-[#146683] font-inter text-[32px] font-semibold leading-[150%] mb-4">
+                  Thank You! 😊
+                </h2>
+                <p className="text-[#818181] text-[16px] leading-[140%] font-normal">
+                  We’ve received your request and will get back to you soon!
+                </p>
+              </div>
+            )}
+            {step === 5 && !submissionSuccess && (
+              <div className="w-[468px] h-[487px] flex-shrink-0 rounded-[40px] bg-white shadow-inner px-6 py-6 flex flex-col items-center justify-center text-center">
+                <h2 className="text-red-500 font-inter text-[32px] font-semibold leading-[150%] mb-4">
+                  Submission Failed
+                </h2>
+                <p className="text-red-500 text-[16px] leading-[140%] font-normal">
+                  {error || "Something went wrong. Please try again later."}
+                </p>
+                <button
+                  onClick={() => setStep(4)}
+                  className="mt-6 text-blue-700 font-semibold"
+                >
+                  Go Back
+                </button>
+              </div>
+            )}
           </div>
         </div>
         <div className="block md:hidden mt-8">{renderFeatureCards()}</div>
