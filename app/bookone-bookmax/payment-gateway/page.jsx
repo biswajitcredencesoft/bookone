@@ -95,24 +95,12 @@ const PaymentGateWays = () => {
                 transform: isVisible ? "scale(1)" : "scale(0.95)",
               }}
             />
-            <Image
-              src={`https:${bookMaxData?.integrationImg2?.fields.file.url}`}
-              alt="UPI Gateways"
-              width={1055}
-              height={296}
-              className="w-[80%] h-auto object-contain rounded-xl ml-8  md:ml-12"
-              fill
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? "scale(1)" : "scale(0.95)",
-              }}
-            />
 
 
-
+            
           </div>
         </div>
-        <div className="mt-4 sm:mt-0 talk-to-sales sm:hidden">
+        <div className="mt-2 sm:mt-0 talk-to-sales sm:hidden">
           <button
             title="Talk to Sales"
             className="group flex items-center h-10 bg-[#146683] text-white rounded-full overflow-hidden transition-all duration-300 ease-in-out w-[40px] hover:w-[150px] sm:h-10 sm:hover:w-[160px] hover:bg-[#BFE9FF] px-3 mx-auto sm:mx-0"
