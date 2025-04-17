@@ -48,6 +48,7 @@ const BookOneBookMax = () => {
                 src={`https:${bookMaxData?.heroImage?.fields.file.url}`}
                 alt="Image 1"
                 fill
+                unoptimized
                 className="object-cover"
               />
             </div>
