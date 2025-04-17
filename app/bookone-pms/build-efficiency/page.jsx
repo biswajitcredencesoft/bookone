@@ -73,7 +73,7 @@ const BuildOfEfficiency = () => {
                   </div>
 
                   {/* Title */}
-                  <span className="text-[#171C1E] text-[14px] sm:text-[16px] md:text-[18px] font-medium leading-snug">
+                  <span className="text-[#171C1E] text-[14px] sm:text-[16px] md:text-[18px] mt-4 font-medium leading-snug">
                     {feature.title}
                   </span>
                 </div>
