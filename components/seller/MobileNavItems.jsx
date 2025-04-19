@@ -13,9 +13,9 @@ const MobileNavItems = ({ openDropdown, setOpenDropdown }) => {
     <div className="md:hidden bg-white border-t px-6 py-4 flex flex-col gap-4">
       {[
         { title: "Products", items: productItems, key: "products" },
-        { title: "Services", items: serviceItems, key: "services" },
-        { title: "Resources", items: resourceItems, key: "resources" },
-        { title: "Contact Us", items: contactItems, key: "contact" },
+        // { title: "Services", items: serviceItems, key: "services" },
+        // { title: "Resources", items: resourceItems, key: "resources" },
+        // { title: "Contact Us", items: contactItems, key: "contact" },
       ].map(({ title, items, key }) => (
         <div key={key}>
           <button

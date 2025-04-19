@@ -22,36 +22,36 @@ export const productItems = [
     name: "BookOne Connect",
     desc: "BookOne Connect syncs inventory across OTAs, reducing overbookings and improving guest satisfaction.",
   },
-  {
-    href: "/bookone-pos",
-    icon: <Image src={assets.Mask5} alt="Mask5" className="w-6 h-6" />,
-    name: "BookOne POS",
-    desc: "BookOne POS syncs orders, tracks inventory, and speeds up billing.",
-  },
-  {
-    href: "/bookone-loyality",
-    icon: <Image src={assets.Mask4} alt="Mask4" className="w-6 h-6" />,
-    name: "BookOne Loyalty",
-    desc: "Boost direct bookings with automation, personalized offers, and seamless communication.",
-  },
-  {
-    href: "/bookone-crm",
-    icon: <Image src={assets.Mask3} alt="Mask3" className="w-6 h-6" />,
-    name: "BookOne CRM",
-    desc: "BookOne CRM centralizes guest data to boost loyalty and personalized engagement.",
-  },
+  // {
+  //   href: "/bookone-pos",
+  //   icon: <Image src={assets.Mask5} alt="Mask5" className="w-6 h-6" />,
+  //   name: "BookOne POS",
+  //   desc: "BookOne POS syncs orders, tracks inventory, and speeds up billing.",
+  // },
+  // {
+  //   href: "/bookone-loyality",
+  //   icon: <Image src={assets.Mask4} alt="Mask4" className="w-6 h-6" />,
+  //   name: "BookOne Loyalty",
+  //   desc: "Boost direct bookings with automation, personalized offers, and seamless communication.",
+  // },
+  // {
+  //   href: "/bookone-crm",
+  //   icon: <Image src={assets.Mask3} alt="Mask3" className="w-6 h-6" />,
+  //   name: "BookOne CRM",
+  //   desc: "BookOne CRM centralizes guest data to boost loyalty and personalized engagement.",
+  // },
   {
     href: "/bookone-bookmax",
     icon: <Image src={assets.Mask2} alt="Mask2" className="w-6 h-6" />,
     name: "BookOne BookMax",
     desc: "BookOne BookMax drives direct bookings with integrated payments and Google Hotel Ads.",
   },
-  {
-    href: "/bookone-varo",
-    icon: <Image src={assets.Mask1} alt="Mask1" className="w-6 h-6" />,
-    name: "BookOne VARO (Revenue Management)",
-    desc: "Vacant Room Optimizer maximizes revenue with real-time, demand-based pricing.",
-  },
+  // {
+  //   href: "/bookone-varo",
+  //   icon: <Image src={assets.Mask1} alt="Mask1" className="w-6 h-6" />,
+  //   name: "BookOne VARO (Revenue Management)",
+  //   desc: "Vacant Room Optimizer maximizes revenue with real-time, demand-based pricing.",
+  // },
 ];
 
 export const serviceItems = [

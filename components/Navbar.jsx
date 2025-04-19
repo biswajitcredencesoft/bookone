@@ -42,9 +42,9 @@ const Navbar = () => {
 
   useEffect(() => {
     if (openDropdown === "products") setItems(productItems);
-    else if (openDropdown === "services") setItems(serviceItems);
-    else if (openDropdown === "resources") setItems(resourceItems);
-    else if (openDropdown === "contact") setItems(contactItems);
+    // else if (openDropdown === "services") setItems(serviceItems);
+    // else if (openDropdown === "resources") setItems(resourceItems);
+    // else if (openDropdown === "contact") setItems(contactItems);
     else setItems([]);
   }, [openDropdown]);
 
