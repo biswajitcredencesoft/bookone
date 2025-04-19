@@ -7,6 +7,7 @@ import ServicesGive from "./services-give/page";
 import KeepUp from "./keep-up/page";
 import Image from "next/image";
 import { assets } from "@/assets/assets";
+import TrustBookOne from "./trust-bookone/page";
 
 const BookDemo = () => {
   const [step, setStep] = useState(1);
@@ -18,27 +19,90 @@ const BookDemo = () => {
     phone: "",
     company: "",
   });
+  const [step2Heading, setStep2Heading] = useState(
+    "Let's personalize your demo."
+  );
+  const [step2BottomText, setStep2BottomText] = useState(
+    "80% of BookOne hotel partners say they ‘finally feel in control’ of their property operations."
+  );
 
   const [solutionType, setSolutionType] = useState([]);
   const [error, setError] = useState("");
 
-  const handleToggle = (item) => {
-    setSolutionType((prev) =>
-      prev.includes(item) ? prev.filter((i) => i !== item) : [...prev, item]
-    );
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setUserInfo((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
-  const [schedule, setSchedule] = useState({
-    date: "",
-    time: "",
-    timezone: "",
-  });
+  const handleSolutionTypeClick = (type) => {
+    if (solutionType.includes(type)) {
+      setSolutionType(solutionType.filter((item) => item !== type));
+    } else {
+      setSolutionType([...solutionType, type]);
+    }
+  };
 
-  // const [error, setError] = useState("");
-  const [submissionSuccess, setSubmissionSuccess] = useState(false);
+  const handlePropertyTypeClick = (type) => {
+    setPropertyType(type);
+    if (type === "Hotel") {
+      setStep2BottomText(
+        "80% of BookOne hotel partners say they ‘finally feel in control’ of their property operations."
+      );
+      setStep2Heading("Start Building Your Hotel’s Success Story!"); // Reset heading for Hotel
+    } else if (type === "Villa") {
+      setStep2BottomText(
+        "Unlock seamless management for your villa with BookOne."
+      );
+      setStep2Heading("Start Building Your Villa's Success Story!");
+    } else if (type === "Resort") {
+      setStep2BottomText(
+        "Elevate your resort operations with BookOne's comprehensive suite."
+      );
+      setStep2Heading("Start Building Your Hotel’s Success Story!");
+    } else if (type === "Home Stay") {
+      setStep2BottomText(
+        "Simplify your home stay management and delight your guests with BookOne."
+      );
+      setStep2Heading("Start Building Your Hotel’s Success Story!");
+    } else if (type === "Others") {
+      setStep2BottomText(
+        "Discover tailored solutions for your unique property with BookOne."
+      );
+      setStep2Heading("Personalize Your Demo!");
+    }
+  };
 
   const nextStep = () => {
     setError("");
+    if (step === 1 && !propertyType) {
+      setError("Please select a property type.");
+      return;
+    }
+    if (step === 2) {
+      if (!userInfo.name) {
+        setError("Please enter your full name.");
+        return;
+      }
+      if (!userInfo.phone || !isValidPhone(userInfo.phone)) {
+        setError("Please enter a valid 10-digit mobile number.");
+        return;
+      }
+      if (!userInfo.email || !isValidEmail(userInfo.email)) {
+        setError("Please enter a valid email address.");
+        return;
+      }
+      if (!userInfo.company) {
+        setError("Please enter your hotel name.");
+        return;
+      }
+    }
+    if (step === 3 && solutionType.length === 0) {
+      setError("Please select at least one solution.");
+      return;
+    }
     setStep((prev) => prev + 1);
   };
 
@@ -61,7 +125,7 @@ const BookDemo = () => {
   // Interested In: ${solutionType}
   // Date: ${schedule.date}
   // Time: ${schedule.time}
-  // *****this message is sent from BookOnePMS Website.******`;
+  // ****this message is sent from BookOnePMS Website.*`;
 
   //   const payload = {
   //     fromEmail: email,
@@ -153,6 +217,13 @@ const BookDemo = () => {
   
   
 
+  const solutionOptions = [
+    { label: "Property Management System", icon: assets.Form },
+    { label: "Channel Manager", icon: assets.Form1 },
+    { label: "Website & Booking Engine", icon: assets.Form2 },
+    { label: "Help Me Choose What's Right", icon: assets.QuestionMark },
+  ];
+
   const renderStepDots = () => (
     <div className="flex space-x-2">
       {[1, 2, 3, 4].map((i) => (
@@ -167,7 +238,7 @@ const BookDemo = () => {
   );
 
   const renderFormBox = (children) => (
-    <div className="w-full sm:max-w-[468px] h-auto sm:h-[487px] rounded-[40px] bg-white shadow-inner sm:shadow-[inset_0px_4px_4px_0px_rgba(0,0,0,0.25)] px-6 py-6 sm:py-10 mx-auto mt-0">
+    <div className="w-full sm:max-w-[511px] h-auto sm:h-[630px] rounded-[40px] bg-hero-gradient   px-6 py-6 sm:py-10 mt-0">
       {children}
     </div>
   );
@@ -177,9 +248,9 @@ const BookDemo = () => {
       {[assets.Form, assets.Form1, assets.Form2].map((icon, index) => (
         <div
           key={index}
-          className="bg-white bg-opacity-20 rounded-xl shadow-md p-3 flex flex-col items-center justify-center text-center w-[82px] h-[96px] md:w-[149px] md:h-[119px]"
+          className="bg-white bg-opacity-20 rounded-xl shadow-md p-3 flex flex-col items-center justify-center text-center w-[104px] h-[96px] md:w-[149px] md:h-[119px]"
         >
-          <Image src={icon} alt={`form-${index}`} width={32} height={32} />
+          {/* <Image src={icon} alt={form-${index}} width={32} height={32} /> */}
           <span className="text-[10px] md:text-sm text-white font-medium mt-1 text-center">
             {index === 0
               ? "PMS"
@@ -213,261 +284,382 @@ const BookDemo = () => {
             </div>
             <div className="hidden md:block">{renderFeatureCards()}</div>
           </div>
-
-          <div className="w-full md:w-[520px] text-black order-2 md:order-none">
+          <div className="w-full md:w-[511px] ">
             {step === 1 &&
               renderFormBox(
-                <>
-                  <h2 className="text-[#146683] text-[20px] font-semibold mb-6">
-                    What kind of property do you have?
+                <div className="w-full h-full flex flex-col items-center justify-start">
+                  <h2 className="text-[#146683] font-inter text-[24px] font-semibold leading-[130%] not-italic mb-3 w-full text-left">
+                    Start Building Your <br />
+                    Hotel’s Success Story!
                   </h2>
-                  <div className="grid grid-cols-3 gap-4 md:gap-6 mt-6 max-w-[500px]">
+
+                  <h1 className="text-[#01677D] font-inter text-[16px] font-bold leading-[120%] w-full text-left mb-4">
+                    Select your property type.
+                  </h1>
+
+                  <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mt-2 max-w-[500px] w-full p-6 sm:p-0">
                     {propertyOptions.map((item, index) => (
                       <div
                         key={item.label}
-                        onClick={() => setPropertyType(item.label)}
-                        className={`cursor-pointer p-4 border rounded-[10px] flex flex-col items-center justify-center transition-all duration-200 ${
-                          propertyType === item.label
-                            ? "border-blue-600 bg-blue-50 shadow-sm"
-                            : "border-[#8CCFF0]"
-                        }`}
-                        style={{
-                          gridColumn:
-                            propertyOptions.length === 5 && index === 4
-                              ? "2 / span 1"
-                              : undefined,
-                        }}
+                        onClick={() => handlePropertyTypeClick(item.label)}
+                        className={`w-full h-[91px] cursor-pointer p-3 border rounded-[10px] flex flex-col items-center justify-center transition-all duration-200
+              ${
+                propertyType === item.label
+                  ? "bg-[#146683] text-white border-[#146683] shadow-sm"
+                  : "border-[#8CCFF0] bg-white"
+              }
+              ${
+                propertyOptions.length === 5 && index === 4
+                  ? "sm:col-span-2 md:col-span-1"
+                  : ""
+              }`}
                       >
                         <div className="mb-1">{item.icon}</div>
-                        <span className="text-[14px] text-[#146683] font-medium text-center">
+                        <span
+                          className={`text-[14px] font-medium text-center ${
+                            propertyType === item.label
+                              ? "text-white"
+                              : "text-[#146683]"
+                          }`}
+                        >
                           {item.label}
                         </span>
                       </div>
                     ))}
                   </div>
+
                   {error && <p className="text-red-500 mt-4">{error}</p>}
-                  <div className="mt-8 flex justify-between items-center">
+
+                  <div className="mt-8  flex justify-between items-center w-full max-w-[500px]">
+                    <div></div>
                     {renderStepDots()}
                     <button
-                      onClick={() => {
-                        if (propertyType) nextStep();
-                        else setError("Please select a property type.");
-                      }}
-                      className="text-blue-700 font-semibold"
+                      onClick={nextStep}
+                      className="font-semibold underline text-[#146683]"
                     >
-                      Next
+                      Continue
                     </button>
                   </div>
-                </>
+
+                  <button className="mt-6 sm:mt-8 w-[274px] h-[72px] flex items-center justify-center gap-4 rounded-[10px] border-[1.5px] border-[#D8A353] bg-[#D8A353]">
+                    <span className="w-[40.848px] h-[38.977px] flex items-center justify-center flex-shrink-0">
+                      <Image
+                        src={assets.Laptop}
+                        alt="Unlock Icon"
+                        className="w-full h-full object-contain"
+                      />
+                    </span>
+                    <span className="text-[#171C1E] font-inter text-[20px] font-bold leading-[120%]">
+                      Unlock A Free Trial
+                    </span>
+                  </button>
+                </div>
               )}
 
             {step === 2 &&
               renderFormBox(
-                <>
-                  <h2 className="text-[#146683] text-[20px] font-semibold mb-6">
-                    How may we contact you?
+                <div className="w-full h-full flex flex-col items-start justify-start">
+                  <h2 className="text-[#146683] font-inter text-[24px] font-semibold leading-[130%] mb-6 lg:pr-[80px]">
+                    {step === 1
+                      ? "Start Building Your br Hotel’s Success Story!"
+                      : step2Heading}
                   </h2>
-                  <div className="grid gap-4">
-                    {["name", "email", "phone", "company"].map((field) => (
-                      <div key={field}>
-                        <label className="text-[#818181] text-sm mb-1 block capitalize">
-                          {field === "company" ? "Hotel Name" : field}
-                        </label>
-                        <input
-                          type={
-                            field === "email"
-                              ? "email"
-                              : field === "phone"
-                              ? "tel"
-                              : "text"
-                          }
-                          placeholder={
-                            field === "company" ? "Hotel Name" : `Your ${field}`
-                          }
-                          value={userInfo[field]}
-                          onChange={(e) =>
-                            setUserInfo({
-                              ...userInfo,
-                              [field]: e.target.value,
-                            })
-                          }
-                          className="w-full h-[40px] border border-[#8CCFF0] rounded-[10px] px-3 bg-transparent placeholder:text-[#818181] text-sm focus:outline-none focus:border-blue-500"
-                        />
-                      </div>
-                    ))}
+
+                  {/* Full Name */}
+                  <div className="mb-4 w-full">
+                    <label
+                      htmlFor="name"
+                      className="block text-[#4A5568] text-sm font-medium mb-1"
+                    >
+                      Full Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={userInfo.name}
+                      onChange={handleInputChange}
+                      className="w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 sm:text-sm p-3"
+                      placeholder="Full Name"
+                    />
                   </div>
-                  {error && <p className="text-red-500 mt-0">{error}</p>}
-                  <div className="flex justify-between items-center mt-8">
+
+                  {/* Mobile Number */}
+                  <div className="mb-4 w-full">
+                    <label
+                      htmlFor="phone"
+                      className="block text-[#4A5568] text-sm font-medium mb-1"
+                    >
+                      Mobile Number
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={userInfo.phone}
+                      onChange={handleInputChange}
+                      className="w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 sm:text-sm p-3"
+                      placeholder="Mobile Number"
+                    />
+                  </div>
+
+                  {/* Email Address */}
+                  <div className="mb-4 w-full">
+                    <label
+                      htmlFor="email"
+                      className="block text-[#4A5568] text-sm font-medium mb-1"
+                    >
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={userInfo.email}
+                      onChange={handleInputChange}
+                      className="w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 sm:text-sm p-3"
+                      placeholder="Email Address"
+                    />
+                  </div>
+
+                  {/* Hotel Name */}
+                  <div className="mb-6 w-full">
+                    <label
+                      htmlFor="company"
+                      className="block text-[#4A5568] text-sm font-medium mb-1"
+                    >
+                      Hotel Name
+                    </label>
+                    <input
+                      type="text"
+                      id="company"
+                      name="company"
+                      value={userInfo.company}
+                      onChange={handleInputChange}
+                      className="w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 sm:text-sm p-3"
+                      placeholder="Hotel Name"
+                    />
+                  </div>
+
+                  {/* Error Message */}
+                  {error && <p className="text-red-500">{error}</p>}
+
+                  {/* Navigation Buttons */}
+                  <div className="mt-[0.7rem] flex justify-between items-center w-full">
                     <button
                       onClick={prevStep}
-                      className="text-gray-500 font-semibold"
+                      className="text-[#146683] font-semibold underline"
                     >
-                      Prev
+                      Go Back
                     </button>
+                    {renderStepDots()}
                     <button
-                      onClick={() => {
-                        const { name, email, phone, company } = userInfo;
-                        if (
-                          !name.trim() ||
-                          !email.trim() ||
-                          !phone.trim() ||
-                          !company.trim()
-                        ) {
-                          setError("Please fill in all fields.");
-                        } else if (!isValidEmail(email)) {
-                          setError("Please enter a valid email address.");
-                        } else if (!isValidPhone(phone)) {
-                          setError(
-                            "Please enter a valid 10-digit phone number."
-                          );
-                        } else {
-                          setError("");
-                          nextStep();
-                        }
-                      }}
-                      className="text-blue-700 font-semibold"
+                      onClick={nextStep}
+                      className="text-[#146683] font-semibold underline"
                     >
-                      Next
+                      Continue
                     </button>
                   </div>
-                </>
+
+                  {/* Bottom Tip Section */}
+                  <div className="mt-6 w-full text-center">
+                    <div className="flex items-start justify-center">
+                      <Image
+                        src={assets.Light}
+                        alt="Bulb Icon"
+                        width={20}
+                        height={20}
+                        className="inline-block mr-2"
+                      />
+                      <p className="text-[#5A677D] text-sm">
+                        <span className="font-semibold">{step2BottomText}</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
               )}
+
             {step === 3 &&
               renderFormBox(
-                <>
-                  <h2 className="text-[#146683] text-[20px] font-semibold mb-6">
-                    What solution are you interested in?
+                <div className="w-full h-full flex flex-col items-start justify-start">
+                  <h2 className="text-[#146683] font-inter text-[24px] font-semibold leading-[130%] not-italic mb-6 w-full text-left lg:pr-[80px]">
+                  {step === 1
+                      ? "Start Building Your br Hotel’s Success Story!"
+                      : step2Heading}
                   </h2>
-                  <div className="grid gap-3">
-                    {[
-                      "Property Management System",
-                      "Channel Manager",
-                      "Website & Booking Engine",
-                      "Others",
-                    ].map((item) => (
-                      <div
-                        key={item}
-                        onClick={() => handleToggle(item)}
-                        className={`cursor-pointer w-full h-[45px] flex items-center justify-center rounded-[10px] border ${
-                          solutionType.includes(item)
-                            ? "bg-blue-100 border-blue-600 font-semibold"
-                            : "border-[#8CCFF0] bg-transparent"
-                        } text-[#146683] text-sm transition-all duration-200`}
+
+                  <div className="grid grid-cols-1 gap-4 mt-2 max-w-[500px] w-full">
+                    {solutionOptions.map((item) => (
+                      <button
+                        key={item.label}
+                        onClick={() => handleSolutionTypeClick(item.label)}
+                        className={`w-full h-[60px] cursor-pointer p-3 border rounded-[10px] flex items-center transition-all duration-200 ${
+                          solutionType.includes(item.label)
+                            ? "bg-[#146683] text-white border-[#146683] shadow-sm"
+                            : "border-[#8CCFF0] bg-white"
+                        }`}
                       >
-                        {item}
-                      </div>
+                        <span className="w-6 h-6 mr-3 flex items-center justify-center">
+                          {item.label === "Property Management System" && (
+                            <Image
+                              src={assets.PMS}
+                              alt={item.label}
+                              width={24}
+                              height={24}
+                            />
+                          )}
+                          {item.label === "Channel Manager" && (
+                            <Image
+                              src={assets.PMS2}
+                              alt={item.label}
+                              width={24}
+                              height={24}
+                              className="bg-[#146683] "
+                            />
+                          )}
+                          {item.label === "Website & Booking Engine" && (
+                            <Image
+                              src={assets.PMS3}
+                              alt={item.label}
+                              width={24}
+                              height={24}
+
+                            />
+                          )}
+                          {item.label === "Help Me Choose What's Right" && (
+                            <Image
+                              src={assets.PMS4}
+                              alt={item.label}
+                              width={24}
+                              height={24}
+                            />
+                          )}
+                        </span>
+                        <span
+                          className={`text-[16px] font-medium text-left ${
+                            solutionType.includes(item.label)
+                              ? "text-white"
+                              : "text-[#146683]"
+                          }`}
+                        >
+                          {item.label}
+                        </span>
+                      </button>
                     ))}
                   </div>
+
                   {error && <p className="text-red-500 mt-4">{error}</p>}
-                  <div className="flex justify-between items-center mt-8">
+
+                  <div className="mt-8 flex justify-between items-center w-full max-w-[500px]">
                     <button
                       onClick={prevStep}
-                      className="text-gray-500 font-semibold"
+                      className="text-[#146683] font-semibold underline"
                     >
-                      Prev
+                      Go Back
                     </button>
+                    {renderStepDots()}
                     <button
-                      onClick={() => {
-                        if (solutionType.length > 0) nextStep();
-                        else setError("Please select at least one solution.");
-                      }}
-                      className="text-blue-700 font-semibold"
+                      onClick={nextStep}
+                      className="text-[#146683] font-semibold underline"
                     >
-                      Next
+                      Continue
                     </button>
                   </div>
-                </>
+
+                  <div className="mt-6 w-full text-center">
+                    <div className="flex items-start justify-center">
+                      <Image
+                        src={assets.Light}
+                        alt="Bulb Icon"
+                        width={20}
+                        height={20}
+                        className="inline-block mr-2"
+                      />
+                      <p className="text-[#5A677D] text-sm">
+                        <span className="font-semibold">
+                          Hotels using 3+ BookOne modules see up to 32% higher
+                          revenue and 40% faster staff efficiency.
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
               )}
 
-{step === 4 &&
-  renderFormBox(
-    <>
-      <h2 className="text-[#146683] text-[20px] font-semibold mb-6">
-        Schedule Your Demo
-      </h2>
-      {/* Inputs for date, time, timezone (you probably already have state for this: `schedule`) */}
-      <input
-        type="date"
-        value={schedule.date}
-        onChange={(e) =>
-          setSchedule({ ...schedule, date: e.target.value })
-        }
-        className="w-full mb-3 border px-3 py-2 rounded-md"
-      />
-      <input
-        type="time"
-        value={schedule.time}
-        onChange={(e) =>
-          setSchedule({ ...schedule, time: e.target.value })
-        }
-        className="w-full mb-3 border px-3 py-2 rounded-md"
-      />
-      <input
-        type="text"
-        placeholder="Timezone (e.g., IST)"
-        value={schedule.timezone}
-        onChange={(e) =>
-          setSchedule({ ...schedule, timezone: e.target.value })
-        }
-        className="w-full mb-3 border px-3 py-2 rounded-md"
-      />
 
-      {error && <p className="text-red-500 mt-0">{error}</p>}
+            {step === 4 &&
+              renderFormBox(
+                <div className="w-full h-full flex flex-col items-start justify-start">
+                  <h2 className="text-[#146683] font-inter text-[24px] font-semibold leading-[130%] not-italic mb-6 w-full text-left lg:pr-[80px]">
+                  {step === 1
+                      ? "Start Building Your br Hotel’s Success Story!"
+                      : step2Heading}
+                  </h2>
 
-      <div className="flex justify-between items-center mt-8">
-        <button onClick={prevStep} className="text-gray-500 font-semibold">
-          Prev
-        </button>
-        <button
-          onClick={() => {
-            if (!schedule.date || !schedule.time || !schedule.timezone) {
-              setError("Please fill in all schedule fields.");
-            } else {
-              setError("");
-              submitForm(); // 👈 HERE is the submission!
-            }
-          }}
-          className="text-blue-700 font-semibold"
-        >
-          Submit
-        </button>
-      </div>
-    </>
-  )}
+                  <div className="grid grid-cols-1 gap-4 mt-2 max-w-[500px] w-full">
+                    <button className="w-full h-[72px] cursor-pointer p-3 border rounded-[10px] flex items-center transition-all duration-200 border-[#8CCFF0] bg-white">
+                      <span className="w-6 h-6 mr-3 flex items-center justify-center">
+                        <Image
+                          src={assets.PMS7}
+                          alt="Book A Demo"
+                          width={24}
+                          height={24}
+                        />
+                      </span>
+                      <span className="text-[16px] font-medium text-left text-[#146683]">
+                        Book A Demo
+                      </span>
+                    </button>
 
+                    <button className="w-full h-[72px] cursor-pointer p-3 border rounded-[10px] flex items-center transition-all duration-200 border-[#8CCFF0] bg-white">
+                      <span className="w-6 h-6 mr-3 flex items-center justify-center">
+                        <Image
+                          src={assets.PMS6}
+                          alt="Talk To Our Experts"
+                          width={24}
+                          height={24}
+                        />
+                      </span>
+                      <span className="text-[16px] font-medium text-left text-[#146683]">
+                        Talk To Our Experts
+                      </span>
+                    </button>
 
-            {step === 5 && submissionSuccess && (
-              <div className="w-[418px] h-[487px] flex-shrink-0 rounded-[40px] bg-white shadow-inner px-6 py-6 flex flex-col items-center justify-center text-center">
-                {/* <Image src={assets.SuccessIcon} alt="Success" width={80} height={80} className="mb-6" /> */}
-                <h2 className="text-[#146683] font-inter text-[32px] font-semibold leading-[150%] mb-4">
-                  Thank You! 😊
-                </h2>
-                <p className="text-[#818181] text-[16px] leading-[140%] font-normal">
-                  We’ve received your request and will get back to you soon!
-                </p>
-              </div>
-            )}
-            {step === 5 && !submissionSuccess && (
-              <div className="w-[468px] h-[487px] flex-shrink-0 rounded-[40px] bg-white shadow-inner px-6 py-6 flex flex-col items-center justify-center text-center">
-                <h2 className="text-red-500 font-inter text-[32px] font-semibold leading-[150%] mb-4">
-                  Submission Failed
-                </h2>
-                <p className="text-red-500 text-[16px] leading-[140%] font-normal">
-                  {error || "Something went wrong. Please try again later."}
-                </p>
-                <button
-                  onClick={() => setStep(4)}
-                  className="mt-6 text-blue-700 font-semibold"
-                >
-                  Go Back
-                </button>
-              </div>
-            )}
+                    <button className="w-full h-[72px] cursor-pointer p-3 rounded-[10px] flex items-center transition-all duration-200 bg-[#D8A353]">
+                      <span className="w-6 h-6 mr-3 flex items-center justify-center">
+                        <Image
+                          src={assets.Laptop}
+                          alt="Unlock A Free Trial"
+                          width={24}
+                          height={24}
+                        />
+                      </span>
+                      <span className="text-[16px] font-bold text-left text-[#171C1E]">
+                        Unlock A Free Trial
+                      </span>
+                    </button>
+                  </div>
+
+                  <div className="mt-8 flex justify-between items-center w-full max-w-[500px]">
+                    
+                    <button
+                      onClick={prevStep}
+                      className="text-[#146683] font-semibold underline"
+                    >
+                      Go Back
+                    </button>
+                    {renderStepDots()}
+                    <div></div>
+                  </div>
+                </div>
+              )}
+
+         
           </div>
         </div>
         <div className="block md:hidden mt-8">{renderFeatureCards()}</div>
       </div>
-
+      <TrustBookOne/>
       <ExpectDemo />
       <ServicesGive />
       <KeepUp />
@@ -476,4 +668,4 @@ const BookDemo = () => {
   );
 };
 
-export default BookDemo;
+export default BookDemo;

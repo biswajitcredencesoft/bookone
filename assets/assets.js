@@ -93,7 +93,7 @@ import WorldTimer from "./world-timer.png";
 import CancelImage from "./cancel-image.png";
 import AnalyticsReport from "./analytics.png";
 import Graphics from "./graph.png";
-
+import WhiteHotel from "./white-hotel.png";
 //pricing Icon
 import Pricing1 from "./pr-1.svg";
 import Pricing2 from "./pr-2.svg";
@@ -158,6 +158,32 @@ import Mask17 from "./mask17.png";
 import Mask18 from "./mask18.png";
 import Mask19 from "./mask19.png";
 
+import BookADemo from "./bookdemo.png"
+
+import Laptop from "./laptop.svg"
+import Light from "./light.svg"
+
+import PMS from "./pms.svg"
+import PMS2 from "./pms2.svg"
+import PMS3 from "./pms3.svg"
+import PMS4 from "./pms4.svg"
+import PMS5 from "./pms5.svg"
+import PMS6 from "./pms6.svg"
+import PMS7 from "./pms7.png"
+
+import Hotel10 from "./hotel10.png"
+import Hotel11 from "./hotel11.png"
+import Hotel12 from "./hotel12.png"
+import Hotel13 from "./hotel13.png"
+
+//BookOnePMS logo
+import Resturant1 from "./resturant1.svg"
+import Resturant2 from "./resturant2.svg"
+import Resturant3 from "./resturant3.svg"
+import Resturant4 from "./resturant4.svg"
+import Resturant5 from "./resturant5.svg"
+import Resturant from "./resturant.png"
+
 export const assets = {
   logo,
   search_icon,
@@ -168,6 +194,7 @@ export const assets = {
   Agoda,
   Booking_Com,
   Paytm,
+  WhiteHotel,
   PhonePay,
   Paypal,
   Razorpay,
@@ -292,6 +319,30 @@ export const assets = {
   Mask17,
   Mask18,
   Mask19,
+
+  BookADemo,
+  Laptop,
+  Light,
+  PMS,
+  PMS2,
+  PMS3,
+  PMS4,
+  PMS5,
+  PMS6,
+  PMS7,
+
+  Hotel10,
+  Hotel11,
+  Hotel12,
+  Hotel13,
+  Resturant,
+  Resturant1,
+  Resturant2,
+  Resturant3,
+  Resturant4,
+  Resturant5,
+ 
+
 };
 
 export const BagIcon = () => {
