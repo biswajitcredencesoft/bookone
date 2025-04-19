@@ -113,6 +113,56 @@ const BookDemo = () => {
   const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
   const isValidPhone = (phone) => /^[6-9]\d{9}$/.test(phone);
 
+  // const submitForm = async () => {
+  //   const { name, email, phone, company } = userInfo;
+
+  //   const message = `Name: ${name}
+  // Email: ${email}
+  // Phone: ${phone}
+  // Company: ${company}
+  // Property Type: ${propertyType}
+  // Interested In: ${solutionType}
+  // Date: ${schedule.date}
+  // Time: ${schedule.time}
+  // *****this message is sent from BookOnePMS Website.******`;
+
+  //   const payload = {
+  //     fromEmail: email,
+  //     toEmail: "biswajit.sahoo@credencesoft.in",
+  //     replyTo: email,
+  //     subject: "Book A Demo Enquiry",
+  //     message,
+  //   };
+
+  //   try {
+  //     setLoading(true);
+  //     const response = await fetch(
+  //       "https://api.bookonelocal.in/api-bookone/api/website/sendEmailFromWebSite",
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(payload),
+  //       }
+  //     );
+
+  //     const data = await response.json();
+
+  //     if (!response.ok) {
+  //       throw new Error(data.message || "Failed to submit the form.");
+  //     }
+
+  //     setSubmissionSuccess(true);
+  //     setStep(5);
+  //   } catch (err) {
+  //     console.error("Form submission error:", err);
+  //     setError("Something went wrong. Please try again.");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
   const propertyOptions = [
     {
       label: "Hotel",
@@ -143,6 +193,28 @@ const BookDemo = () => {
       ),
     },
   ];
+  const submitForm = () => {
+    if (schedule.date && schedule.time && schedule.timezone && userInfo.email) {
+      const url = new URL("https://calendly.com/shakti-credencesoft/30min");
+  
+      // Add query parameters for email, name, and other details
+      url.searchParams.append("email", userInfo.email);  // Change formData to userInfo
+      url.searchParams.append("name", userInfo.name);    // Change formData to userInfo
+      url.searchParams.append("date", schedule.date);
+      url.searchParams.append("time", schedule.time);
+      url.searchParams.append("timezone", schedule.timezone);
+  
+      // Log the final URL
+      console.log("Redirecting to Calendly with:", url.toString());
+  
+      // Redirect to Calendly with the populated information
+      window.location.href = url.toString();
+    } else {
+      setError("Please fill in all schedule fields.");
+    }
+  };
+  
+  
 
   const solutionOptions = [
     { label: "Property Management System", icon: assets.Form },
@@ -510,6 +582,90 @@ const BookDemo = () => {
                 </div>
               )}
 
+{step === 4 &&
+  renderFormBox(
+    <>
+      <h2 className="text-[#146683] text-[20px] font-semibold mb-6">
+        Schedule Your Demo
+      </h2>
+      {/* Inputs for date, time, timezone (you probably already have state for this: `schedule`) */}
+      <input
+        type="date"
+        value={schedule.date}
+        onChange={(e) =>
+          setSchedule({ ...schedule, date: e.target.value })
+        }
+        className="w-full mb-3 border px-3 py-2 rounded-md"
+      />
+      <input
+        type="time"
+        value={schedule.time}
+        onChange={(e) =>
+          setSchedule({ ...schedule, time: e.target.value })
+        }
+        className="w-full mb-3 border px-3 py-2 rounded-md"
+      />
+      <input
+        type="text"
+        placeholder="Timezone (e.g., IST)"
+        value={schedule.timezone}
+        onChange={(e) =>
+          setSchedule({ ...schedule, timezone: e.target.value })
+        }
+        className="w-full mb-3 border px-3 py-2 rounded-md"
+      />
+
+      {error && <p className="text-red-500 mt-0">{error}</p>}
+
+      <div className="flex justify-between items-center mt-8">
+        <button onClick={prevStep} className="text-gray-500 font-semibold">
+          Prev
+        </button>
+        <button
+          onClick={() => {
+            if (!schedule.date || !schedule.time || !schedule.timezone) {
+              setError("Please fill in all schedule fields.");
+            } else {
+              setError("");
+              submitForm(); // 👈 HERE is the submission!
+            }
+          }}
+          className="text-blue-700 font-semibold"
+        >
+          Submit
+        </button>
+      </div>
+    </>
+  )}
+
+
+            {step === 5 && submissionSuccess && (
+              <div className="w-[418px] h-[487px] flex-shrink-0 rounded-[40px] bg-white shadow-inner px-6 py-6 flex flex-col items-center justify-center text-center">
+                {/* <Image src={assets.SuccessIcon} alt="Success" width={80} height={80} className="mb-6" /> */}
+                <h2 className="text-[#146683] font-inter text-[32px] font-semibold leading-[150%] mb-4">
+                  Thank You! 😊
+                </h2>
+                <p className="text-[#818181] text-[16px] leading-[140%] font-normal">
+                  We’ve received your request and will get back to you soon!
+                </p>
+              </div>
+            )}
+            {step === 5 && !submissionSuccess && (
+              <div className="w-[468px] h-[487px] flex-shrink-0 rounded-[40px] bg-white shadow-inner px-6 py-6 flex flex-col items-center justify-center text-center">
+                <h2 className="text-red-500 font-inter text-[32px] font-semibold leading-[150%] mb-4">
+                  Submission Failed
+                </h2>
+                <p className="text-red-500 text-[16px] leading-[140%] font-normal">
+                  {error || "Something went wrong. Please try again later."}
+                </p>
+                <button
+                  onClick={() => setStep(4)}
+                  className="mt-6 text-blue-700 font-semibold"
+                >
+                  Go Back
+                </button>
+              </div>
+            )}
             {step === 4 &&
               renderFormBox(
                 <div className="w-full h-full flex flex-col items-start justify-start">
