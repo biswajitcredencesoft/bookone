@@ -239,22 +239,18 @@ const BookDemo = () => {
   );
   const submitForm = async () => {
     const payload = {
-      bccEmail: "samaya.muduli@credencesoft.co.nz",
-      bccEmailTo: "info@bookonepms.com",
-      bccName: "samaya.muduli@credencesoft.co.nz",
-      accommodationType: "Accommodation",
+      businessType: "Accommodation",
       accountManager: "BookOne Team",
-      email: "subhasmita.tripathy@credencesoft.co.nz",
-      fromEmail: "subhasmita.tripathy@credencesoft.co.nz",
-      lastName:"tripathy",
-      firstName :"Subha",
-      propertyId:"107",
-      checkInDate
-: 
-"2025-04-19",
-checkOutDate
-: 
-"2025-04-20"
+      email: userInfo.email,
+      name: userInfo.name,
+      organisationId: 1,
+      propertyId: "107",
+      managerEmailAddress: "servicemanagement@gmail.com",
+      managerFirstName: "Service",
+      managerLastName: "Management",
+      checkInDate: "2025-04-19",
+      checkOutDate: "2025-04-20",
+      dateCollected:"2025-04-19",
     };
   
     try {
@@ -262,7 +258,7 @@ checkOutDate
   
       // Await the fetch
       const response = await fetch(
-        "https://api.bookonelocal.in/api-lms/api/v1/accommodationEnquiry",
+        "https://api.bookone.io/api-lms/api/v1/businessLead",
         {
           method: "POST",
           headers: {
