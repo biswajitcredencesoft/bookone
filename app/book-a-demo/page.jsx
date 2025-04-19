@@ -383,7 +383,7 @@ const BookDemo = () => {
         setTimeout(() => {
           if (userInfo.email) {
             const url = new URL(
-              "https://calendly.com/shakti-credencesoft/30min"
+              "https://calendly.com/bookone-hospitality-suite/bookone-product-demo"
             );
             url.searchParams.append("email", userInfo.email);
             url.searchParams.append("name", userInfo.name);
