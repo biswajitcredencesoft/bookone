@@ -790,7 +790,7 @@ className="bg-white rounded"
                   <h3 className="text-[#146683] text-center font-inter text-[25px] font-semibold leading-[130%] not-italic mb-6 w-full text-left ">For Choosing BookOne!</h3>
                   <p className="text-[#146683] lg:pr-[60px] lg:pl-[60px] text-center font-inter font-semibold leading-[130%] not-italic mb-6 w-full text-left ">You're now one step closer to simpler, smarter hotel management.</p>
 
-                  <p className="text-[#146683] lg:pr-[60px] lg:pl-[60px] text-center font-inter  leading-[130%] not-italic mb-6 w-full text-left ">Your reference number is <b>#BO-29187</b></p>
+                  {/* <p className="text-[#146683] lg:pr-[60px] lg:pl-[60px] text-center font-inter  leading-[130%] not-italic mb-6 w-full text-left ">Your reference number is <b>#BO-29187</b></p> */}
 
                   <p className="text-[#000] lg:pl-[50px] lg:pr-[50px] font-bold font-inter not-italic mb-2 w-full text-left ">What’s next?</p>
                   <div className="flex items-start justify-center lg:pl-[50px] lg:pr-[50px] mb-2">
