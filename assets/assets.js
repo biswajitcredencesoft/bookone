@@ -93,7 +93,7 @@ import WorldTimer from "./world-timer.png";
 import CancelImage from "./cancel-image.png";
 import AnalyticsReport from "./analytics.png";
 import Graphics from "./graph.png";
-
+import WhiteHotel from "./white-hotel.png";
 //pricing Icon
 import Pricing1 from "./pr-1.svg";
 import Pricing2 from "./pr-2.svg";
@@ -194,6 +194,7 @@ export const assets = {
   Agoda,
   Booking_Com,
   Paytm,
+  WhiteHotel,
   PhonePay,
   Paypal,
   Razorpay,
