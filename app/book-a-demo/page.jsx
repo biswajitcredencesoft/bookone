@@ -29,14 +29,54 @@ const BookDemo = () => {
 
   const [solutionType, setSolutionType] = useState([]);
   const [error, setError] = useState("");
+  const [errors, setErrors] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    company: ""
+  });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+  
     setUserInfo((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: value
     }));
+  
+    // Real-time validation
+    switch (name) {
+      case "phone":
+        const phoneRegex = /^[0-9]{10}$/;
+        setErrors((prev) => ({
+          ...prev,
+          phone: phoneRegex.test(value) ? "" : "Enter a valid 10-digit number"
+        }));
+        break;
+      case "email":
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        setErrors((prev) => ({
+          ...prev,
+          email: emailRegex.test(value) ? "" : "Enter a valid email"
+        }));
+        break;
+      case "name":
+        setErrors((prev) => ({
+          ...prev,
+          name: value.trim() !== "" ? "" : "Name is required"
+        }));
+        break;
+      case "company":
+        setErrors((prev) => ({
+          ...prev,
+          company: value.trim() !== "" ? "" : "Hotel name is required"
+        }));
+        break;
+      default:
+        break;
+    }
   };
+  
 
   const handleSolutionTypeClick = (type) => {
     if (solutionType.includes(type)) {
@@ -204,7 +244,7 @@ const BookDemo = () => {
     {
       label: "Others",
       icon: (
-        <Image src={assets.Rectangle4} alt="Others" width={28} height={28} />
+        <Image src={assets.bedOne} alt="Others" width={28} height={28} />
       ),
       activeIcon: (
         <Image src={assets.rext4} alt="Home Stay" width={28} height={28} />
@@ -231,6 +271,32 @@ const BookDemo = () => {
       ))}
     </div>
   );
+  const validateForm = () => {
+    const newErrors = {};
+  
+    if (!userInfo.name.trim()) {
+      newErrors.name = "Full Name is required";
+    }
+  
+    if (!userInfo.phone.trim()) {
+      newErrors.phone = "Mobile Number is required";
+    } else if (!/^\d{10}$/.test(userInfo.phone)) {
+      newErrors.phone = "Enter a valid 10-digit mobile number";
+    }
+  
+    if (!userInfo.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^\S+@\S+\.\S+$/.test(userInfo.email)) {
+      newErrors.email = "Enter a valid email address";
+    }
+  
+    if (!userInfo.company.trim()) {
+      newErrors.company = "Hotel Name is required";
+    }
+  
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const renderFormBox = (children) => (
     <div className="w-full sm:max-w-[511px] h-auto  rounded-[40px] bg-hero-gradient   px-6 py-6 sm:py-10 mt-0">
@@ -391,12 +457,12 @@ const BookDemo = () => {
             {step === 1 &&
               renderFormBox(
                 <div className="w-full h-full flex flex-col items-center justify-start">
-                  <h2 className="text-[#146683] font-inter text-[24px] font-semibold leading-[130%] not-italic mb-3 w-full text-left">
+                  <h2 className="text-[#146683] pl-4 font-inter text-[24px] font-semibold leading-[130%] not-italic mb-3 w-full text-left">
                     Start Building Your <br />
                     Hotel’s Success Story!
                   </h2>
 
-                  <h1 className="text-[#01677D] font-inter text-[16px] font-bold leading-[120%] w-full text-left mb-4">
+                  <h1 className="text-[#01677D] pl-4 font-inter text-[16px] font-bold leading-[120%] w-full text-left mb-4">
                     Select your property type.
                   </h1>
 
@@ -434,7 +500,8 @@ const BookDemo = () => {
                     })}
                   </div>
 
-                  {error && <p className="text-red-500 mt-4">{error}</p>}
+                    {error && !propertyType && <p className="text-red-500 mt-4">{error}</p>}
+
 
                   <div className="mt-8  flex justify-between items-center w-full max-w-[500px]">
                     <div></div>
@@ -476,76 +543,104 @@ const BookDemo = () => {
 
                   {/* Full Name */}
                   <div className="mb-4 w-full">
-                    <label
-                      htmlFor="name"
-                      className="block text-[#4A5568] text-sm font-medium mb-1"
-                    >
-                      Full Name
-                    </label>
+                  <div className="flex justify-between items-center mb-1">
+                  <label
+                    htmlFor="name"
+                    className="block text-[#4A5568] text-sm font-medium"
+                  >
+                    Full Name
+                  </label>
+                  {errors.name && (
+                    <p className="text-red-500 text-sm">{errors.name}</p>
+                  )}
+                </div>
                     <input
                       type="text"
                       id="name"
                       name="name"
                       value={userInfo.name}
                       onChange={handleInputChange}
-                      className="w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 sm:text-sm p-3"
+                      className={`w-full border ${
+                        errors.name ? "border-red-500" : "border-gray-300"
+                      } rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 sm:text-sm p-3`}
                       placeholder="Full Name"
                     />
                   </div>
 
                   {/* Mobile Number */}
                   <div className="mb-4 w-full">
-                    <label
-                      htmlFor="phone"
-                      className="block text-[#4A5568] text-sm font-medium mb-1"
-                    >
-                      Mobile Number
-                    </label>
+                  <div className="flex justify-between items-center mb-1">
+                      <label
+                        htmlFor="phone"
+                        className="block text-[#4A5568] text-sm font-medium"
+                      >
+                        Mobile Number
+                      </label>
+                      {errors.phone && (
+                        <p className="text-red-500 text-sm">{errors.phone}</p>
+                      )}
+                    </div>
                     <input
-                      type="tel"
+                      type="number"
                       id="phone"
                       name="phone"
                       value={userInfo.phone}
                       onChange={handleInputChange}
-                      className="w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 sm:text-sm p-3"
+                      className={`w-full border ${
+                        errors.phone ? "border-red-500" : "border-gray-300"
+                      } rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 sm:text-sm p-3`}
                       placeholder="Mobile Number"
                     />
                   </div>
 
                   {/* Email Address */}
                   <div className="mb-4 w-full">
+                  <div className="flex justify-between items-center mb-1">
                     <label
                       htmlFor="email"
-                      className="block text-[#4A5568] text-sm font-medium mb-1"
+                      className="block text-[#4A5568] text-sm font-medium"
                     >
                       Email Address
                     </label>
+                    {errors.email && (
+                      <p className="text-red-500 text-sm">{errors.email}</p>
+                    )}
+                  </div>
                     <input
                       type="email"
                       id="email"
                       name="email"
                       value={userInfo.email}
                       onChange={handleInputChange}
-                      className="w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 sm:text-sm p-3"
+                      className={`w-full border ${
+                        errors.email ? "border-red-500" : "border-gray-300"
+                      } rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 sm:text-sm p-3`}
                       placeholder="Email Address"
                     />
                   </div>
 
                   {/* Hotel Name */}
                   <div className="mb-6 w-full">
+                  <div className="flex justify-between items-center mb-1">
                     <label
                       htmlFor="company"
-                      className="block text-[#4A5568] text-sm font-medium mb-1"
+                      className="block text-[#4A5568] text-sm font-medium"
                     >
                       Hotel Name
                     </label>
+                    {errors.company && (
+                      <p className="text-red-500 text-sm">{errors.company}</p>
+                    )}
+                  </div>
                     <input
                       type="text"
                       id="company"
                       name="company"
                       value={userInfo.company}
                       onChange={handleInputChange}
-                      className="w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 sm:text-sm p-3"
+                      className={`w-full border ${
+                        errors.company ? "border-red-500" : "border-gray-300"
+                      } rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 sm:text-sm p-3`}
                       placeholder="Hotel Name"
                     />
                   </div>
@@ -563,7 +658,12 @@ const BookDemo = () => {
                     </button>
                     {renderStepDots()}
                     <button
-                      onClick={nextStep}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (validateForm()) {
+                          nextStep();
+                        }
+                      }}
                       className="text-[#146683] font-semibold underline"
                     >
                       Continue

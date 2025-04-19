@@ -197,9 +197,11 @@ import man1 from "./mann1.png";
 import man3 from "./man-3.png";
 import man4 from "./man-4.png";
 import demoBg from "./demo-bg.png";
+import bedOne from "./bedOne.png"
 
 export const assets = {
   logo,
+  bedOne,
   man1,
   man3,
   man4,
