@@ -158,6 +158,19 @@ import Mask17 from "./mask17.png";
 import Mask18 from "./mask18.png";
 import Mask19 from "./mask19.png";
 
+import BookADemo from "./bookdemo.png"
+
+import Laptop from "./laptop.svg"
+import Light from "./light.svg"
+
+import PMS from "./pms.svg"
+import PMS2 from "./pms2.svg"
+import PMS3 from "./pms3.svg"
+import PMS4 from "./pms4.svg"
+import PMS5 from "./pms5.svg"
+import PMS6 from "./pms6.svg"
+import PMS7 from "./pms7.png"
+
 export const assets = {
   logo,
   search_icon,
@@ -292,6 +305,18 @@ export const assets = {
   Mask17,
   Mask18,
   Mask19,
+
+  BookADemo,
+  Laptop,
+  Light,
+  PMS,
+  PMS2,
+  PMS3,
+  PMS4,
+  PMS5,
+  PMS6,
+  PMS7,
+
 };
 
 export const BagIcon = () => {
