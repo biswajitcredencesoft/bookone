@@ -294,6 +294,54 @@ ownerName:userInfo.company,
       setLoading(false);
     }
   };
+  const submitFormone  = async () => {
+    const payload = {
+      businessType: "Accommodation",
+      accountManager: "BookOne Team",
+      email: userInfo.email,
+      name: userInfo.name,
+ownerName:userInfo.company,
+
+      organisationId: 1,
+      propertyId: "107",
+      managerEmailAddress: "servicemanagement@gmail.com",
+      managerFirstName: "Service",                      
+      managerLastName: "Management",
+      dateCollected: new Date().toISOString().split("T")[0],
+      mobile:userInfo.phone,
+    };
+  
+    try {
+      setLoading(true);
+  
+      // Await the fetch
+      const response = await fetch(
+        "https://api.bookone.io/api-lms/api/v1/businessLead",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+  
+      // Await the JSON response
+      const data = await response.json();
+      console.log("API response:", data);
+  
+      if (response.status === 200){
+        setStep(5);
+       
+      }
+  
+    } catch (err) {
+      console.error("Form submission error:", err);
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
   
   const renderFeatureCards = () => (
     <div className="grid grid-cols-3 gap-4 md:gap-0 mt-6 md:mt-0">
@@ -694,7 +742,15 @@ className="bg-white rounded"
                       </span>
                     </button>
 </a>
-                    <button className="w-full h-[72px] cursor-pointer p-3 rounded-[10px] flex items-center transition-all duration-200 bg-[#D8A353]" onClick={nextStep}>
+                    <button  onClick={() => {
+            if (!userInfo.email) {
+              setError("Please fill in all schedule fields.");
+            } else {
+              setError("");
+              submitFormone();// 👈 HERE is the submission!
+            }
+          }}
+                     className="w-full h-[72px] cursor-pointer p-3 rounded-[10px] flex items-center transition-all duration-200 bg-[#D8A353]" >
                       <span className="w-6 h-6 mr-3 flex items-center justify-center">
                         <Image
                           src={assets.Laptop}
