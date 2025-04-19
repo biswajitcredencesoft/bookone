@@ -355,7 +355,7 @@ const BookDemo = () => {
       managerFirstName: "Service",
       managerLastName: "Management",
       dateCollected: new Date().toISOString().split("T")[0],
-      mobile: userInfo.phone,
+      mobile: `${userInfo.countryCode}${userInfo.phone}`,
     };
 
     try {
@@ -414,7 +414,7 @@ const BookDemo = () => {
       managerFirstName: "Service",
       managerLastName: "Management",
       dateCollected: new Date().toISOString().split("T")[0],
-      mobile: userInfo.phone,
+      mobile: `${userInfo.countryCode}${userInfo.phone}`,
     };
 
     try {
