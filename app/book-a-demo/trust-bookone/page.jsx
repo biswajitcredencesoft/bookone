@@ -17,9 +17,12 @@ const TrustBookOne = () => {
       <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row items-center justify-between px-6 gap-6">
 
         <div className="text-[#146683] text-center md:text-left">
-          <h2 className="font-bold text-[27px] md:text-[36px] leading-[150%] font-['Inter']">
+          <h2 className="font-bold text-[27px] md:text-[36px] leading-[150%] font-['Inter'] hidden md:block">
             400+ Hotels <br className="md:hidden" />
             Trust BookOne
+          </h2>
+          <h2 className="font-bold text-[20px] md:text-[36px] leading-[150%] font-['Inter'] block md:hidden">
+            400+ Hotels Trust BookOne
           </h2>
         </div>
 
