@@ -727,7 +727,7 @@ const BookDemo = () => {
                       
                     </div>
 
-                    <p className="text-[#D8A353] text-center font-inter mt-[30px] font-semibold leading-[130%] not-italic mb-1 w-full text-left ">Want to explore plans while you wait? <b className="underline text-[#146683]">See Pricing</b></p>
+                    <p className="text-[#D8A353] text-center font-inter mt-[30px] font-semibold leading-[130%] not-italic mb-1 w-full text-left ">Want to explore plans while you wait? <a href="/pricing" className="underline text-[#146683] cursor-pointer">See Pricing</a></p>
 
                     
                 </div>
