@@ -273,13 +273,18 @@ ownerName:userInfo.company,
       const data = await response.json();
       console.log("API response:", data);
   
-      if (userInfo.email) {
-        const url = new URL("https://calendly.com/shakti-credencesoft/30min");
-        url.searchParams.append("email", userInfo.email);
-        url.searchParams.append("name", userInfo.name);
+      if (response.status === 200){
+        setStep(5);
+        setTimeout(() => {
+          if (userInfo.email) {
+            const url = new URL("https://calendly.com/shakti-credencesoft/30min");
+            url.searchParams.append("email", userInfo.email);
+            url.searchParams.append("name", userInfo.name);
   
-        console.log("Redirecting to Calendly with:", url.toString());
-        window.location.href = url.toString();
+            console.log("Redirecting to Calendly with:", url.toString());
+            window.location.href = url.toString();
+          }
+        }, 2000);
       }
   
     } catch (err) {
