@@ -186,6 +186,13 @@ import Resturant from "./resturant.png"
 import PMSText from "./Group.png";
 import ChannelImg from "./blur_on.png";
 import BookingEng from "./padding.png";
+import rext2 from "./rext-2.png";
+import rext4 from "./rext-4.png";
+import rext5 from "./rext-5.png";
+import rext3 from "./rext-3.png";
+import thank1 from "./thank1.png";
+import thank2 from "./thank2.png";
+import thank3 from "./thank3.png";
 
 export const assets = {
   logo,
@@ -219,6 +226,13 @@ export const assets = {
   Power_Of,
   Foooter,
   Brand_Image,
+  rext3,
+  rext5,
+  rext4,
+  rext2,
+  thank3,
+  thank2,
+  thank1,
   Flawless_Image,
   Rates_Image,
   // Expect1,

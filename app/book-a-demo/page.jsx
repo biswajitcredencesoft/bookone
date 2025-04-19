@@ -168,11 +168,17 @@ const BookDemo = () => {
     {
       label: "Hotel",
       icon: <Image src={assets.Rectangle} alt="Hotel" width={28} height={28} />,
+      activeIcon: (
+        <Image src={assets.WhiteHotel} alt="Home Stay" width={28} height={28} />
+      ),
     },
     {
       label: "Villa",
       icon: (
         <Image src={assets.Rectangle1} alt="Villa" width={28} height={28} />
+      ),
+      activeIcon: (
+        <Image src={assets.rext2} alt="Home Stay" width={28} height={28} />
       ),
     },
     {
@@ -180,17 +186,26 @@ const BookDemo = () => {
       icon: (
         <Image src={assets.Rectangle2} alt="Resort" width={28} height={28} />
       ),
+      activeIcon: (
+        <Image src={assets.rext3} alt="Home Stay" width={28} height={28} />
+      ),
     },
     {
       label: "Home Stay",
       icon: (
         <Image src={assets.Rectangle3} alt="Home Stay" width={28} height={28} />
       ),
+      activeIcon: (
+        <Image src={assets.rext5} alt="Home Stay" width={28} height={28} />
+      ),
     },
     {
       label: "Others",
       icon: (
         <Image src={assets.Rectangle4} alt="Others" width={28} height={28} />
+      ),
+      activeIcon: (
+        <Image src={assets.rext4} alt="Home Stay" width={28} height={28} />
       ),
     },
   ];
@@ -294,36 +309,38 @@ const BookDemo = () => {
                     Select your property type.
                   </h1>
 
-                  <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mt-2 max-w-[500px] w-full p-6 sm:p-0">
-                    {propertyOptions.map((item, index) => (
-                      <div
-                        key={item.label}
-                        onClick={() => handlePropertyTypeClick(item.label)}
-                        className={`w-full h-[91px] cursor-pointer p-3 border rounded-[10px] flex flex-col items-center justify-center transition-all duration-200
-              ${
-                propertyType === item.label
-                  ? "bg-[#146683] text-white border-[#146683] shadow-sm"
-                  : "border-[#8CCFF0] bg-white"
-              }
-              ${
-                propertyOptions.length === 5 && index === 4
-                  ? "sm:col-span-2 md:col-span-1"
-                  : ""
-              }`}
-                      >
-                        <div className="mb-1">{item.icon}</div>
-                        <span
-                          className={`text-[14px] font-medium text-center ${
-                            propertyType === item.label
-                              ? "text-white"
-                              : "text-[#146683]"
-                          }`}
-                        >
-                          {item.label}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
+                  <div className="grid grid-cols-3 gap-4 md:gap-6 mt-6 max-w-[500px]">
+  {propertyOptions.map((item, index) => {
+    const isSelected = propertyType === item.label;
+    return (
+      <div
+        key={item.label}
+        onClick={() => setPropertyType(item.label)}
+        className={`cursor-pointer p-4 border rounded-[10px] flex flex-col items-center justify-center transition-all duration-200 ${
+          isSelected
+            ? " bg-[#146683] shadow-sm"
+            : "border-[#8CCFF0]"
+        }`}
+        style={{
+          gridColumn:
+            propertyOptions.length === 5 && index === 4
+              ? "2 / span 1"
+              : undefined,
+        }}
+      >
+        <div className="mb-1">{isSelected ? item.activeIcon : item.icon}</div>
+        <span
+  className={`text-[14px] font-medium text-center ${
+    isSelected ? "text-white" : "text-[#146683]"
+  }`}
+>
+  {item.label}
+</span>
+      </div>
+    );
+  })}
+</div>
+
 
                   {error && <p className="text-red-500 mt-4">{error}</p>}
 
@@ -670,43 +687,49 @@ const BookDemo = () => {
 
                   <p className="text-[#146683] lg:pr-[60px] lg:pl-[60px] text-center font-inter  leading-[130%] not-italic mb-6 w-full text-left ">Your reference number is <b>#BO-29187</b></p>
 
-                  <p className="text-[#000] lg:pr-[60px] lg:pl-[20px] font-bold font-inter not-italic mb-2 w-full text-left ">What’s next?</p>
-                  <div className="flex items-start justify-center lg:pl-[20px] lg:pr-[20px] mb-2">
+                  <p className="text-[#000] lg:pl-[50px] lg:pr-[50px] font-bold font-inter not-italic mb-2 w-full text-left ">What’s next?</p>
+                  <div className="flex items-start justify-center lg:pl-[50px] lg:pr-[50px] mb-2">
                       <Image
-                        src={assets.Light}
+                        src={assets.thank1}
                         alt="Bulb Icon"
                         width={20}
                         height={20}
                         className="inline-block mr-2"
                       />
                       <p className="text-[#000] text-sm">
-                        <span className="font-inter">{step2BottomText}</span>
+                        <span className="font-inter">One of our experts will reach out within 24hrs.</span>
                       </p>
                     </div>
-                    <div className="flex items-start justify-center lg:pl-[20px] lg:pr-[20px] mb-2">
+                    <div className="flex items-start justify-center lg:pl-[50px] lg:pr-[50px] mb-2">
                       <Image
-                        src={assets.Light}
+                        src={assets.thank2}
                         alt="Bulb Icon"
                         width={20}
                         height={20}
                         className="inline-block mr-2"
                       />
                       <p className="text-[#000] text-sm">
-                        <span className="font-inter">{step2BottomText}</span>
+                        <span className="font-inter">You’ll get a demo—tailored to your needs.</span>
                       </p>
                     </div>
-                    <div className="flex items-start justify-center lg:pl-[20px] lg:pr-[20px] mb-2">
+                    <div className="flex items-start justify-center lg:pl-[50px] lg:pr-[50px] mb-2">
                       <Image
-                        src={assets.Light}
+                        src={assets.thank3}
                         alt="Bulb Icon"
                         width={20}
                         height={20}
                         className="inline-block mr-2"
                       />
                       <p className="text-[#000] text-sm">
-                        <span className="font-inter">{step2BottomText}</span>
+                        <span className="font-inter">No commitments. No credit card. No hassle.</span>
                       </p>
+
+                      
                     </div>
+
+                    <p className="text-[#D8A353] text-center font-inter mt-[30px] font-semibold leading-[130%] not-italic mb-1 w-full text-left ">Want to explore plans while you wait? <b className="underline text-[#146683]">See Pricing</b></p>
+
+                    
                 </div>
               )}
           </div>
