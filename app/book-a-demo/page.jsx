@@ -248,7 +248,7 @@ const BookDemo = () => {
       {[assets.Form, assets.Form1, assets.Form2].map((icon, index) => (
         <div
           key={index}
-          className="bg-white bg-opacity-20 rounded-xl shadow-md p-3 flex flex-col items-center justify-center text-center w-[82px] h-[96px] md:w-[149px] md:h-[119px]"
+          className="bg-white bg-opacity-20 rounded-xl shadow-md p-3 flex flex-col items-center justify-center text-center w-[104px] h-[96px] md:w-[149px] md:h-[119px]"
         >
           {/* <Image src={icon} alt={form-${index}} width={32} height={32} /> */}
           <span className="text-[10px] md:text-sm text-white font-medium mt-1 text-center">
