@@ -359,7 +359,7 @@ const BookDemo = () => {
                 <div className="w-full h-full flex flex-col items-start justify-start">
                   <h2 className="text-[#146683] font-inter text-[24px] font-semibold leading-[130%] mb-6">
                     {step === 1
-                      ? "Start Building Your Hotel’s Success Story!"
+                      ? "Start Building Your br Hotel’s Success Story!"
                       : step2Heading}
                   </h2>
 
@@ -582,105 +582,23 @@ const BookDemo = () => {
                 </div>
               )}
 
-{step === 4 &&
-  renderFormBox(
-    <>
-      <h2 className="text-[#146683] text-[20px] font-semibold mb-6">
-        Schedule Your Demo
-      </h2>
-      {/* Inputs for date, time, timezone (you probably already have state for this: `schedule`) */}
-      <input
-        type="date"
-        value={schedule.date}
-        onChange={(e) =>
-          setSchedule({ ...schedule, date: e.target.value })
-        }
-        className="w-full mb-3 border px-3 py-2 rounded-md"
-      />
-      <input
-        type="time"
-        value={schedule.time}
-        onChange={(e) =>
-          setSchedule({ ...schedule, time: e.target.value })
-        }
-        className="w-full mb-3 border px-3 py-2 rounded-md"
-      />
-      <input
-        type="text"
-        placeholder="Timezone (e.g., IST)"
-        value={schedule.timezone}
-        onChange={(e) =>
-          setSchedule({ ...schedule, timezone: e.target.value })
-        }
-        className="w-full mb-3 border px-3 py-2 rounded-md"
-      />
 
-      {error && <p className="text-red-500 mt-0">{error}</p>}
-
-      <div className="flex justify-between items-center mt-8">
-        <button onClick={prevStep} className="text-gray-500 font-semibold">
-          Prev
-        </button>
-        <button
-          onClick={() => {
-            if (!schedule.date || !schedule.time || !schedule.timezone) {
-              setError("Please fill in all schedule fields.");
-            } else {
-              setError("");
-              submitForm(); // 👈 HERE is the submission!
-            }
-          }}
-          className="text-blue-700 font-semibold"
-        >
-          Submit
-        </button>
-      </div>
-    </>
-  )}
-
-
-            {step === 5 && submissionSuccess && (
-              <div className="w-[418px] h-[487px] flex-shrink-0 rounded-[40px] bg-white shadow-inner px-6 py-6 flex flex-col items-center justify-center text-center">
-                {/* <Image src={assets.SuccessIcon} alt="Success" width={80} height={80} className="mb-6" /> */}
-                <h2 className="text-[#146683] font-inter text-[32px] font-semibold leading-[150%] mb-4">
-                  Thank You! 😊
-                </h2>
-                <p className="text-[#818181] text-[16px] leading-[140%] font-normal">
-                  We’ve received your request and will get back to you soon!
-                </p>
-              </div>
-            )}
-            {step === 5 && !submissionSuccess && (
-              <div className="w-[468px] h-[487px] flex-shrink-0 rounded-[40px] bg-white shadow-inner px-6 py-6 flex flex-col items-center justify-center text-center">
-                <h2 className="text-red-500 font-inter text-[32px] font-semibold leading-[150%] mb-4">
-                  Submission Failed
-                </h2>
-                <p className="text-red-500 text-[16px] leading-[140%] font-normal">
-                  {error || "Something went wrong. Please try again later."}
-                </p>
-                <button
-                  onClick={() => setStep(4)}
-                  className="mt-6 text-blue-700 font-semibold"
-                >
-                  Go Back
-                </button>
-              </div>
-            )}
             {step === 4 &&
               renderFormBox(
                 <div className="w-full h-full flex flex-col items-start justify-start">
                   <h2 className="text-[#146683] font-inter text-[24px] font-semibold leading-[130%] not-italic mb-6 w-full text-left">
-                    Start Building Your <br /> Hotel’s Success Story!
+                    Start Building Your <br />
+                     Hotel’s Success Story!
                   </h2>
 
-                  <div className="grid grid-cols-1 gap-4 mt-8 max-w-[500px] w-full ml-12">
-                    <button className="w-[369px] h-[72px]cursor-pointer p-3 border rounded-[10px] flex items-center transition-all duration-200 border-[#8CCFF0] bg-white">
-                      <span className=" h-6 mr-3 flex items-center justify-center">
+                  <div className="grid grid-cols-1 gap-4 mt-2 max-w-[500px] w-full">
+                    <button className="w-full h-[72px] cursor-pointer p-3 border rounded-[10px] flex items-center transition-all duration-200 border-[#8CCFF0] bg-white">
+                      <span className="w-6 h-6 mr-3 flex items-center justify-center">
                         <Image
                           src={assets.PMS7}
                           alt="Book A Demo"
-                          width={34.5}
-                          height={38.333}
+                          width={24}
+                          height={24}
                         />
                       </span>
                       <span className="text-[16px] font-medium text-left text-[#146683]">
@@ -688,13 +606,13 @@ const BookDemo = () => {
                       </span>
                     </button>
 
-                    <button className="w-[369px] h-[72px] cursor-pointer p-3 border rounded-[10px] flex items-center transition-all duration-200 border-[#8CCFF0] bg-white">
-                      <span className=" h-6 mr-3 flex items-center justify-center">
+                    <button className="w-full h-[72px] cursor-pointer p-3 border rounded-[10px] flex items-center transition-all duration-200 border-[#8CCFF0] bg-white">
+                      <span className="w-6 h-6 mr-3 flex items-center justify-center">
                         <Image
                           src={assets.PMS6}
                           alt="Talk To Our Experts"
-                          width={30.874}
-                          height={34.154}
+                          width={24}
+                          height={24}
                         />
                       </span>
                       <span className="text-[16px] font-medium text-left text-[#146683]">
@@ -702,13 +620,13 @@ const BookDemo = () => {
                       </span>
                     </button>
 
-                    <button className="w-[369px] h-[72px] cursor-pointer p-3 rounded-[10px] flex items-center transition-all duration-200 bg-[#D8A353]">
-                      <span className=" h-6 mr-3 flex items-center justify-center">
+                    <button className="w-full h-[72px] cursor-pointer p-3 rounded-[10px] flex items-center transition-all duration-200 bg-[#D8A353]">
+                      <span className="w-6 h-6 mr-3 flex items-center justify-center">
                         <Image
                           src={assets.Laptop}
                           alt="Unlock A Free Trial"
-                          width={38.329}
-                          height={37.977}
+                          width={24}
+                          height={24}
                         />
                       </span>
                       <span className="text-[16px] font-bold text-left text-[#171C1E]">
@@ -728,6 +646,8 @@ const BookDemo = () => {
                   </div>
                 </div>
               )}
+
+         
           </div>
         </div>
         <div className="block md:hidden mt-8">{renderFeatureCards()}</div>
