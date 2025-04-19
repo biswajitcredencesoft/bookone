@@ -1,7 +1,7 @@
 "use client";
 
 import { FaCheckCircle } from "react-icons/fa";
-
+import Link from "next/link";
 const BasicPlan = () => {
   return (
     <div className="flex flex-col lg:flex-row justify-center items-center gap-10 lg:gap-30 px-4 lg:px-6 py-10 bg-white">
@@ -18,9 +18,11 @@ const BasicPlan = () => {
           <br />
           no long-term commitment, just results.
         </p>
+        <Link href="/book-a-demo">
         <button className="hidden md:block w-full max-w-[322px] h-[45px] text-[16px] bg-[#01677D] hover:bg-[#014d5d] text-white font-semibold rounded-[16px] border border-[#CEE6F0] transition">
           Start A Free, 3-Month Trial
         </button>
+        </Link>
       </div>
 
       {/* Right Card Section */}
@@ -88,10 +90,11 @@ const BasicPlan = () => {
               </ul>
             </div>
           </div>
-
+          <Link href="/book-a-demo">
           <button className="block md:hidden w-[226px] h-[38.153px] flex-shrink-0 text-center font-inter text-[16px] font-bold leading-[16px] tracking-[0.4px] bg-[#01677D] hover:bg-[#014d5d] text-white rounded-[16px] border border-[#CEE6F0] transition mt-4 ml-12">
             Get A 3-Month Free Trial
           </button>
+          </Link>
         </div>
       </div>
     </div>

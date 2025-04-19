@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { FaArrowRight } from "react-icons/fa6";
 import { assets } from "@/assets/assets";
 import { useContentful } from "../contentfulPricingContext";
+import Link from "next/link";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 const services = [
@@ -103,6 +104,7 @@ const PowerOf = () => {
           </p>
 
           <div className="hidden md:block">
+          <Link href="/book-a-demo">
             <button
               title="Explore more"
               className="group  items-center h-10 bg-[#146683] text-white rounded-full overflow-hidden transition-all duration-300 ease-in-out w-[40px] hover:w-[150px] sm:hover:w-[160px] hover:bg-[#BFE9FF] px-3 ml-48 md:ml-0 lg:ml-0 flex
@@ -115,6 +117,7 @@ const PowerOf = () => {
                 Explore more
               </span>
             </button>
+            </Link>
           </div>
         </div>
 
@@ -135,6 +138,7 @@ const PowerOf = () => {
       </div>
 
       <div className="block md:hidden mt-4">
+      <Link href="/book-a-demo">
         <button
           title="Explore more"
           className="group  items-center h-10 bg-[#146683] text-white rounded-full overflow-hidden transition-all duration-300 ease-in-out w-[40px] hover:w-[150px] sm:hover:w-[160px] hover:bg-[#BFE9FF] px-3 ml-48 md:ml-0 lg:ml-0 flex
@@ -147,6 +151,7 @@ const PowerOf = () => {
             Explore more
           </span>
         </button>
+        </Link>
       </div>
     </section>
   );
