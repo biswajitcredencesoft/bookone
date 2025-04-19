@@ -18,34 +18,31 @@ import { createClient } from "contentful";
 const client = createClient({
   space: "wzmo4lmp2r9v",
   accessToken: "8byVN6ybNsGaYJ6FUTB0CB4mwuie5fIX-DxWy1GGi6E",
-
 });
 const BookOneConnect = () => {
   const router = useRouter();
-    const [connectData, setconnectData] = useState(null);
+  const [connectData, setconnectData] = useState(null);
 
-    useEffect(() => {
-      async function fetchHeroContent() {
-        try {
-          const res = await client.getEntries({ content_type: "bookOneConnect" }); // Replace with your actual content type ID
-          setconnectData(res.items[0]?.fields);
-          console.log("connectData", res.items);
-  
-        } catch (err) {
-          console.error("Contentful fetch error:", err);
-        }
+  useEffect(() => {
+    async function fetchHeroContent() {
+      try {
+        const res = await client.getEntries({ content_type: "bookOneConnect" }); // Replace with your actual content type ID
+        setconnectData(res.items[0]?.fields);
+        console.log("connectData", res.items);
+      } catch (err) {
+        console.error("Contentful fetch error:", err);
       }
-  
-      fetchHeroContent();
-    }, []);
+    }
 
-  
+    fetchHeroContent();
+  }, []);
+
   if (!connectData) return <p>Loading...</p>;
   return (
     <>
-    <ContentfulProviderBookone>
-    <Navbar />
-    </ContentfulProviderBookone>
+      <ContentfulProviderBookone>
+        <Navbar />
+      </ContentfulProviderBookone>
       <section className="flex flex-col-reverse lg:flex-row items-center justify-around  px-6 lg:pl-[5rem] lg:pr-[12rem] py-12 md:py-16 bg-white gap-0 md:gap-6 lg:gap-12">
         <div className="flex w-full lg:w-[600px] xl:w-[50%] xxl:w-[50%] h-auto  gap-4 items-start shrink-0">
           <div className="flex pt-20 items-start gap-2 flex-[1_0_0]">
@@ -59,7 +56,6 @@ const BookOneConnect = () => {
               />
             </div>
           </div>
-
         </div>
 
         <div className="w-full lg:w-[600px] xl:w-[50%] xxl:w-[50%] max-w-xl text-center lg:text-left">
@@ -67,31 +63,43 @@ const BookOneConnect = () => {
             channel manager
           </p>
           <h1 className="text-[32px] sm:text-[40px] lg:text-[48px] font-bold leading-[110%] text-[#171C1E] mt-3">
-            {connectData?.connectheading}{" "} 
-            <br />
+            {connectData?.connectheading} <br />
             <span className="text-[#146683]"> {connectData?.subheading}</span>
           </h1>
           <p className="mt-6 text-[#171C1E] text-center  md:text-left  text-[15px] sm:text-[20px] lg:text-[24px] font-medium leading-[130%]">
             {documentToReactComponents(connectData?.connectHeroParagrph)}
           </p>
-          <Link href="/book-a-demo">
-            <button
-              onClick={() => router.push("/book-demo")}
-              className="mt-8 w-[226px] h-[45px] rounded-[16px] border border-[#CEE6F0] bg-[#01677D] text-white font-medium text-base hover:bg-[#005965] transition-all"
-            >
-              Book A Demo
-            </button>
-          </Link>
+          <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-center md:items-start mt-4 md:mt-6">
+            <Link href="/book-a-demo">
+              <button className="w-[260px] h-[50px] rounded-[12px] border border-[#CEE6F0] bg-[#01677D] text-white font-medium text-base hover:bg-[#005965] transition-all">
+                Book A Demo
+              </button>
+            </Link>
+
+            <Link href="/book-a-demo">
+              <button className="w-[260px] h-[50px] bg-[#D8A353] text-[#171C1E] font-bold text-base rounded-[12px] flex items-center justify-center hover:bg-[#c89247] transition-all">
+                <span className="w-6 h-6 mr-2 flex items-center justify-center">
+                  <Image
+                    src={assets.Laptop}
+                    alt="Unlock A Free Trial"
+                    width={24}
+                    height={24}
+                  />
+                </span>
+                Unlock A Free Trial
+              </button>
+            </Link>
+          </div>
         </div>
       </section>
       <ContentfulProviderBookone>
-      <Connectivity />
-      <Channels/>
-    </ContentfulProviderBookone>
+        <Connectivity />
+        <Channels />
+      </ContentfulProviderBookone>
 
       <ContentfulProviderPMS>
-      <Results/>
-      <LevelUP/>
+        <Results />
+        <LevelUP />
       </ContentfulProviderPMS>
 
       <Footer />

@@ -168,11 +168,17 @@ const BookDemo = () => {
     {
       label: "Hotel",
       icon: <Image src={assets.Rectangle} alt="Hotel" width={28} height={28} />,
+      activeIcon: (
+        <Image src={assets.WhiteHotel} alt="Home Stay" width={28} height={28} />
+      ),
     },
     {
       label: "Villa",
       icon: (
         <Image src={assets.Rectangle1} alt="Villa" width={28} height={28} />
+      ),
+      activeIcon: (
+        <Image src={assets.rext2} alt="Home Stay" width={28} height={28} />
       ),
     },
     {
@@ -180,11 +186,17 @@ const BookDemo = () => {
       icon: (
         <Image src={assets.Rectangle2} alt="Resort" width={28} height={28} />
       ),
+      activeIcon: (
+        <Image src={assets.rext3} alt="Home Stay" width={28} height={28} />
+      ),
     },
     {
       label: "Home Stay",
       icon: (
         <Image src={assets.Rectangle3} alt="Home Stay" width={28} height={28} />
+      ),
+      activeIcon: (
+        <Image src={assets.rext5} alt="Home Stay" width={28} height={28} />
       ),
     },
     {
@@ -192,29 +204,12 @@ const BookDemo = () => {
       icon: (
         <Image src={assets.Rectangle4} alt="Others" width={28} height={28} />
       ),
+      activeIcon: (
+        <Image src={assets.rext4} alt="Home Stay" width={28} height={28} />
+      ),
     },
   ];
-  const submitForm = () => {
-    if (schedule.date && schedule.time && schedule.timezone && userInfo.email) {
-      const url = new URL("https://calendly.com/shakti-credencesoft/30min");
-  
-      // Add query parameters for email, name, and other details
-      url.searchParams.append("email", userInfo.email);  // Change formData to userInfo
-      url.searchParams.append("name", userInfo.name);    // Change formData to userInfo
-      url.searchParams.append("date", schedule.date);
-      url.searchParams.append("time", schedule.time);
-      url.searchParams.append("timezone", schedule.timezone);
-  
-      // Log the final URL
-      console.log("Redirecting to Calendly with:", url.toString());
-  
-      // Redirect to Calendly with the populated information
-      window.location.href = url.toString();
-    } else {
-      setError("Please fill in all schedule fields.");
-    }
-  };
-  
+
   
 
   const solutionOptions = [
@@ -238,19 +233,76 @@ const BookDemo = () => {
   );
 
   const renderFormBox = (children) => (
-    <div className="w-full sm:max-w-[511px] h-auto sm:h-[630px] rounded-[40px] bg-hero-gradient   px-6 py-6 sm:py-10 mt-0">
+    <div className="w-full sm:max-w-[511px] h-auto  rounded-[40px] bg-hero-gradient   px-6 py-6 sm:py-10 mt-0">
       {children}
     </div>
   );
+  const submitForm = async () => {
+    const payload = {
+      businessType: "Accommodation",
+      accountManager: "BookOne Team",
+      email: userInfo.email,
+      name: userInfo.name,
+ownerName:userInfo.company,
 
+      organisationId: 1,
+      propertyId: "107",
+      managerEmailAddress: "servicemanagement@gmail.com",
+      managerFirstName: "Service",                      
+      managerLastName: "Management",
+      dateCollected: new Date().toISOString().split("T")[0],
+      mobile:userInfo.phone,
+    };
+  
+    try {
+      setLoading(true);
+  
+      // Await the fetch
+      const response = await fetch(
+        "https://api.bookone.io/api-lms/api/v1/businessLead",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+  
+      // Await the JSON response
+      const data = await response.json();
+      console.log("API response:", data);
+  
+      if (response.status === 200){
+        setStep(5);
+        setTimeout(() => {
+          if (userInfo.email) {
+            const url = new URL("https://calendly.com/shakti-credencesoft/30min");
+            url.searchParams.append("email", userInfo.email);
+            url.searchParams.append("name", userInfo.name);
+  
+            console.log("Redirecting to Calendly with:", url.toString());
+            window.location.href = url.toString();
+          }
+        }, 2000);
+      }
+  
+    } catch (err) {
+      console.error("Form submission error:", err);
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+  
   const renderFeatureCards = () => (
     <div className="grid grid-cols-3 gap-4 md:gap-0 mt-6 md:mt-0">
-      {[assets.Form, assets.Form1, assets.Form2].map((icon, index) => (
+      {[assets.PMSText, assets.ChannelImg, assets.BookingEng].map((icon, index) => (
         <div
           key={index}
-          className="bg-white bg-opacity-20 rounded-xl shadow-md p-3 flex flex-col items-center justify-center text-center w-[104px] h-[96px] md:w-[149px] md:h-[119px]"
+          className="bg-white bg-opacity-20 rounded-xl shadow-md p-3 flex flex-col items-center justify-center text-center w-[104px] h-[96px] md:w-[142px] md:h-[119px]"
         >
-          {/* <Image src={icon} alt={form-${index}} width={32} height={32} /> */}
+          <Image src={icon}  width={32} height={32} />
           <span className="text-[10px] md:text-sm text-white font-medium mt-1 text-center">
             {index === 0
               ? "PMS"
@@ -297,36 +349,38 @@ const BookDemo = () => {
                     Select your property type.
                   </h1>
 
-                  <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mt-2 max-w-[500px] w-full p-6 sm:p-0">
-                    {propertyOptions.map((item, index) => (
-                      <div
-                        key={item.label}
-                        onClick={() => handlePropertyTypeClick(item.label)}
-                        className={`w-full h-[91px] cursor-pointer p-3 border rounded-[10px] flex flex-col items-center justify-center transition-all duration-200
-              ${
-                propertyType === item.label
-                  ? "bg-[#146683] text-white border-[#146683] shadow-sm"
-                  : "border-[#8CCFF0] bg-white"
-              }
-              ${
-                propertyOptions.length === 5 && index === 4
-                  ? "sm:col-span-2 md:col-span-1"
-                  : ""
-              }`}
-                      >
-                        <div className="mb-1">{item.icon}</div>
-                        <span
-                          className={`text-[14px] font-medium text-center ${
-                            propertyType === item.label
-                              ? "text-white"
-                              : "text-[#146683]"
-                          }`}
-                        >
-                          {item.label}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
+                  <div className="grid grid-cols-3 gap-4 md:gap-6 mt-6 max-w-[500px]">
+  {propertyOptions.map((item, index) => {
+    const isSelected = propertyType === item.label;
+    return (
+      <div
+        key={item.label}
+        onClick={() => setPropertyType(item.label)}
+        className={`cursor-pointer p-4 border rounded-[10px] flex flex-col items-center justify-center transition-all duration-200 ${
+          isSelected
+            ? " bg-[#146683] shadow-sm"
+            : "border-[#8CCFF0]"
+        }`}
+        style={{
+          gridColumn:
+            propertyOptions.length === 5 && index === 4
+              ? "2 / span 1"
+              : undefined,
+        }}
+      >
+        <div className="mb-1">{isSelected ? item.activeIcon : item.icon}</div>
+        <span
+  className={`text-[14px] font-medium text-center ${
+    isSelected ? "text-white" : "text-[#146683]"
+  }`}
+>
+  {item.label}
+</span>
+      </div>
+    );
+  })}
+</div>
+
 
                   {error && <p className="text-red-500 mt-4">{error}</p>}
 
@@ -341,7 +395,9 @@ const BookDemo = () => {
                     </button>
                   </div>
 
-                  <button className="mt-6 sm:mt-8 w-[274px] h-[72px] flex items-center justify-center gap-4 rounded-[10px] border-[1.5px] border-[#D8A353] bg-[#D8A353]">
+                  <button 
+                  onClick={nextStep}
+                  className="mt-6 sm:mt-8 w-[274px] h-[72px] flex items-center justify-center gap-4 rounded-[10px] border-[1.5px] border-[#D8A353] bg-[#D8A353]">
                     <span className="w-[40.848px] h-[38.977px] flex items-center justify-center flex-shrink-0">
                       <Image
                         src={assets.Laptop}
@@ -502,6 +558,7 @@ const BookDemo = () => {
                         <span className="w-6 h-6 mr-3 flex items-center justify-center">
                           {item.label === "Property Management System" && (
                             <Image
+                            className="bg-white rounded"
                               src={assets.PMS}
                               alt={item.label}
                               width={24}
@@ -523,7 +580,7 @@ const BookDemo = () => {
                               alt={item.label}
                               width={24}
                               height={24}
-
+className="bg-white rounded"
                             />
                           )}
                           {item.label === "Help Me Choose What's Right" && (
@@ -532,6 +589,7 @@ const BookDemo = () => {
                               alt={item.label}
                               width={24}
                               height={24}
+                              className="bg-white rounded"
                             />
                           )}
                         </span>
@@ -597,7 +655,14 @@ const BookDemo = () => {
                   </h2>
 
                   <div className="grid grid-cols-1 gap-4 mt-2 max-w-[500px] w-full">
-                    <button className="w-full h-[72px] cursor-pointer p-3 border rounded-[10px] flex items-center transition-all duration-200 border-[#8CCFF0] bg-white">
+                    <button onClick={() => {
+            if (!userInfo.email) {
+              setError("Please fill in all schedule fields.");
+            } else {
+              setError("");
+              submitForm(); // 👈 HERE is the submission!
+            }
+          }} className="w-full h-[72px] cursor-pointer p-3 border rounded-[10px] flex items-center transition-all duration-200 border-[#8CCFF0] bg-white">
                       <span className="w-6 h-6 mr-3 flex items-center justify-center">
                         <Image
                           src={assets.PMS7}
@@ -606,7 +671,7 @@ const BookDemo = () => {
                           height={24}
                         />
                       </span>
-                      <span className="text-[16px] font-medium text-left text-[#146683]">
+                      <span  className="text-[16px] font-medium text-left text-[#146683]">
                         Book A Demo
                       </span>
                     </button>
@@ -625,7 +690,7 @@ const BookDemo = () => {
                       </span>
                     </button>
 
-                    <button className="w-full h-[72px] cursor-pointer p-3 rounded-[10px] flex items-center transition-all duration-200 bg-[#D8A353]">
+                    <button className="w-full h-[72px] cursor-pointer p-3 rounded-[10px] flex items-center transition-all duration-200 bg-[#D8A353]" onClick={nextStep}>
                       <span className="w-6 h-6 mr-3 flex items-center justify-center">
                         <Image
                           src={assets.Laptop}
@@ -634,10 +699,11 @@ const BookDemo = () => {
                           height={24}
                         />
                       </span>
-                      <span className="text-[16px] font-bold text-left text-[#171C1E]">
+                      <span className="text-[16px] font-bold text-left text-[#171C1E]" >
                         Unlock A Free Trial
                       </span>
                     </button>
+                    
                   </div>
 
                   <div className="mt-8 flex justify-between items-center w-full max-w-[500px]">
@@ -654,7 +720,62 @@ const BookDemo = () => {
                 </div>
               )}
 
-         
+          {step === 5 &&
+              renderFormBox(
+                <div className="w-full h-full flex flex-col items-start justify-start mt-5">
+                  <h2 className="text-[#146683] text-center font-inter text-[34px] font-semibold leading-[130%] not-italic mb-1 w-full text-left ">
+                  Thank You 
+                  </h2>
+                  <h3 className="text-[#146683] text-center font-inter text-[25px] font-semibold leading-[130%] not-italic mb-6 w-full text-left ">For Choosing BookOne!</h3>
+                  <p className="text-[#146683] lg:pr-[60px] lg:pl-[60px] text-center font-inter font-semibold leading-[130%] not-italic mb-6 w-full text-left ">You're now one step closer to simpler, smarter hotel management.</p>
+
+                  <p className="text-[#146683] lg:pr-[60px] lg:pl-[60px] text-center font-inter  leading-[130%] not-italic mb-6 w-full text-left ">Your reference number is <b>#BO-29187</b></p>
+
+                  <p className="text-[#000] lg:pl-[50px] lg:pr-[50px] font-bold font-inter not-italic mb-2 w-full text-left ">What’s next?</p>
+                  <div className="flex items-start justify-center lg:pl-[50px] lg:pr-[50px] mb-2">
+                      <Image
+                        src={assets.thank1}
+                        alt="Bulb Icon"
+                        width={20}
+                        height={20}
+                        className="inline-block mr-2"
+                      />
+                      <p className="text-[#000] text-sm">
+                        <span className="font-inter">One of our experts will reach out within 24hrs.</span>
+                      </p>
+                    </div>
+                    <div className="flex items-start justify-center lg:pl-[50px] lg:pr-[50px] mb-2">
+                      <Image
+                        src={assets.thank2}
+                        alt="Bulb Icon"
+                        width={20}
+                        height={20}
+                        className="inline-block mr-2"
+                      />
+                      <p className="text-[#000] text-sm">
+                        <span className="font-inter">You’ll get a demo—tailored to your needs.</span>
+                      </p>
+                    </div>
+                    <div className="flex items-start justify-center lg:pl-[50px] lg:pr-[50px] mb-2">
+                      <Image
+                        src={assets.thank3}
+                        alt="Bulb Icon"
+                        width={20}
+                        height={20}
+                        className="inline-block mr-2"
+                      />
+                      <p className="text-[#000] text-sm">
+                        <span className="font-inter">No commitments. No credit card. No hassle.</span>
+                      </p>
+
+                      
+                    </div>
+
+                    <p className="text-[#D8A353] text-center font-inter mt-[30px] font-semibold leading-[130%] not-italic mb-1 w-full text-left ">Want to explore plans while you wait? <a href="/pricing" className="underline text-[#146683] cursor-pointer">See Pricing</a></p>
+
+                    
+                </div>
+              )}
           </div>
         </div>
         <div className="block md:hidden mt-8">{renderFeatureCards()}</div>
