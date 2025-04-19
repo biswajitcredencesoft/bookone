@@ -111,7 +111,7 @@ const Navbar = () => {
                 <Image src={assets.User_logo} alt="user logo" className="h-[10px] w-[10px]"/>
               </div>
             </Link> */}
-
+{/* 
             <Link href="/login" className="ml-2 hover:opacity-80">
               <div className="rounded-full bg-[#CEE6F0] p-4 flex items-center justify-center shadow-md transition-transform duration-300 hover:scale-105">
                 <Image
@@ -120,16 +120,15 @@ const Navbar = () => {
                   className="w-6 h-6 md:w-10 md:h-10 object-contain"
                 />
               </div>
-            </Link>
+            </Link> */}
           </div>
 
           {/* Mobile - User Icon + Hamburger */}
           <div className="flex items-center gap-4 md:hidden ml-auto">
-            <Link
+            {/* <Link
               href="/login"
               className="text-[#27668c] text-2xl hover:opacity-80"
             >
-              {/* <FaUserCircle /> */}
               <div className="rounded-full bg-[#CEE6F0] p-2 flex items-center justify-center shadow-md transition-transform duration-300 hover:scale-105">
                 <Image
                   src={assets.User_logo}
@@ -137,7 +136,10 @@ const Navbar = () => {
                   className="w-6 h-6 md:w-10 md:h-10 object-contain"
                 />
               </div>
-            </Link>
+              
+            </Link> */}
+
+            
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className="text-2xl text-gray-700"

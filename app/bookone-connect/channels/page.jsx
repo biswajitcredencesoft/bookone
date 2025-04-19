@@ -5,7 +5,7 @@ import { assets } from "@/assets/assets";
 import { FaArrowRight } from "react-icons/fa";
 import { useContentful } from "@/app/bookone-connect/contentfulBookoneConnect";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-
+import Link from "next/link";
 const Channels = () => {
   const contentful = useContentful();
 
@@ -24,6 +24,7 @@ const Channels = () => {
         <p className="text-[#146683] text-base sm:text-lg lg:text-[24px] leading-snug text-center mt-2 font-['Inter'] hidden md:flex items-center gap-1">
           {documentToReactComponents(connectData?.connectThridParagraph)}
           <span>
+          <Link href="/book-a-demo">
             <button
               title="Explore more"
               className="group items-center h-10 bg-[#146683] text-white rounded-full overflow-hidden transition-all duration-300 ease-in-out w-[40px] hover:w-[150px] sm:hover:w-[160px] hover:bg-[#BFE9FF] px-3 ml-4 flex"
@@ -35,6 +36,7 @@ const Channels = () => {
                 Explore more
               </span>
             </button>
+            </Link>
           </span>
         </p>
 
@@ -53,6 +55,7 @@ const Channels = () => {
 
         {/* Mobile View: Button under the image */}
         <div className="mt-4 md:hidden flex justify-center">
+        <Link href="/book-a-demo">
           <button
             title="Explore more"
             className="group items-center h-10 bg-[#146683] text-white rounded-full overflow-hidden transition-all duration-300 ease-in-out w-[40px] hover:w-[150px] hover:bg-[#BFE9FF] px-3 flex"
@@ -64,6 +67,7 @@ const Channels = () => {
               Explore more
             </span>
           </button>
+          </Link>
         </div>
       </div>
     </div>

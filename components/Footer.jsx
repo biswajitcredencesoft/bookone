@@ -125,7 +125,7 @@ const Footer = () => {
                 { label: "BookOne BookMax", href: "/bookone-bookmax" },
                 { label: "BookOne POS", href: "/bookone-pos" },
                 { label: "BookOne CRM", href: "/bookone-crm" },
-                { label: "BookOne Loyalty", href: "/bookone-loyalty" },
+                { label: "BookOne Loyalty", href: "/bookone-loyality" },
                 { label: "BookOne VaRO", href: "/bookone-varo" },
               ].map((product, idx) => (
                 <li key={idx}>
@@ -147,31 +147,31 @@ const Footer = () => {
               {[
                 {
                   label: "Google Business Listing",
-                  href: "/services/google-business-listing",
+                  href: "/google-business-listing",
                 },
                 {
                   label: "Digital Marketing",
-                  href: "/services/digital-marketing",
+                  href: "/digital-marketing",
                 },
                 {
                   label: "Search Engine Optimisation",
-                  href: "/services/seo",
+                  href: "/seo",
                 },
                 {
                   label: "OTA Setup & Optimisation",
-                  href: "/services/ota-setup",
+                  href: "/ota-setup",
                 },
                 {
                   label: "Metasearch Optimisation",
-                  href: "/services/metasearch",
+                  href: "/metasearch",
                 },
                 {
                   label: "Google Hotel Ads",
-                  href: "/services/google-hotel-ads",
+                  href: "/google-hotel-ads",
                 },
                 {
                   label: "Online Reputation Management",
-                  href: "/services/online-reputation",
+                  href: "/online-reputation",
                 },
               ].map((service, idx) => (
                 <li key={idx}>

@@ -8,6 +8,8 @@ import UseBookone from "./use-bookone/page";
 import { ContentfulProviderpricing } from "./contentfulPricingContext";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { createClient } from "contentful";
+import BasicPlan from "./basic-plan/page";
+import Link from "next/link";
 
 const client = createClient({
   space: "wzmo4lmp2r9v",
@@ -209,6 +211,7 @@ const Pricing = () => {
                   </div>
 
                   {/* Desktop CTA */}
+                  <Link href="/book-a-demo">
                   <button
                     className={`hidden md:block w-[50%] ml-4 py-2 rounded-xl font-medium transition-all duration-200 mb-6 ${
                       card.highlight
@@ -218,6 +221,7 @@ const Pricing = () => {
                   >
                     Get Started
                   </button>
+                  </Link>
 
                   {/* Features */}
                   <div className="font-semibold text-sm">What’s included</div>
@@ -240,6 +244,7 @@ const Pricing = () => {
                 </div>
 
                 {/* Mobile CTA */}
+                <Link href="/book-a-demo">
                 <button
                   className={`block md:hidden w-[226px] ml-12  mt-6 py-2 rounded-[16px]  font-medium transition-all duration-200 ${
                     card.highlight
@@ -249,10 +254,12 @@ const Pricing = () => {
                 >
                   Get Started
                 </button>
+                </Link>
               </div>
             ))}
           </div>
         </div>
+        <BasicPlan/>
         <PowerOf />
         <UseBookone />
       </ContentfulProviderpricing>

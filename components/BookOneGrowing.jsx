@@ -5,6 +5,7 @@ import Image from "next/image";
 import { createClient } from "contentful";
 import { assets } from "@/assets/assets";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import Link from "next/link";
 
 const client = createClient({
   space: "wzmo4lmp2r9v",
@@ -128,9 +129,11 @@ const BookOneGrowing = () => {
               </div>
 
               <div className="shrink-0">
+              <Link href="/book-a-demo">
                 <button className="bg-[#01677D] border-[1px] hover:bg-[#0f4b5c] text-[#ffffff] font-medium px-4 border-white lg:px-6 py-2 md:px-6 md:py-3 rounded-md shadow-md transition duration-300 whitespace-nowrap text-xs md:text-base p-[10px]">
                   See What BookOne Can Do For You
                 </button>
+                </Link>
               </div>
             </div>
           </div>

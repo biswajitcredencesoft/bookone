@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa";
 import { assets } from "@/assets/assets";
-
+import Link from "next/link";
 const integrationData = [
   {
     title: "Get Connected On Top OTA’s!",
@@ -125,6 +125,7 @@ const OtaIntegration = () => {
                   the platforms that power your property.
                 </p>
                 <div className="ml-32 lg:ml-0 md:ml-0">
+                <Link href="/book-a-demo">
                   <button
                     title="Explore more"
                     className="group flex items-center h-10 bg-[#146683] text-white rounded-full overflow-hidden transition-all duration-300 ease-in-out w-[40px] hover:w-[180px] sm:h-10 sm:hover:w-[160px] hover:bg-[#BFE9FF] px-3 ml-16 md:ml-0 lg:ml-0"
@@ -136,6 +137,7 @@ const OtaIntegration = () => {
                       Explore more
                     </span>
                   </button>
+                  </Link>
                 </div>
               </div>
             </div>
