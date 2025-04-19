@@ -673,7 +673,11 @@ ownerName:userInfo.company,
                         Book A Demo
                       </span>
                     </button>
-
+                    <a
+  href="https://wa.me/6372198255"
+  target="_blank" // Opens in a new tab
+  rel="noopener noreferrer" // For security reasons
+>
                     <button className="w-full h-[72px] cursor-pointer p-3 border rounded-[10px] flex items-center transition-all duration-200 border-[#8CCFF0] bg-white">
                       <span className="w-6 h-6 mr-3 flex items-center justify-center">
                         <Image
@@ -687,7 +691,7 @@ ownerName:userInfo.company,
                         Talk To Our Experts
                       </span>
                     </button>
-
+</a>
                     <button className="w-full h-[72px] cursor-pointer p-3 rounded-[10px] flex items-center transition-all duration-200 bg-[#D8A353]" onClick={nextStep}>
                       <span className="w-6 h-6 mr-3 flex items-center justify-center">
                         <Image
