@@ -8,6 +8,7 @@ import UseBookone from "./use-bookone/page";
 import { ContentfulProviderpricing } from "./contentfulPricingContext";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { createClient } from "contentful";
+import BasicPlan from "./basic-plan/page";
 
 const client = createClient({
   space: "wzmo4lmp2r9v",
@@ -253,6 +254,7 @@ const Pricing = () => {
             ))}
           </div>
         </div>
+        <BasicPlan/>
         <PowerOf />
         <UseBookone />
       </ContentfulProviderpricing>

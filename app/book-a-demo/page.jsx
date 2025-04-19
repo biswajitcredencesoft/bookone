@@ -52,7 +52,7 @@ const BookDemo = () => {
       setStep2BottomText(
         "80% of BookOne hotel partners say they ‘finally feel in control’ of their property operations."
       );
-      setStep2Heading("Start Building Your Hotel’s Success Story!"); // Reset heading for Hotel
+      setStep2Heading("Start Building Your Hotel’s Success Story!"); 
     } else if (type === "Villa") {
       setStep2BottomText(
         "Unlock seamless management for your villa with BookOne."
@@ -113,6 +113,7 @@ const BookDemo = () => {
   };
 
   const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
+
   const isValidPhone = (phone) => /^[6-9]\d{9}$/.test(phone);
 
   // const submitForm = async () => {
@@ -211,8 +212,6 @@ const BookDemo = () => {
     },
   ];
 
-  
-
   const solutionOptions = [
     { label: "Property Management System", icon: assets.Form },
     { label: "Channel Manager", icon: assets.Form1 },
@@ -244,20 +243,20 @@ const BookDemo = () => {
       accountManager: "BookOne Team",
       email: userInfo.email,
       name: userInfo.name,
-ownerName:userInfo.company,
+      ownerName: userInfo.company,
 
       organisationId: 1,
       propertyId: "107",
       managerEmailAddress: "servicemanagement@gmail.com",
-      managerFirstName: "Service",                      
+      managerFirstName: "Service",
       managerLastName: "Management",
       dateCollected: new Date().toISOString().split("T")[0],
-      mobile:userInfo.phone,
+      mobile: userInfo.phone,
     };
-  
+
     try {
       setLoading(true);
-  
+
       // Await the fetch
       const response = await fetch(
         "https://api.bookone.io/api-lms/api/v1/businessLead",
@@ -269,26 +268,27 @@ ownerName:userInfo.company,
           body: JSON.stringify(payload),
         }
       );
-  
+
       // Await the JSON response
       const data = await response.json();
       setReferenceId(data.id);
       console.log("API response:", data);
-  
-      if (response.status === 200){
+
+      if (response.status === 200) {
         setStep(5);
         setTimeout(() => {
           if (userInfo.email) {
-            const url = new URL("https://calendly.com/shakti-credencesoft/30min");
+            const url = new URL(
+              "https://calendly.com/shakti-credencesoft/30min"
+            );
             url.searchParams.append("email", userInfo.email);
             url.searchParams.append("name", userInfo.name);
-  
+
             console.log("Redirecting to Calendly with:", url.toString());
             window.location.href = url.toString();
           }
         }, 2000);
       }
-  
     } catch (err) {
       console.error("Form submission error:", err);
       setError("Something went wrong. Please try again.");
@@ -296,26 +296,26 @@ ownerName:userInfo.company,
       setLoading(false);
     }
   };
-  const submitFormone  = async () => {
+  const submitFormone = async () => {
     const payload = {
       businessType: "Accommodation",
       accountManager: "BookOne Team",
       email: userInfo.email,
       name: userInfo.name,
-ownerName:userInfo.company,
+      ownerName: userInfo.company,
 
       organisationId: 1,
       propertyId: "107",
       managerEmailAddress: "servicemanagement@gmail.com",
-      managerFirstName: "Service",                      
+      managerFirstName: "Service",
       managerLastName: "Management",
       dateCollected: new Date().toISOString().split("T")[0],
-      mobile:userInfo.phone,
+      mobile: userInfo.phone,
     };
-  
+
     try {
       setLoading(true);
-  
+
       // Await the fetch
       const response = await fetch(
         "https://api.bookone.io/api-lms/api/v1/businessLead",
@@ -327,17 +327,15 @@ ownerName:userInfo.company,
           body: JSON.stringify(payload),
         }
       );
-  
+
       // Await the JSON response
       const data = await response.json();
       setReferenceId(data.id);
       console.log("API response:", data);
-  
-      if (response.status === 200){
+
+      if (response.status === 200) {
         setStep(5);
-       
       }
-  
     } catch (err) {
       console.error("Form submission error:", err);
       setError("Something went wrong. Please try again.");
@@ -345,24 +343,26 @@ ownerName:userInfo.company,
       setLoading(false);
     }
   };
-  
+
   const renderFeatureCards = () => (
     <div className="grid grid-cols-3 gap-4 md:gap-0 mt-6 md:mt-0">
-      {[assets.PMSText, assets.ChannelImg, assets.BookingEng].map((icon, index) => (
-        <div
-          key={index}
-          className="bg-white bg-opacity-20 rounded-xl shadow-md p-3 flex flex-col items-center justify-center text-center w-[104px] h-[96px] md:w-[142px] md:h-[119px]"
-        >
-          <Image src={icon}  width={32} height={32} />
-          <span className="text-[10px] md:text-sm text-white font-medium mt-1 text-center">
-            {index === 0
-              ? "PMS"
-              : index === 1
-              ? "Channel Manager"
-              : "Website/Booking Engine"}
-          </span>
-        </div>
-      ))}
+      {[assets.PMSText, assets.ChannelImg, assets.BookingEng].map(
+        (icon, index) => (
+          <div
+            key={index}
+            className="bg-white bg-opacity-20 rounded-xl shadow-md p-3 flex flex-col items-center justify-center text-center w-[104px] h-[96px] md:w-[142px] md:h-[119px]"
+          >
+            <Image src={icon} width={32} height={32} />
+            <span className="text-[10px] md:text-sm text-white font-medium mt-1 text-center">
+              {index === 0
+                ? "PMS"
+                : index === 1
+                ? "Channel Manager"
+                : "Website/Booking Engine"}
+            </span>
+          </div>
+        )
+      )}
     </div>
   );
 
@@ -401,37 +401,38 @@ ownerName:userInfo.company,
                   </h1>
 
                   <div className="grid grid-cols-3 gap-4 md:gap-6 mt-6 max-w-[500px]">
-  {propertyOptions.map((item, index) => {
-    const isSelected = propertyType === item.label;
-    return (
-      <div
-        key={item.label}
-        onClick={() => setPropertyType(item.label)}
-        className={`cursor-pointer p-4 border rounded-[10px] flex flex-col items-center justify-center transition-all duration-200 ${
-          isSelected
-            ? " bg-[#146683] shadow-sm"
-            : "border-[#8CCFF0]"
-        }`}
-        style={{
-          gridColumn:
-            propertyOptions.length === 5 && index === 4
-              ? "2 / span 1"
-              : undefined,
-        }}
-      >
-        <div className="mb-1">{isSelected ? item.activeIcon : item.icon}</div>
-        <span
-  className={`text-[14px] font-medium text-center ${
-    isSelected ? "text-white" : "text-[#146683]"
-  }`}
->
-  {item.label}
-</span>
-      </div>
-    );
-  })}
-</div>
-
+                    {propertyOptions.map((item, index) => {
+                      const isSelected = propertyType === item.label;
+                      return (
+                        <div
+                          key={item.label}
+                          onClick={() => setPropertyType(item.label)}
+                          className={`cursor-pointer p-4 border rounded-[10px] flex flex-col items-center justify-center transition-all duration-200 ${
+                            isSelected
+                              ? " bg-[#146683] shadow-sm"
+                              : "border-[#8CCFF0]"
+                          }`}
+                          style={{
+                            gridColumn:
+                              propertyOptions.length === 5 && index === 4
+                                ? "2 / span 1"
+                                : undefined,
+                          }}
+                        >
+                          <div className="mb-1">
+                            {isSelected ? item.activeIcon : item.icon}
+                          </div>
+                          <span
+                            className={`text-[14px] font-medium text-center ${
+                              isSelected ? "text-white" : "text-[#146683]"
+                            }`}
+                          >
+                            {item.label}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
 
                   {error && <p className="text-red-500 mt-4">{error}</p>}
 
@@ -446,9 +447,10 @@ ownerName:userInfo.company,
                     </button>
                   </div>
 
-                  <button 
-                  onClick={nextStep}
-                  className="mt-6 sm:mt-8 w-[274px] h-[72px] flex items-center justify-center gap-4 rounded-[10px] border-[1.5px] border-[#D8A353] bg-[#D8A353]">
+                  <button
+                    onClick={nextStep}
+                    className="mt-6 sm:mt-8 w-[274px] h-[72px] flex items-center justify-center gap-4 rounded-[10px] border-[1.5px] border-[#D8A353] bg-[#D8A353]"
+                  >
                     <span className="w-[40.848px] h-[38.977px] flex items-center justify-center flex-shrink-0">
                       <Image
                         src={assets.Laptop}
@@ -590,7 +592,7 @@ ownerName:userInfo.company,
               renderFormBox(
                 <div className="w-full h-full flex flex-col items-start justify-start">
                   <h2 className="text-[#146683] font-inter text-[24px] font-semibold leading-[130%] not-italic mb-6 w-full text-left lg:pr-[80px]">
-                  {step === 1
+                    {step === 1
                       ? "Start Building Your br Hotel’s Success Story!"
                       : step2Heading}
                   </h2>
@@ -609,7 +611,7 @@ ownerName:userInfo.company,
                         <span className="w-6 h-6 mr-3 flex items-center justify-center">
                           {item.label === "Property Management System" && (
                             <Image
-                            className="bg-white rounded"
+                              className="bg-white rounded"
                               src={assets.PMS}
                               alt={item.label}
                               width={24}
@@ -631,7 +633,7 @@ ownerName:userInfo.company,
                               alt={item.label}
                               width={24}
                               height={24}
-className="bg-white rounded"
+                              className="bg-white rounded"
                             />
                           )}
                           {item.label === "Help Me Choose What's Right" && (
@@ -695,25 +697,27 @@ className="bg-white rounded"
                 </div>
               )}
 
-
             {step === 4 &&
               renderFormBox(
                 <div className="w-full h-full flex flex-col items-start justify-start">
                   <h2 className="text-[#146683] font-inter text-[24px] font-semibold leading-[130%] not-italic mb-6 w-full text-left lg:pr-[80px]">
-                  {step === 1
+                    {step === 1
                       ? "Start Building Your br Hotel’s Success Story!"
                       : step2Heading}
                   </h2>
 
                   <div className="grid grid-cols-1 gap-4 mt-2 max-w-[500px] w-full">
-                    <button onClick={() => {
-            if (!userInfo.email) {
-              setError("Please fill in all schedule fields.");
-            } else {
-              setError("");
-              submitForm(); // 👈 HERE is the submission!
-            }
-          }} className="w-full h-[72px] cursor-pointer p-3 border rounded-[10px] flex items-center transition-all duration-200 border-[#8CCFF0] bg-white">
+                    <button
+                      onClick={() => {
+                        if (!userInfo.email) {
+                          setError("Please fill in all schedule fields.");
+                        } else {
+                          setError("");
+                          submitForm(); // 👈 HERE is the submission!
+                        }
+                      }}
+                      className="w-full h-[72px] cursor-pointer p-3 border rounded-[10px] flex items-center transition-all duration-200 border-[#8CCFF0] bg-white"
+                    >
                       <span className="w-6 h-6 mr-3 flex items-center justify-center">
                         <Image
                           src={assets.PMS7}
@@ -722,38 +726,40 @@ className="bg-white rounded"
                           height={24}
                         />
                       </span>
-                      <span  className="text-[16px] font-medium text-left text-[#146683]">
+                      <span className="text-[16px] font-medium text-left text-[#146683]">
                         Book A Demo
                       </span>
                     </button>
                     <a
-  href="https://wa.me/6372198255"
-  target="_blank" // Opens in a new tab
-  rel="noopener noreferrer" // For security reasons
->
-                    <button className="w-full h-[72px] cursor-pointer p-3 border rounded-[10px] flex items-center transition-all duration-200 border-[#8CCFF0] bg-white">
-                      <span className="w-6 h-6 mr-3 flex items-center justify-center">
-                        <Image
-                          src={assets.PMS6}
-                          alt="Talk To Our Experts"
-                          width={24}
-                          height={24}
-                        />
-                      </span>
-                      <span className="text-[16px] font-medium text-left text-[#146683]">
-                        Talk To Our Experts
-                      </span>
-                    </button>
-</a>
-                    <button  onClick={() => {
-            if (!userInfo.email) {
-              setError("Please fill in all schedule fields.");
-            } else {
-              setError("");
-              submitFormone();// 👈 HERE is the submission!
-            }
-          }}
-                     className="w-full h-[72px] cursor-pointer p-3 rounded-[10px] flex items-center transition-all duration-200 bg-[#D8A353]" >
+                      href="https://wa.me/6372198255"
+                      target="_blank" // Opens in a new tab
+                      rel="noopener noreferrer" // For security reasons
+                    >
+                      <button className="w-full h-[72px] cursor-pointer p-3 border rounded-[10px] flex items-center transition-all duration-200 border-[#8CCFF0] bg-white">
+                        <span className="w-6 h-6 mr-3 flex items-center justify-center">
+                          <Image
+                            src={assets.PMS6}
+                            alt="Talk To Our Experts"
+                            width={24}
+                            height={24}
+                          />
+                        </span>
+                        <span className="text-[16px] font-medium text-left text-[#146683]">
+                          Talk To Our Experts
+                        </span>
+                      </button>
+                    </a>
+                    <button
+                      onClick={() => {
+                        if (!userInfo.email) {
+                          setError("Please fill in all schedule fields.");
+                        } else {
+                          setError("");
+                          submitFormone(); // 👈 HERE is the submission!
+                        }
+                      }}
+                      className="w-full h-[72px] cursor-pointer p-3 rounded-[10px] flex items-center transition-all duration-200 bg-[#D8A353]"
+                    >
                       <span className="w-6 h-6 mr-3 flex items-center justify-center">
                         <Image
                           src={assets.Laptop}
@@ -762,15 +768,13 @@ className="bg-white rounded"
                           height={24}
                         />
                       </span>
-                      <span className="text-[16px] font-bold text-left text-[#171C1E]" >
+                      <span className="text-[16px] font-bold text-left text-[#171C1E]">
                         Unlock A Free Trial
                       </span>
                     </button>
-                    
                   </div>
 
                   <div className="mt-8 flex justify-between items-center w-full max-w-[500px]">
-                    
                     <button
                       onClick={prevStep}
                       className="text-[#146683] font-semibold underline"
@@ -783,69 +787,86 @@ className="bg-white rounded"
                 </div>
               )}
 
-     
-{step === 5 &&
+            {step === 5 &&
               renderFormBox(
                 <div className="w-full h-full flex flex-col items-start justify-start mt-5">
-                  <h2 className="text-[#146683] text-center font-inter text-[34px] font-semibold leading-[130%] not-italic mb-1 w-full text-left ">
-                  Thank You 
+                  <h2 className="text-[#146683] text-center font-inter text-[34px] font-semibold leading-[130%] not-italic mb-1 w-full  ">
+                    Thank You
                   </h2>
-                  <h3 className="text-[#146683] text-center font-inter text-[25px] font-semibold leading-[130%] not-italic mb-6 w-full text-left ">For Choosing BookOne!</h3>
-                  <p className="text-[#146683] lg:pr-[60px] lg:pl-[60px] text-center font-inter font-semibold leading-[130%] not-italic mb-6 w-full text-left ">You're now one step closer to simpler, smarter hotel management.</p>
+                  <h3 className="text-[#146683] text-center font-inter text-[25px] font-semibold leading-[130%] not-italic mb-6 w-full  ">
+                    For Choosing BookOne!
+                  </h3>
+                  <p className="text-[#146683] lg:pr-[60px] lg:pl-[60px] text-center font-inter font-semibold leading-[130%] not-italic mb-6 w-full  ">
+                    You're now one step closer to simpler, smarter hotel
+                    management.
+                  </p>
 
-                  <p className="text-[#146683] lg:pr-[60px] lg:pl-[60px] text-center font-inter  leading-[130%] not-italic mb-6 w-full text-left ">Your reference number is <b>#{referenceId}
-                    </b></p>
+                  <p className="text-[#146683] lg:pr-[60px] lg:pl-[60px] text-center font-inter  leading-[130%] not-italic mb-6 w-full  ">
+                    Your reference number is <b>#{referenceId}</b>
+                  </p>
 
-                  <p className="text-[#000] lg:pl-[50px] lg:pr-[50px] font-bold font-inter not-italic mb-2 w-full text-left ">What’s next?</p>
+                  <p className="text-[#000] lg:pl-[50px] lg:pr-[50px] font-bold font-inter not-italic mb-2 w-full text-left ">
+                    What’s next?
+                  </p>
                   <div className="flex items-start justify-center lg:pl-[50px] lg:pr-[50px] mb-2">
-                      <Image
-                        src={assets.thank1}
-                        alt="Bulb Icon"
-                        width={20}
-                        height={20}
-                        className="inline-block mr-2"
-                      />
-                      <p className="text-[#000] text-sm">
-                        <span className="font-inter">One of our experts will reach out within 24hrs.</span>
-                      </p>
-                    </div>
-                    <div className="flex items-start justify-center lg:pl-[50px] lg:pr-[50px] mb-2">
-                      <Image
-                        src={assets.thank2}
-                        alt="Bulb Icon"
-                        width={20}
-                        height={20}
-                        className="inline-block mr-2"
-                      />
-                      <p className="text-[#000] text-sm">
-                        <span className="font-inter">You’ll get a demo—tailored to your needs.</span>
-                      </p>
-                    </div>
-                    <div className="flex items-start justify-center lg:pl-[50px] lg:pr-[50px] mb-2">
-                      <Image
-                        src={assets.thank3}
-                        alt="Bulb Icon"
-                        width={20}
-                        height={20}
-                        className="inline-block mr-2"
-                      />
-                      <p className="text-[#000] text-sm">
-                        <span className="font-inter">No commitments. No credit card. No hassle.</span>
-                      </p>
+                    <Image
+                      src={assets.thank1}
+                      alt="Bulb Icon"
+                      width={20}
+                      height={20}
+                      className="inline-block mr-2"
+                    />
+                    <p className="text-[#000] text-sm">
+                      <span className="font-inter">
+                        One of our experts will reach out within 24hrs.
+                      </span>
+                    </p>
+                  </div>
+                  <div className="flex items-start justify-center lg:pl-[50px] lg:pr-[50px] mb-2">
+                    <Image
+                      src={assets.thank2}
+                      alt="Bulb Icon"
+                      width={20}
+                      height={20}
+                      className="inline-block mr-2"
+                    />
+                    <p className="text-[#000] text-sm">
+                      <span className="font-inter">
+                        You’ll get a demo—tailored to your needs.
+                      </span>
+                    </p>
+                  </div>
+                  <div className="flex items-start justify-center lg:pl-[50px] lg:pr-[50px] mb-2">
+                    <Image
+                      src={assets.thank3}
+                      alt="Bulb Icon"
+                      width={20}
+                      height={20}
+                      className="inline-block mr-2"
+                    />
+                    <p className="text-[#000] text-sm">
+                      <span className="font-inter">
+                        No commitments. No credit card. No hassle.
+                      </span>
+                    </p>
+                  </div>
 
-                      
-                    </div>
-
-                    <p className="text-[#D8A353] text-center font-inter mt-[30px] font-semibold leading-[130%] not-italic mb-1 w-full text-left p-[40px] sm:p-[0px] ">Want to explore plans while you wait? <a href="/pricing" className="underline text-[#146683] cursor-pointer">See Pricing</a></p>
-
-                    
+                  <p className="text-[#D8A353] text-center font-inter mt-[30px] font-semibold leading-[130%] not-italic mb-1 w-full text-left p-[40px] sm:p-[0px] ">
+                    Want to explore plans while you wait?{" "}
+                    <a
+                      href="/pricing"
+                      className="underline text-[#146683] cursor-pointer"
+                    >
+                      See Pricing
+                    </a>
+                  </p>
                 </div>
-         )}
+              )}
           </div>
         </div>
         <div className="block md:hidden mt-8">{renderFeatureCards()}</div>
       </div>
-      <TrustBookOne/>
+      <TrustBookOne />
       <ExpectDemo />
       <ServicesGive />
       <KeepUp />
@@ -854,4 +875,4 @@ className="bg-white rounded"
   );
 };
 
-export default BookDemo;
+export default BookDemo;
