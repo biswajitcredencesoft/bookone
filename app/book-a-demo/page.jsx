@@ -237,24 +237,62 @@ const BookDemo = () => {
       {children}
     </div>
   );
-  const submitForm = () => {
-    if (userInfo.email) {
-      const url = new URL("https://calendly.com/shakti-credencesoft/30min");
+  const submitForm = async () => {
+    const payload = {
+      bccEmail: "samaya.muduli@credencesoft.co.nz",
+      bccEmailTo: "info@bookonepms.com",
+      bccName: "samaya.muduli@credencesoft.co.nz",
+      accommodationType: "Accommodation",
+      accountManager: "BookOne Team",
+      email: "subhasmita.tripathy@credencesoft.co.nz",
+      fromEmail: "subhasmita.tripathy@credencesoft.co.nz",
+      lastName:"tripathy",
+      firstName :"Subha",
+      propertyId:"107",
+      checkInDate
+: 
+"2025-04-19",
+checkOutDate
+: 
+"2025-04-20"
+    };
   
-      // Add query parameters for email, name, and other details
-      url.searchParams.append("email", userInfo.email);  // Change formData to userInfo
-      url.searchParams.append("name", userInfo.name);    // Change formData to userInfo
-     
+    try {
+      setLoading(true);
   
-      // Log the final URL
-      console.log("Redirecting to Calendly with:", url.toString());
+      // Await the fetch
+      const response = await fetch(
+        "https://api.bookonelocal.in/api-lms/api/v1/accommodationEnquiry",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
   
-      // Redirect to Calendly with the populated information
-      window.location.href = url.toString();
-    } else {
-      setError("Please fill in all schedule fields.");
+      // Await the JSON response
+      const data = await response.json();
+      console.log("API response:", data);
+  
+      if (userInfo.email) {
+        const url = new URL("https://calendly.com/shakti-credencesoft/30min");
+        url.searchParams.append("email", userInfo.email);
+        url.searchParams.append("name", userInfo.name);
+  
+        console.log("Redirecting to Calendly with:", url.toString());
+        window.location.href = url.toString();
+      }
+  
+    } catch (err) {
+      console.error("Form submission error:", err);
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
+  
   const renderFeatureCards = () => (
     <div className="grid grid-cols-3 gap-4 md:gap-0 mt-6 md:mt-0">
       {[assets.PMSText, assets.ChannelImg, assets.BookingEng].map((icon, index) => (
