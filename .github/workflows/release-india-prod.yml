@@ -5,7 +5,7 @@ on: [workflow_dispatch]
 env:
   # build
   IMAGE_NAME: bookone-website
-
+  
   GCP_REGION: asia-south1
   GCP_PROJECT: bookone-445706
   GCP_PROJECT_NUMBER: 876146436140
@@ -13,17 +13,18 @@ env:
   GCP_IDENTITY_POOL_NAME: release
   GCP_IDENTITY_PROVIDER_NAME: github-provider
   GCP_SERVICE_ACCOUNT: build-manager@bookone-445706.iam.gserviceaccount.com
+  
 
   # deployment
   NAMESPACE: cloudrun-webui
   SERVICE_NAME: bookone_website
-
+  
   AWS_ROLE: arn:aws:iam::153432822124:role/bookone-uat-deployment-role
   AWS_REGION: ap-south-1
   AWS_SECRET: bookone_uat_deployment_credentials
 
   BRANCH: release-india-prod
-
+  
   # generated do not touch
   # IDENTITY_PROVIDER: projects/${{ env.GCP_PROJECT_NUMBER }}/locations/global/workloadIdentityPools/${{ env.GCP_IDENTITY_POOL_NAME }}/providers/${GCP_IDENTITY_PROVIDER_NAME}
   # CONTAINER_REGISTRY: ${{ env.GCP_REGION }}-docker.pkg.dev
@@ -31,6 +32,7 @@ env:
   # depl_username: aa
   # depl_password: aa
   # depl_url: aa
+
 
 permissions:
   contents: read
@@ -47,7 +49,7 @@ jobs:
         with:
           ref: ${{ env.BRANCH }}
           fetch-depth: 1
-
+  
       - name: Generate Derived Environment Variables
         id: set-env-vars
         run: |
@@ -63,6 +65,7 @@ jobs:
           echo "IMAGE_URI: $IMAGE_URI"
           echo "COMMIT_ID: $COMMIT_ID"
 
+
       - name: Authenticate to Google Cloud
         id: auth
         uses: google-github-actions/auth@v1
@@ -74,6 +77,16 @@ jobs:
         run: |
           yes | gcloud auth configure-docker asia-south1-docker.pkg.dev
 
+      - name: Set up JDK 8
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "8"
+
+      - name: Generate Java Jar file
+        id: generate-jar-file
+        run: |
+          mvn -U clean package -DskipTests
 
       - name: Build Container Image
         id: build-container-image
@@ -85,6 +98,7 @@ jobs:
         run: |
           docker push ${{ env.IMAGE_URI }}:latest
           docker push ${{ env.IMAGE_URI }}:${{ env.COMMIT_ID }}
+
 
   # deploy:
   #   needs: build
@@ -122,5 +136,5 @@ jobs:
   #           echo "Success! The response code is $response."
   #         else
   #           echo "Failed! The response code is $response."
-  #           exit 1
-  #         fi
+  #           exit 1
+  #         fi
