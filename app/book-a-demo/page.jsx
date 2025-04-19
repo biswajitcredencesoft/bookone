@@ -780,7 +780,8 @@ className="bg-white rounded"
                 </div>
               )}
 
-          {step === 5 &&
+     
+{step === 5 &&
               renderFormBox(
                 <div className="w-full h-full flex flex-col items-start justify-start mt-5">
                   <h2 className="text-[#146683] text-center font-inter text-[34px] font-semibold leading-[130%] not-italic mb-1 w-full text-left ">
@@ -831,11 +832,11 @@ className="bg-white rounded"
                       
                     </div>
 
-                    <p className="text-[#D8A353] text-center font-inter mt-[30px] font-semibold leading-[130%] not-italic mb-1 w-full text-left ">Want to explore plans while you wait? <a href="/pricing" className="underline text-[#146683] cursor-pointer">See Pricing</a></p>
+                    <p className="text-[#D8A353] text-center font-inter mt-[30px] font-semibold leading-[130%] not-italic mb-1 w-full text-left p-[40px] sm:p-[0px] ">Want to explore plans while you wait? <a href="/pricing" className="underline text-[#146683] cursor-pointer">See Pricing</a></p>
 
                     
                 </div>
-              )}
+         )}
           </div>
         </div>
         <div className="block md:hidden mt-8">{renderFeatureCards()}</div>
