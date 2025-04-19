@@ -242,16 +242,15 @@ const BookDemo = () => {
       businessType: "Accommodation",
       accountManager: "BookOne Team",
       email: userInfo.email,
-      name: userInfo.company,
-      ownerName:userInfo.name,
+      name: userInfo.name,
+ownerName:userInfo.company,
+
       organisationId: 1,
       propertyId: "107",
       managerEmailAddress: "servicemanagement@gmail.com",
       managerFirstName: "Service",                      
       managerLastName: "Management",
-      checkInDate: "2025-04-19",
-      checkOutDate: "2025-04-20",
-      dateCollected:"2025-04-19",
+      dateCollected: new Date().toISOString().split("T")[0],
       mobile:userInfo.phone,
     };
   
