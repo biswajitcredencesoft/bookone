@@ -194,27 +194,7 @@ const BookDemo = () => {
       ),
     },
   ];
-  const submitForm = () => {
-    if (schedule.date && schedule.time && schedule.timezone && userInfo.email) {
-      const url = new URL("https://calendly.com/shakti-credencesoft/30min");
-  
-      // Add query parameters for email, name, and other details
-      url.searchParams.append("email", userInfo.email);  // Change formData to userInfo
-      url.searchParams.append("name", userInfo.name);    // Change formData to userInfo
-      url.searchParams.append("date", schedule.date);
-      url.searchParams.append("time", schedule.time);
-      url.searchParams.append("timezone", schedule.timezone);
-  
-      // Log the final URL
-      console.log("Redirecting to Calendly with:", url.toString());
-  
-      // Redirect to Calendly with the populated information
-      window.location.href = url.toString();
-    } else {
-      setError("Please fill in all schedule fields.");
-    }
-  };
-  
+
   
 
   const solutionOptions = [
@@ -242,7 +222,24 @@ const BookDemo = () => {
       {children}
     </div>
   );
-
+  const submitForm = () => {
+    if (userInfo.email) {
+      const url = new URL("https://calendly.com/shakti-credencesoft/30min");
+  
+      // Add query parameters for email, name, and other details
+      url.searchParams.append("email", userInfo.email);  // Change formData to userInfo
+      url.searchParams.append("name", userInfo.name);    // Change formData to userInfo
+     
+  
+      // Log the final URL
+      console.log("Redirecting to Calendly with:", url.toString());
+  
+      // Redirect to Calendly with the populated information
+      window.location.href = url.toString();
+    } else {
+      setError("Please fill in all schedule fields.");
+    }
+  };
   const renderFeatureCards = () => (
     <div className="grid grid-cols-3 gap-4 md:gap-0 mt-6 md:mt-0">
       {[assets.Form, assets.Form1, assets.Form2].map((icon, index) => (
@@ -597,7 +594,14 @@ const BookDemo = () => {
                   </h2>
 
                   <div className="grid grid-cols-1 gap-4 mt-2 max-w-[500px] w-full">
-                    <button className="w-full h-[72px] cursor-pointer p-3 border rounded-[10px] flex items-center transition-all duration-200 border-[#8CCFF0] bg-white">
+                    <button onClick={() => {
+            if (!userInfo.email) {
+              setError("Please fill in all schedule fields.");
+            } else {
+              setError("");
+              submitForm(); // 👈 HERE is the submission!
+            }
+          }} className="w-full h-[72px] cursor-pointer p-3 border rounded-[10px] flex items-center transition-all duration-200 border-[#8CCFF0] bg-white">
                       <span className="w-6 h-6 mr-3 flex items-center justify-center">
                         <Image
                           src={assets.PMS7}
@@ -606,7 +610,7 @@ const BookDemo = () => {
                           height={24}
                         />
                       </span>
-                      <span className="text-[16px] font-medium text-left text-[#146683]">
+                      <span  className="text-[16px] font-medium text-left text-[#146683]">
                         Book A Demo
                       </span>
                     </button>
