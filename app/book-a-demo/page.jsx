@@ -359,7 +359,7 @@ const BookDemo = () => {
             {step === 2 &&
               renderFormBox(
                 <div className="w-full h-full flex flex-col items-start justify-start">
-                  <h2 className="text-[#146683] font-inter text-[24px] font-semibold leading-[130%] mb-6">
+                  <h2 className="text-[#146683] font-inter text-[24px] font-semibold leading-[130%] mb-6 lg:pr-[80px]">
                     {step === 1
                       ? "Start Building Your br Hotel’s Success Story!"
                       : step2Heading}
@@ -482,8 +482,10 @@ const BookDemo = () => {
             {step === 3 &&
               renderFormBox(
                 <div className="w-full h-full flex flex-col items-start justify-start">
-                  <h2 className="text-[#146683] font-inter text-[24px] font-semibold leading-[130%] not-italic mb-6 w-full text-left">
-                  Start Building Your <br /> Hotel’s Success Story!
+                  <h2 className="text-[#146683] font-inter text-[24px] font-semibold leading-[130%] not-italic mb-6 w-full text-left lg:pr-[80px]">
+                  {step === 1
+                      ? "Start Building Your br Hotel’s Success Story!"
+                      : step2Heading}
                   </h2>
 
                   <div className="grid grid-cols-1 gap-4 mt-2 max-w-[500px] w-full">
@@ -588,9 +590,10 @@ const BookDemo = () => {
             {step === 4 &&
               renderFormBox(
                 <div className="w-full h-full flex flex-col items-start justify-start">
-                  <h2 className="text-[#146683] font-inter text-[24px] font-semibold leading-[130%] not-italic mb-6 w-full text-left">
-                    Start Building Your <br />
-                     Hotel’s Success Story!
+                  <h2 className="text-[#146683] font-inter text-[24px] font-semibold leading-[130%] not-italic mb-6 w-full text-left lg:pr-[80px]">
+                  {step === 1
+                      ? "Start Building Your br Hotel’s Success Story!"
+                      : step2Heading}
                   </h2>
 
                   <div className="grid grid-cols-1 gap-4 mt-2 max-w-[500px] w-full">
@@ -638,6 +641,7 @@ const BookDemo = () => {
                   </div>
 
                   <div className="mt-8 flex justify-between items-center w-full max-w-[500px]">
+                    
                     <button
                       onClick={prevStep}
                       className="text-[#146683] font-semibold underline"
@@ -645,6 +649,7 @@ const BookDemo = () => {
                       Go Back
                     </button>
                     {renderStepDots()}
+                    <div></div>
                   </div>
                 </div>
               )}
