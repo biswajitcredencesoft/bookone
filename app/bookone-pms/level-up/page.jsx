@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "contentful";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import Link from "next/link";
 const client = createClient({
   space: "wzmo4lmp2r9v",
   accessToken: "8byVN6ybNsGaYJ6FUTB0CB4mwuie5fIX-DxWy1GGi6E",
@@ -52,9 +53,11 @@ const LevelUP = () => {
           <p className="text-base sm:text-lg md:text-xl mb-6 text-white/90 hidden md:block">
           {documentToReactComponents(pmsData?.pmsLastParagarph)}
           </p>
+          <Link href="/book-a-demo">
           <button className="bg-[#01677D]  border-[#CEE6F0] border-[1px] hover:bg-[#005b99] text-white text-sm sm:text-base font-medium lg:px-6 py-2 md:px-6 md:py-3 rounded-md shadow-md transition duration-300 p-[10px]">
             See What BookOne Can Do For You
           </button>
+          </Link>
         </div>
       </div>
     </div>

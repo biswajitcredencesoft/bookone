@@ -8,6 +8,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { createClient } from "contentful";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const client = createClient({
   space: "wzmo4lmp2r9v",
@@ -101,9 +102,11 @@ const UseBookone = () => {
               </div>
 
               <div className="shrink-0">
+              <Link href="/book-a-demo">
                 <button className="bg-[#01677D] border-[#CEE6F0] border-[1px] hover:bg-[#0f4b5c] text-[#CEE6F0]px-0  lg:px-6 py-2 md:px-6 md:py-3 rounded-md shadow-md transition duration-300 whitespace-nowrap p-[10px]">
                   See What BookOne Can Do For You
                 </button>
+                </Link>
               </div>
             </div>
           </div>
