@@ -183,6 +183,9 @@ import Resturant3 from "./resturant3.svg"
 import Resturant4 from "./resturant4.svg"
 import Resturant5 from "./resturant5.svg"
 import Resturant from "./resturant.png"
+import PMSText from "./Group.png";
+import ChannelImg from "./blur_on.png";
+import BookingEng from "./padding.png";
 
 export const assets = {
   logo,
@@ -202,6 +205,9 @@ export const assets = {
   Promotion_Image,
   Secure_Image,
   SiteMinder,
+  BookingEng,
+  ChannelImg,
+  PMSText,
   Channex,
   Eglobe,
   TripAdvisor,

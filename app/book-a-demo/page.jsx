@@ -218,7 +218,7 @@ const BookDemo = () => {
   );
 
   const renderFormBox = (children) => (
-    <div className="w-full sm:max-w-[511px] h-auto sm:h-[630px] rounded-[40px] bg-hero-gradient   px-6 py-6 sm:py-10 mt-0">
+    <div className="w-full sm:max-w-[511px] h-auto  rounded-[40px] bg-hero-gradient   px-6 py-6 sm:py-10 mt-0">
       {children}
     </div>
   );
@@ -242,12 +242,12 @@ const BookDemo = () => {
   };
   const renderFeatureCards = () => (
     <div className="grid grid-cols-3 gap-4 md:gap-0 mt-6 md:mt-0">
-      {[assets.Form, assets.Form1, assets.Form2].map((icon, index) => (
+      {[assets.PMSText, assets.ChannelImg, assets.BookingEng].map((icon, index) => (
         <div
           key={index}
-          className="bg-white bg-opacity-20 rounded-xl shadow-md p-3 flex flex-col items-center justify-center text-center w-[104px] h-[96px] md:w-[149px] md:h-[119px]"
+          className="bg-white bg-opacity-20 rounded-xl shadow-md p-3 flex flex-col items-center justify-center text-center w-[104px] h-[96px] md:w-[142px] md:h-[119px]"
         >
-          <Image src={icon} width={32} height={32} />
+          <Image src={icon}  width={32} height={32} />
           <span className="text-[10px] md:text-sm text-white font-medium mt-1 text-center">
             {index === 0
               ? "PMS"
@@ -629,7 +629,7 @@ const BookDemo = () => {
                       </span>
                     </button>
 
-                    <button className="w-full h-[72px] cursor-pointer p-3 rounded-[10px] flex items-center transition-all duration-200 bg-[#D8A353]">
+                    <button className="w-full h-[72px] cursor-pointer p-3 rounded-[10px] flex items-center transition-all duration-200 bg-[#D8A353]" onClick={nextStep}>
                       <span className="w-6 h-6 mr-3 flex items-center justify-center">
                         <Image
                           src={assets.Laptop}
@@ -638,7 +638,7 @@ const BookDemo = () => {
                           height={24}
                         />
                       </span>
-                      <span className="text-[16px] font-bold text-left text-[#171C1E]">
+                      <span className="text-[16px] font-bold text-left text-[#171C1E]" >
                         Unlock A Free Trial
                       </span>
                     </button>
@@ -659,7 +659,56 @@ const BookDemo = () => {
                 </div>
               )}
 
-         
+          {step === 5 &&
+              renderFormBox(
+                <div className="w-full h-full flex flex-col items-start justify-start mt-5">
+                  <h2 className="text-[#146683] text-center font-inter text-[34px] font-semibold leading-[130%] not-italic mb-1 w-full text-left ">
+                  Thank You 
+                  </h2>
+                  <h3 className="text-[#146683] text-center font-inter text-[25px] font-semibold leading-[130%] not-italic mb-6 w-full text-left ">For Choosing BookOne!</h3>
+                  <p className="text-[#146683] lg:pr-[60px] lg:pl-[60px] text-center font-inter font-semibold leading-[130%] not-italic mb-6 w-full text-left ">You're now one step closer to simpler, smarter hotel management.</p>
+
+                  <p className="text-[#146683] lg:pr-[60px] lg:pl-[60px] text-center font-inter  leading-[130%] not-italic mb-6 w-full text-left ">Your reference number is <b>#BO-29187</b></p>
+
+                  <p className="text-[#000] lg:pr-[60px] lg:pl-[20px] font-bold font-inter not-italic mb-2 w-full text-left ">What’s next?</p>
+                  <div className="flex items-start justify-center lg:pl-[20px] lg:pr-[20px] mb-2">
+                      <Image
+                        src={assets.Light}
+                        alt="Bulb Icon"
+                        width={20}
+                        height={20}
+                        className="inline-block mr-2"
+                      />
+                      <p className="text-[#000] text-sm">
+                        <span className="font-inter">{step2BottomText}</span>
+                      </p>
+                    </div>
+                    <div className="flex items-start justify-center lg:pl-[20px] lg:pr-[20px] mb-2">
+                      <Image
+                        src={assets.Light}
+                        alt="Bulb Icon"
+                        width={20}
+                        height={20}
+                        className="inline-block mr-2"
+                      />
+                      <p className="text-[#000] text-sm">
+                        <span className="font-inter">{step2BottomText}</span>
+                      </p>
+                    </div>
+                    <div className="flex items-start justify-center lg:pl-[20px] lg:pr-[20px] mb-2">
+                      <Image
+                        src={assets.Light}
+                        alt="Bulb Icon"
+                        width={20}
+                        height={20}
+                        className="inline-block mr-2"
+                      />
+                      <p className="text-[#000] text-sm">
+                        <span className="font-inter">{step2BottomText}</span>
+                      </p>
+                    </div>
+                </div>
+              )}
           </div>
         </div>
         <div className="block md:hidden mt-8">{renderFeatureCards()}</div>
