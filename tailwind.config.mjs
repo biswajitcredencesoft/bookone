@@ -12,16 +12,12 @@ export default {
         foreground: "var(--foreground)",
         skyCustom: "#BFE9FF",
       },
-
       fontFamily: {
         inter: ["Inter", "sans-serif"],
       },
-
-
       gridTemplateColumns: {
         auto: "repeat(auto-fit, minmax(200px, 1fr))",
       },
-
       keyframes: {
         wordFlyIn: {
           '0%': { opacity: 0, transform: 'translateY(20px)' },
@@ -36,7 +32,9 @@ export default {
         wordFlyIn: 'wordFlyIn 0.5s ease forwards',
         cardRise: 'cardRise 0.6s ease-out forwards',
       },
-
+      backgroundImage: {
+        'hero-gradient': 'linear-gradient(#fff 64.01%, #bddeec 100%)',
+      },
     },
   },
   plugins: [],

@@ -7,6 +7,7 @@ import ServicesGive from "./services-give/page";
 import KeepUp from "./keep-up/page";
 import Image from "next/image";
 import { assets } from "@/assets/assets";
+// import TrustBookOne from "./trust-bookone/page";
 
 const BookDemo = () => {
   const [step, setStep] = useState(1);
@@ -124,7 +125,7 @@ const BookDemo = () => {
   // Interested In: ${solutionType}
   // Date: ${schedule.date}
   // Time: ${schedule.time}
-  // *****this message is sent from BookOnePMS Website.******`;
+  // ****this message is sent from BookOnePMS Website.*`;
 
   //   const payload = {
   //     fromEmail: email,
@@ -237,7 +238,7 @@ const BookDemo = () => {
   );
 
   const renderFormBox = (children) => (
-    <div className="w-full sm:max-w-[511px] h-auto sm:h-[589px] rounded-[40px] bg-gradient-to-b bg-white  px-6 py-6 sm:py-10 mt-0">
+    <div className="w-full sm:max-w-[511px] h-auto sm:h-[630px] rounded-[40px] bg-hero-gradient   px-6 py-6 sm:py-10 mt-0">
       {children}
     </div>
   );
@@ -249,7 +250,7 @@ const BookDemo = () => {
           key={index}
           className="bg-white bg-opacity-20 rounded-xl shadow-md p-3 flex flex-col items-center justify-center text-center w-[82px] h-[96px] md:w-[149px] md:h-[119px]"
         >
-          <Image src={icon} alt={`form-${index}`} width={32} height={32} />
+          {/* <Image src={icon} alt={form-${index}} width={32} height={32} /> */}
           <span className="text-[10px] md:text-sm text-white font-medium mt-1 text-center">
             {index === 0
               ? "PMS"
@@ -283,7 +284,7 @@ const BookDemo = () => {
             </div>
             <div className="hidden md:block">{renderFeatureCards()}</div>
           </div>
-          <div className="w-full md:w-[511px]">
+          <div className="w-full md:w-[511px] ">
             {step === 1 &&
               renderFormBox(
                 <div className="w-full h-full flex flex-col items-center justify-start">
@@ -296,7 +297,7 @@ const BookDemo = () => {
                     Select your property type.
                   </h1>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mt-2 max-w-[500px] w-full">
+                  <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mt-2 max-w-[500px] w-full p-6 sm:p-0">
                     {propertyOptions.map((item, index) => (
                       <div
                         key={item.label}
@@ -330,10 +331,11 @@ const BookDemo = () => {
                   {error && <p className="text-red-500 mt-4">{error}</p>}
 
                   <div className="mt-8  flex justify-between items-center w-full max-w-[500px]">
+                    <div></div>
                     {renderStepDots()}
                     <button
                       onClick={nextStep}
-                      className="text-blue-700 font-semibold underline"
+                      className="font-semibold underline text-[#146683]"
                     >
                       Continue
                     </button>
@@ -357,7 +359,7 @@ const BookDemo = () => {
             {step === 2 &&
               renderFormBox(
                 <div className="w-full h-full flex flex-col items-start justify-start">
-                  <h2 className="text-[#146683] font-inter text-[24px] font-semibold leading-[130%] mb-6">
+                  <h2 className="text-[#146683] font-inter text-[24px] font-semibold leading-[130%] mb-6 lg:pr-[80px]">
                     {step === 1
                       ? "Start Building Your br Hotel’s Success Story!"
                       : step2Heading}
@@ -440,20 +442,20 @@ const BookDemo = () => {
                   </div>
 
                   {/* Error Message */}
-                  {error && <p className="text-red-500 mt-4">{error}</p>}
+                  {error && <p className="text-red-500">{error}</p>}
 
                   {/* Navigation Buttons */}
-                  <div className="mt-6 flex justify-between items-center w-full">
+                  <div className="mt-[0.7rem] flex justify-between items-center w-full">
                     <button
                       onClick={prevStep}
-                      className="text-gray-600 font-semibold underline"
+                      className="text-[#146683] font-semibold underline"
                     >
                       Go Back
                     </button>
                     {renderStepDots()}
                     <button
                       onClick={nextStep}
-                      className="text-blue-700 font-semibold underline"
+                      className="text-[#146683] font-semibold underline"
                     >
                       Continue
                     </button>
@@ -461,7 +463,7 @@ const BookDemo = () => {
 
                   {/* Bottom Tip Section */}
                   <div className="mt-6 w-full text-center">
-                    <div className="flex items-center justify-center">
+                    <div className="flex items-start justify-center">
                       <Image
                         src={assets.Light}
                         alt="Bulb Icon"
@@ -480,8 +482,10 @@ const BookDemo = () => {
             {step === 3 &&
               renderFormBox(
                 <div className="w-full h-full flex flex-col items-start justify-start">
-                  <h2 className="text-[#146683] font-inter text-[24px] font-semibold leading-[130%] not-italic mb-6 w-full text-left">
-                  Start Building Your <br /> Hotel’s Success Story!
+                  <h2 className="text-[#146683] font-inter text-[24px] font-semibold leading-[130%] not-italic mb-6 w-full text-left lg:pr-[80px]">
+                  {step === 1
+                      ? "Start Building Your br Hotel’s Success Story!"
+                      : step2Heading}
                   </h2>
 
                   <div className="grid grid-cols-1 gap-4 mt-2 max-w-[500px] w-full">
@@ -549,21 +553,21 @@ const BookDemo = () => {
                   <div className="mt-8 flex justify-between items-center w-full max-w-[500px]">
                     <button
                       onClick={prevStep}
-                      className="text-gray-600 font-semibold underline"
+                      className="text-[#146683] font-semibold underline"
                     >
                       Go Back
                     </button>
                     {renderStepDots()}
                     <button
                       onClick={nextStep}
-                      className="text-blue-700 font-semibold underline"
+                      className="text-[#146683] font-semibold underline"
                     >
                       Continue
                     </button>
                   </div>
 
                   <div className="mt-6 w-full text-center">
-                    <div className="flex items-center justify-center">
+                    <div className="flex items-start justify-center">
                       <Image
                         src={assets.Light}
                         alt="Bulb Icon"
@@ -586,9 +590,10 @@ const BookDemo = () => {
             {step === 4 &&
               renderFormBox(
                 <div className="w-full h-full flex flex-col items-start justify-start">
-                  <h2 className="text-[#146683] font-inter text-[24px] font-semibold leading-[130%] not-italic mb-6 w-full text-left">
-                    Start Building Your <br />
-                     Hotel’s Success Story!
+                  <h2 className="text-[#146683] font-inter text-[24px] font-semibold leading-[130%] not-italic mb-6 w-full text-left lg:pr-[80px]">
+                  {step === 1
+                      ? "Start Building Your br Hotel’s Success Story!"
+                      : step2Heading}
                   </h2>
 
                   <div className="grid grid-cols-1 gap-4 mt-2 max-w-[500px] w-full">
@@ -636,13 +641,15 @@ const BookDemo = () => {
                   </div>
 
                   <div className="mt-8 flex justify-between items-center w-full max-w-[500px]">
+                    
                     <button
                       onClick={prevStep}
-                      className="text-gray-600 font-semibold underline"
+                      className="text-[#146683] font-semibold underline"
                     >
                       Go Back
                     </button>
                     {renderStepDots()}
+                    <div></div>
                   </div>
                 </div>
               )}
@@ -652,7 +659,7 @@ const BookDemo = () => {
         </div>
         <div className="block md:hidden mt-8">{renderFeatureCards()}</div>
       </div>
-
+      {/* <TrustBookOne/> */}
       <ExpectDemo />
       <ServicesGive />
       <KeepUp />
@@ -661,4 +668,4 @@ const BookDemo = () => {
   );
 };
 
-export default BookDemo;
+export default BookDemo;
