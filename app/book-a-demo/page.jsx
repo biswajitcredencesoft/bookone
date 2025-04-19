@@ -646,7 +646,7 @@ const BookDemo = () => {
                   </div>
 
                   {/* Error Message */}
-                  {error && <p className="text-red-500">{error}</p>}
+                  {/* {error && <p className="text-red-500">{error}</p>} */}
 
                   {/* Navigation Buttons */}
                   <div className="mt-[0.7rem] flex justify-between items-center w-full">
