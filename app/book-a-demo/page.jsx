@@ -7,6 +7,7 @@ import ServicesGive from "./services-give/page";
 import KeepUp from "./keep-up/page";
 import Image from "next/image";
 import { assets } from "@/assets/assets";
+import TrustBookOne from "./trust-bookone/page";
 
 const BookDemo = () => {
   const [step, setStep] = useState(1);
@@ -652,7 +653,7 @@ const BookDemo = () => {
         </div>
         <div className="block md:hidden mt-8">{renderFeatureCards()}</div>
       </div>
-
+      <TrustBookOne/>
       <ExpectDemo />
       <ServicesGive />
       <KeepUp />
