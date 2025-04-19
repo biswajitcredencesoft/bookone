@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -49,16 +48,19 @@ const BookOneDetails = () => {
         icon: <Image alt="Operation2" src={assets.Operation2} />,
         title: "BookOne POS",
         path: "/bookone-pos",
+        disabled: true,
       },
       {
         icon: <Image alt="Operation3" src={assets.Operation3} />,
         title: "Google Business Setup",
         path: "/google-business-setup",
+        disabled: true,
       },
       {
         icon: <Image alt="Operation4" src={assets.Operation4} />,
         title: "OTA Setup",
         path: "/ota-setup",
+        disabled: true,
       },
     ],
     [
@@ -71,16 +73,19 @@ const BookOneDetails = () => {
         icon: <Image alt="Marketing2" src={assets.Marketing2} />,
         title: "Digital Marketing",
         path: "/digital-marketing",
+        disabled: true,
       },
       {
         icon: <Image alt="Marketing3" src={assets.Marketing3} />,
         title: "Online Reputation Management",
         path: "/online-repution-management",
+        disabled: true,
       },
       {
         icon: <Image alt="Marketing4" src={assets.Marketing4} />,
         title: "Online Menu",
         path: "/online-menu",
+        disabled: true,
       },
     ],
     [
@@ -88,11 +93,13 @@ const BookOneDetails = () => {
         icon: <Image alt="Guest1" src={assets.Guest1} />,
         title: "BookOne CRM",
         path: "/guest-app",
+        disabled: true,
       },
       {
         icon: <Image alt="Guest2" src={assets.Guest2} />,
         title: "BookOne Loyalty",
         path: "/room-service",
+        disabled: true,
       },
     ],
     [
@@ -100,6 +107,7 @@ const BookOneDetails = () => {
         icon: <Image alt="Automation" src={assets.Automation} />,
         title: "BookOne VaRO",
         path: "/bookone-varo",
+        disabled: true,
       },
     ],
   ];
@@ -119,7 +127,6 @@ const BookOneDetails = () => {
     }, 100);
   };
 
-  // Mobile Auto Switch Logic
   useEffect(() => {
     const interval = setInterval(() => {
       if (window.innerWidth < 768) {
@@ -144,17 +151,15 @@ const BookOneDetails = () => {
           <div
             key={index}
             className={`group relative flex-shrink-0 text-center transition-all duration-300 ease-in-out ${
-              activeTab === index
-                ? "border-none"
-                : "border-b-2 border-transparent"
+              activeTab === index ? "border-none" : "border-b-2 border-transparent"
             }`}
             onMouseEnter={() => handleHover(index)}
             onClick={() => setActiveTab(index)}
           >
             <button
-              className={`relative z-10 text-sm md:text-base font-semibold py-3 px-6 transition-all duration-300 ease-in-out 
-                w-full rounded-t-[16px] border-t-4 border-l-4 border-r-4 
-                ${activeTab === index ? "scale-y-105" : "scale-y-100"} 
+              className={`relative z-10 text-sm md:text-base font-semibold py-3 px-6 transition-all duration-300 ease-in-out
+                w-full rounded-t-[16px] border-t-4 border-l-4 border-r-4
+                ${activeTab === index ? "scale-y-105" : "scale-y-100"}
                 ${
                   activeTab === index
                     ? "bg-[rgba(130,179,195,0.2)]  text-[#146683]  border-[#82B3C3]"
@@ -169,7 +174,7 @@ const BookOneDetails = () => {
       </div>
 
       <div className="flex flex-col md:flex-row items-start gap-[13px] transition-all duration-700 ease-in-out">
-        {/* MOBILE VIEW */}
+        {/* Mobile View */}
         <div className="md:hidden flex flex-row gap-4">
           <div className="flex flex-col justify-start items-center gap-3">
             {tabButtons.map((tab, index) => (
@@ -182,13 +187,7 @@ const BookOneDetails = () => {
                     : "bg-[#ffffff]"
                 }`}
               >
-                <Image
-                  src={tab.icon}
-                  alt={`Tab ${index + 1}`}
-                  width={28}
-                  height={28}
-                  className="transition-all duration-300"
-                />
+                <Image src={tab.icon} alt={`Tab ${index + 1}`} width={28} height={28} />
               </div>
             ))}
           </div>
@@ -212,32 +211,36 @@ const BookOneDetails = () => {
               {tabContent[activeTab].map((item) => (
                 <div
                   key={item.title}
-                  className="relative bg-white border border-[#CEE6F0] rounded-[8px] p-2 flex flex-col items-start text-left shadow-md"
-                  style={{ height: "100px" }}
+                  className={`relative border rounded-[8px] p-2 flex flex-col items-start text-left shadow-md ${
+                    item.disabled ? "bg-gray-200 border-gray-300" : "bg-white border-[#CEE6F0]"
+                  }`}
+                  style={{ height: "100px", opacity: item.disabled ? 0.6 : 1 }}
                 >
                   <div className="mb-1 w-8 h-8">{item.icon}</div>
                   <h3 className="font-semibold text-xs text-[#146683] leading-tight">
                     {item.title}
                   </h3>
-                  <button
-                    onClick={() => router.push(item.path)}
-                    className="absolute bottom-2 right-2 bg-[#8CCFF0] rounded-full flex items-center justify-center"
-                    style={{ width: "22px", height: "22px" }}
-                  >
-                    <Image
-                      alt="PlayIcon"
-                      src={assets.PlayIcon}
-                      width={12}
-                      height={12}
-                    />
-                  </button>
+
+                  {item.disabled ? (
+                    <span className="absolute bottom-2 right-2 text-[10px] px-2 py-[2px] bg-[#8CCFF0] text-[#146683] rounded-full">
+                      Coming Soon
+                    </span>
+                  ) : (
+                    <button
+                      onClick={() => router.push(item.path)}
+                      className="absolute bottom-2 right-2 bg-[#8CCFF0] rounded-full flex items-center justify-center"
+                      style={{ width: "22px", height: "22px" }}
+                    >
+                      <Image alt="PlayIcon" src={assets.PlayIcon} width={12} height={12} />
+                    </button>
+                  )}
                 </div>
               ))}
             </div>
           </div>
         </div>
 
-        {/* DESKTOP VIEW */}
+        {/* Desktop View */}
         <div className="hidden md:block rounded-[24px] overflow-hidden shadow-lg flex-shrink-0 mx-auto md:mx-0 w-full max-w-[603px]">
           <Image
             src={tabImages[activeTab]}
@@ -252,7 +255,10 @@ const BookOneDetails = () => {
           {tabContent[activeTab].map((item) => (
             <div
               key={item.title}
-              className="relative bg-white border border-[#CEE6F0] rounded-[9px] p-3 flex items-center text-left shadow-md w-[270px] h-[160px] flex-shrink-0"
+              className={`relative border rounded-[9px] p-3 flex items-center text-left shadow-md w-[270px] h-[160px] flex-shrink-0 ${
+                item.disabled ? "bg-gray-200 border-gray-300" : "bg-white border-[#CEE6F0]"
+              }`}
+              style={{ opacity: item.disabled ? 0.6 : 1 }}
             >
               <div className="flex items-center justify-center rounded-[8px] mr-3 w-[88px] h-[97px]">
                 {item.icon}
@@ -262,17 +268,18 @@ const BookOneDetails = () => {
                   {item.title}
                 </h3>
               </div>
-              <button
-                onClick={() => router.push(item.path)}
-                className="absolute bottom-3 right-3 bg-[#8CCFF0] rounded-full flex items-center justify-center w-[28px] h-[28px]"
-              >
-                <Image
-                  alt="PlayIcon"
-                  src={assets.PlayIcon}
-                  width={16}
-                  height={16}
-                />
-              </button>
+              {item.disabled ? (
+                <span className="absolute bottom-3 right-3 text-xs px-2 py-1 bg-[#8CCFF0] text-[#146683] rounded-full">
+                  Coming Soon
+                </span>
+              ) : (
+                <button
+                  onClick={() => router.push(item.path)}
+                  className="absolute bottom-3 right-3 bg-[#8CCFF0] rounded-full flex items-center justify-center w-[28px] h-[28px]"
+                >
+                  <Image alt="PlayIcon" src={assets.PlayIcon} width={16} height={16} />
+                </button>
+              )}
             </div>
           ))}
         </div>
