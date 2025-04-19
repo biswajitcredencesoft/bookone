@@ -193,9 +193,17 @@ import rext3 from "./rext-3.png";
 import thank1 from "./thank1.png";
 import thank2 from "./thank2.png";
 import thank3 from "./thank3.png";
+import man1 from "./mann1.png";
+import man3 from "./man-3.png";
+import man4 from "./man-4.png";
+import demoBg from "./demo-bg.png";
 
 export const assets = {
   logo,
+  man1,
+  man3,
+  man4,
+  demoBg,
   search_icon,
   hero,
   banner,

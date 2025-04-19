@@ -558,6 +558,7 @@ ownerName:userInfo.company,
                         <span className="w-6 h-6 mr-3 flex items-center justify-center">
                           {item.label === "Property Management System" && (
                             <Image
+                            className="bg-white rounded"
                               src={assets.PMS}
                               alt={item.label}
                               width={24}
@@ -579,7 +580,7 @@ ownerName:userInfo.company,
                               alt={item.label}
                               width={24}
                               height={24}
-
+className="bg-white rounded"
                             />
                           )}
                           {item.label === "Help Me Choose What's Right" && (
@@ -588,6 +589,7 @@ ownerName:userInfo.company,
                               alt={item.label}
                               width={24}
                               height={24}
+                              className="bg-white rounded"
                             />
                           )}
                         </span>
