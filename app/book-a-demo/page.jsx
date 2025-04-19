@@ -393,7 +393,9 @@ checkOutDate
                     </button>
                   </div>
 
-                  <button className="mt-6 sm:mt-8 w-[274px] h-[72px] flex items-center justify-center gap-4 rounded-[10px] border-[1.5px] border-[#D8A353] bg-[#D8A353]">
+                  <button 
+                  onClick={nextStep}
+                  className="mt-6 sm:mt-8 w-[274px] h-[72px] flex items-center justify-center gap-4 rounded-[10px] border-[1.5px] border-[#D8A353] bg-[#D8A353]">
                     <span className="w-[40.848px] h-[38.977px] flex items-center justify-center flex-shrink-0">
                       <Image
                         src={assets.Laptop}
