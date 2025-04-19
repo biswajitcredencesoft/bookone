@@ -5,7 +5,9 @@ import { useContentful } from "@/components/ContentfulContext";
 // import { FaArrowRight } from "react-icons/fa";
 // import Badge2 from "../assets/Badge-2.png";
 // import Badge1 from "../assets/Badge-1.png";
+import { assets } from "@/assets/assets";
 import Link from "next/link";
+import Image from "next/image";
 
 const Hero = () => {
   const { heroData } = useContentful();
@@ -19,7 +21,7 @@ const Hero = () => {
           <div className="lg:w-1/2 w-full text-center lg:text-left">
             <h1 className="text-[20px] md:text-[32px] lg:text-[41px] xl:text-[41px] 2xl:text-[47px] font-bold leading-tight text-[#1E1E1E] font-sans mb-6">
               {heroData?.mainheading}
-              <span className="block mt-1 md:mt-4 lg:mt-4 text-[20px] md:text-[28px] lg:text-[48px] text-[#006D77]">
+              <span className="block mt-1 md:mt-4 lg:mt-4 text-[20px] md:text-[28px] lg:text-[48px] text-[#1E1E1E]">
                 {heroData?.secondMainHeading}
               </span>
             </h1>
@@ -28,10 +30,24 @@ const Hero = () => {
               {documentToReactComponents(heroData.heroParagraph)}
             </div>
 
-            <div>
+            <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-center md:items-start mt-4 md:mt-6">
               <Link href="/book-a-demo">
-                <button className="bg-[#006D77] text-white px-14 py-1 md:px-10 md:py-3 lg:px-10 lg:py-3 rounded-lg font-semibold text-base shadow-md hover:bg-[#005962] transition">
+                <button className="w-[274px] h-[45px] bg-[#006D77] text-white px-4 py-2 rounded-[8px] font-semibold text-[16px] shadow-md hover:bg-[#005962] transition flex items-center justify-center">
                   {heroData?.buttonText || "Try BookOne Now"}
+                </button>
+              </Link>
+
+              <Link href="/book-a-demo">
+                <button className="w-[274px] h-[45px] bg-[#D8A353] text-[#171C1E] font-bold text-[16px] rounded-[8px] flex items-center justify-center transition-all duration-200">
+                  <span className="w-6 h-6 mr-2 flex items-center justify-center">
+                    <Image
+                      src={assets.Laptop}
+                      alt="Unlock A Free Trial"
+                      width={24}
+                      height={24}
+                    />
+                  </span>
+                  Unlock A Free Trial
                 </button>
               </Link>
             </div>

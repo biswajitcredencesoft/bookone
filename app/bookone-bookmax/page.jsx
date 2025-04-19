@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -25,7 +25,7 @@ const BookOneBookMax = () => {
   useEffect(() => {
     async function fetchHeroContent() {
       try {
-        const res = await client.getEntries({ content_type: "bookOneBookMax" }); // Replace with your actual content type ID
+        const res = await client.getEntries({ content_type: "bookOneBookMax" }); 
         setbookMaxData(res.items[0]?.fields);
       } catch (err) {
         console.error("Contentful fetch error:", err);
@@ -59,21 +59,34 @@ const BookOneBookMax = () => {
             WEBSITE & BOOKING ENGINE
           </p>
           <h1 className="text-[24px] sm:text-[40px] lg:text-[48px] font-bold leading-[110%] text-[#171C1E] mt-3">
-            {bookMaxData?.bookmaxheading}{" "}
-            <br />
+            {bookMaxData?.bookmaxheading} <br />
             <span className="text-[#146683]">{bookMaxData?.subHeading}</span>
           </h1>
           <div className="mt-6 text-[#171C1E] text-[18px] sm:text-[20px] lg:text-[24px] font-medium leading-[130%] hidden md:block">
             {documentToReactComponents(bookMaxData?.mainparagraph)}
           </div>
-          <Link href="/book-a-demo">
-            <button
-              onClick={() => router.push("/book-demo")}
-              className="mt-8 w-[226px] h-[35px] md:h-[45px] ma:w-[226px] rounded-[16px] border border-[#CEE6F0] bg-[#01677D] text-white font-medium text-base hover:bg-[#005965] transition-all"
-            >
-              Book A Demo
-            </button>
-          </Link>
+
+          <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-center md:items-start mt-4 md:mt-6">
+            <Link href="/book-a-demo">
+              <button className="w-[260px] h-[50px] rounded-[12px] border border-[#CEE6F0] bg-[#01677D] text-white font-medium text-base hover:bg-[#005965] transition-all">
+                Book A Demo
+              </button>
+            </Link>
+
+            <Link href="/book-a-demo">
+              <button className="w-[260px] h-[50px] bg-[#D8A353] text-[#171C1E] font-bold text-base rounded-[12px] flex items-center justify-center hover:bg-[#c89247] transition-all">
+                <span className="w-6 h-6 mr-2 flex items-center justify-center">
+                  <Image
+                    src={assets.Laptop}
+                    alt="Unlock A Free Trial"
+                    width={24}
+                    height={24}
+                  />
+                </span>
+                Unlock A Free Trial
+              </button>
+            </Link>
+          </div>
         </div>
       </section>
 

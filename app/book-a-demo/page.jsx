@@ -250,7 +250,7 @@ const BookDemo = () => {
           key={index}
           className="bg-white bg-opacity-20 rounded-xl shadow-md p-3 flex flex-col items-center justify-center text-center w-[104px] h-[96px] md:w-[149px] md:h-[119px]"
         >
-          {/* <Image src={icon} alt={form-${index}} width={32} height={32} /> */}
+          <Image src={icon} width={32} height={32} />
           <span className="text-[10px] md:text-sm text-white font-medium mt-1 text-center">
             {index === 0
               ? "PMS"
@@ -638,6 +638,7 @@ const BookDemo = () => {
                         Unlock A Free Trial
                       </span>
                     </button>
+                    
                   </div>
 
                   <div className="mt-8 flex justify-between items-center w-full max-w-[500px]">

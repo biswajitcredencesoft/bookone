@@ -40,7 +40,7 @@ const BookOnePms = () => {
 
   return (
     <>
-        <Navbar />
+      <Navbar />
       <ContentfulProviderPMS>
         <section className="flex flex-col-reverse lg:flex-row items-center justify-between  px-6 lg:pl-[5rem] lg:pr-[12rem] py-12 md:py-16 bg-white gap-0 md:gap-6 lg:gap-12">
           <div className="flex w-full lg:w-[600px] h-auto lg:h-[464px] gap-4 items-start shrink-0">
@@ -61,28 +61,47 @@ const BookOnePms = () => {
               Property Management System
             </p>
             <h1 className="text-[22px] sm:text-[40px] lg:text-[48px] font-bold leading-[110%] text-[#171C1E] mt-3">
-              {pmsData?.pmstitle}{" "}
-              <br />
+              {pmsData?.pmstitle} <br />
               <span className="text-[#146683]">{pmsData?.pmsSubHeading}</span>
             </h1>
             <p className="mt-6 text-[#171C1E] text-center  md:text-left  text-[15px] sm:text-[20px] lg:text-[24px] font-medium leading-[130%]">
               {documentToReactComponents(pmsData?.pmsheroParagaroph)}
             </p>
-            <Link href="/book-a-demo">
-              <button
-                onClick={() => router.push("/book-demo")}
-                className="mt-8 w-[226px] h-[45px] rounded-[16px] border border-[#CEE6F0] bg-[#01677D] text-white font-medium text-base hover:bg-[#005965] transition-all"
-              >
-                Book A Demo
-              </button>
-            </Link>
+
+            <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-center md:items-start mt-4 md:mt-6">
+  <Link href="/book-a-demo">
+    <button
+      className="w-[260px] h-[50px] rounded-[12px] border border-[#CEE6F0] bg-[#01677D] text-white font-medium text-base hover:bg-[#005965] transition-all"
+    >
+      Book A Demo
+    </button>
+  </Link>
+
+  <Link href="/book-a-demo">
+    <button className="w-[260px] h-[50px] bg-[#D8A353] text-[#171C1E] font-bold text-base rounded-[12px] flex items-center justify-center hover:bg-[#c89247] transition-all">
+      <span className="w-6 h-6 mr-2 flex items-center justify-center">
+        <Image
+          src={assets.Laptop}
+          alt="Unlock A Free Trial"
+          width={24}
+          height={24}
+        />
+      </span>
+      Unlock A Free Trial
+    </button>
+  </Link>
+</div>
+
+
+
+
           </div>
         </section>
         <BuildOfEfficiency />
         <Transformative />
         <LevelUP />
       </ContentfulProviderPMS>
-      
+
       <Footer />
     </>
   );
