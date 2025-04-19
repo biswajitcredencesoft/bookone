@@ -17,6 +17,7 @@ const BookDemo = () => {
   const [userInfo, setUserInfo] = useState({
     name: "",
     email: "",
+    countryCode: '+91',
     phone: "",
     company: "",
   });
@@ -36,6 +37,43 @@ const BookDemo = () => {
     company: ""
   });
 
+  const validatePhone = (phone, countryCode) => {
+    let regex;
+    let errorMsg = "";
+  
+    switch (countryCode) {
+      case "+91": // India
+        regex = /^[6-9]\d{9}$/;
+        errorMsg = "Enter a valid 10-digit Indian number";
+        break;
+      case "+1": // USA
+        regex = /^[2-9]\d{9}$/;
+        errorMsg = "Enter a valid 10-digit US number";
+        break;
+      case "+44": // UK
+        regex = /^7\d{9}$/;
+        errorMsg = "Enter a valid 10-digit UK mobile number";
+        break;
+      case "+61": // Australia
+        regex = /^4\d{8}$/;
+        errorMsg = "Enter a valid 9-digit Australian mobile number starting with 4";
+        break;
+      case "+64": // New Zealand
+        regex = /^[2]\d{7,9}$/;
+        errorMsg = "Enter a valid 8-10 digit NZ mobile number starting with 2";
+        break;
+      default:
+        regex = /^\d{7,15}$/;
+        errorMsg = "Enter a valid mobile number";
+    }
+  
+    setErrors((prev) => ({
+      ...prev,
+      phone: regex.test(phone) ? "" : errorMsg
+    }));
+  };
+  
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
   
@@ -47,11 +85,11 @@ const BookDemo = () => {
     // Real-time validation
     switch (name) {
       case "phone":
-        const phoneRegex = /^[0-9]{10}$/;
-        setErrors((prev) => ({
-          ...prev,
-          phone: phoneRegex.test(value) ? "" : "Enter a valid 10-digit number"
-        }));
+        validatePhone(value, userInfo.countryCode);
+        break;
+      case "countryCode":
+        // When country changes, re-validate phone number
+        validatePhone(userInfo.phone, value);
         break;
       case "email":
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -569,29 +607,49 @@ const BookDemo = () => {
 
                   {/* Mobile Number */}
                   <div className="mb-4 w-full">
-                  <div className="flex justify-between items-center mb-1">
-                      <label
-                        htmlFor="phone"
-                        className="block text-[#4A5568] text-sm font-medium"
-                      >
-                        Mobile Number
-                      </label>
-                      {errors.phone && (
-                        <p className="text-red-500 text-sm">{errors.phone}</p>
-                      )}
-                    </div>
-                    <input
-                      type="number"
-                      id="phone"
-                      name="phone"
-                      value={userInfo.phone}
-                      onChange={handleInputChange}
-                      className={`w-full border ${
-                        errors.phone ? "border-red-500" : "border-gray-300"
-                      } rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 sm:text-sm p-3`}
-                      placeholder="Mobile Number"
-                    />
-                  </div>
+  <div className="flex justify-between items-center mb-1">
+    <label
+      htmlFor="phone"
+      className="block text-[#4A5568] text-sm font-medium"
+    >
+      Mobile Number
+    </label>
+    {errors.phone && (
+      <p className="text-red-500 text-sm w-[200px]">{errors.phone}</p>
+    )}
+  </div>
+
+  <div className="flex">
+    {/* Country Code Dropdown */}
+    <select
+      name="countryCode"
+      value={userInfo.countryCode}
+      onChange={handleInputChange}
+      className="border border-gray-300 rounded-l-md bg-white text-gray-900 p-3 text-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+    >
+      <option value="+91"> 🇮🇳 +91</option>
+      <option value="+1">🇺🇸 +1</option>
+      <option value="+44">🇬🇧 +44</option>
+      <option value="+61">🇦🇺 +61</option>
+      <option value="+64">NZ +64</option>
+      {/* Add more countries as needed */}
+    </select>
+
+    {/* Mobile Number Input */}
+    <input
+      type="number"
+      id="phone"
+      name="phone"
+      value={userInfo.phone}
+      onChange={handleInputChange}
+      className={`w-full border-t border-b border-r ${
+        errors.phone ? "border-red-500" : "border-gray-300"
+      } rounded-r-md shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 sm:text-sm p-3`}
+      placeholder="Mobile Number"
+    />
+  </div>
+</div>
+
 
                   {/* Email Address */}
                   <div className="mb-4 w-full">
@@ -646,7 +704,7 @@ const BookDemo = () => {
                   </div>
 
                   {/* Error Message */}
-                  {error && <p className="text-red-500">{error}</p>}
+                  {/* {error && <p className="text-red-500">{error}</p>} */}
 
                   {/* Navigation Buttons */}
                   <div className="mt-[0.7rem] flex justify-between items-center w-full">
