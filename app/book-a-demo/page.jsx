@@ -294,6 +294,54 @@ ownerName:userInfo.company,
       setLoading(false);
     }
   };
+  const submitFormone  = async () => {
+    const payload = {
+      businessType: "Accommodation",
+      accountManager: "BookOne Team",
+      email: userInfo.email,
+      name: userInfo.name,
+ownerName:userInfo.company,
+
+      organisationId: 1,
+      propertyId: "107",
+      managerEmailAddress: "servicemanagement@gmail.com",
+      managerFirstName: "Service",                      
+      managerLastName: "Management",
+      dateCollected: new Date().toISOString().split("T")[0],
+      mobile:userInfo.phone,
+    };
+  
+    try {
+      setLoading(true);
+  
+      // Await the fetch
+      const response = await fetch(
+        "https://api.bookone.io/api-lms/api/v1/businessLead",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+  
+      // Await the JSON response
+      const data = await response.json();
+      console.log("API response:", data);
+  
+      if (response.status === 200){
+        setStep(5);
+       
+      }
+  
+    } catch (err) {
+      console.error("Form submission error:", err);
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
   
   const renderFeatureCards = () => (
     <div className="grid grid-cols-3 gap-4 md:gap-0 mt-6 md:mt-0">
@@ -675,7 +723,11 @@ className="bg-white rounded"
                         Book A Demo
                       </span>
                     </button>
-
+                    <a
+  href="https://wa.me/6372198255"
+  target="_blank" // Opens in a new tab
+  rel="noopener noreferrer" // For security reasons
+>
                     <button className="w-full h-[72px] cursor-pointer p-3 border rounded-[10px] flex items-center transition-all duration-200 border-[#8CCFF0] bg-white">
                       <span className="w-6 h-6 mr-3 flex items-center justify-center">
                         <Image
@@ -689,8 +741,16 @@ className="bg-white rounded"
                         Talk To Our Experts
                       </span>
                     </button>
-
-                    <button className="w-full h-[72px] cursor-pointer p-3 rounded-[10px] flex items-center transition-all duration-200 bg-[#D8A353]" onClick={nextStep}>
+</a>
+                    <button  onClick={() => {
+            if (!userInfo.email) {
+              setError("Please fill in all schedule fields.");
+            } else {
+              setError("");
+              submitFormone();// 👈 HERE is the submission!
+            }
+          }}
+                     className="w-full h-[72px] cursor-pointer p-3 rounded-[10px] flex items-center transition-all duration-200 bg-[#D8A353]" >
                       <span className="w-6 h-6 mr-3 flex items-center justify-center">
                         <Image
                           src={assets.Laptop}
@@ -720,7 +780,8 @@ className="bg-white rounded"
                 </div>
               )}
 
-          {step === 5 &&
+     
+{step === 5 &&
               renderFormBox(
                 <div className="w-full h-full flex flex-col items-start justify-start mt-5">
                   <h2 className="text-[#146683] text-center font-inter text-[34px] font-semibold leading-[130%] not-italic mb-1 w-full text-left ">
@@ -729,7 +790,7 @@ className="bg-white rounded"
                   <h3 className="text-[#146683] text-center font-inter text-[25px] font-semibold leading-[130%] not-italic mb-6 w-full text-left ">For Choosing BookOne!</h3>
                   <p className="text-[#146683] lg:pr-[60px] lg:pl-[60px] text-center font-inter font-semibold leading-[130%] not-italic mb-6 w-full text-left ">You're now one step closer to simpler, smarter hotel management.</p>
 
-                  <p className="text-[#146683] lg:pr-[60px] lg:pl-[60px] text-center font-inter  leading-[130%] not-italic mb-6 w-full text-left ">Your reference number is <b>#BO-29187</b></p>
+                  {/* <p className="text-[#146683] lg:pr-[60px] lg:pl-[60px] text-center font-inter  leading-[130%] not-italic mb-6 w-full text-left ">Your reference number is <b>#BO-29187</b></p> */}
 
                   <p className="text-[#000] lg:pl-[50px] lg:pr-[50px] font-bold font-inter not-italic mb-2 w-full text-left ">What’s next?</p>
                   <div className="flex items-start justify-center lg:pl-[50px] lg:pr-[50px] mb-2">
@@ -771,11 +832,11 @@ className="bg-white rounded"
                       
                     </div>
 
-                    <p className="text-[#D8A353] text-center font-inter mt-[30px] font-semibold leading-[130%] not-italic mb-1 w-full text-left ">Want to explore plans while you wait? <a href="/pricing" className="underline text-[#146683] cursor-pointer">See Pricing</a></p>
+                    <p className="text-[#D8A353] text-center font-inter mt-[30px] font-semibold leading-[130%] not-italic mb-1 w-full text-left p-[40px] sm:p-[0px] ">Want to explore plans while you wait? <a href="/pricing" className="underline text-[#146683] cursor-pointer">See Pricing</a></p>
 
                     
                 </div>
-              )}
+         )}
           </div>
         </div>
         <div className="block md:hidden mt-8">{renderFeatureCards()}</div>
