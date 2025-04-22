@@ -211,18 +211,18 @@ const BookOneDetails = () => {
               {tabContent[activeTab].map((item) => (
                 <div
                   key={item.title}
-                  className={`relative border rounded-[8px] p-2 flex flex-col items-start text-left shadow-md ${
+                  className={` relative border rounded-[8px] p-2 flex flex-col items-start text-left shadow-md ${
                     item.disabled ? "bg-gray-200 border-gray-300" : "bg-white border-[#CEE6F0]"
                   }`}
                   style={{ height: "100px", opacity: item.disabled ? 0.6 : 1 }}
                 >
-                  <div className="mb-1 w-8 h-8">{item.icon}</div>
-                  <h3 className="font-semibold text-xs text-[#146683] leading-tight">
+                  <div className="mb-1 w-8 h-6">{item.icon}</div>
+                  <h3 className="font-semibold text-[8px] text-[#146683] leading-tight mt-[22px]">
                     {item.title}
                   </h3>
 
                   {item.disabled ? (
-                    <span className="absolute bottom-2 right-2 text-[10px] px-2 py-[2px] bg-[#8CCFF0] text-[#146683] rounded-full">
+                    <span className="absolute bottom-2 right-2 text-[8px] px-1 py-[2px] bg-[#8CCFF0] text-[#146683] rounded-full">
                       Coming Soon
                     </span>
                   ) : (

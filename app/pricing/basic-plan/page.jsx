@@ -4,10 +4,10 @@ import { FaCheckCircle } from "react-icons/fa";
 import Link from "next/link";
 const BasicPlan = () => {
   return (
-    <div className="flex flex-col lg:flex-row justify-center items-center gap-10 lg:gap-30 px-4 lg:px-6 py-10 bg-white">
+    <div className="flex flex-col lg:flex-row justify-center items-center gap-10 lg:gap-30 px-4 lg:px-20 py-10 bg-white">
       {/* Left Promo Section */}
       <div className="w-full max-w-md text-center lg:text-left hidden md:block ml-12">
-        <h2 className="text-[32px] sm:text-[36px] lg:text-[40px] text-[#146683] font-bold leading-[150%] mb-0">
+        <h2 className="text-[32px] sm:text-[36px] lg:text-[42px] text-[#146683] font-bold leading-[150%] mb-0">
           Sick of Systems
         </h2>
         <h3 className="text-[20px] sm:text-[22px] lg:text-[24px] text-[#146683] font-bold leading-[150%] mb-4">

@@ -54,7 +54,7 @@ console.log("bookMaxData", bookMaxData);
   return (
     <div
       ref={sectionRef}
-      className={`bg-[#EDF6FA] px-4 sm:px-6 lg:px-10 py-0 font-['Inter'] transition-opacity duration-1000 ease-out ${
+      className={`bg-[#82B3C3] bg-opacity-15 px-4 sm:px-6 lg:px-10 py-4 font-['Inter'] transition-opacity duration-1000 ease-out ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
     >
