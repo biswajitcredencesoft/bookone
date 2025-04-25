@@ -1,38 +1,41 @@
-"use client";
+'use client';
+
 import { createContext, useContext, useEffect, useState } from "react";
 import { createClient } from "contentful";
 
+// Create context
 const ContentfulContextBookone = createContext();
 
+// Contentful client setup
 const client = createClient({
   space: "wzmo4lmp2r9v",
   accessToken: "8byVN6ybNsGaYJ6FUTB0CB4mwuie5fIX-DxWy1GGi6E",
 });
 
+// Provider component
 export const ContentfulProviderBookone = ({ children }) => {
-    const [connectData, setconnectData] = useState(null);
+  const [crmData, setcrmData] = useState(null);
 
-    useEffect(() => {
-      async function fetchHeroContent() {
-        try {
-          const res = await client.getEntries({ content_type: "bookOneCrm" }); // Replace with your actual content type ID
-          setconnectData(res.items[0]?.fields);
-          console.log("connectData", res.items);
-  
-        } catch (err) {
-          console.error("Contentful fetch error:", err);
-        }
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await client.getEntries({ content_type: "bookOneCrm" });
+        setcrmData(res.items[0]?.fields);
+        console.log("bookOneCrm", res.items);
+      } catch (err) {
+        console.error("Contentful fetch error:", err);
       }
-  
-      fetchHeroContent();
-    }, []);
+    }
 
+    fetchData();
+  }, []);
 
   return (
-    <ContentfulContextBookone.Provider value={{ connectData }}>
+    <ContentfulContextBookone.Provider value={{ crmData }}>
       {children}
     </ContentfulContextBookone.Provider>
   );
 };
 
-export const useContentful = () => useContext(ContentfulContextBookone);
+
+export const useBookoneContentful = () => useContext(ContentfulContextBookone);

@@ -70,6 +70,17 @@ const Hero = () => {
               >
                 Your browser does not support the video tag.
               </video>
+              {/* 
+<video
+      src="https://testbookone.bookone.io/wp-content/uploads/2025/02/BookOne-Hero-Section-Video-1.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      className="w-full h-full object-cover"
+    >
+      Your browser does not support the video tag.
+    </video> */}
             </div>
           </div>
         </div>
