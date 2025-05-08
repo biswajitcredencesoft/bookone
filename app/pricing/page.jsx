@@ -10,7 +10,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { createClient } from "contentful";
 import BasicPlan from "./basic-plan/page";
 import Link from "next/link";
-
+import { FiPhoneCall } from "react-icons/fi";
 const client = createClient({
   space: "wzmo4lmp2r9v",
   accessToken: "8byVN6ybNsGaYJ6FUTB0CB4mwuie5fIX-DxWy1GGi6E",
@@ -35,8 +35,8 @@ const Pricing = () => {
   }, []);
 
   const pricingMap = {
-    INR: ["₹1199", "₹1499", "₹2099"],
-    USD: ["$99", "$129", "$179"],
+    INR: ["₹1899", "₹2499", "₹3299"],
+    USD: ["$22.74", "$29.91", "$39.50"],
   };
 
   const cards = [
@@ -138,7 +138,9 @@ const Pricing = () => {
                         {card.icon}
                       </div>
                       <div className="text-left">
-                        <div className="text-xs text-gray-500">{card.title}</div>
+                        <div className="text-xs text-gray-500">
+                          {card.title}
+                        </div>
                         <div
                           className={`text-sm font-semibold ${
                             card.highlight ? "text-white" : "text-gray-700"
@@ -173,7 +175,9 @@ const Pricing = () => {
                       })}
                     </h3>
                     <div className="text-right mb-4">
-                      <div className="text-sm text-[#818181] text-left">Start at</div>
+                      <div className="text-sm text-[#818181] text-left">
+                        Start at
+                      </div>
                       <div className="text-lg font-bold">
                         {pricingMap[currency][index]}
                         <span className="text-sm font-medium"> /monthly</span>
@@ -212,15 +216,15 @@ const Pricing = () => {
 
                   {/* Desktop CTA */}
                   <Link href="/book-a-demo">
-                  <button
-                    className={`hidden md:block w-[50%] ml-4 py-2 rounded-xl font-medium transition-all duration-200 mb-6 ${
-                      card.highlight
-                        ? "bg-white text-[#014669] hover:bg-gray-200"
-                        : "bg-[#014669] text-white hover:bg-[#013851]"
-                    }`}
-                  >
-                    Get Started
-                  </button>
+                    <button
+                      className={`hidden md:block w-[50%] ml-4 py-2 rounded-xl font-medium transition-all duration-200 mb-6 ${
+                        card.highlight
+                          ? "bg-white text-[#014669] hover:bg-gray-200"
+                          : "bg-[#014669] text-white hover:bg-[#013851]"
+                      }`}
+                    >
+                      Get Started
+                    </button>
                   </Link>
 
                   {/* Features */}
@@ -245,21 +249,34 @@ const Pricing = () => {
 
                 {/* Mobile CTA */}
                 <Link href="/book-a-demo">
-                <button
-                  className={`block md:hidden w-[226px] ml-12  mt-6 py-2 rounded-[16px]  font-medium transition-all duration-200 ${
-                    card.highlight
-                      ? "bg-white text-[#014669] hover:bg-gray-200"
-                      : "bg-[#014669] text-white hover:bg-[#013851]"
-                  }`}
-                >
-                  Get Started
-                </button>
+                  <button
+                    className={`block md:hidden w-[226px] ml-12  mt-6 py-2 rounded-[16px]  font-medium transition-all duration-200 ${
+                      card.highlight
+                        ? "bg-white text-[#014669] hover:bg-gray-200"
+                        : "bg-[#014669] text-white hover:bg-[#013851]"
+                    }`}
+                  >
+                    Get Started
+                  </button>
                 </Link>
               </div>
             ))}
           </div>
+
+          <div className="bg-gradient-to-r from-[#5E5B7D] via-[#146683] to-black text-white rounded-2xl px-6 py-6 mt-12 shadow-lg max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <h2 className="text-lg md:text-xl font-semibold text-center md:text-left">
+              Want a better offer? Let’s make it happen.
+            </h2>
+            <a
+              href="tel:+919004146024"
+              className="flex items-center gap-2 bg-white text-[#146683] px-6 py-2.5 text-sm md:text-base font-semibold rounded-full shadow-md hover:bg-gray-100 transition"
+            >
+              <FiPhoneCall className="text-lg" />
+              Call Us
+            </a>
+          </div>
         </div>
-        <BasicPlan/>
+        <BasicPlan />
         <PowerOf />
         <UseBookone />
       </ContentfulProviderpricing>

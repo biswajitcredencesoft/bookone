@@ -17,7 +17,7 @@ const BookDemo = () => {
   const [userInfo, setUserInfo] = useState({
     name: "",
     email: "",
-    countryCode: '+91',
+    countryCode: "+91",
     phone: "",
     company: "",
   });
@@ -34,13 +34,13 @@ const BookDemo = () => {
     name: "",
     phone: "",
     email: "",
-    company: ""
+    company: "",
   });
 
   const validatePhone = (phone, countryCode) => {
     let regex;
     let errorMsg = "";
-  
+
     switch (countryCode) {
       case "+91": // India
         regex = /^[6-9]\d{9}$/;
@@ -56,7 +56,8 @@ const BookDemo = () => {
         break;
       case "+61": // Australia
         regex = /^4\d{8}$/;
-        errorMsg = "Enter a valid 9-digit Australian mobile number starting with 4";
+        errorMsg =
+          "Enter a valid 9-digit Australian mobile number starting with 4";
         break;
       case "+64": // New Zealand
         regex = /^[2]\d{7,9}$/;
@@ -66,22 +67,21 @@ const BookDemo = () => {
         regex = /^\d{7,15}$/;
         errorMsg = "Enter a valid mobile number";
     }
-  
+
     setErrors((prev) => ({
       ...prev,
-      phone: regex.test(phone) ? "" : errorMsg
+      phone: regex.test(phone) ? "" : errorMsg,
     }));
   };
-  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-  
+
     setUserInfo((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
-  
+
     // Real-time validation
     switch (name) {
       case "phone":
@@ -95,34 +95,41 @@ const BookDemo = () => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         setErrors((prev) => ({
           ...prev,
-          email: emailRegex.test(value) ? "" : "Enter a valid email"
+          email: emailRegex.test(value) ? "" : "Enter a valid email",
         }));
         break;
       case "name":
         setErrors((prev) => ({
           ...prev,
-          name: value.trim() !== "" ? "" : "Name is required"
+          name: value.trim() !== "" ? "" : "Name is required",
         }));
         break;
       case "company":
         setErrors((prev) => ({
           ...prev,
-          company: value.trim() !== "" ? "" : "Hotel name is required"
+          company: value.trim() !== "" ? "" : "Hotel name is required",
         }));
         break;
       default:
         break;
     }
   };
-  
 
   const handleSolutionTypeClick = (type) => {
+    let updatedSelection;
+  
     if (solutionType.includes(type)) {
-      setSolutionType(solutionType.filter((item) => item !== type));
+      updatedSelection = solutionType.filter((item) => item !== type);
     } else {
-      setSolutionType([...solutionType, type]);
+      updatedSelection = [...solutionType, type];
+    }
+  
+    setSolutionType(updatedSelection);
+    if (updatedSelection.length > 0) {
+      setError(""); 
     }
   };
+  
 
   const handlePropertyTypeClick = (type) => {
     setPropertyType(type);
@@ -130,7 +137,7 @@ const BookDemo = () => {
       setStep2BottomText(
         "80% of BookOne hotel partners say they ‘finally feel in control’ of their property operations."
       );
-      setStep2Heading("Start Building Your Hotel’s Success Story!"); 
+      setStep2Heading("Start Building Your Hotel’s Success Story!");
     } else if (type === "Villa") {
       setStep2BottomText(
         "Unlock seamless management for your villa with BookOne."
@@ -182,6 +189,7 @@ const BookDemo = () => {
       setError("Please select at least one solution.");
       return;
     }
+
     setStep((prev) => prev + 1);
   };
 
@@ -281,9 +289,7 @@ const BookDemo = () => {
     },
     {
       label: "Others",
-      icon: (
-        <Image src={assets.bedOne} alt="Others" width={28} height={28} />
-      ),
+      icon: <Image src={assets.bedOne} alt="Others" width={28} height={28} />,
       activeIcon: (
         <Image src={assets.rext4} alt="Home Stay" width={28} height={28} />
       ),
@@ -311,27 +317,27 @@ const BookDemo = () => {
   );
   const validateForm = () => {
     const newErrors = {};
-  
+
     if (!userInfo.name.trim()) {
       newErrors.name = "Full Name is required";
     }
-  
+
     if (!userInfo.phone.trim()) {
       newErrors.phone = "Mobile Number is required";
     } else if (!/^\d{10}$/.test(userInfo.phone)) {
       newErrors.phone = "Enter a valid 10-digit mobile number";
     }
-  
+
     if (!userInfo.email.trim()) {
       newErrors.email = "Email is required";
     } else if (!/^\S+@\S+\.\S+$/.test(userInfo.email)) {
       newErrors.email = "Enter a valid email address";
     }
-  
+
     if (!userInfo.company.trim()) {
       newErrors.company = "Hotel Name is required";
     }
-  
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -538,8 +544,9 @@ const BookDemo = () => {
                     })}
                   </div>
 
-                    {error && !propertyType && <p className="text-red-500 mt-4">{error}</p>}
-
+                  {error && !propertyType && (
+                    <p className="text-red-500 mt-4">{error}</p>
+                  )}
 
                   <div className="mt-8  flex justify-between items-center w-full max-w-[500px]">
                     <div></div>
@@ -554,7 +561,7 @@ const BookDemo = () => {
 
                   <button
                     onClick={nextStep}
-                    className="mt-6 sm:mt-8 w-[274px] h-[72px] flex items-center justify-center gap-4 rounded-[10px] border-[1.5px] border-[#D8A353] bg-[#D8A353]"
+                    className=" mt-6 sm:mt-8 w-[274px] h-[72px] flex items-center justify-center gap-4 rounded-[10px] border-[1.5px] border-[#D8A353] bg-[#D8A353]"
                   >
                     <span className="w-[40.848px] h-[38.977px] flex items-center justify-center flex-shrink-0">
                       <Image
@@ -581,17 +588,17 @@ const BookDemo = () => {
 
                   {/* Full Name */}
                   <div className="mb-4 w-full">
-                  <div className="flex justify-between items-center mb-1">
-                  <label
-                    htmlFor="name"
-                    className="block text-[#4A5568] text-sm font-medium"
-                  >
-                    Full Name
-                  </label>
-                  {errors.name && (
-                    <p className="text-red-500 text-sm">{errors.name}</p>
-                  )}
-                </div>
+                    <div className="flex justify-between items-center mb-1">
+                      <label
+                        htmlFor="name"
+                        className="block text-[#4A5568] text-sm font-medium"
+                      >
+                        Full Name
+                      </label>
+                      {errors.name && (
+                        <p className="text-red-500 text-sm">{errors.name}</p>
+                      )}
+                    </div>
                     <input
                       type="text"
                       id="name"
@@ -607,63 +614,64 @@ const BookDemo = () => {
 
                   {/* Mobile Number */}
                   <div className="mb-4 w-full">
-  <div className="flex justify-between items-center mb-1">
-    <label
-      htmlFor="phone"
-      className="block text-[#4A5568] text-sm font-medium"
-    >
-      Mobile Number
-    </label>
-    {errors.phone && (
-      <p className="text-red-500 text-sm w-[200px]">{errors.phone}</p>
-    )}
-  </div>
+                    <div className="flex justify-between items-center mb-1">
+                      <label
+                        htmlFor="phone"
+                        className="block text-[#4A5568] text-sm font-medium"
+                      >
+                        Mobile Number
+                      </label>
+                      {errors.phone && (
+                        <p className="text-red-500 text-sm w-[200px]">
+                          {errors.phone}
+                        </p>
+                      )}
+                    </div>
 
-  <div className="flex">
-    {/* Country Code Dropdown */}
-    <select
-      name="countryCode"
-      value={userInfo.countryCode}
-      onChange={handleInputChange}
-      className="border border-gray-300 rounded-l-md bg-white text-gray-900 p-3 text-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-    >
-      <option value="+91"> 🇮🇳 +91</option>
-      <option value="+1">🇺🇸 +1</option>
-      <option value="+44">🇬🇧 +44</option>
-      <option value="+61">🇦🇺 +61</option>
-      <option value="+64">NZ +64</option>
-      {/* Add more countries as needed */}
-    </select>
+                    <div className="flex">
+                      {/* Country Code Dropdown */}
+                      <select
+                        name="countryCode"
+                        value={userInfo.countryCode}
+                        onChange={handleInputChange}
+                        className="border border-gray-300 rounded-l-md bg-white text-gray-900 p-3 text-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                      >
+                        <option value="+91"> 🇮🇳 +91</option>
+                        <option value="+1">🇺🇸 +1</option>
+                        <option value="+44">🇬🇧 +44</option>
+                        <option value="+61">🇦🇺 +61</option>
+                        <option value="+64">NZ +64</option>
+                        {/* Add more countries as needed */}
+                      </select>
 
-    {/* Mobile Number Input */}
-    <input
-      type="number"
-      id="phone"
-      name="phone"
-      value={userInfo.phone}
-      onChange={handleInputChange}
-      className={`w-full border-t border-b border-r ${
-        errors.phone ? "border-red-500" : "border-gray-300"
-      } rounded-r-md shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 sm:text-sm p-3`}
-      placeholder="Mobile Number"
-    />
-  </div>
-</div>
-
+                      {/* Mobile Number Input */}
+                      <input
+                        type="number"
+                        id="phone"
+                        name="phone"
+                        value={userInfo.phone}
+                        onChange={handleInputChange}
+                        className={`w-full border-t border-b border-r ${
+                          errors.phone ? "border-red-500" : "border-gray-300"
+                        } rounded-r-md shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-900 sm:text-sm p-3`}
+                        placeholder="Mobile Number"
+                      />
+                    </div>
+                  </div>
 
                   {/* Email Address */}
                   <div className="mb-4 w-full">
-                  <div className="flex justify-between items-center mb-1">
-                    <label
-                      htmlFor="email"
-                      className="block text-[#4A5568] text-sm font-medium"
-                    >
-                      Email Address
-                    </label>
-                    {errors.email && (
-                      <p className="text-red-500 text-sm">{errors.email}</p>
-                    )}
-                  </div>
+                    <div className="flex justify-between items-center mb-1">
+                      <label
+                        htmlFor="email"
+                        className="block text-[#4A5568] text-sm font-medium"
+                      >
+                        Email Address
+                      </label>
+                      {errors.email && (
+                        <p className="text-red-500 text-sm">{errors.email}</p>
+                      )}
+                    </div>
                     <input
                       type="email"
                       id="email"
@@ -679,17 +687,17 @@ const BookDemo = () => {
 
                   {/* Hotel Name */}
                   <div className="mb-6 w-full">
-                  <div className="flex justify-between items-center mb-1">
-                    <label
-                      htmlFor="company"
-                      className="block text-[#4A5568] text-sm font-medium"
-                    >
-                      Hotel Name
-                    </label>
-                    {errors.company && (
-                      <p className="text-red-500 text-sm">{errors.company}</p>
-                    )}
-                  </div>
+                    <div className="flex justify-between items-center mb-1">
+                      <label
+                        htmlFor="company"
+                        className="block text-[#4A5568] text-sm font-medium"
+                      >
+                        Hotel Name
+                      </label>
+                      {errors.company && (
+                        <p className="text-red-500 text-sm">{errors.company}</p>
+                      )}
+                    </div>
                     <input
                       type="text"
                       id="company"
@@ -855,6 +863,8 @@ const BookDemo = () => {
                 </div>
               )}
 
+              
+
             {step === 4 &&
               renderFormBox(
                 <div className="w-full h-full flex flex-col items-start justify-start">
@@ -871,7 +881,7 @@ const BookDemo = () => {
                           setError("Please fill in all schedule fields.");
                         } else {
                           setError("");
-                          submitForm(); // 👈 HERE is the submission!
+                          submitForm(); 
                         }
                       }}
                       className="w-full h-[72px] cursor-pointer p-3 border rounded-[10px] flex items-center transition-all duration-200 border-[#8CCFF0] bg-white"
@@ -889,33 +899,35 @@ const BookDemo = () => {
                       </span>
                     </button>
                     <a
-                    href="https://wa.me/9004146024"
-                    target="_blank" // Opens in a new tab
-                    rel="noopener noreferrer" // For security reasons
+                      href="https://wa.me/9004146024"
+                      target="_blank" 
+                      rel="noopener noreferrer"
                     >
-                    <button className="w-full h-[72px] cursor-pointer p-3 border rounded-[10px] flex items-center transition-all duration-200 border-[#8CCFF0] bg-white">
-                      <span className="w-6 h-6 mr-3 flex items-center justify-center">
-                        <Image
-                          src={assets.PMS6}
-                          alt="Talk To Our Experts"
-                          width={24}
-                          height={24}
-                        />
-                      </span>
-                      <span className="text-[16px] font-medium text-left text-[#146683]">
-                        Talk To Our Experts
-                      </span>
-                    </button>
-</a>
-                    <button  onClick={() => {
-            if (!userInfo.email) {
-              setError("Please fill in all schedule fields.");
-            } else {
-              setError("");
-              submitFormone();// 👈 HERE is the submission!
-            }
-          }}
-                     className="w-full h-[72px] cursor-pointer p-3 rounded-[10px] flex items-center transition-all duration-200 bg-[#D8A353]" >
+                      <button className="w-full h-[72px] cursor-pointer p-3 border rounded-[10px] flex items-center transition-all duration-200 border-[#8CCFF0] bg-white">
+                        <span className="w-6 h-6 mr-3 flex items-center justify-center">
+                          <Image
+                            src={assets.PMS6}
+                            alt="Talk To Our Experts"
+                            width={24}
+                            height={24}
+                          />
+                        </span>
+                        <span className="text-[16px] font-medium text-left text-[#146683]">
+                          Talk To Our Experts
+                        </span>
+                      </button>
+                    </a>
+                    <button
+                      onClick={() => {
+                        if (!userInfo.email) {
+                          setError("Please fill in all schedule fields.");
+                        } else {
+                          setError("");
+                          submitFormone();
+                        }
+                      }}
+                      className="w-full h-[72px] cursor-pointer p-3 rounded-[10px] flex items-center transition-all duration-200 bg-[#D8A353]"
+                    >
                       <span className="w-6 h-6 mr-3 flex items-center justify-center">
                         <Image
                           src={assets.Laptop}
@@ -1007,7 +1019,7 @@ const BookDemo = () => {
                     </p>
                   </div>
 
-                  <p className="text-[#D8A353] text-center font-inter mt-[30px] font-semibold leading-[130%] not-italic mb-1 w-full text-left p-[40px] sm:p-[0px] ">
+                  <p className="text-[#D8A353]  font-inter mt-[30px] font-semibold leading-[130%] not-italic mb-1 w-full text-left p-[40px] sm:p-[0px] ">
                     Want to explore plans while you wait?{" "}
                     <a
                       href="/pricing"

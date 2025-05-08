@@ -66,36 +66,30 @@ const BookOnePms = () => {
               <span className="text-[#146683]">{pmsData?.pmsSubHeading}</span>
             </h1>
             <p className="mt-6 text-[#171C1E] text-center  md:text-left  text-[15px] sm:text-[20px] lg:text-[24px] font-medium leading-[130%]">
-              {documentToReactComponents(pmsData?.pmsheroParagaroph)}
+              {documentToReactComponents(pmsData?.subHeading)}
             </p>
 
             <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-center md:items-start mt-4 md:mt-6">
-  <Link href="/book-a-demo">
-    <button
-      className="w-[260px] h-[50px] rounded-[12px] border border-[#CEE6F0] bg-[#01677D] text-white font-medium text-base hover:bg-[#005965] transition-all"
-    >
-      Book A Demo
-    </button>
-  </Link>
+              <Link href="/book-a-demo">
+                <button className="w-[260px] h-[50px] rounded-[12px] border border-[#CEE6F0] bg-[#01677D] text-white font-medium text-base hover:bg-[#005965] transition-all">
+                  Book A Demo
+                </button>
+              </Link>
 
-  <Link href="/book-a-demo">
-    <button className="w-[260px] h-[50px] bg-[#D8A353] text-[#171C1E] font-bold text-base rounded-[12px] flex items-center justify-center hover:bg-[#c89247] transition-all">
-      <span className="w-6 h-6 mr-2 flex items-center justify-center">
-        <Image
-          src={assets.Laptop}
-          alt="Unlock A Free Trial"
-          width={24}
-          height={24}
-        />
-      </span>
-      Unlock A Free Trial
-    </button>
-  </Link>
-</div>
-
-
-
-
+              <Link href="/book-a-demo">
+                <button className="w-[260px] h-[50px] bg-[#D8A353] text-[#171C1E] font-bold text-base rounded-[12px] flex items-center justify-center hover:bg-[#c89247] transition-all">
+                  <span className="w-6 h-6 mr-2 flex items-center justify-center">
+                    <Image
+                      src={assets.Laptop}
+                      alt="Unlock A Free Trial"
+                      width={24}
+                      height={24}
+                    />
+                  </span>
+                  Unlock A Free Trial
+                </button>
+              </Link>
+            </div>
           </div>
         </section>
         <BuildOfEfficiency />

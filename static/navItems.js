@@ -34,12 +34,12 @@ export const productItems = [
   //   name: "BookOne Loyalty",
   //   desc: "Boost direct bookings with automation, personalized offers, and seamless communication.",
   // },
-  // {
-  //   href: "/bookone-crm",
-  //   icon: <Image src={assets.Mask3} alt="Mask3" className="w-6 h-6" />,
-  //   name: "BookOne CRM",
-  //   desc: "BookOne CRM centralizes guest data to boost loyalty and personalized engagement.",
-  // },
+  {
+    href: "/bookone-crm",
+    icon: <Image src={assets.Mask3} alt="Mask3" className="w-6 h-6" />,
+    name: "BookOne CRM",
+    desc: "BookOne CRM centralizes guest data to boost loyalty and personalized engagement.",
+  },
   {
     href: "/bookone-bookmax",
     icon: <Image src={assets.Mask2} alt="Mask2" className="w-6 h-6" />,

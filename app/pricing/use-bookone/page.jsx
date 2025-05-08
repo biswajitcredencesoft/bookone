@@ -17,23 +17,23 @@ const client = createClient({
 
 const UseBookone = () => {
   const { pricingData } = useContentful() || {};
-  
-    const [pmsData, setpmsData] = useState(null);
-    const router = useRouter();
-  
-    useEffect(() => {
-      async function fetchHeroContent() {
-        try {
-          const res = await client.getEntries({ content_type: "bookOnePms" }); // Replace with your actual content type ID
-          setpmsData(res.items[0]?.fields);
-          console.log("bookOnePms", res.items);
-        } catch (err) {
-          console.error("Contentful fetch error:", err);
-        }
+
+  const [pmsData, setpmsData] = useState(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    async function fetchHeroContent() {
+      try {
+        const res = await client.getEntries({ content_type: "bookOnePms" }); 
+        setpmsData(res.items[0]?.fields);
+        console.log("bookOnePms", res.items);
+      } catch (err) {
+        console.error("Contentful fetch error:", err);
       }
-  
-      fetchHeroContent();
-    }, []);
+    }
+
+    fetchHeroContent();
+  }, []);
 
   if (!pricingData) return <p>Loading ...</p>;
 
@@ -46,9 +46,15 @@ const UseBookone = () => {
           <div className="flex-1 flex flex-col justify-center gap-6">
             <div>
               <h2 className="text-[#D0E6F3] text-[32px] md:text-[40px] lg:text-[48px] font-bold leading-tight">
-                {pricingData?.pricingThirdHeading?.split(" ").slice(0, 3).join(" ")}
+                {pricingData?.pricingThirdHeading
+                  ?.split(" ")
+                  .slice(0, 3)
+                  .join(" ")}
                 <br className="hidden md:block" />
-                {pricingData?.pricingThirdHeading?.split(" ").slice(3).join(" ")}
+                {pricingData?.pricingThirdHeading
+                  ?.split(" ")
+                  .slice(3)
+                  .join(" ")}
               </h2>
             </div>
             <p className="text-white text-[16px] md:text-[18px] font-medium leading-relaxed max-w-sm shadow-text hidden md:block">
@@ -57,11 +63,14 @@ const UseBookone = () => {
           </div>
 
           {/* Right Testimonial Card */}
+
           <div className="flex-1 bg-white/10 backdrop-blur-lg rounded-2xl p-4 sm:p-6 md:p-10 shadow-xl">
             <div className="flex items-start gap-4 sm:gap-6">
-              <div className="w-[60px] h-[60px] md:w-[70px] md:h-[70px] rounded-full bg-[#5E5B7D] border border-[#8C89AB] shrink-0" />
+              <div className="w-[60px] h-[60px] md:w-[70px] md:h-[70px] rounded-full bg-[#5E5B7D] border border-[#8C89AB] shrink-0 flex items-center justify-center text-white text-xl md:text-2xl font-semibold">
+                J
+              </div>
               <div className="text-white text-sm md:text-base">
-                <Image src={assets.Hotels} alt="hotels" className="w-10 h-10"/>
+                <Image src={assets.Hotels} alt="hotels" className="w-10 h-10" />
                 <p className="leading-relaxed mb-3">
                   <span className="font-semibold text-white">
                     As we scaled to multiple properties, BookOne
@@ -70,7 +79,9 @@ const UseBookone = () => {
                   and built for growth.
                 </p>
                 <p className="font-medium hidden md:block">Jane Doe</p>
-                <p className="text-white/80 hidden md:block">Managing Director, Hotel One</p>
+                <p className="text-white/80 hidden md:block">
+                  Managing Director, Hotel One
+                </p>
               </div>
             </div>
           </div>
@@ -85,7 +96,7 @@ const UseBookone = () => {
                 alt="Smiling professionals"
                 unoptimized 
                 width={700}
-              height={700}
+                height={700}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -98,15 +109,15 @@ const UseBookone = () => {
                   {pmsData?.pmsLastHeading}
                 </h3>
                 <p className="text-lg mb-0 max-w-xl mx-auto md:mx-0 hidden md:block">
-                {documentToReactComponents(pmsData?.pmsLastParagarph)}
+                  {documentToReactComponents(pmsData?.pmsLastParagarph)}
                 </p>
               </div>
 
               <div className="shrink-0">
-              <Link href="/book-a-demo">
-                <button className="bg-[#01677D] border-[#CEE6F0] border-[1px] hover:bg-[#0f4b5c] text-[#CEE6F0]px-0  lg:px-6 py-2 md:px-6 md:py-3 rounded-md shadow-md transition duration-300 whitespace-nowrap p-[10px]">
-                  See What BookOne Can Do For You
-                </button>
+                <Link href="/book-a-demo">
+                  <button className="bg-[#01677D] border-[#CEE6F0] border-[1px] hover:bg-[#0f4b5c] text-[#CEE6F0]px-0  lg:px-6 py-2 md:px-6 md:py-3 rounded-md shadow-md transition duration-300 whitespace-nowrap p-[10px]">
+                    See What BookOne Can Do For You
+                  </button>
                 </Link>
               </div>
             </div>

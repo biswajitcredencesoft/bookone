@@ -199,6 +199,9 @@ import man4 from "./man-4.png";
 import demoBg from "./demo-bg.png";
 import bedOne from "./bedOne.png";
 import India from "./india.png"
+// Footer Icon
+import FooterEmail from "./footer-email.svg"
+
 
 export const assets = {
   logo,
@@ -373,6 +376,8 @@ export const assets = {
   Resturant3,
   Resturant4,
   Resturant5,
+
+  FooterEmail,
  
 
 };

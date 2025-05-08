@@ -67,9 +67,9 @@ const Footer = () => {
             <div className="">
               <a
                 href="mailto:Info@Bookonepms.Com"
-                className="flex items-center gap-2 font-light"
+                className="flex items-center gap-2  font-light"
               >
-                <FaEnvelope className="text-skyCustom" />
+                <Image src={assets.FooterEmail} alt="FooterEmail" className="text-skyCustom  w-[18px] "  />
                 info@bookonepms.com
               </a>
             </div>
@@ -101,7 +101,7 @@ const Footer = () => {
           ].map((office, index) => (
             <div key={index}>
               <div className="flex items-start gap-2.5  md:w-[72%] ">
-                <FaMapMarkerAlt className="mt-1 text-skyCustom shrink-0" />
+                <FaMapMarkerAlt className="mt-1 text-skyCustom shrink-0  h-[18px]" />
                 <div className="">
                   <p className="font-medium">{office.title}</p>
                   <p className="mt-0.5 leading-relaxed">
